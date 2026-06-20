@@ -22,6 +22,12 @@ urlpatterns = [
     path("api/v1/candidate/", include("apps.candidates.api.urls")),
     # Jobs: employer CRUD/lifecycle, public search/detail, and the public
     # company directory (apps.jobs owns public job + company APIs, ADR §3.1).
+    # Employer applicant workspace (applications to the employer's OWN jobs):
+    # dashboard, applicant list/detail, status/notes mutations, and the
+    # permission-checked resume-snapshot download. Mounted before the jobs router
+    # so the literal ``jobs/{id}/applications/`` route resolves unambiguously
+    # (apps.applications owns these, ADR §3.1).
+    path("api/v1/employer/", include("apps.applications.api.employer_urls")),
     path("api/v1/employer/", include((jobs_urls.employer_router.urls, "jobs"), namespace="jobs")),
     path("api/v1/jobs/", include((jobs_urls.public_job_patterns, "jobs-public"))),
     path("api/v1/companies/", include((jobs_urls.company_patterns, "companies"))),
