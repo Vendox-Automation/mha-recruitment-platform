@@ -38,7 +38,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="employerprofile",
             name="slug",
-            field=models.SlugField(blank=True, default="", max_length=255, verbose_name="slug"),
+            # db_index=False on the transient add step: a SlugField is indexed
+            # by default, which on PostgreSQL also creates a varchar `_like`
+            # pattern index. The final AlterField (unique=True) would then try to
+            # create that `_like` index a second time and fail ("relation
+            # ..._like already exists"). Adding the column without an index lets
+            # the unique alter create the index exactly once. SQLite has no
+            # `_like` indexes, so this only manifests on PostgreSQL.
+            field=models.SlugField(
+                blank=True, db_index=False, default="", max_length=255, verbose_name="slug"
+            ),
             preserve_default=False,
         ),
         migrations.RunPython(backfill_slugs, noop),
