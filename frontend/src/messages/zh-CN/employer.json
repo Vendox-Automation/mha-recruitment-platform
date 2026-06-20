@@ -185,13 +185,17 @@
   "applicants": {
     "title": "申请人",
     "description": "审阅并推进该职位的候选人。",
+    "viewsLabel": "申请人视图",
     "views": {
+      "split": "分屏",
       "table": "表格",
-      "kanban": "看板",
-      "split": "分屏"
+      "kanban": "看板"
     },
     "emptyTitle": "暂无申请人",
     "emptyBody": "候选人申请该职位后，申请人将显示在这里。",
+    "emptyFilteredBody": "没有符合当前搜索和筛选条件的申请人。",
+    "review": "审阅",
+    "tableCaption": "该职位的申请人及其状态",
     "columns": {
       "candidate": "候选人",
       "job": "职位",
@@ -201,20 +205,127 @@
       "updated": "最近更新",
       "actions": "操作"
     },
-    "kanbanColumns": {
-      "applied": "已申请",
-      "underReview": "审核中",
-      "shortlisted": "已入围",
-      "interview": "面试",
-      "offered": "已录用通知",
-      "hired": "已入职",
-      "rejected": "已拒绝"
+    "filters": {
+      "searchLabel": "搜索候选人",
+      "searchPlaceholder": "按姓名或职位搜索",
+      "statusLabel": "阶段",
+      "statusAll": "全部阶段",
+      "sortLabel": "排序",
+      "sort": {
+        "newest": "最新申请",
+        "oldest": "最早申请",
+        "updated": "最近更新",
+        "status": "阶段"
+      }
+    },
+    "status": {
+      "APPLIED": { "label": "已申请" },
+      "UNDER_REVIEW": { "label": "审核中" },
+      "SHORTLISTED": { "label": "已入围" },
+      "INTERVIEW": { "label": "面试" },
+      "OFFERED": { "label": "已录用通知" },
+      "HIRED": { "label": "已入职" },
+      "REJECTED": { "label": "已拒绝" }
     },
     "split": {
       "listTitle": "候选人",
       "selectPrompt": "选择一位候选人以查看其资料、简历与回答。"
     },
+    "profile": {
+      "phone": "电话",
+      "location": "期望工作地点",
+      "type": "期望工作类型",
+      "applied": "申请时间"
+    },
+    "resume": {
+      "title": "简历",
+      "open": "打开简历",
+      "openNamed": "打开简历（{name}）",
+      "none": "该申请未附简历。"
+    },
+    "coverLetter": {
+      "title": "求职信",
+      "none": "未提供求职信。"
+    },
+    "answers": {
+      "title": "筛选问题回答",
+      "none": "该职位没有筛选问题。",
+      "blank": "未提供回答。"
+    },
+    "stage": {
+      "title": "阶段操作",
+      "changeLabel": "移动到阶段",
+      "noteLabel": "变更备注",
+      "noteHint": "可选。将记录在申请历史中。",
+      "notePlaceholder": "为本次变更添加内部备注",
+      "update": "更新阶段",
+      "updating": "更新中…",
+      "rejectWarning": "此操作将拒绝该候选人。",
+      "error": "无法更新阶段，请重试。"
+    },
+    "notes": {
+      "title": "私密备注",
+      "label": "雇主私密备注",
+      "hint": "仅您的团队可见，候选人永远看不到您的备注。",
+      "placeholder": "为该候选人添加备注",
+      "save": "保存备注",
+      "saving": "保存中…",
+      "saved": "备注已保存",
+      "error": "无法保存备注，请重试。"
+    },
+    "kanban": {
+      "moveLabel": "移动到阶段",
+      "emptyColumn": "该阶段暂无候选人。",
+      "moveError": "无法移动候选人，操作已撤销，请重试。"
+    },
+    "rejectConfirm": {
+      "title": "拒绝该候选人？",
+      "body": "该候选人将被移动到“已拒绝”。如有需要，您之后可将其移回其他阶段。",
+      "confirm": "拒绝候选人",
+      "cancel": "取消"
+    },
     "privacyNote": "您只能看到申请了您职位的候选人。"
+  },
+  "dashboardLive": {
+    "attention": {
+      "title": "待办队列",
+      "newApplicants": "待审阅的新申请人",
+      "jobsNearDeadline": "临近截止的职位",
+      "draftJobs": "尚未发布的草稿职位",
+      "reviewLink": "审阅申请人",
+      "manageLink": "管理职位",
+      "publishLink": "完善并发布"
+    },
+    "activeJobs": {
+      "title": "您的职位",
+      "caption": "您的职位及申请数量",
+      "emptyTitle": "暂无职位",
+      "emptyBody": "发布第一个职位以开始接收申请。",
+      "postJob": "发布职位",
+      "reviewApplicants": "审阅申请人",
+      "columns": {
+        "role": "职位",
+        "status": "状态",
+        "deadline": "截止日期",
+        "applications": "申请数",
+        "newApplicants": "新增",
+        "actions": "操作"
+      }
+    },
+    "pipeline": {
+      "title": "候选人流程",
+      "emptyTitle": "暂无候选人",
+      "emptyBody": "候选人申请您的职位后，流程数据将显示在这里。",
+      "totals": "{jobs} 个职位共 {applications} 份申请。"
+    },
+    "jobStatus": {
+      "DRAFT": "草稿",
+      "PUBLISHED": "已发布",
+      "CLOSED": "已关闭",
+      "SUSPENDED": "已暂停",
+      "EXPIRED": "已过期",
+      "ARCHIVED": "已归档"
+    }
   },
   "analytics": {
     "title": "数据分析",

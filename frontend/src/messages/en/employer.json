@@ -185,13 +185,17 @@
   "applicants": {
     "title": "Applicants",
     "description": "Review and progress candidates for this role.",
+    "viewsLabel": "Applicant view",
     "views": {
+      "split": "Split-screen",
       "table": "Table",
-      "kanban": "Kanban",
-      "split": "Split-screen"
+      "kanban": "Kanban"
     },
     "emptyTitle": "No applicants yet",
     "emptyBody": "Applicants appear here once candidates apply to this role.",
+    "emptyFilteredBody": "No applicants match your current search and filter.",
+    "review": "Review",
+    "tableCaption": "Applicants to this role and their status",
     "columns": {
       "candidate": "Candidate",
       "job": "Job",
@@ -201,20 +205,127 @@
       "updated": "Last updated",
       "actions": "Actions"
     },
-    "kanbanColumns": {
-      "applied": "Applied",
-      "underReview": "Under review",
-      "shortlisted": "Shortlisted",
-      "interview": "Interview",
-      "offered": "Offered",
-      "hired": "Hired",
-      "rejected": "Rejected"
+    "filters": {
+      "searchLabel": "Search candidates",
+      "searchPlaceholder": "Search by name or title",
+      "statusLabel": "Stage",
+      "statusAll": "All stages",
+      "sortLabel": "Sort",
+      "sort": {
+        "newest": "Newest applied",
+        "oldest": "Oldest applied",
+        "updated": "Recently updated",
+        "status": "Stage"
+      }
+    },
+    "status": {
+      "APPLIED": { "label": "Applied" },
+      "UNDER_REVIEW": { "label": "Under review" },
+      "SHORTLISTED": { "label": "Shortlisted" },
+      "INTERVIEW": { "label": "Interview" },
+      "OFFERED": { "label": "Offered" },
+      "HIRED": { "label": "Hired" },
+      "REJECTED": { "label": "Rejected" }
     },
     "split": {
       "listTitle": "Candidates",
       "selectPrompt": "Select a candidate to review their profile, resume, and answers."
     },
+    "profile": {
+      "phone": "Phone",
+      "location": "Preferred location",
+      "type": "Preferred employment type",
+      "applied": "Applied"
+    },
+    "resume": {
+      "title": "Resume",
+      "open": "Open resume",
+      "openNamed": "Open resume ({name})",
+      "none": "No resume attached to this application."
+    },
+    "coverLetter": {
+      "title": "Cover letter",
+      "none": "No cover letter provided."
+    },
+    "answers": {
+      "title": "Screening answers",
+      "none": "No screening questions for this role.",
+      "blank": "No answer provided."
+    },
+    "stage": {
+      "title": "Stage controls",
+      "changeLabel": "Move to stage",
+      "noteLabel": "Change note",
+      "noteHint": "Optional. Recorded in the application history.",
+      "notePlaceholder": "Add an internal note about this change",
+      "update": "Update stage",
+      "updating": "Updating…",
+      "rejectWarning": "This will reject the candidate.",
+      "error": "We couldn't update the stage. Please try again."
+    },
+    "notes": {
+      "title": "Private notes",
+      "label": "Employer private notes",
+      "hint": "Only your team sees these. Candidates never see your notes.",
+      "placeholder": "Add notes about this candidate",
+      "save": "Save notes",
+      "saving": "Saving…",
+      "saved": "Notes saved",
+      "error": "We couldn't save your notes. Please try again."
+    },
+    "kanban": {
+      "moveLabel": "Move to stage",
+      "emptyColumn": "No candidates in this stage.",
+      "moveError": "We couldn't move the candidate. The change was undone — please try again."
+    },
+    "rejectConfirm": {
+      "title": "Reject this candidate?",
+      "body": "The candidate will be moved to Rejected. You can move them back to another stage later if needed.",
+      "confirm": "Reject candidate",
+      "cancel": "Cancel"
+    },
     "privacyNote": "You only see candidates who applied to your roles."
+  },
+  "dashboardLive": {
+    "attention": {
+      "title": "Attention queue",
+      "newApplicants": "New applicants to review",
+      "jobsNearDeadline": "Jobs near their deadline",
+      "draftJobs": "Draft jobs not yet published",
+      "reviewLink": "Review applicants",
+      "manageLink": "Manage jobs",
+      "publishLink": "Finish and publish"
+    },
+    "activeJobs": {
+      "title": "Your jobs",
+      "caption": "Your jobs with application counts",
+      "emptyTitle": "No jobs yet",
+      "emptyBody": "Post your first role to start receiving applications.",
+      "postJob": "Post a Job",
+      "reviewApplicants": "Review applicants",
+      "columns": {
+        "role": "Role",
+        "status": "Status",
+        "deadline": "Deadline",
+        "applications": "Applications",
+        "newApplicants": "New",
+        "actions": "Actions"
+      }
+    },
+    "pipeline": {
+      "title": "Candidate pipeline",
+      "emptyTitle": "No candidates yet",
+      "emptyBody": "Pipeline counts appear once candidates apply to your roles.",
+      "totals": "{applications} applications across {jobs} jobs."
+    },
+    "jobStatus": {
+      "DRAFT": "Draft",
+      "PUBLISHED": "Published",
+      "CLOSED": "Closed",
+      "SUSPENDED": "Suspended",
+      "EXPIRED": "Expired",
+      "ARCHIVED": "Archived"
+    }
   },
   "analytics": {
     "title": "Analytics",
