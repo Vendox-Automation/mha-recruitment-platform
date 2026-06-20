@@ -86,3 +86,25 @@ Each phase records scope, validation, independent review, and the push checkpoin
   recommendations deferred (profile-endpoint throttle, a CSRF assertion test,
   lingering suspend reason).
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 4 — Jobs, companies & search ✅ (public side)
+
+- **Scope (backend):** Job + ScreeningQuestion models; employer job CRUD +
+  lifecycle (draft/publish/close/reopen, own jobs only); public job search
+  (portable keyword/location/type/salary filters, newest/relevant sort,
+  pagination, URL-state) and detail; public company directory + detail
+  (approved employers only); Django Admin job moderation (suspend/close/remove/
+  mark-supported) writing audit entries; company slug on EmployerProfile.
+- **Scope (frontend, public):** adaptive job search (desktop split-screen,
+  mobile list + filter drawer, URL-synced filters, debounced keyword, skeletons,
+  honest empty/error states), job detail (decision-first header, Apply/Save/Share,
+  sections incl. a labelled Job-Fit placeholder, missing-data + undisclosed-salary
+  handling, sticky panels), company directory + detail. EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 132 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 45 Vitest tests passing.
+- **Security review:** found 1 BLOCKER — `Job.objects.public()` did not gate on
+  employer approval, so a suspended employer's published jobs stayed publicly
+  visible. FIXED (public() now requires employer APPROVED or MHA-owned) with a
+  regression test; also added public-endpoint throttle and salary-oracle
+  hardening (the two recommendations). Re-verified PASS.
+- **Checkpoint:** pushed. Employer job-management UI follows as the next unit.
