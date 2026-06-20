@@ -25,4 +25,8 @@ urlpatterns = [
     path("api/v1/employer/", include((jobs_urls.employer_router.urls, "jobs"), namespace="jobs")),
     path("api/v1/jobs/", include((jobs_urls.public_job_patterns, "jobs-public"))),
     path("api/v1/companies/", include((jobs_urls.company_patterns, "companies"))),
+    # Applications: candidate apply (jobs/{slug}/apply/) + candidate tracking
+    # (candidate/applications/). Mounted last so the more specific job/candidate
+    # patterns above resolve first (apps.applications owns these, ADR §3.1).
+    path("api/v1/", include("apps.applications.api.urls")),
 ]

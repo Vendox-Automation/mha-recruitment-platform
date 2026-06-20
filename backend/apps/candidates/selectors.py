@@ -70,14 +70,19 @@ def dashboard_snapshot(profile: CandidateProfile) -> dict[str, Any]:
             "preferred_location": profile.preferred_location,
             "preferred_employment_type": profile.preferred_employment_type,
         },
-        # Phase 6 (applications) — reported honestly as empty for now.
-        "applications": {
-            "total": 0,
-            "submitted": 0,
-            "in_review": 0,
-            "shortlisted": 0,
-            "rejected": 0,
-            "recent": [],
-        },
+        "applications": _application_stats(profile),
+        # Saved jobs land in Phase 9 — honest empty until then.
         "saved_jobs": {"total": 0},
     }
+
+
+def _application_stats(profile: CandidateProfile) -> dict[str, Any]:
+    """Real application counts (Phase 6).
+
+    Imported locally to avoid a module-load dependency from ``candidates`` onto
+    ``applications`` (the FK direction is applications -> candidates). This is a
+    narrow read-only aggregation reference at call time only.
+    """
+    from apps.applications.selectors import candidate_application_stats
+
+    return candidate_application_stats(profile)
