@@ -7,11 +7,12 @@ phase adds them. Phase 0 ships only the health check and Django admin.
 from __future__ import annotations
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 from config.health import health
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/health/", health, name="health"),
+    path("api/v1/auth/", include("apps.accounts.api.urls")),
 ]
