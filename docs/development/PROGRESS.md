@@ -65,3 +65,24 @@ Each phase records scope, validation, independent review, and the push checkpoin
 - **Security review:** PASS, no blockers; two priority recommendations
   (is_active sync, DB-level email uniqueness) implemented immediately.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp` (backend + frontend).
+
+## Phase 3 — Employer approval ✅
+
+- **Scope (backend):** AuditLog model + append-only admin + single `record_action`
+  write path. Approval service (approve/reject/suspend/restore) — atomic, syncs
+  employer `approval_status` + `user.status`/`is_active`, writes one audit entry,
+  sends approval/rejection emails (console). Django Admin approval actions
+  (bulk + reject-with-reason) routed through the service. Employer API:
+  GET/PATCH `/employer/profile/` (own profile only, approval fields read-only),
+  GET `/employer/approval-status/`.
+- **Scope (frontend):** `/employer/pending` state-branching view (PENDING editable
+  details + next step + contact MHA; REJECTED reason + resubmit; SUSPENDED
+  notice), approved-only `/employer/company-profile` editor, both over the
+  approval API. EN/zh-CN parity maintained.
+- **Validation:** backend ruff/check/drift/migrate green, 81 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 24 Vitest tests passing.
+- **Security review:** PASS, no blockers (employer isolation by construction,
+  approval fields non-settable, audit append-only, status sync correct); 3 minor
+  recommendations deferred (profile-endpoint throttle, a CSRF assertion test,
+  lingering suspend reason).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
