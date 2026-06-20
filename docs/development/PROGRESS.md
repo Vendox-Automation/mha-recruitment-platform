@@ -42,3 +42,26 @@ Each phase records scope, validation, independent review, and the push checkpoin
   and zh-CN (lang=zh-Hans correct, Chinese typography clean, executive
   composition delivered). Full route-sweep visual QA deferred to Phase 10/12.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 2 — Django core & authentication ✅
+
+- **Scope (backend):** CandidateProfile + EmployerProfile models (full §20.2/§20.3
+  schemas, migrations). Session-cookie auth API under `/api/v1/auth/`:
+  candidate/employer registration (atomic user+profile, auto-login, console
+  verification email), login/logout/me/refresh/csrf, password-reset
+  request+confirm, email-verification foundation. Role/status permission classes.
+  Status is the lifecycle source of truth — `DEACTIVATED` syncs `is_active=False`;
+  DB-level case-insensitive email uniqueness constraint. No long-lived tokens in
+  any response body.
+- **Scope (frontend):** central auth service + TanStack Query session provider
+  (`["me"]`), react-hook-form + zod wiring for sign-in / candidate stepper /
+  employer registration / password-reset request, role-aware post-login
+  redirects, route guards for candidate & employer areas (pending employer →
+  pending screen), sign-out. No token in localStorage/sessionStorage. Vitest +
+  RTL test harness added.
+- **Validation:** backend ruff/check/drift/migrate green, 50 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 16 Vitest tests passing; i18n
+  parity maintained.
+- **Security review:** PASS, no blockers; two priority recommendations
+  (is_active sync, DB-level email uniqueness) implemented immediately.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp` (backend + frontend).
