@@ -138,3 +138,30 @@ Each phase records scope, validation, independent review, and the push checkpoin
   impossible, magic-byte validation. 2 recommendations (endpoint throttling,
   download-audit volume) batched into Phase 12 hardening.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 6 — Applications & candidate tracking ✅
+
+- **Scope (backend):** Application + ApplicationAnswer + ApplicationStatusHistory
+  models (status enum APPLIED→…→HIRED/REJECTED, unique job+candidate). Apply flow
+  POST `/jobs/{slug}/apply/`: requires a resume, one application per job (409 on
+  duplicate, race-safe), validates required screening answers per type, copies
+  the resume into an immutable private snapshot, records initial APPLIED history
+  + audit. Candidate tracking: `/candidate/applications/` list + `{id}/` detail
+  (own-only, full status timeline, employer notes NEVER exposed), already-applied
+  signal `/jobs/{slug}/application/`. Real candidate dashboard counts (Rejected
+  excluded from active).
+- **Scope (frontend):** apply experience (cover letter + per-type screening
+  controls, review, confirmation, error mapping incl. no-resume→resume page and
+  409→View Application), job-detail Apply↔View switch, applications list +
+  detail with a localized status timeline + plain-language meanings, real
+  dashboard snapshot. EN/zh-CN parity.
+- **Note:** the Phase 6 backend was implemented directly by the supervisor
+  (subagent API was transiently overloaded); frontend was delegated once the API
+  recovered.
+- **Validation:** backend ruff/check/drift/migrate green, 173 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 96 Vitest tests passing.
+- **Security review:** PASS, no blockers — own-only scoping (404 no leak),
+  private notes never serialised, immutable private resume snapshot, race-safe
+  duplicate prevention, server-side answer validation. 3 minor recommendations
+  (answer-json float precision, snapshot-name length, apply throttle) → Phase 12.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
