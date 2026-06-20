@@ -1,0 +1,23 @@
+{
+  "brand": "MHA Jobs",
+  "operatedByMha": "Operated by MHA Consultancy",
+  "nav": {
+    "findJobs": "Find Jobs",
+    "companies": "Explore Companies",
+    "careerSupport": "Career Support",
+    "forEmployers": "For Employers",
+    "signIn": "Sign In",
+    "createAccount": "Create Account"
+  },
+  "states": {
+    "loading": "Loading…",
+    "empty": "Nothing to show yet.",
+    "error": "Something went wrong. Please try again.",
+    "permissionDenied": "You do not have permission to view this."
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "zh-CN": "简体中文"
+  }
+}

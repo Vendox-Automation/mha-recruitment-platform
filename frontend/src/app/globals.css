@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/*
+ * MHA semantic design tokens (spec §12.3).
+ *
+ * Colour values here are PROVISIONAL. Official MHA brand colours must be
+ * extracted from approved brand assets before final visual sign-off
+ * (spec §12.2, AGENTS.md §8). Components must reference these semantic tokens,
+ * never raw hex values (ADR-0001 §1.2).
+ */
+:root {
+  /* Brand */
+  --brand-primary: #1f4e79;
+  --brand-primary-strong: #15375a;
+  --brand-primary-soft: #e8eef5;
+  --brand-on-primary: #ffffff;
+
+  /* Surfaces */
+  --surface-canvas: #ffffff;
+  --surface-raised: #f7f9fc;
+  --surface-subtle: #eef2f7;
+  --surface-inverse: #0e1b2a;
+
+  /* Text */
+  --text-primary: #14202e;
+  --text-secondary: #44556a;
+  --text-muted: #6b7a8d;
+  --text-inverse: #f4f7fb;
+
+  /* Borders & focus */
+  --border-default: #e2e8f0;
+  --border-strong: #c4cfdc;
+  --focus-ring: #2f6fb0;
+
+  /* Status */
+  --status-info: #2f6fb0;
+  --status-success: #2e7d5b;
+  --status-warning: #b5751a;
+  --status-danger: #c0392b;
+
+  /* Data visualisation series */
+  --data-series-1: #1f4e79;
+  --data-series-2: #2f8fa6;
+  --data-series-3: #4f9d69;
+  --data-series-4: #b5751a;
+  --data-series-5: #7a5ea6;
+  --data-series-6: #c0566b;
+
+  --font-sans-stack: var(--font-geist-sans), "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-strong: var(--brand-primary-strong);
+  --color-brand-primary-soft: var(--brand-primary-soft);
+  --color-brand-on-primary: var(--brand-on-primary);
+
+  --color-surface-canvas: var(--surface-canvas);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-inverse: var(--surface-inverse);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-focus-ring: var(--focus-ring);
+
+  --color-status-info: var(--status-info);
+  --color-status-success: var(--status-success);
+  --color-status-warning: var(--status-warning);
+  --color-status-danger: var(--status-danger);
+
+  --color-data-series-1: var(--data-series-1);
+  --color-data-series-2: var(--data-series-2);
+  --color-data-series-3: var(--data-series-3);
+  --color-data-series-4: var(--data-series-4);
+  --color-data-series-5: var(--data-series-5);
+  --color-data-series-6: var(--data-series-6);
+
+  --font-sans: var(--font-sans-stack);
+}
+
+body {
+  background: var(--surface-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans-stack);
+}
+
+/* Visible focus for keyboard users (spec §23). */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion preferences (spec §13.7). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

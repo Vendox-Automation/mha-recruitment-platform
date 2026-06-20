@@ -1,0 +1,23 @@
+{
+  "brand": "MHA 招聘",
+  "operatedByMha": "由 MHA Consultancy 运营",
+  "nav": {
+    "findJobs": "寻找职位",
+    "companies": "探索企业",
+    "careerSupport": "职业支持",
+    "forEmployers": "雇主专区",
+    "signIn": "登录",
+    "createAccount": "创建账户"
+  },
+  "states": {
+    "loading": "加载中…",
+    "empty": "暂无内容。",
+    "error": "出现问题，请重试。",
+    "permissionDenied": "您没有权限查看此内容。"
+  },
+  "language": {
+    "label": "语言",
+    "en": "English",
+    "zh-CN": "简体中文"
+  }
+}
