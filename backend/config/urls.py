@@ -9,6 +9,7 @@ from __future__ import annotations
 from django.contrib import admin
 from django.urls import include, path
 
+from apps.jobs.api import urls as jobs_urls
 from config.health import health
 
 urlpatterns = [
@@ -16,4 +17,9 @@ urlpatterns = [
     path("api/v1/health/", health, name="health"),
     path("api/v1/auth/", include("apps.accounts.api.urls")),
     path("api/v1/employer/", include("apps.employers.api.urls")),
+    # Jobs: employer CRUD/lifecycle, public search/detail, and the public
+    # company directory (apps.jobs owns public job + company APIs, ADR §3.1).
+    path("api/v1/employer/", include((jobs_urls.employer_router.urls, "jobs"), namespace="jobs")),
+    path("api/v1/jobs/", include((jobs_urls.public_job_patterns, "jobs-public"))),
+    path("api/v1/companies/", include((jobs_urls.company_patterns, "companies"))),
 ]

@@ -155,6 +155,7 @@ REST_FRAMEWORK = {
         "register": "10/hour",
         "password_reset": "5/hour",
         "support": "10/hour",
+        "public": "120/min",
     },
 }
 
