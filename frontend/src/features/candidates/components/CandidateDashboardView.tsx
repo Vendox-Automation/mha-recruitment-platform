@@ -10,6 +10,12 @@ import {
   LinkButton,
   LoadingState,
 } from "@/components/ui";
+import { Link } from "@/i18n/navigation";
+import {
+  ApplicationStatusBadge,
+  formatDate,
+  PIPELINE_STAGES,
+} from "@/features/applications";
 
 import { employmentTypeKeyOrNull } from "../format";
 import { NEXT_ACTION_ROUTE, selectNextAction } from "../nextAction";
@@ -18,19 +24,13 @@ import { getDashboard } from "../service";
 import { ProfileCompletionMeter } from "./ProfileCompletionMeter";
 import { ResumeSummary } from "./ResumeSummary";
 
-const SNAPSHOT_KEYS = [
-  "submitted",
-  "in_review",
-  "shortlisted",
-  "rejected",
-] as const;
-
 /**
  * Candidate dashboard (spec §14.9). A calm command centre: a welcome with a
  * single clear NEXT ACTION (derived from {@link selectNextAction}), a profile
- * completion meter, a resume & profile summary with edit/replace links, and an
- * honest application snapshot (zeros + empty — applications are Phase 6, never
- * fabricated).
+ * completion meter, a resume & profile summary with edit/replace links, and a
+ * real application snapshot — the positive pipeline by stage, REJECTED shown
+ * neutrally (never an achievement), the total, and a recent list linking to
+ * detail. Counts are read straight from the API; nothing is fabricated.
  */
 export function CandidateDashboardView() {
   const t = useTranslations("candidate.dashboard");
@@ -172,31 +172,98 @@ export function CandidateDashboardView() {
         </Card>
       </div>
 
-      {/* C. Application snapshot — honest zeros (applications are Phase 6) */}
+      {/* C. Application snapshot — real counts (spec §14.9) */}
       <section className="flex flex-col gap-4">
-        <h2 className="type-heading-2 text-text-primary">
-          {t("snapshot.title")}
-        </h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {SNAPSHOT_KEYS.map((key) => (
-            <Card key={key} className="flex flex-col gap-1">
-              <span className="type-data text-text-primary">
-                {data.applications[key]}
-              </span>
-              <span className="type-caption">{t(`snapshot.${key}`)}</span>
-            </Card>
-          ))}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="type-heading-2 text-text-primary">
+            {t("snapshot.title")}
+          </h2>
+          <LinkButton
+            href="/candidate/applications"
+            variant="ghost"
+            size="sm"
+          >
+            {t("snapshot.viewAll")}
+          </LinkButton>
         </div>
-        <EmptyState
-          compact
-          title={t("snapshot.emptyTitle")}
-          description={t("snapshot.emptyBody")}
-          action={
-            <LinkButton href="/jobs" variant="secondary" size="sm">
-              {tApplications("browseJobs")}
-            </LinkButton>
-          }
-        />
+
+        {data.applications.total === 0 ? (
+          <EmptyState
+            compact
+            title={t("snapshot.emptyTitle")}
+            description={t("snapshot.emptyBody")}
+            action={
+              <LinkButton href="/jobs" variant="secondary" size="sm">
+                {tApplications("browseJobs")}
+              </LinkButton>
+            }
+          />
+        ) : (
+          <>
+            {/* Positive pipeline: APPLIED → … → HIRED */}
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+              {PIPELINE_STAGES.map((stage) => (
+                <Card key={stage} className="flex flex-col gap-1">
+                  <span className="type-data text-text-primary">
+                    {data.applications.by_stage[stage] ?? 0}
+                  </span>
+                  <span className="type-caption">
+                    {tApplications(`status.${stage}.label`)}
+                  </span>
+                </Card>
+              ))}
+            </div>
+
+            {/* Rejected shown neutrally, outside the pipeline (never an achievement) */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
+              <p className="type-caption">
+                {t("snapshot.total")}:{" "}
+                <span className="text-text-primary">
+                  {data.applications.total}
+                </span>
+              </p>
+              <p className="type-caption">
+                {t("snapshot.active")}:{" "}
+                <span className="text-text-primary">
+                  {data.applications.active}
+                </span>
+              </p>
+              <p className="type-caption">
+                {tApplications("status.REJECTED.label")}:{" "}
+                <span className="text-text-primary">
+                  {data.applications.by_stage.REJECTED ?? 0}
+                </span>
+              </p>
+            </div>
+
+            {/* Recent applications */}
+            {data.applications.recent.length > 0 ? (
+              <ul className="flex flex-col gap-2">
+                {data.applications.recent.map((item) => (
+                  <li key={String(item.id)}>
+                    <Card
+                      interactive
+                      className="flex flex-wrap items-center justify-between gap-3"
+                    >
+                      <div className="min-w-0">
+                        <Link
+                          href={`/candidate/applications/${item.id}`}
+                          className="type-body-sm font-medium text-text-primary no-underline hover:underline"
+                        >
+                          {item.job_title}
+                        </Link>
+                        <p className="type-caption">
+                          {formatDate(item.submitted_at, locale) ?? ""}
+                        </p>
+                      </div>
+                      <ApplicationStatusBadge status={item.status} />
+                    </Card>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </>
+        )}
       </section>
     </div>
   );

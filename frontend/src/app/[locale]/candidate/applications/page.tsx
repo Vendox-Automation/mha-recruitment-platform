@@ -1,9 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState, LinkButton } from "@/components/ui";
+import { ApplicationsListView } from "@/features/applications";
 
-/** Candidate applications list shell (spec §14.9 C, §5.7 transparency). */
+/**
+ * Candidate applications list (spec §14.9 C). Composition only — the candidate
+ * layout's RouteGuard gates to an authenticated CANDIDATE; the feature view
+ * loads the applications and owns the loading / empty / error states.
+ */
 export default async function CandidateApplicationsPage({
   params,
 }: {
@@ -20,17 +24,7 @@ export default async function CandidateApplicationsPage({
         title={t("applications.title")}
         description={t("applications.description")}
       />
-      <Card>
-        <EmptyState
-          title={t("applications.emptyTitle")}
-          description={t("applications.emptyBody")}
-          action={
-            <LinkButton href="/jobs" variant="secondary" size="sm">
-              {t("applications.browseJobs")}
-            </LinkButton>
-          }
-        />
-      </Card>
+      <ApplicationsListView />
     </PageContainer>
   );
 }

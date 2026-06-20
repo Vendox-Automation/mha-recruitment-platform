@@ -50,12 +50,11 @@
     },
     "snapshot": {
       "title": "Application snapshot",
-      "submitted": "Submitted",
-      "in_review": "In review",
-      "shortlisted": "Shortlisted",
-      "rejected": "Not progressed",
+      "viewAll": "View all",
+      "total": "Total",
+      "active": "Active",
       "emptyTitle": "No applications yet",
-      "emptyBody": "Apply to a role and your progress will appear here. (Applications arrive in a later phase.)"
+      "emptyBody": "Apply to a role and your progress will appear here."
     }
   },
   "profile": {
@@ -113,7 +112,7 @@
   "applications": {
     "title": "Your applications",
     "description": "Track every application and its current stage.",
-    "emptyTitle": "No applications yet",
+    "emptyTitle": "You haven't applied yet",
     "emptyBody": "When you apply to a role, it will appear here with its status history.",
     "browseJobs": "Browse jobs",
     "columns": {
@@ -122,15 +121,113 @@
       "applied": "Applied",
       "stage": "Stage",
       "updated": "Updated"
+    },
+    "status": {
+      "APPLIED": {
+        "label": "Applied",
+        "meaning": "Your application has been submitted and is waiting to be reviewed by the employer.",
+        "next": "No action needed — we'll update you when the employer reviews your application."
+      },
+      "UNDER_REVIEW": {
+        "label": "Under review",
+        "meaning": "The employer is currently reviewing your application.",
+        "next": "No action needed right now. Keep your profile and resume up to date."
+      },
+      "SHORTLISTED": {
+        "label": "Shortlisted",
+        "meaning": "You've been shortlisted — the employer is considering you for the next step.",
+        "next": "Watch for a message from the employer about next steps."
+      },
+      "INTERVIEW": {
+        "label": "Interview",
+        "meaning": "You've reached the interview stage for this role.",
+        "next": "Prepare for your interview. The employer will share the details with you."
+      },
+      "OFFERED": {
+        "label": "Offer",
+        "meaning": "The employer has extended an offer for this role.",
+        "next": "Review the offer and respond to the employer."
+      },
+      "HIRED": {
+        "label": "Hired",
+        "meaning": "Congratulations — you've been hired for this role.",
+        "next": "The employer will be in touch about onboarding."
+      },
+      "REJECTED": {
+        "label": "Not progressed",
+        "meaning": "This application is not progressing further. It happens often and isn't a reflection of your worth — keep applying.",
+        "next": "Explore other roles that fit you. MHA support can help with your search."
+      }
+    },
+    "errors": {
+      "required": "This question is required.",
+      "invalidNumber": "Enter a valid number.",
+      "invalidChoice": "Choose one of the listed options."
+    },
+    "apply": {
+      "title": "Apply for this role",
+      "lead": "Complete your application for {job}.",
+      "leadWithCompany": "Complete your application for {job} at {company}.",
+      "backToRole": "Back to role",
+      "browseRoles": "Browse roles",
+      "notCandidate": "Only candidate accounts can apply to roles.",
+      "jobUnavailable": "This role is no longer available",
+      "jobUnavailableBody": "It may have closed or been removed. Browse other open roles.",
+      "resumeNeededTitle": "Add a resume before you apply",
+      "resumeNeededBody": "Employers receive your resume with your application.",
+      "noResumeTitle": "A resume is required to apply",
+      "noResumeBody": "Upload a resume, then return to submit your application.",
+      "uploadResume": "Upload resume",
+      "coverLetterLabel": "Cover letter",
+      "coverLetterHint": "Optional. Briefly tell the employer why you're a fit.",
+      "coverLetterPlaceholder": "Share why you're interested in this role…",
+      "coverLetterEmpty": "No cover letter added.",
+      "screeningTitle": "Screening questions",
+      "choosePlaceholder": "Choose an option",
+      "yes": "Yes",
+      "no": "No",
+      "notAnswered": "Not answered",
+      "reviewCta": "Review application",
+      "reviewTitle": "Review your application",
+      "reviewBody": "Check your answers before submitting. You can't edit after you apply.",
+      "submit": "Submit application",
+      "submitting": "Submitting…",
+      "editAgain": "Edit answers",
+      "successTitle": "Application submitted",
+      "successBody": "Your application for {job} has been sent. You can track its progress here.",
+      "viewApplication": "View application",
+      "errorGeneric": "We couldn't submit your application. Please try again.",
+      "conflict": "You've already applied to this role.",
+      "alreadyAppliedTitle": "You've already applied",
+      "alreadyAppliedBody": "You already have an application for {job}. View it to track its progress."
+    },
+    "timeline": {
+      "empty": "No status updates yet.",
+      "source": {
+        "employer": "By the employer",
+        "platform": "By the platform",
+        "candidate": "By you"
+      }
+    },
+    "detail": {
+      "title": "Application",
+      "backToApplications": "Back to applications",
+      "currentStage": "Current stage",
+      "nextLabel": "What's next",
+      "timelineTitle": "Status timeline",
+      "submissionTitle": "Your submission",
+      "resumeLabel": "Resume",
+      "resumeOnFile": "Resume attached",
+      "noResumeSnapshot": "No resume was attached.",
+      "coverLetterLabel": "Cover letter",
+      "coverLetterEmpty": "No cover letter was added.",
+      "answersLabel": "Screening answers",
+      "yes": "Yes",
+      "no": "No",
+      "notAnswered": "Not answered",
+      "notFoundTitle": "Application not available",
+      "notFoundBody": "This application could not be found, or you don't have access to it."
     }
-  },
-  "applicationDetail": {
-    "title": "Application",
-    "backToApplications": "Back to applications",
-    "stage": "Current stage",
-    "history": "Status history",
-    "notFoundTitle": "Application not available",
-    "notFoundBody": "This application could not be found, or you don't have access to it."
   },
   "savedJobs": {
     "title": "Saved jobs",

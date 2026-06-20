@@ -11,6 +11,8 @@ export type {
   CandidateDashboard,
   CandidateProfile,
   CandidateProfileUpdate,
+  DashboardApplications,
+  DashboardRecentApplication,
   ProfileCompletion,
   ProfileCompletionItem,
   ResumeMetadata,

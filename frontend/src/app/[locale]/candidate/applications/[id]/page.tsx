@@ -1,40 +1,25 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
-import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState } from "@/components/ui";
-import { Link } from "@/i18n/navigation";
+import { PageContainer } from "@/components/layout";
+import { ApplicationDetailView } from "@/features/applications";
 
 /**
- * Candidate application detail shell (spec §14.9 C, §5.7). With no live data
- * this phase, it demonstrates the not-found / no-access state honestly.
+ * Candidate application detail (spec §14.9 C, §15.4). Composition only — the
+ * candidate layout's RouteGuard gates to an authenticated CANDIDATE; the feature
+ * view loads the application and owns the stage meaning, status timeline,
+ * submission, and not-found / permission / error states.
  */
 export default async function CandidateApplicationDetailPage({
   params,
 }: {
   params: Promise<{ locale: string; id: string }>;
 }) {
-  const { locale } = await params;
+  const { locale, id } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("candidate");
 
   return (
     <PageContainer className="flex flex-col gap-8">
-      <Link
-        href="/candidate/applications"
-        className="type-body-sm text-text-secondary no-underline hover:text-text-primary"
-      >
-        ← {t("applicationDetail.backToApplications")}
-      </Link>
-      <PageHeader
-        eyebrow={t("area.eyebrow")}
-        title={t("applicationDetail.title")}
-      />
-      <Card>
-        <EmptyState
-          title={t("applicationDetail.notFoundTitle")}
-          description={t("applicationDetail.notFoundBody")}
-        />
-      </Card>
+      <ApplicationDetailView id={id} />
     </PageContainer>
   );
 }

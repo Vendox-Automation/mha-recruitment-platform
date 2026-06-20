@@ -10,6 +10,8 @@
  * permission-checked download endpoint (ADR-0001 §5).
  */
 
+import type { ApplicationStatus } from "@/features/applications/types";
+
 /** Resume parsing lifecycle (model `ResumeParsingStatus`). */
 export type ResumeParsingStatus =
   | "NONE"
@@ -89,18 +91,25 @@ export interface DashboardPreferences {
   preferred_employment_type: string;
 }
 
+/** A recent application row in the dashboard snapshot (spec §14.9). */
+export interface DashboardRecentApplication {
+  id: string | number;
+  job_title: string;
+  status: ApplicationStatus;
+  submitted_at: string;
+}
+
 /**
- * Application statistics — Phase 6. The backend reports honest zeros/empties
- * here for now (spec §22.3); the frontend renders them honestly, never
- * fabricating counts.
+ * Application statistics (spec §14.9). `by_stage` carries the live count for
+ * each of the seven statuses; `active` is the count still in the positive
+ * pipeline. The frontend renders these honestly and shows REJECTED neutrally,
+ * never as an achievement (spec §14.9).
  */
 export interface DashboardApplications {
   total: number;
-  submitted: number;
-  in_review: number;
-  shortlisted: number;
-  rejected: number;
-  recent: unknown[];
+  active: number;
+  by_stage: Record<ApplicationStatus, number>;
+  recent: DashboardRecentApplication[];
 }
 
 /** GET /candidate/dashboard/ — the candidate's dashboard snapshot (§14.9). */
