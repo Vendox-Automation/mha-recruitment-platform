@@ -187,3 +187,29 @@ Each phase records scope, validation, independent review, and the push checkpoin
   status change service-only + audited. Recommendations: snapshot-name leak
   (FIXED now) and workspace throttle (→ Phase 12).
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 8 — Smart Job Fit ✅
+
+- **Scope (backend):** Pure deterministic rule engine (title 35 / location 25 /
+  employment-type 20 / resume-overlap 20) with missing-factor exclusion +
+  re-normalisation, bands (strong/good/partial/limited), structured
+  matched/gaps/unknown reasons. Lightweight resume keyword extraction (DOCX via
+  stdlib, PDF via pypdf). JobFitResult model (one current result per
+  candidate+job). Provider-neutral `JobFitExplanationProvider` + deterministic
+  fallback + env-gated factory (AI off by default; AI receives only structured
+  facts, never resume text, and cannot change the score). Endpoints
+  GET/POST `/jobs/{slug}/fit/` + regenerate, candidate-only, disclaimer always
+  attached. No employer ranking, no sensitive-trait inference.
+- **Scope (frontend):** SmartJobFit section on job detail — score + band (not
+  colour-only) + matched/gaps/unknown groups + explanation + always-visible
+  disclaimer + regenerate; candidate-only (anon → sign-in prompt). Backend
+  reason strings rendered as-is (their zh-CN localization is a Phase 11 item).
+  UI chrome EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 238 pytest passing
+  (incl. band boundaries, re-normalisation, AI-cannot-change-score, fallback);
+  frontend lint/typecheck/build green, 116 Vitest tests passing.
+- **Integrity review:** PASS, no blockers — candidate-only/self-scoped, no
+  ranking, no sensitive inference, AI gated + score-safe, disclaimer always
+  shown, resume privacy preserved. Recurring throttle note → Phase 12.
+- **New dependency:** pypdf==5.1.0 (resume PDF text extraction).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
