@@ -13,6 +13,7 @@ import uuid
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
+from django.db.models.functions import Lower
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -58,6 +59,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = _("user")
         verbose_name_plural = _("users")
         ordering = ["-created_at"]
+        constraints = [
+            # Authoritative case-insensitive email uniqueness at the database
+            # level so bulk inserts / raw writes / concurrent registrations
+            # cannot create casing-variant duplicates (security review B2;
+            # portable across PostgreSQL and SQLite 3.9+, ADR-0001 §6.1).
+            models.UniqueConstraint(Lower("email"), name="uniq_user_email_ci"),
+        ]
 
     def __str__(self) -> str:
         return self.email
@@ -67,6 +75,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         # rather than relying on database collation (ADR-0001 §6.1.7).
         if self.email:
             self.email = self.email.strip().lower()
+        # Account status is the lifecycle source of truth. Keep Django's
+        # is_active in sync so the auth backend and session loader reject a
+        # DEACTIVATED user globally — not only on endpoints that use the custom
+        # status permission (security review priority finding). SUSPENDED users
+        # remain is_active=True so they can sign in to a restricted screen.
+        self.is_active = self.status != self.Status.DEACTIVATED
         super().save(*args, **kwargs)
 
     @property
