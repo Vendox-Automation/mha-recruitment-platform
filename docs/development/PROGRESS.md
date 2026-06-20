@@ -107,4 +107,7 @@ Each phase records scope, validation, independent review, and the push checkpoin
   visible. FIXED (public() now requires employer APPROVED or MHA-owned) with a
   regression test; also added public-endpoint throttle and salary-oracle
   hardening (the two recommendations). Re-verified PASS.
-- **Checkpoint:** pushed. Employer job-management UI follows as the next unit.
+- **Employer job-management UI:** list/create/edit/preview own jobs with the
+  screening-questions editor and publish/close/reopen actions (approved-only,
+  suspended jobs read-only with moderation reason). 63 frontend tests passing.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
