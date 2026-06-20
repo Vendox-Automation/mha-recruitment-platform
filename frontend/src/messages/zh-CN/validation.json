@@ -7,6 +7,7 @@
   "phone": "请输入有效的电话号码。",
   "website": "请输入以 http:// 或 https:// 开头的完整网址。",
   "salaryRange": "最高薪资必须高于最低薪资。",
+  "singleChoiceOptions": "请至少添加两个备选项。",
   "fileType": "请上传 PDF 或 DOCX 文件。",
   "fileSize": "文件大小不得超过 5 MB。",
   "generic": "请检查标注的字段。"

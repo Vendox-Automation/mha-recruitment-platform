@@ -233,5 +233,149 @@
     "title": "设置",
     "description": "管理您的工作区、语言与团队权限。",
     "emptyBody": "设置将在第二阶段账户接入后提供。"
+  },
+  "jobsList": {
+    "loading": "正在加载您的职位…",
+    "errorTitle": "无法加载您的职位",
+    "errorBody": "出现问题，请重试。",
+    "retry": "重试",
+    "emptyTitle": "暂无职位",
+    "emptyBody": "发布您的第一个职位即可开始接收申请。",
+    "postFirstJob": "发布第一个职位",
+    "refreshing": "正在更新…",
+    "tableCaption": "您的职位及其状态",
+    "actionErrorTitle": "操作无法完成",
+    "actionError": "出现问题，请重试。",
+    "columns": {
+      "role": "职位",
+      "status": "状态",
+      "type": "类型",
+      "deadline": "截止日期",
+      "applications": "申请数",
+      "actions": "操作"
+    },
+    "actions": {
+      "view": "查看",
+      "edit": "编辑",
+      "publish": "发布",
+      "close": "关闭",
+      "reopen": "重新开放"
+    }
+  },
+  "jobForm": {
+    "createTitle": "发布职位",
+    "createDescription": "请提供完整、准确的信息。职位将先保存为草稿，您可在确认后随时发布。",
+    "backToJobs": "返回职位列表",
+    "saveChanges": "保存更改",
+    "createDraft": "保存草稿",
+    "saving": "正在保存…",
+    "createNote": "已保存为草稿。您可在职位页面进行发布。",
+    "editNote": "更改将立即保存。",
+    "sections": {
+      "role": "职位",
+      "salary": "薪资",
+      "detail": "职位详情"
+    },
+    "fields": {
+      "title": "职位名称",
+      "location": "地点",
+      "employmentType": "工作类型",
+      "salaryMin": "最低薪资",
+      "salaryMax": "最高薪资",
+      "currency": "货币",
+      "period": "薪资周期",
+      "salaryUndisclosed": "不公开薪资",
+      "salaryUndisclosedHint": "候选人将看到“薪资未公开”，且不显示具体数字。",
+      "description": "职位描述",
+      "requirements": "任职要求",
+      "deadline": "申请截止日期",
+      "deadlineHint": "超过该日期后，职位将无法发布。",
+      "listingLanguage": "职位语言",
+      "listingLanguageHint": "您撰写此职位所用的语言。内容将按原文显示，不会被翻译。"
+    },
+    "period": {
+      "HOURLY": "每小时",
+      "DAILY": "每天",
+      "MONTHLY": "每月",
+      "YEARLY": "每年"
+    },
+    "language": {
+      "en": "英文",
+      "zhCN": "简体中文"
+    }
+  },
+  "screening": {
+    "title": "筛选问题",
+    "hint": "候选人申请时回答的可选问题。",
+    "empty": "暂无筛选问题。",
+    "addQuestion": "添加问题",
+    "questionLabel": "问题 {number}",
+    "questionText": "问题",
+    "questionType": "回答类型",
+    "required": "必答",
+    "moveUp": "上移问题 {number}",
+    "moveDown": "下移问题 {number}",
+    "remove": "删除问题 {number}",
+    "removeLabel": "删除",
+    "options": "备选项",
+    "optionLabel": "选项 {number}",
+    "addOption": "添加选项",
+    "removeOption": "删除选项 {number}",
+    "types": {
+      "SHORT_TEXT": "短文本",
+      "LONG_TEXT": "长文本",
+      "YES_NO": "是 / 否",
+      "SINGLE_CHOICE": "单选",
+      "NUMBER": "数字"
+    }
+  },
+  "jobDetailView": {
+    "title": "职位",
+    "description": "预览并管理该职位。",
+    "loading": "正在加载职位…",
+    "errorTitle": "无法加载此职位",
+    "errorBody": "出现问题，请重试。",
+    "retry": "重试",
+    "notFoundTitle": "职位不可用",
+    "notFoundBody": "未找到此职位，或它不属于您的机构。",
+    "backToJobs": "返回职位列表",
+    "backToDetail": "返回职位",
+    "edit": "编辑",
+    "publish": "发布",
+    "close": "关闭",
+    "reopen": "重新开放",
+    "actionError": "出现问题，请重试。",
+    "mhaSupported": "MHA 招聘顾问支持",
+    "suspendedNotice": "此职位已被 MHA 暂停，无法编辑或发布。",
+    "salaryNotDisclosed": "薪资未公开",
+    "noDescription": "未提供描述。",
+    "noRequirements": "未列出任职要求。",
+    "noScreening": "暂无筛选问题。",
+    "sections": {
+      "description": "职位描述",
+      "requirements": "任职要求"
+    },
+    "fields": {
+      "salary": "薪资",
+      "deadline": "申请截止日期",
+      "listingLanguage": "职位语言",
+      "published": "发布时间"
+    }
+  },
+  "jobEditView": {
+    "title": "编辑职位",
+    "description": "更新该职位的信息。",
+    "loading": "正在加载职位…",
+    "errorTitle": "无法加载此职位",
+    "errorBody": "出现问题，请重试。",
+    "retry": "重试",
+    "notFoundTitle": "职位不可用",
+    "notFoundBody": "未找到此职位，或它不属于您的机构。",
+    "backToJobs": "返回职位列表",
+    "backToDetail": "返回职位",
+    "savedTitle": "职位已更新",
+    "savedBody": "您的更改已保存。",
+    "suspendedNotice": "此职位已被 MHA 暂停，无法编辑。如需恢复，请联系 MHA。",
+    "moderationReason": "MHA 给出的原因"
   }
 }

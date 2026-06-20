@@ -1,10 +1,14 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState, LinkButton } from "@/components/ui";
-import { Link } from "@/i18n/navigation";
+import { EmployerJobDetail } from "@/features/jobs/components/EmployerJobDetail";
+import { EmployerWorkspaceGuard } from "@/lib/auth";
 
-/** Employer job detail shell (spec §14.11). Honest not-found state this phase. */
+/**
+ * Employer job detail/preview page (spec §14.11). Composition-only: the guard
+ * gates approved employers; the feature component owns loading, the fields,
+ * screening questions, lifecycle actions, and not-found/error states.
+ */
 export default async function EmployerJobDetailPage({
   params,
 }: {
@@ -15,37 +19,15 @@ export default async function EmployerJobDetailPage({
   const t = await getTranslations("employer");
 
   return (
-    <PageContainer className="flex flex-col gap-8">
-      <Link
-        href="/employer/jobs"
-        className="type-body-sm text-text-secondary no-underline hover:text-text-primary"
-      >
-        ← {t("jobDetail.backToJobs")}
-      </Link>
-      <PageHeader
-        eyebrow={t("area.eyebrow")}
-        title={t("jobDetail.title")}
-        actions={
-          <div className="flex gap-2">
-            <LinkButton
-              href={`/employer/jobs/${id}/edit`}
-              variant="secondary"
-              size="sm"
-            >
-              {t("jobDetail.edit")}
-            </LinkButton>
-            <LinkButton href={`/employer/jobs/${id}/applicants`} size="sm">
-              {t("jobDetail.viewApplicants")}
-            </LinkButton>
-          </div>
-        }
-      />
-      <Card>
-        <EmptyState
-          title={t("jobDetail.notFoundTitle")}
-          description={t("jobDetail.notFoundBody")}
+    <EmployerWorkspaceGuard>
+      <PageContainer className="flex flex-col gap-8">
+        <PageHeader
+          eyebrow={t("area.eyebrow")}
+          title={t("jobDetailView.title")}
+          description={t("jobDetailView.description")}
         />
-      </Card>
-    </PageContainer>
+        <EmployerJobDetail id={id} />
+      </PageContainer>
+    </EmployerWorkspaceGuard>
   );
 }

@@ -1,9 +1,15 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState, LinkButton } from "@/components/ui";
+import { LinkButton } from "@/components/ui";
+import { EmployerJobsList } from "@/features/jobs/components/EmployerJobsList";
+import { EmployerWorkspaceGuard } from "@/lib/auth";
 
-/** Employer jobs list shell (spec §14.11). */
+/**
+ * Employer jobs list page (spec §14.11). Composition-only: the guard gates
+ * approved employers (pending → /employer/pending) and the feature component
+ * owns data loading, states, and lifecycle actions.
+ */
 export default async function EmployerJobsPage({
   params,
 }: {
@@ -14,28 +20,20 @@ export default async function EmployerJobsPage({
   const t = await getTranslations("employer");
 
   return (
-    <PageContainer width="wide" className="flex flex-col gap-8">
-      <PageHeader
-        eyebrow={t("area.eyebrow")}
-        title={t("jobs.title")}
-        description={t("jobs.description")}
-        actions={
-          <LinkButton href="/employer/jobs/new" size="sm">
-            {t("jobs.newJob")}
-          </LinkButton>
-        }
-      />
-      <Card>
-        <EmptyState
-          title={t("jobs.emptyTitle")}
-          description={t("jobs.emptyBody")}
-          action={
-            <LinkButton href="/employer/jobs/new" variant="secondary" size="sm">
+    <EmployerWorkspaceGuard>
+      <PageContainer width="wide" className="flex flex-col gap-8">
+        <PageHeader
+          eyebrow={t("area.eyebrow")}
+          title={t("jobs.title")}
+          description={t("jobs.description")}
+          actions={
+            <LinkButton href="/employer/jobs/new" size="sm">
               {t("jobs.newJob")}
             </LinkButton>
           }
         />
-      </Card>
-    </PageContainer>
+        <EmployerJobsList />
+      </PageContainer>
+    </EmployerWorkspaceGuard>
   );
 }

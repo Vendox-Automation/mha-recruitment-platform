@@ -233,5 +233,149 @@
     "title": "Settings",
     "description": "Manage your workspace, language, and team access.",
     "emptyBody": "Settings will be available once accounts are connected in Phase 2."
+  },
+  "jobsList": {
+    "loading": "Loading your jobs…",
+    "errorTitle": "We couldn't load your jobs",
+    "errorBody": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "emptyTitle": "No jobs yet",
+    "emptyBody": "Post your first job to start receiving applications.",
+    "postFirstJob": "Post your first job",
+    "refreshing": "Updating…",
+    "tableCaption": "Your jobs and their status",
+    "actionErrorTitle": "Action could not be completed",
+    "actionError": "Something went wrong. Please try again.",
+    "columns": {
+      "role": "Role",
+      "status": "Status",
+      "type": "Type",
+      "deadline": "Deadline",
+      "applications": "Applications",
+      "actions": "Actions"
+    },
+    "actions": {
+      "view": "View",
+      "edit": "Edit",
+      "publish": "Publish",
+      "close": "Close",
+      "reopen": "Reopen"
+    }
+  },
+  "jobForm": {
+    "createTitle": "Post a job",
+    "createDescription": "Provide complete, accurate details. Your job is saved as a draft so you can review and publish it when ready.",
+    "backToJobs": "Back to jobs",
+    "saveChanges": "Save changes",
+    "createDraft": "Save draft",
+    "saving": "Saving…",
+    "createNote": "Saved as a draft. You can publish it from the job's page.",
+    "editNote": "Changes are saved immediately.",
+    "sections": {
+      "role": "Role",
+      "salary": "Salary",
+      "detail": "Job detail"
+    },
+    "fields": {
+      "title": "Job title",
+      "location": "Location",
+      "employmentType": "Employment type",
+      "salaryMin": "Minimum salary",
+      "salaryMax": "Maximum salary",
+      "currency": "Currency",
+      "period": "Salary period",
+      "salaryUndisclosed": "Do not disclose salary",
+      "salaryUndisclosedHint": "Candidates will see \"Salary not disclosed\" and no figures.",
+      "description": "Job description",
+      "requirements": "Requirements",
+      "deadline": "Application deadline",
+      "deadlineHint": "After this date the job can no longer be published.",
+      "listingLanguage": "Listing language",
+      "listingLanguageHint": "The language you wrote this listing in. Content is shown as written and is not translated."
+    },
+    "period": {
+      "HOURLY": "Per hour",
+      "DAILY": "Per day",
+      "MONTHLY": "Per month",
+      "YEARLY": "Per year"
+    },
+    "language": {
+      "en": "English",
+      "zhCN": "Simplified Chinese"
+    }
+  },
+  "screening": {
+    "title": "Screening questions",
+    "hint": "Optional questions candidates answer when they apply.",
+    "empty": "No screening questions yet.",
+    "addQuestion": "Add a question",
+    "questionLabel": "Question {number}",
+    "questionText": "Question",
+    "questionType": "Answer type",
+    "required": "Required",
+    "moveUp": "Move question {number} up",
+    "moveDown": "Move question {number} down",
+    "remove": "Remove question {number}",
+    "removeLabel": "Remove",
+    "options": "Answer options",
+    "optionLabel": "Option {number}",
+    "addOption": "Add option",
+    "removeOption": "Remove option {number}",
+    "types": {
+      "SHORT_TEXT": "Short text",
+      "LONG_TEXT": "Long text",
+      "YES_NO": "Yes / No",
+      "SINGLE_CHOICE": "Single choice",
+      "NUMBER": "Number"
+    }
+  },
+  "jobDetailView": {
+    "title": "Job",
+    "description": "Preview and manage this role.",
+    "loading": "Loading job…",
+    "errorTitle": "We couldn't load this job",
+    "errorBody": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Job not available",
+    "notFoundBody": "This job could not be found, or it doesn't belong to your organisation.",
+    "backToJobs": "Back to jobs",
+    "backToDetail": "Back to job",
+    "edit": "Edit",
+    "publish": "Publish",
+    "close": "Close",
+    "reopen": "Reopen",
+    "actionError": "Something went wrong. Please try again.",
+    "mhaSupported": "MHA Recruiter Supported",
+    "suspendedNotice": "This job is suspended by MHA and cannot be edited or published.",
+    "salaryNotDisclosed": "Salary not disclosed",
+    "noDescription": "No description provided.",
+    "noRequirements": "No requirements listed.",
+    "noScreening": "No screening questions.",
+    "sections": {
+      "description": "Job description",
+      "requirements": "Requirements"
+    },
+    "fields": {
+      "salary": "Salary",
+      "deadline": "Application deadline",
+      "listingLanguage": "Listing language",
+      "published": "Published"
+    }
+  },
+  "jobEditView": {
+    "title": "Edit job",
+    "description": "Update the details of this role.",
+    "loading": "Loading job…",
+    "errorTitle": "We couldn't load this job",
+    "errorBody": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Job not available",
+    "notFoundBody": "This job could not be found, or it doesn't belong to your organisation.",
+    "backToJobs": "Back to jobs",
+    "backToDetail": "Back to job",
+    "savedTitle": "Job updated",
+    "savedBody": "Your changes have been saved.",
+    "suspendedNotice": "This job is suspended by MHA and cannot be edited. Contact MHA to discuss restoring it.",
+    "moderationReason": "Reason from MHA"
   }
 }
