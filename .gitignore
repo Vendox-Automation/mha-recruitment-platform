@@ -1,0 +1,48 @@
+# ---- Secrets & environment ----
+.env
+.env.*
+!.env.example
+*.env
+!**/.env.example
+
+# ---- Python / Django ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+backend/.venv/
+backend/staticfiles/
+*.sqlite3
+backend/db.sqlite3
+
+# ---- Private media (resumes etc.) — never committed (spec §22.2) ----
+backend/private_media/
+private_media/
+
+# ---- Node / Next.js ----
+node_modules/
+.next/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+
+# ---- Test / coverage ----
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+
+# ---- Tooling caches ----
+.ruff_cache/
+.mypy_cache/
+
+# ---- Agent working memory (not part of the product) ----
+.claude/agent-memory/
+
+# ---- Editors / OS ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
