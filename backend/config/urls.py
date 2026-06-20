@@ -17,6 +17,9 @@ urlpatterns = [
     path("api/v1/health/", health, name="health"),
     path("api/v1/auth/", include("apps.accounts.api.urls")),
     path("api/v1/employer/", include("apps.employers.api.urls")),
+    # Candidate self-service: profile editor, private resume management, and the
+    # permission-checked resume download (apps.candidates owns these, ADR §3.1).
+    path("api/v1/candidate/", include("apps.candidates.api.urls")),
     # Jobs: employer CRUD/lifecycle, public search/detail, and the public
     # company directory (apps.jobs owns public job + company APIs, ADR §3.1).
     path("api/v1/employer/", include((jobs_urls.employer_router.urls, "jobs"), namespace="jobs")),
