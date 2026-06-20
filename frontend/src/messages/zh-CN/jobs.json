@@ -28,8 +28,21 @@
       "salary": "移除薪资限制",
       "support": "请 MHA 协助寻找职位"
     },
+    "emptyTipsLabel": "建议",
     "loadingTitle": "正在查找职位",
-    "loadingDescription": "正在为您匹配可用机会。"
+    "loadingDescription": "正在为您匹配可用机会。",
+    "errorTitle": "无法加载职位",
+    "errorDescription": "搜索时出现问题，请重试。",
+    "retry": "重试",
+    "clearFilters": "清除筛选",
+    "resultsSummary": "{count, plural, =0 {没有职位} other {# 个职位}}",
+    "previous": "上一页",
+    "next": "下一页",
+    "pageStatus": "第 {page} 页，共 {pages} 页",
+    "selectRole": "选择 {title}",
+    "selectedRole": "已选择",
+    "openInPage": "打开完整职位",
+    "searchAction": "搜索职位"
   },
   "employmentType": {
     "fullTime": "全职",
@@ -38,23 +51,49 @@
     "internship": "实习",
     "temporary": "临时"
   },
+  "salaryPeriod": {
+    "year": "每年",
+    "month": "每月",
+    "week": "每周",
+    "day": "每天",
+    "hour": "每小时"
+  },
   "card": {
     "salaryNotDisclosed": "薪资面议",
     "postedOn": "发布于",
     "deadline": "申请截止",
     "viewRole": "查看职位",
     "requirementPreview": "要求预览",
-    "fitWhenSignedIn": "登录后查看您的职位匹配"
+    "fitWhenSignedIn": "登录后查看您的职位匹配",
+    "atCompany": "于 {company}",
+    "locationUnspecified": "地点灵活"
   },
   "detail": {
     "backToSearch": "返回搜索",
     "applyNow": "立即申请",
+    "applySignIn": "登录后申请",
     "saveJob": "收藏职位",
+    "saveComingSoon": "职位收藏功能即将推出",
     "shareJob": "分享职位",
     "viewApplication": "查看申请",
     "alreadyApplied": "您已申请此职位",
     "appliedOn": "提交于",
     "currentStage": "当前阶段",
+    "postedOn": "发布于",
+    "deadline": "申请截止",
+    "notFoundTitle": "该职位已不可用",
+    "notFoundBody": "该职位可能已关闭或被移除。浏览其他在招职位。",
+    "browseRoles": "浏览职位",
+    "loadingTitle": "正在加载职位",
+    "errorTitle": "无法加载该职位",
+    "errorBody": "请稍后重试。",
+    "retry": "重试",
+    "noDescription": "该职位未提供描述。",
+    "noRequirements": "未列出具体要求。",
+    "screeningIntro": "如果您申请，将被询问：",
+    "screeningRequired": "必填",
+    "similarEmpty": "暂无相似职位。",
+    "viewCompanyProfile": "查看公司资料",
     "sections": {
       "overview": "职位概览",
       "description": "职位描述",

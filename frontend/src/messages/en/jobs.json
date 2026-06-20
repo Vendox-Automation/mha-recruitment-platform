@@ -28,8 +28,21 @@
       "salary": "Remove the salary limit",
       "support": "Ask MHA for help finding a role"
     },
+    "emptyTipsLabel": "Suggestions",
     "loadingTitle": "Finding roles",
-    "loadingDescription": "Matching your filters to available opportunities."
+    "loadingDescription": "Matching your filters to available opportunities.",
+    "errorTitle": "We couldn't load roles",
+    "errorDescription": "Something went wrong while searching. Please try again.",
+    "retry": "Try again",
+    "clearFilters": "Clear filters",
+    "resultsSummary": "{count, plural, =0 {No roles} one {# role} other {# roles}}",
+    "previous": "Previous",
+    "next": "Next",
+    "pageStatus": "Page {page} of {pages}",
+    "selectRole": "Select {title}",
+    "selectedRole": "Selected",
+    "openInPage": "Open full role",
+    "searchAction": "Search roles"
   },
   "employmentType": {
     "fullTime": "Full-time",
@@ -38,23 +51,49 @@
     "internship": "Internship",
     "temporary": "Temporary"
   },
+  "salaryPeriod": {
+    "year": "per year",
+    "month": "per month",
+    "week": "per week",
+    "day": "per day",
+    "hour": "per hour"
+  },
   "card": {
     "salaryNotDisclosed": "Salary not disclosed",
     "postedOn": "Posted",
     "deadline": "Apply by",
     "viewRole": "View role",
     "requirementPreview": "Requirements preview",
-    "fitWhenSignedIn": "Sign in to see your Job Fit"
+    "fitWhenSignedIn": "Sign in to see your Job Fit",
+    "atCompany": "at {company}",
+    "locationUnspecified": "Location flexible"
   },
   "detail": {
     "backToSearch": "Back to search",
     "applyNow": "Apply Now",
+    "applySignIn": "Sign in to apply",
     "saveJob": "Save Job",
+    "saveComingSoon": "Saving roles is coming soon",
     "shareJob": "Share Job",
     "viewApplication": "View Application",
     "alreadyApplied": "You applied to this role",
     "appliedOn": "Submitted",
     "currentStage": "Current stage",
+    "postedOn": "Posted",
+    "deadline": "Apply by",
+    "notFoundTitle": "This role is no longer available",
+    "notFoundBody": "It may have closed or been removed. Browse other open roles.",
+    "browseRoles": "Browse roles",
+    "loadingTitle": "Loading role",
+    "errorTitle": "We couldn't load this role",
+    "errorBody": "Please try again in a moment.",
+    "retry": "Try again",
+    "noDescription": "No description was provided for this role.",
+    "noRequirements": "No specific requirements were listed.",
+    "screeningIntro": "If you apply, you'll be asked:",
+    "screeningRequired": "Required",
+    "similarEmpty": "No similar roles right now.",
+    "viewCompanyProfile": "View company profile",
     "sections": {
       "overview": "Job overview",
       "description": "Job description",

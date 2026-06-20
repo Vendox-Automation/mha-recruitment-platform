@@ -6,8 +6,20 @@
     "searchPlaceholder": "Company name",
     "emptyTitle": "No organisations yet",
     "emptyDescription": "Approved employer profiles will appear here once they join.",
+    "emptySearchTitle": "No companies match your search",
+    "emptySearchDescription": "Try a different or shorter company name.",
     "activeJobs": "Active roles",
-    "viewCompany": "View company"
+    "viewCompany": "View company",
+    "loadingTitle": "Loading companies",
+    "loadingDescription": "Fetching approved employers.",
+    "errorTitle": "We couldn't load companies",
+    "errorDescription": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "resultsSummary": "{count, plural, =0 {No companies} one {# company} other {# companies}}",
+    "previous": "Previous",
+    "next": "Next",
+    "pageStatus": "Page {page} of {pages}",
+    "activeJobCount": "{count, plural, =0 {No active roles} one {# active role} other {# active roles}}"
   },
   "detail": {
     "heading": "Company profile",
@@ -15,9 +27,21 @@
     "approvedEmployer": "Approved employer",
     "about": "About",
     "culture": "Culture and benefits",
+    "benefits": "Benefits",
     "activeJobs": "Active roles",
     "noActiveJobs": "This organisation has no active roles right now.",
     "contact": "Contact",
-    "viewAllRoles": "View all roles at this company"
+    "website": "Website",
+    "industry": "Industry",
+    "companySize": "Company size",
+    "location": "Location",
+    "viewAllRoles": "View all roles at this company",
+    "loadingTitle": "Loading company",
+    "errorTitle": "We couldn't load this company",
+    "errorBody": "Please try again in a moment.",
+    "retry": "Try again",
+    "notFoundTitle": "Company not found",
+    "notFoundBody": "This organisation is not available. Explore other approved employers.",
+    "noSummary": "This organisation has not added a summary yet."
   }
 }
