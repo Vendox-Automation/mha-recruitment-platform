@@ -1,9 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState, LinkButton } from "@/components/ui";
+import { CandidateProfileView } from "@/features/candidates";
 
-/** Candidate profile shell (spec §14.9 E). */
+/**
+ * Candidate profile (spec §14.7). Composition only: the candidate layout's
+ * RouteGuard gates access; the feature view loads + edits the profile via
+ * GET/PATCH /candidate/profile/ and shows a read-only resume summary.
+ */
 export default async function CandidateProfilePage({
   params,
 }: {
@@ -20,17 +24,7 @@ export default async function CandidateProfilePage({
         title={t("profile.title")}
         description={t("profile.description")}
       />
-      <Card>
-        <EmptyState
-          title={t("profile.emptyTitle")}
-          description={t("profile.emptyBody")}
-          action={
-            <LinkButton href="/candidate/resume" variant="secondary" size="sm">
-              {t("resume.upload")}
-            </LinkButton>
-          }
-        />
-      </Card>
+      <CandidateProfileView />
     </PageContainer>
   );
 }

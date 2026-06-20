@@ -1,9 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState } from "@/components/ui";
+import { ResumeManager } from "@/features/candidates";
 
-/** Candidate resume management shell (spec §14.9 E, §22.2 private resume). */
+/**
+ * Candidate resume management (spec §14.9 E, §22.2 private resume). Composition
+ * only: the candidate layout's RouteGuard gates access; the feature manager
+ * handles upload/replace/remove and the permission-checked download link.
+ */
 export default async function CandidateResumePage({
   params,
 }: {
@@ -20,12 +24,7 @@ export default async function CandidateResumePage({
         title={t("resume.title")}
         description={t("resume.description")}
       />
-      <Card>
-        <EmptyState
-          title={t("resume.emptyTitle")}
-          description={t("resume.emptyBody")}
-        />
-      </Card>
+      <ResumeManager />
     </PageContainer>
   );
 }

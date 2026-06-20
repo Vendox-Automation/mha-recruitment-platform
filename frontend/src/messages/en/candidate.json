@@ -17,52 +17,98 @@
     "title": "Welcome back",
     "description": "Here's where your applications, matches, and next steps live.",
     "nextAction": {
-      "title": "Your next step",
-      "body": "Complete your profile and upload a current resume to start applying.",
-      "cta": "Complete profile"
+      "eyebrow": "Your next step",
+      "completeProfile": {
+        "title": "Complete your profile",
+        "body": "Add your basic details so employers and matches stay accurate.",
+        "cta": "Complete profile"
+      },
+      "uploadResume": {
+        "title": "Upload your resume",
+        "body": "Add a current resume so you can apply to roles in one step.",
+        "cta": "Upload resume"
+      },
+      "browseJobs": {
+        "title": "You're ready to apply",
+        "body": "Your profile and resume are set. Find roles that fit and apply.",
+        "cta": "Browse jobs"
+      }
+    },
+    "completion": {
+      "label": "Profile completion",
+      "percent": "{percent}%",
+      "complete": "Your profile is complete.",
+      "incomplete": "Finish your profile to improve matching."
+    },
+    "profileSummary": {
+      "title": "Profile",
+      "edit": "Edit",
+      "jobTitle": "Preferred role",
+      "location": "Preferred location",
+      "type": "Employment type",
+      "notSet": "Not set"
     },
     "snapshot": {
       "title": "Application snapshot",
-      "applied": "Applied",
-      "underReview": "Under review",
+      "submitted": "Submitted",
+      "in_review": "In review",
       "shortlisted": "Shortlisted",
-      "interview": "Interview",
-      "offered": "Offered",
-      "hired": "Hired",
+      "rejected": "Not progressed",
       "emptyTitle": "No applications yet",
-      "emptyBody": "Apply to a role and your progress will appear here."
-    },
-    "journey": {
-      "title": "Application journey",
-      "emptyBody": "Your application timeline will appear here once you apply."
-    },
-    "picks": {
-      "title": "Jobs picked for you",
-      "emptyBody": "Add your preferences and a resume to see matched roles."
-    },
-    "resume": {
-      "title": "Resume and profile",
-      "emptyBody": "No resume uploaded yet.",
-      "upload": "Upload resume",
-      "profileCompletion": "Profile completion"
-    },
-    "insights": {
-      "title": "For you",
-      "emptyBody": "Helpful, honest updates will appear here as you use the platform."
+      "emptyBody": "Apply to a role and your progress will appear here. (Applications arrive in a later phase.)"
     }
   },
   "profile": {
     "title": "Your profile",
     "description": "Keep your details current so employers and matches stay accurate.",
-    "emptyTitle": "Profile not set up yet",
-    "emptyBody": "Add your basic details and preferences to improve matching."
+    "editLead": "Update your details and preferences. Your resume is managed separately.",
+    "savedTitle": "Profile saved",
+    "savedBody": "Your changes have been saved.",
+    "saving": "Saving…",
+    "save": "Save changes",
+    "sections": {
+      "basics": "Basic details",
+      "preferences": "Matching preferences",
+      "preferencesHint": "Optional — these help us match you to relevant roles."
+    },
+    "fields": {
+      "fullName": "Full name",
+      "phone": "Phone",
+      "preferredJobTitle": "Preferred job title",
+      "preferredLocation": "Preferred location",
+      "preferredEmploymentType": "Preferred employment type",
+      "preferredEmploymentTypeAny": "No preference"
+    }
   },
   "resume": {
     "title": "Resume",
     "description": "Manage the resume employers see when you apply.",
-    "emptyTitle": "No resume on file",
-    "emptyBody": "Upload a PDF or DOCX (up to 5 MB). It stays private and is only shared with roles you apply to.",
-    "upload": "Upload resume"
+    "privacyNote": "Your resume stays private. It is only shared with roles you apply to, and it is never exposed as a public link.",
+    "current": "Current resume",
+    "onFileBadge": "On file",
+    "unnamedFile": "Resume",
+    "noneOnFile": "No resume on file yet.",
+    "uploadedOn": "Uploaded {date}",
+    "download": "Download / open",
+    "manage": "Manage resume",
+    "upload": "Upload resume",
+    "emptyTitle": "Upload your resume to apply",
+    "emptyBody": "Add a PDF or DOCX (up to 5 MB) so you can apply to roles.",
+    "uploadLabel": "Upload a resume",
+    "replaceLabel": "Replace your resume",
+    "inputHint": "PDF or DOCX, up to 5 MB.",
+    "uploading": "Uploading…",
+    "remove": "Remove resume",
+    "removing": "Removing…",
+    "removeConfirm": "Remove resume",
+    "removeCancel": "Keep resume",
+    "removeConfirmBody": "Remove your resume? You will need to upload one again before you can apply.",
+    "notice": {
+      "savedTitle": "Done",
+      "uploaded": "Your resume has been uploaded.",
+      "replaced": "Your resume has been replaced.",
+      "removed": "Your resume has been removed."
+    }
   },
   "applications": {
     "title": "Your applications",
