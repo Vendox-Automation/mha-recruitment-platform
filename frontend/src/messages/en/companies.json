@@ -1,0 +1,23 @@
+{
+  "directory": {
+    "title": "Explore organisations",
+    "lead": "Discover approved employers hiring through MHA Jobs.",
+    "searchLabel": "Search by company name",
+    "searchPlaceholder": "Company name",
+    "emptyTitle": "No organisations yet",
+    "emptyDescription": "Approved employer profiles will appear here once they join.",
+    "activeJobs": "Active roles",
+    "viewCompany": "View company"
+  },
+  "detail": {
+    "heading": "Company profile",
+    "backToDirectory": "Back to companies",
+    "approvedEmployer": "Approved employer",
+    "about": "About",
+    "culture": "Culture and benefits",
+    "activeJobs": "Active roles",
+    "noActiveJobs": "This organisation has no active roles right now.",
+    "contact": "Contact",
+    "viewAllRoles": "View all roles at this company"
+  }
+}

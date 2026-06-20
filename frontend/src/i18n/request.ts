@@ -8,7 +8,18 @@ import { routing } from "./routing";
  * `src/messages/<locale>/<namespace>.json`. Add new namespaces here as
  * features grow; English and Simplified Chinese must stay in parity.
  */
-const NAMESPACES = ["common", "home"] as const;
+const NAMESPACES = [
+  "common",
+  "home",
+  "jobs",
+  "companies",
+  "support",
+  "auth",
+  "candidate",
+  "employer",
+  "validation",
+  "legal",
+] as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;

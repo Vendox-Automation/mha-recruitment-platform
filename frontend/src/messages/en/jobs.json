@@ -1,0 +1,85 @@
+{
+  "search": {
+    "title": "Find your next role",
+    "lead": "Search professional opportunities from approved employers.",
+    "resultsLabel": "Search results",
+    "previewLabel": "Selected role preview",
+    "selectPrompt": "Select a role to preview it here.",
+    "filtersTitle": "Filters",
+    "openFilters": "Show filters",
+    "closeFilters": "Hide filters",
+    "keyword": "Keyword",
+    "keywordPlaceholder": "Job title, skill, or company",
+    "location": "Location",
+    "locationPlaceholder": "City or region",
+    "employmentType": "Employment type",
+    "employmentTypeAny": "Any type",
+    "salaryMin": "Minimum salary",
+    "salaryMax": "Maximum salary",
+    "sortLabel": "Sort by",
+    "sortNewest": "Newest",
+    "sortRelevant": "Most relevant",
+    "resultsCount": "Showing results",
+    "emptyTitle": "No roles match your search",
+    "emptyDescription": "Try adjusting your filters to see more opportunities.",
+    "emptyTips": {
+      "location": "Broaden or remove the location",
+      "keyword": "Use a more general keyword",
+      "salary": "Remove the salary limit",
+      "support": "Ask MHA for help finding a role"
+    },
+    "loadingTitle": "Finding roles",
+    "loadingDescription": "Matching your filters to available opportunities."
+  },
+  "employmentType": {
+    "fullTime": "Full-time",
+    "partTime": "Part-time",
+    "contract": "Contract",
+    "internship": "Internship",
+    "temporary": "Temporary"
+  },
+  "card": {
+    "salaryNotDisclosed": "Salary not disclosed",
+    "postedOn": "Posted",
+    "deadline": "Apply by",
+    "viewRole": "View role",
+    "requirementPreview": "Requirements preview",
+    "fitWhenSignedIn": "Sign in to see your Job Fit"
+  },
+  "detail": {
+    "backToSearch": "Back to search",
+    "applyNow": "Apply Now",
+    "saveJob": "Save Job",
+    "shareJob": "Share Job",
+    "viewApplication": "View Application",
+    "alreadyApplied": "You applied to this role",
+    "appliedOn": "Submitted",
+    "currentStage": "Current stage",
+    "sections": {
+      "overview": "Job overview",
+      "description": "Job description",
+      "requirements": "Requirements",
+      "jobFit": "Smart Job Fit",
+      "screening": "Screening questions",
+      "company": "About the company",
+      "culture": "Culture and benefits",
+      "similar": "Similar roles"
+    },
+    "panel": {
+      "title": "Apply for this role",
+      "easyApplyNote": "Easy Apply — your profile and resume are ready to send.",
+      "signInPrompt": "Sign in to apply and save this role."
+    },
+    "fit": {
+      "previewTitle": "Smart Job Fit",
+      "previewBody": "Sign in to see a transparent, rule-based fit score with matched factors and honest gaps.",
+      "disclaimer": "Job Fit shows alignment only. It does not guarantee an interview or a hire."
+    },
+    "support": {
+      "title": "Not sure if this role is right?",
+      "body": "Ask an MHA consultant for guidance on this application.",
+      "cta": "Ask MHA for help"
+    },
+    "shareCopied": "Link copied"
+  }
+}

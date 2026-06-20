@@ -1,5 +1,179 @@
 {
-  "operatedBy": "Operated by MHA Consultancy",
-  "headline": "Professional recruitment, intelligently matched.",
-  "subheadline": "MHA Jobs connects candidates and employers with transparent opportunities, explainable job fit, and human expertise when it matters."
+  "meta": {
+    "title": "MHA Jobs — Professional recruitment by MHA Consultancy"
+  },
+  "hero": {
+    "eyebrow": "Operated by MHA Consultancy",
+    "headline": "Professional recruitment, built on clarity and human judgement.",
+    "subheadline": "MHA Jobs connects candidates and employers through transparent opportunities, explainable job fit, and consultants who step in when it matters.",
+    "perspectiveLabel": "Choose your perspective",
+    "perspective": {
+      "candidate": "I'm looking for a role",
+      "employer": "I'm hiring talent"
+    },
+    "candidate": {
+      "lead": "Search professional opportunities, understand your fit, track every application, and reach MHA career support when you need it.",
+      "primaryCta": "Find Jobs",
+      "secondaryCta": "Create candidate account"
+    },
+    "employer": {
+      "lead": "Plan and publish vacancies, review applicants efficiently, follow recruitment progress, and call on MHA hiring expertise.",
+      "primaryCta": "For Employers",
+      "secondaryCta": "Register your organisation"
+    }
+  },
+  "value": {
+    "eyebrow": "Why MHA Jobs",
+    "candidateTitle": "Built around your career",
+    "employerTitle": "Built around your hiring",
+    "candidate": {
+      "tracking": {
+        "title": "Transparent application tracking",
+        "body": "Always know your current stage, what it means, and the next step."
+      },
+      "fit": {
+        "title": "Explainable Job Fit",
+        "body": "A rule-based fit score with matched factors and honest gaps — never a black box."
+      },
+      "opportunities": {
+        "title": "Professional opportunities",
+        "body": "Roles from approved employers, presented clearly without clutter."
+      },
+      "guidance": {
+        "title": "MHA guidance",
+        "body": "Reach a consultant for resume help and career direction when judgement matters."
+      }
+    },
+    "employer": {
+      "publishing": {
+        "title": "Structured job publishing",
+        "body": "Create, preview, and publish vacancies with consistent, complete details."
+      },
+      "review": {
+        "title": "Efficient applicant review",
+        "body": "Table, Kanban, and split-screen review with resumes and answers in one place."
+      },
+      "pipeline": {
+        "title": "Pipeline visibility",
+        "body": "Track candidates through every stage with reliable recruitment insight."
+      },
+      "expertise": {
+        "title": "MHA recruitment expertise",
+        "body": "Bring in consultants for difficult roles and hiring decisions."
+      }
+    }
+  },
+  "console": {
+    "eyebrow": "Career Intelligence Console",
+    "title": "Credible intelligence, clearly sourced",
+    "lead": "Every module states whether it is MHA insight, real platform analytics, or an illustrative preview. We never display invented activity.",
+    "rolesInFocus": {
+      "title": "Roles in focus",
+      "body": "Role families MHA observes demand for across professional hiring."
+    },
+    "hiringOutlook": {
+      "title": "Hiring outlook",
+      "body": "A qualitative read on hiring conditions from MHA consultants."
+    },
+    "salaryGuidance": {
+      "title": "Salary guidance",
+      "body": "Indicative ranges are shown only where MHA has a reliable source."
+    },
+    "skillsThemes": {
+      "title": "Skills in demand",
+      "body": "Themes drawn from approved insight content, not user data."
+    },
+    "previewNote": "Illustrative preview. Live aggregates appear once enough real platform data exists."
+  },
+  "opportunities": {
+    "eyebrow": "Opportunities and organisations",
+    "title": "Discover roles and the companies behind them",
+    "jobsTitle": "Latest opportunities",
+    "jobsEmpty": "Published roles will appear here once employers post them.",
+    "jobsCta": "Browse all jobs",
+    "companiesTitle": "Featured organisations",
+    "companiesEmpty": "Approved employer profiles will appear here.",
+    "companiesCta": "Explore companies"
+  },
+  "journey": {
+    "eyebrow": "How the journey works",
+    "title": "A clear path for both sides",
+    "candidateTitle": "For candidates",
+    "employerTitle": "For employers",
+    "candidate": {
+      "step1": "Create your profile",
+      "step2": "Add your resume",
+      "step3": "Discover opportunities",
+      "step4": "Apply with confidence",
+      "step5": "Track your progress",
+      "step6": "Request help when needed"
+    },
+    "employer": {
+      "step1": "Register your organisation",
+      "step2": "Receive MHA approval",
+      "step3": "Publish your vacancy",
+      "step4": "Review applicants",
+      "step5": "Progress candidates",
+      "step6": "Use insights and MHA support"
+    }
+  },
+  "expert": {
+    "eyebrow": "The MHA expert layer",
+    "title": "Technology for access, people for judgement",
+    "lead": "Self-service is the default. MHA consultants are available at the moments that need human judgement.",
+    "careerSupport": "Ask MHA for career support",
+    "resumeHelp": "Request resume help",
+    "vacancyHelp": "Get help defining a vacancy",
+    "recruitmentHelp": "Request recruitment assistance",
+    "cta": "Contact MHA support"
+  },
+  "workspace": {
+    "eyebrow": "Employer workspace",
+    "title": "A modern, honest recruitment workspace",
+    "lead": "Review applicants in a table, track them on a Kanban board, and assess candidates in split-screen — all in a calm, fast interface.",
+    "attentionQueue": "Attention queue",
+    "activeJobs": "Active jobs",
+    "applicantTable": "Applicant table",
+    "kanban": "Kanban pipeline",
+    "insights": "Recruitment insights",
+    "previewNote": "Interface preview. No live candidate data is shown."
+  },
+  "trust": {
+    "eyebrow": "Trust and operating model",
+    "title": "How we keep the platform honest",
+    "operatedBy": {
+      "title": "Operated by MHA Consultancy",
+      "body": "A recruitment platform run by a real consultancy, not an anonymous job board."
+    },
+    "approval": {
+      "title": "Employer approval",
+      "body": "Every employer is reviewed and approved by MHA before they can publish."
+    },
+    "privacy": {
+      "title": "Private, secure resumes",
+      "body": "Resumes are private and only shared with employers you apply to."
+    },
+    "fitLimits": {
+      "title": "Clear limits of Job Fit",
+      "body": "Job Fit explains alignment; it never guarantees an interview or a hire."
+    },
+    "humanSupport": {
+      "title": "Human support available",
+      "body": "MHA consultants are reachable for candidates and employers alike."
+    },
+    "responsibleData": {
+      "title": "Responsible data use",
+      "body": "We show metrics only when they are reliable, and never invent activity."
+    }
+  },
+  "finalCta": {
+    "eyebrow": "Get started",
+    "title": "Two paths, one trusted platform",
+    "candidateTitle": "For candidates",
+    "candidateBody": "Find professional roles and track your applications with clarity.",
+    "candidateCta": "Create candidate account",
+    "employerTitle": "For employers",
+    "employerBody": "Publish vacancies and manage hiring with MHA support.",
+    "employerCta": "Register your organisation"
+  }
 }

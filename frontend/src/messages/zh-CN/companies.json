@@ -1,0 +1,23 @@
+{
+  "directory": {
+    "title": "探索机构",
+    "lead": "发现通过 MHA 招聘进行招聘的已认证雇主。",
+    "searchLabel": "按公司名称搜索",
+    "searchPlaceholder": "公司名称",
+    "emptyTitle": "暂无机构",
+    "emptyDescription": "已认证雇主加入后，其资料将显示在这里。",
+    "activeJobs": "在招职位",
+    "viewCompany": "查看公司"
+  },
+  "detail": {
+    "heading": "企业资料",
+    "backToDirectory": "返回企业列表",
+    "approvedEmployer": "已认证雇主",
+    "about": "关于",
+    "culture": "文化与福利",
+    "activeJobs": "在招职位",
+    "noActiveJobs": "该机构目前没有在招职位。",
+    "contact": "联系方式",
+    "viewAllRoles": "查看该公司的全部职位"
+  }
+}

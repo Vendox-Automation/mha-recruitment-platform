@@ -1,0 +1,186 @@
+{
+  "area": {
+    "eyebrow": "雇主",
+    "label": "招聘工作区"
+  },
+  "nav": {
+    "dashboard": "控制台",
+    "pending": "审核状态",
+    "companyProfile": "公司资料",
+    "jobs": "职位",
+    "newJob": "发布职位",
+    "analytics": "数据分析",
+    "settings": "设置"
+  },
+  "protectedNote": "雇主专区。访问控制与审核限制将在第二、三阶段加入；此预览展示沉稳的工作区布局及其各种状态。",
+  "dashboard": {
+    "title": "招聘工作区",
+    "description": "一览您的待办队列、在招职位与招聘流程。",
+    "attention": {
+      "title": "待办队列",
+      "emptyBody": "新申请人与需要处理的事项将显示在这里。"
+    },
+    "quickActions": {
+      "title": "快捷操作",
+      "postJob": "发布职位",
+      "reviewApplicants": "审阅申请人",
+      "viewJobs": "查看在招职位",
+      "viewAnalytics": "查看数据分析"
+    },
+    "activeJobs": {
+      "title": "在招职位",
+      "emptyBody": "发布您的第一个职位即可开始接收申请。",
+      "columns": {
+        "role": "职位",
+        "views": "浏览量",
+        "applications": "申请数",
+        "newApplicants": "新增",
+        "status": "状态",
+        "deadline": "截止日期"
+      }
+    },
+    "pipeline": {
+      "title": "候选人流程",
+      "emptyBody": "候选人申请后，流程统计将显示在这里。"
+    },
+    "insights": {
+      "title": "招聘洞察",
+      "emptyBody": "当您的职位积累浏览量与申请后，可靠的数据将显示在这里。"
+    },
+    "setup": {
+      "title": "开始设置",
+      "step1": "完善公司资料",
+      "step2": "发布第一个职位",
+      "step3": "审阅第一位申请人"
+    }
+  },
+  "pending": {
+    "title": "您的账户正在审核中",
+    "description": "MHA 管理员正在审核您的机构。",
+    "statusLabel": "状态",
+    "statusPending": "待审核",
+    "submittedTitle": "已提交的信息",
+    "nextStepTitle": "预期的下一步",
+    "nextStepBody": "审核结果确定后我们会通过电子邮件通知您。在此期间，您可以在下方更新允许修改的公司信息。",
+    "contactCta": "联系 MHA",
+    "rejected": {
+      "title": "注册未通过",
+      "body": "您的注册未获通过。您可以查看原因、更新信息，并在允许的情况下重新提交。",
+      "resubmit": "更新并重新提交"
+    }
+  },
+  "companyProfile": {
+    "title": "公司资料",
+    "description": "候选人在您的公司页面所看到的信息。",
+    "emptyTitle": "公司资料尚未完善",
+    "emptyBody": "添加公司简介、地点与文化，以吸引合适的候选人。",
+    "edit": "编辑公司资料"
+  },
+  "jobs": {
+    "title": "职位",
+    "description": "创建、发布并管理您的职位。",
+    "newJob": "发布职位",
+    "emptyTitle": "暂无职位",
+    "emptyBody": "创建您的第一个职位即可开始接收申请。",
+    "columns": {
+      "role": "职位",
+      "status": "状态",
+      "applications": "申请数",
+      "deadline": "截止日期",
+      "updated": "更新时间"
+    },
+    "status": {
+      "draft": "草稿",
+      "published": "已发布",
+      "closed": "已关闭",
+      "suspended": "已暂停",
+      "expired": "已过期",
+      "archived": "已归档"
+    }
+  },
+  "newJob": {
+    "title": "发布职位",
+    "description": "提供完整、准确的信息。您可以先保存草稿，准备好后再发布。",
+    "fields": {
+      "jobTitle": "职位名称",
+      "location": "地点",
+      "employmentType": "工作类型",
+      "salaryMin": "最低薪资",
+      "salaryMax": "最高薪资",
+      "salaryUndisclosed": "不公开薪资",
+      "description": "职位描述",
+      "requirements": "任职要求",
+      "deadline": "申请截止日期"
+    },
+    "actions": {
+      "saveDraft": "保存草稿",
+      "preview": "预览",
+      "publish": "发布"
+    },
+    "shellNote": "此表单为布局预览，职位创建将在第四阶段接入。"
+  },
+  "jobDetail": {
+    "title": "职位",
+    "backToJobs": "返回职位列表",
+    "edit": "编辑",
+    "viewApplicants": "查看申请人",
+    "notFoundTitle": "职位不可用",
+    "notFoundBody": "未找到此职位，或它不属于您的机构。"
+  },
+  "jobEdit": {
+    "title": "编辑职位",
+    "description": "更新该职位的信息。"
+  },
+  "applicants": {
+    "title": "申请人",
+    "description": "审阅并推进该职位的候选人。",
+    "views": {
+      "table": "表格",
+      "kanban": "看板",
+      "split": "分屏"
+    },
+    "emptyTitle": "暂无申请人",
+    "emptyBody": "候选人申请该职位后，申请人将显示在这里。",
+    "columns": {
+      "candidate": "候选人",
+      "job": "职位",
+      "applied": "申请时间",
+      "status": "状态",
+      "resume": "简历",
+      "updated": "最近更新",
+      "actions": "操作"
+    },
+    "kanbanColumns": {
+      "applied": "已申请",
+      "underReview": "审核中",
+      "shortlisted": "已入围",
+      "interview": "面试",
+      "offered": "已录用通知",
+      "hired": "已入职",
+      "rejected": "已拒绝"
+    },
+    "split": {
+      "listTitle": "候选人",
+      "selectPrompt": "选择一位候选人以查看其资料、简历与回答。"
+    },
+    "privacyNote": "您只能看到申请了您职位的候选人。"
+  },
+  "analytics": {
+    "title": "数据分析",
+    "description": "您职位的可靠招聘指标。",
+    "emptyTitle": "数据尚不足",
+    "emptyBody": "当您的职位积累浏览量与申请后，数据分析将显示在这里。",
+    "metrics": {
+      "views": "职位浏览量",
+      "applications": "申请数",
+      "conversion": "转化率",
+      "timeToFirst": "首次申请用时",
+      "stageDistribution": "阶段分布"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "description": "管理您的工作区、语言与团队权限。",
+    "emptyBody": "设置将在第二阶段账户接入后提供。"
+  }
+}

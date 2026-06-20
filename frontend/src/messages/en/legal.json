@@ -1,0 +1,58 @@
+{
+  "privacy": {
+    "eyebrow": "Trust and data",
+    "title": "Privacy",
+    "lead": "How MHA Jobs handles your personal information.",
+    "shellNote": "This is a structural placeholder. The full, reviewed privacy policy is finalised before launch.",
+    "sections": {
+      "collection": {
+        "title": "Information we collect",
+        "body": "We collect the details you provide to create an account, build a profile, apply to roles, and request support."
+      },
+      "use": {
+        "title": "How we use your information",
+        "body": "We use your information to operate the platform, match you to opportunities, and respond to support requests."
+      },
+      "resumes": {
+        "title": "Resumes and private files",
+        "body": "Resumes are stored privately and shared only with employers whose roles you apply to. They are never made public."
+      },
+      "sharing": {
+        "title": "Sharing",
+        "body": "We do not sell your data. Employers see candidate information only for applications to their own roles."
+      },
+      "rights": {
+        "title": "Your choices",
+        "body": "You can review and update your information, and contact MHA to ask questions about your data."
+      }
+    }
+  },
+  "terms": {
+    "eyebrow": "Trust and operating model",
+    "title": "Terms of use",
+    "lead": "The terms for using the MHA Jobs platform.",
+    "shellNote": "This is a structural placeholder. The full, reviewed terms are finalised before launch.",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "body": "By using MHA Jobs you agree to these terms and to honest, lawful use of the platform."
+      },
+      "accounts": {
+        "title": "Accounts",
+        "body": "You are responsible for the accuracy of your information and for keeping your account secure."
+      },
+      "employers": {
+        "title": "Employer approval",
+        "body": "Employers must be approved by MHA before publishing roles, and must keep listings accurate."
+      },
+      "conduct": {
+        "title": "Acceptable use",
+        "body": "Do not misuse the platform, misrepresent yourself, or attempt to access data that is not yours."
+      },
+      "limitations": {
+        "title": "Service limitations",
+        "body": "Job Fit and insights are guidance only and do not guarantee outcomes such as interviews or hires."
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "search": {
+    "title": "寻找您的下一份工作",
+    "lead": "搜索来自已认证雇主的专业机会。",
+    "resultsLabel": "搜索结果",
+    "previewLabel": "所选职位预览",
+    "selectPrompt": "选择一个职位即可在此预览。",
+    "filtersTitle": "筛选",
+    "openFilters": "显示筛选",
+    "closeFilters": "隐藏筛选",
+    "keyword": "关键词",
+    "keywordPlaceholder": "职位、技能或公司",
+    "location": "地点",
+    "locationPlaceholder": "城市或地区",
+    "employmentType": "工作类型",
+    "employmentTypeAny": "任意类型",
+    "salaryMin": "最低薪资",
+    "salaryMax": "最高薪资",
+    "sortLabel": "排序方式",
+    "sortNewest": "最新",
+    "sortRelevant": "最相关",
+    "resultsCount": "显示搜索结果",
+    "emptyTitle": "没有符合条件的职位",
+    "emptyDescription": "请尝试调整筛选条件以查看更多机会。",
+    "emptyTips": {
+      "location": "放宽或移除地点限制",
+      "keyword": "使用更宽泛的关键词",
+      "salary": "移除薪资限制",
+      "support": "请 MHA 协助寻找职位"
+    },
+    "loadingTitle": "正在查找职位",
+    "loadingDescription": "正在为您匹配可用机会。"
+  },
+  "employmentType": {
+    "fullTime": "全职",
+    "partTime": "兼职",
+    "contract": "合同制",
+    "internship": "实习",
+    "temporary": "临时"
+  },
+  "card": {
+    "salaryNotDisclosed": "薪资面议",
+    "postedOn": "发布于",
+    "deadline": "申请截止",
+    "viewRole": "查看职位",
+    "requirementPreview": "要求预览",
+    "fitWhenSignedIn": "登录后查看您的职位匹配"
+  },
+  "detail": {
+    "backToSearch": "返回搜索",
+    "applyNow": "立即申请",
+    "saveJob": "收藏职位",
+    "shareJob": "分享职位",
+    "viewApplication": "查看申请",
+    "alreadyApplied": "您已申请此职位",
+    "appliedOn": "提交于",
+    "currentStage": "当前阶段",
+    "sections": {
+      "overview": "职位概览",
+      "description": "职位描述",
+      "requirements": "任职要求",
+      "jobFit": "智能职位匹配",
+      "screening": "筛选问题",
+      "company": "关于公司",
+      "culture": "文化与福利",
+      "similar": "相似职位"
+    },
+    "panel": {
+      "title": "申请此职位",
+      "easyApplyNote": "一键申请——您的资料与简历已就绪。",
+      "signInPrompt": "登录后即可申请并收藏此职位。"
+    },
+    "fit": {
+      "previewTitle": "智能职位匹配",
+      "previewBody": "登录后查看透明的、基于规则的匹配分数，包含匹配要素与真实差距。",
+      "disclaimer": "职位匹配仅显示契合度，并不保证面试或录用。"
+    },
+    "support": {
+      "title": "不确定这个职位是否合适？",
+      "body": "就此次申请向 MHA 顾问寻求建议。",
+      "cta": "请 MHA 协助"
+    },
+    "shareCopied": "链接已复制"
+  }
+}

@@ -1,5 +1,179 @@
 {
-  "operatedBy": "由 MHA Consultancy 运营",
-  "headline": "专业招聘，智能匹配。",
-  "subheadline": "MHA 招聘以透明的机会、可解释的职位匹配，以及关键时刻的专业人力支持，连接求职者与雇主。"
+  "meta": {
+    "title": "MHA 招聘 — MHA Consultancy 旗下专业招聘平台"
+  },
+  "hero": {
+    "eyebrow": "由 MHA Consultancy 运营",
+    "headline": "专业招聘，建立在清晰与人性化判断之上。",
+    "subheadline": "MHA 招聘以透明的机会、可解释的职位匹配，以及关键时刻的顾问支持，连接求职者与雇主。",
+    "perspectiveLabel": "选择您的身份",
+    "perspective": {
+      "candidate": "我在找工作",
+      "employer": "我在招聘人才"
+    },
+    "candidate": {
+      "lead": "搜索专业机会、了解匹配程度、追踪每一份申请，并在需要时获得 MHA 职业支持。",
+      "primaryCta": "寻找职位",
+      "secondaryCta": "创建求职者账户"
+    },
+    "employer": {
+      "lead": "规划并发布职位、高效审阅申请、跟进招聘进度，并借助 MHA 的招聘专业能力。",
+      "primaryCta": "雇主专区",
+      "secondaryCta": "注册您的机构"
+    }
+  },
+  "value": {
+    "eyebrow": "为何选择 MHA 招聘",
+    "candidateTitle": "围绕您的职业而建",
+    "employerTitle": "围绕您的招聘而建",
+    "candidate": {
+      "tracking": {
+        "title": "透明的申请追踪",
+        "body": "随时了解当前所处阶段、它的含义以及下一步。"
+      },
+      "fit": {
+        "title": "可解释的职位匹配",
+        "body": "基于规则的匹配分数，列出匹配要素与真实差距——绝非黑箱。"
+      },
+      "opportunities": {
+        "title": "专业机会",
+        "body": "来自已认证雇主的职位，清晰呈现，不显杂乱。"
+      },
+      "guidance": {
+        "title": "MHA 指导",
+        "body": "在需要判断的时候，联系顾问获取简历帮助与职业方向建议。"
+      }
+    },
+    "employer": {
+      "publishing": {
+        "title": "结构化职位发布",
+        "body": "以一致且完整的信息创建、预览并发布职位。"
+      },
+      "review": {
+        "title": "高效审阅申请",
+        "body": "在表格、看板与分屏视图中集中查看简历与回答。"
+      },
+      "pipeline": {
+        "title": "流程可视化",
+        "body": "凭借可靠的招聘洞察，跟进候选人在各阶段的进展。"
+      },
+      "expertise": {
+        "title": "MHA 招聘专业能力",
+        "body": "在棘手职位与招聘决策时引入顾问支持。"
+      }
+    }
+  },
+  "console": {
+    "eyebrow": "职业情报中心",
+    "title": "可信的情报，来源清晰",
+    "lead": "每个模块都会标明它是 MHA 洞察、真实平台数据，还是示例预览。我们绝不展示虚构的活动数据。",
+    "rolesInFocus": {
+      "title": "关注的职位族",
+      "body": "MHA 在专业招聘中观察到需求的职位族。"
+    },
+    "hiringOutlook": {
+      "title": "招聘前景",
+      "body": "MHA 顾问对招聘环境的定性解读。"
+    },
+    "salaryGuidance": {
+      "title": "薪资参考",
+      "body": "仅在 MHA 拥有可靠来源时才展示参考区间。"
+    },
+    "skillsThemes": {
+      "title": "热门技能",
+      "body": "主题取自已审核的洞察内容，而非用户数据。"
+    },
+    "previewNote": "示例预览。当积累足够的真实平台数据后，将显示实时汇总。"
+  },
+  "opportunities": {
+    "eyebrow": "机会与机构",
+    "title": "发现职位以及背后的企业",
+    "jobsTitle": "最新机会",
+    "jobsEmpty": "雇主发布职位后，已发布的职位将显示在这里。",
+    "jobsCta": "浏览所有职位",
+    "companiesTitle": "精选机构",
+    "companiesEmpty": "已认证雇主的资料将显示在这里。",
+    "companiesCta": "探索企业"
+  },
+  "journey": {
+    "eyebrow": "流程如何运作",
+    "title": "为双方提供清晰的路径",
+    "candidateTitle": "求职者",
+    "employerTitle": "雇主",
+    "candidate": {
+      "step1": "创建个人资料",
+      "step2": "上传简历",
+      "step3": "发现机会",
+      "step4": "自信地申请",
+      "step5": "追踪进度",
+      "step6": "在需要时寻求帮助"
+    },
+    "employer": {
+      "step1": "注册您的机构",
+      "step2": "获得 MHA 审核通过",
+      "step3": "发布职位",
+      "step4": "审阅申请",
+      "step5": "推进候选人",
+      "step6": "运用洞察与 MHA 支持"
+    }
+  },
+  "expert": {
+    "eyebrow": "MHA 专家层",
+    "title": "技术带来便利，专家提供判断",
+    "lead": "自助服务是默认方式。在需要人性化判断的关键时刻，MHA 顾问随时待命。",
+    "careerSupport": "向 MHA 寻求职业支持",
+    "resumeHelp": "申请简历帮助",
+    "vacancyHelp": "获得职位定义帮助",
+    "recruitmentHelp": "申请招聘协助",
+    "cta": "联系 MHA 支持"
+  },
+  "workspace": {
+    "eyebrow": "雇主工作区",
+    "title": "现代、真实的招聘工作区",
+    "lead": "在表格中审阅申请、在看板上跟进候选人、在分屏中评估人才——全部在沉稳而高效的界面中完成。",
+    "attentionQueue": "待办队列",
+    "activeJobs": "在招职位",
+    "applicantTable": "申请人表格",
+    "kanban": "看板流程",
+    "insights": "招聘洞察",
+    "previewNote": "界面预览，不展示任何真实候选人数据。"
+  },
+  "trust": {
+    "eyebrow": "信任与运营模式",
+    "title": "我们如何保持平台的诚信",
+    "operatedBy": {
+      "title": "由 MHA Consultancy 运营",
+      "body": "由真实咨询机构运营的招聘平台，而非匿名招聘网站。"
+    },
+    "approval": {
+      "title": "雇主审核",
+      "body": "每个雇主在发布职位前都经过 MHA 审核与认证。"
+    },
+    "privacy": {
+      "title": "私密、安全的简历",
+      "body": "简历保持私密，仅与您主动申请的雇主分享。"
+    },
+    "fitLimits": {
+      "title": "职位匹配的明确边界",
+      "body": "职位匹配只说明契合度，绝不保证面试或录用。"
+    },
+    "humanSupport": {
+      "title": "提供人工支持",
+      "body": "MHA 顾问可为求职者与雇主双方提供帮助。"
+    },
+    "responsibleData": {
+      "title": "负责任的数据使用",
+      "body": "只有在指标可靠时才展示，绝不虚构活动数据。"
+    }
+  },
+  "finalCta": {
+    "eyebrow": "立即开始",
+    "title": "两条路径，一个可信平台",
+    "candidateTitle": "求职者",
+    "candidateBody": "寻找专业职位，并清晰追踪您的申请。",
+    "candidateCta": "创建求职者账户",
+    "employerTitle": "雇主",
+    "employerBody": "发布职位，并在 MHA 支持下管理招聘。",
+    "employerCta": "注册您的机构"
+  }
 }

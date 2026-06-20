@@ -1,0 +1,108 @@
+{
+  "area": {
+    "eyebrow": "Candidate",
+    "label": "Career command centre"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "resume": "Resume",
+    "applications": "Applications",
+    "savedJobs": "Saved Jobs",
+    "support": "MHA Support",
+    "settings": "Settings"
+  },
+  "protectedNote": "Candidate area. Access control is added in Phase 2; this preview shows the calm working layout and its states.",
+  "dashboard": {
+    "title": "Welcome back",
+    "description": "Here's where your applications, matches, and next steps live.",
+    "nextAction": {
+      "title": "Your next step",
+      "body": "Complete your profile and upload a current resume to start applying.",
+      "cta": "Complete profile"
+    },
+    "snapshot": {
+      "title": "Application snapshot",
+      "applied": "Applied",
+      "underReview": "Under review",
+      "shortlisted": "Shortlisted",
+      "interview": "Interview",
+      "offered": "Offered",
+      "hired": "Hired",
+      "emptyTitle": "No applications yet",
+      "emptyBody": "Apply to a role and your progress will appear here."
+    },
+    "journey": {
+      "title": "Application journey",
+      "emptyBody": "Your application timeline will appear here once you apply."
+    },
+    "picks": {
+      "title": "Jobs picked for you",
+      "emptyBody": "Add your preferences and a resume to see matched roles."
+    },
+    "resume": {
+      "title": "Resume and profile",
+      "emptyBody": "No resume uploaded yet.",
+      "upload": "Upload resume",
+      "profileCompletion": "Profile completion"
+    },
+    "insights": {
+      "title": "For you",
+      "emptyBody": "Helpful, honest updates will appear here as you use the platform."
+    }
+  },
+  "profile": {
+    "title": "Your profile",
+    "description": "Keep your details current so employers and matches stay accurate.",
+    "emptyTitle": "Profile not set up yet",
+    "emptyBody": "Add your basic details and preferences to improve matching."
+  },
+  "resume": {
+    "title": "Resume",
+    "description": "Manage the resume employers see when you apply.",
+    "emptyTitle": "No resume on file",
+    "emptyBody": "Upload a PDF or DOCX (up to 5 MB). It stays private and is only shared with roles you apply to.",
+    "upload": "Upload resume"
+  },
+  "applications": {
+    "title": "Your applications",
+    "description": "Track every application and its current stage.",
+    "emptyTitle": "No applications yet",
+    "emptyBody": "When you apply to a role, it will appear here with its status history.",
+    "browseJobs": "Browse jobs",
+    "columns": {
+      "role": "Role",
+      "company": "Company",
+      "applied": "Applied",
+      "stage": "Stage",
+      "updated": "Updated"
+    }
+  },
+  "applicationDetail": {
+    "title": "Application",
+    "backToApplications": "Back to applications",
+    "stage": "Current stage",
+    "history": "Status history",
+    "notFoundTitle": "Application not available",
+    "notFoundBody": "This application could not be found, or you don't have access to it."
+  },
+  "savedJobs": {
+    "title": "Saved jobs",
+    "description": "Roles you've saved to revisit.",
+    "emptyTitle": "No saved jobs",
+    "emptyBody": "Save roles from search or a job page to find them here.",
+    "browseJobs": "Browse jobs"
+  },
+  "support": {
+    "title": "MHA support",
+    "description": "Request help with your applications or career direction.",
+    "cta": "Request support"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account, language, and notifications.",
+    "language": "Language",
+    "account": "Account",
+    "emptyBody": "Account settings will be available once accounts are connected in Phase 2."
+  }
+}

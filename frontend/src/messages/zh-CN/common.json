@@ -1,23 +1,80 @@
 {
   "brand": "MHA 招聘",
   "operatedByMha": "由 MHA Consultancy 运营",
+  "skipToContent": "跳到主要内容",
   "nav": {
+    "home": "MHA 招聘 — 首页",
+    "primary": "主导航",
     "findJobs": "寻找职位",
     "companies": "探索企业",
     "careerSupport": "职业支持",
     "forEmployers": "雇主专区",
     "signIn": "登录",
-    "createAccount": "创建账户"
+    "signOut": "退出登录",
+    "createAccount": "创建账户",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单"
+  },
+  "footer": {
+    "about": "由 MHA Consultancy 运营的专业双语招聘平台，连接求职者与雇主。",
+    "candidates": "求职者",
+    "employers": "雇主",
+    "platform": "平台",
+    "copyright": "© MHA Consultancy 版权所有。",
+    "links": {
+      "findJobs": "寻找职位",
+      "companies": "探索企业",
+      "careerSupport": "职业支持",
+      "createAccount": "创建求职者账户",
+      "forEmployers": "雇主专区",
+      "employerAccess": "注册您的机构",
+      "signIn": "登录",
+      "support": "联系支持",
+      "privacy": "隐私政策",
+      "terms": "使用条款"
+    }
   },
   "states": {
-    "loading": "加载中…",
-    "empty": "暂无内容。",
-    "error": "出现问题，请重试。",
-    "permissionDenied": "您没有权限查看此内容。"
+    "loadingTitle": "加载中",
+    "loadingDescription": "正在获取最新信息。",
+    "loadingSpinner": "正在加载内容",
+    "emptyTitle": "暂无内容",
+    "emptyDescription": "目前这里还没有内容。",
+    "errorTitle": "出现了问题",
+    "errorDescription": "暂时无法加载，请稍后重试。",
+    "successTitle": "完成",
+    "permissionTitle": "您没有访问权限",
+    "permissionDescription": "您的账户没有权限查看此内容。请使用合适的账户登录，或联系 MHA 支持。",
+    "retry": "重试",
+    "shellNotice": "第一阶段预览：此页面仅展示布局与状态，实时数据将在后续阶段接入。"
+  },
+  "actions": {
+    "viewAll": "查看全部",
+    "learnMore": "了解更多",
+    "back": "返回",
+    "next": "下一步",
+    "cancel": "取消",
+    "save": "保存",
+    "submit": "提交",
+    "search": "搜索",
+    "filter": "筛选",
+    "clear": "清除",
+    "apply": "申请",
+    "close": "关闭"
   },
   "language": {
     "label": "语言",
     "en": "English",
     "zh-CN": "简体中文"
+  },
+  "source": {
+    "mhaInsight": "MHA 洞察",
+    "platformAnalytics": "平台数据",
+    "illustrativePreview": "示例预览"
+  },
+  "badge": {
+    "approvedEmployer": "已认证雇主",
+    "mhaSupported": "MHA 顾问支持",
+    "easyApply": "一键申请"
   }
 }

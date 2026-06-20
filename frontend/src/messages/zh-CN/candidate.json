@@ -1,0 +1,108 @@
+{
+  "area": {
+    "eyebrow": "求职者",
+    "label": "职业指挥中心"
+  },
+  "nav": {
+    "dashboard": "控制台",
+    "profile": "个人资料",
+    "resume": "简历",
+    "applications": "申请",
+    "savedJobs": "收藏的职位",
+    "support": "MHA 支持",
+    "settings": "设置"
+  },
+  "protectedNote": "求职者专区。访问控制将在第二阶段加入；此预览展示沉稳的工作布局及其各种状态。",
+  "dashboard": {
+    "title": "欢迎回来",
+    "description": "这里汇总了您的申请、匹配与下一步。",
+    "nextAction": {
+      "title": "您的下一步",
+      "body": "完善个人资料并上传最新简历，即可开始申请。",
+      "cta": "完善资料"
+    },
+    "snapshot": {
+      "title": "申请概览",
+      "applied": "已申请",
+      "underReview": "审核中",
+      "shortlisted": "已入围",
+      "interview": "面试",
+      "offered": "已录用通知",
+      "hired": "已入职",
+      "emptyTitle": "暂无申请",
+      "emptyBody": "申请职位后，您的进度将显示在这里。"
+    },
+    "journey": {
+      "title": "申请进程",
+      "emptyBody": "您申请后，申请时间线将显示在这里。"
+    },
+    "picks": {
+      "title": "为您挑选的职位",
+      "emptyBody": "添加偏好并上传简历，即可看到匹配的职位。"
+    },
+    "resume": {
+      "title": "简历与资料",
+      "emptyBody": "尚未上传简历。",
+      "upload": "上传简历",
+      "profileCompletion": "资料完成度"
+    },
+    "insights": {
+      "title": "为您推荐",
+      "emptyBody": "随着您使用平台，有用且真实的更新将显示在这里。"
+    }
+  },
+  "profile": {
+    "title": "您的个人资料",
+    "description": "保持信息最新，让雇主与匹配结果更准确。",
+    "emptyTitle": "尚未设置个人资料",
+    "emptyBody": "添加基本信息与偏好以提升匹配效果。"
+  },
+  "resume": {
+    "title": "简历",
+    "description": "管理您申请时雇主所看到的简历。",
+    "emptyTitle": "暂无简历",
+    "emptyBody": "上传 PDF 或 DOCX（不超过 5 MB）。简历保持私密，仅与您申请的职位分享。",
+    "upload": "上传简历"
+  },
+  "applications": {
+    "title": "您的申请",
+    "description": "追踪每一份申请及其当前阶段。",
+    "emptyTitle": "暂无申请",
+    "emptyBody": "当您申请职位后，它将连同状态历史显示在这里。",
+    "browseJobs": "浏览职位",
+    "columns": {
+      "role": "职位",
+      "company": "公司",
+      "applied": "申请时间",
+      "stage": "阶段",
+      "updated": "更新时间"
+    }
+  },
+  "applicationDetail": {
+    "title": "申请",
+    "backToApplications": "返回申请列表",
+    "stage": "当前阶段",
+    "history": "状态历史",
+    "notFoundTitle": "申请不可用",
+    "notFoundBody": "未找到此申请，或您没有访问权限。"
+  },
+  "savedJobs": {
+    "title": "收藏的职位",
+    "description": "您收藏以便日后查看的职位。",
+    "emptyTitle": "暂无收藏的职位",
+    "emptyBody": "从搜索或职位页面收藏职位，即可在此找到。",
+    "browseJobs": "浏览职位"
+  },
+  "support": {
+    "title": "MHA 支持",
+    "description": "就您的申请或职业方向寻求帮助。",
+    "cta": "申请支持"
+  },
+  "settings": {
+    "title": "设置",
+    "description": "管理您的账户、语言与通知。",
+    "language": "语言",
+    "account": "账户",
+    "emptyBody": "账户设置将在第二阶段账户接入后提供。"
+  }
+}
