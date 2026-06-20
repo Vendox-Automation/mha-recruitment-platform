@@ -54,6 +54,17 @@
       "step3": "审阅第一位申请人"
     }
   },
+  "approval": {
+    "companyLabel": "机构",
+    "accountLabel": "账户邮箱",
+    "signInOther": "使用其他账户登录",
+    "statusBadge": {
+      "PENDING": "待审核",
+      "APPROVED": "已通过",
+      "REJECTED": "未通过",
+      "SUSPENDED": "已暂停"
+    }
+  },
   "pending": {
     "title": "您的账户正在审核中",
     "description": "MHA 管理员正在审核您的机构。",
@@ -63,18 +74,58 @@
     "nextStepTitle": "预期的下一步",
     "nextStepBody": "审核结果确定后我们会通过电子邮件通知您。在此期间，您可以在下方更新允许修改的公司信息。",
     "contactCta": "联系 MHA",
+    "editTitle": "更新您的公司信息",
+    "editBody": "在账户审核期间，请保持机构信息准确。更改将立即保存。",
     "rejected": {
       "title": "注册未通过",
       "body": "您的注册未获通过。您可以查看原因、更新信息，并在允许的情况下重新提交。",
+      "reasonTitle": "原因",
+      "reasonFallback": "MHA 未提供具体原因。重新提交前请联系我们了解详情。",
+      "editTitle": "更新并重新提交",
+      "editBody": "更正下方信息并保存，即可将您的机构重新提交审核。",
       "resubmit": "更新并重新提交"
     }
+  },
+  "suspended": {
+    "title": "您的账户已被暂停",
+    "body": "您的雇主账户已被暂停。您可以查看账户信息并联系 MHA。",
+    "noticeTitle": "账户已暂停",
+    "noticeBody": "在暂停期间，您无法发布或修改职位、查看新的候选人信息，或更改申请人状态。如需恢复账户，请联系 MHA。"
   },
   "companyProfile": {
     "title": "公司资料",
     "description": "候选人在您的公司页面所看到的信息。",
+    "editLead": "这些信息将显示在您的公开公司页面上。请保持准确、完整，以吸引合适的候选人。",
     "emptyTitle": "公司资料尚未完善",
     "emptyBody": "添加公司简介、地点与文化，以吸引合适的候选人。",
-    "edit": "编辑公司资料"
+    "edit": "编辑公司资料",
+    "save": "保存更改",
+    "saving": "保存中…",
+    "savedTitle": "公司资料已保存",
+    "savedBody": "您的更改已保存。",
+    "sections": {
+      "identity": "机构与联系人",
+      "public": "公开公司信息",
+      "cultureBenefits": "文化与福利"
+    },
+    "companySize": "{range} 名员工",
+    "fields": {
+      "companyName": "公司名称",
+      "contactPerson": "联系人",
+      "phone": "电话号码",
+      "companySummary": "公司简介",
+      "companySummaryHint": "候选人在您公司页面看到的简短介绍。",
+      "website": "网站",
+      "websiteHint": "请填写完整网址，以 https:// 开头。",
+      "industry": "行业",
+      "companySize": "公司规模",
+      "companySizeUnset": "未指定",
+      "companyLocation": "地点",
+      "culture": "公司文化",
+      "cultureHint": "在您机构工作的感受与氛围。",
+      "benefits": "福利",
+      "benefitsHint": "您提供的主要福利与待遇。"
+    }
   },
   "jobs": {
     "title": "职位",

@@ -1,9 +1,15 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState } from "@/components/ui";
+import { CompanyProfileView } from "@/features/employers";
+import { EmployerWorkspaceGuard } from "@/lib/auth";
 
-/** Employer company profile shell (spec §14.4 detail, §14.10). */
+/**
+ * Approved-employer company profile (spec §14.4/§14.10). Composition only:
+ * `EmployerWorkspaceGuard` gates to approved employers (pending employers are
+ * redirected to /employer/pending), and the feature view loads/edits the
+ * profile via GET/PATCH /employer/profile/.
+ */
 export default async function EmployerCompanyProfilePage({
   params,
 }: {
@@ -14,18 +20,15 @@ export default async function EmployerCompanyProfilePage({
   const t = await getTranslations("employer");
 
   return (
-    <PageContainer className="flex flex-col gap-8">
-      <PageHeader
-        eyebrow={t("area.eyebrow")}
-        title={t("companyProfile.title")}
-        description={t("companyProfile.description")}
-      />
-      <Card>
-        <EmptyState
-          title={t("companyProfile.emptyTitle")}
-          description={t("companyProfile.emptyBody")}
+    <EmployerWorkspaceGuard>
+      <PageContainer className="flex flex-col gap-8">
+        <PageHeader
+          eyebrow={t("area.eyebrow")}
+          title={t("companyProfile.title")}
+          description={t("companyProfile.description")}
         />
-      </Card>
-    </PageContainer>
+        <CompanyProfileView />
+      </PageContainer>
+    </EmployerWorkspaceGuard>
   );
 }

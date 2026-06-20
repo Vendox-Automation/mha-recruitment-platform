@@ -5,6 +5,7 @@
   "minLength": "This is too short.",
   "passwordWeak": "Use at least 10 characters with letters and numbers.",
   "phone": "Enter a valid phone number.",
+  "website": "Enter a full URL starting with http:// or https://.",
   "salaryRange": "Maximum salary must be higher than the minimum.",
   "fileType": "Upload a PDF or DOCX file.",
   "fileSize": "File must be 5 MB or smaller.",

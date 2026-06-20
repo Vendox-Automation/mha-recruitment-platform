@@ -54,6 +54,17 @@
       "step3": "Review your first applicant"
     }
   },
+  "approval": {
+    "companyLabel": "Organisation",
+    "accountLabel": "Account email",
+    "signInOther": "Sign in with another account",
+    "statusBadge": {
+      "PENDING": "Pending approval",
+      "APPROVED": "Approved",
+      "REJECTED": "Not approved",
+      "SUSPENDED": "Suspended"
+    }
+  },
   "pending": {
     "title": "Your account is under review",
     "description": "An MHA administrator is reviewing your organisation.",
@@ -63,18 +74,58 @@
     "nextStepTitle": "Expected next step",
     "nextStepBody": "We'll email you once a decision is made. You can update allowed company details below in the meantime.",
     "contactCta": "Contact MHA",
+    "editTitle": "Update your company details",
+    "editBody": "Keep your organisation information accurate while your account is reviewed. Changes are saved immediately.",
     "rejected": {
       "title": "Registration not approved",
       "body": "Your registration was not approved. You can review the reason, update your details, and resubmit where allowed.",
+      "reasonTitle": "Reason",
+      "reasonFallback": "MHA did not provide a specific reason. Contact us for details before resubmitting.",
+      "editTitle": "Update and resubmit",
+      "editBody": "Correct the details below and save to resubmit your organisation for review.",
       "resubmit": "Update and resubmit"
     }
+  },
+  "suspended": {
+    "title": "Your account is suspended",
+    "body": "Your employer account has been suspended. You can review your account information and contact MHA.",
+    "noticeTitle": "Account suspended",
+    "noticeBody": "While suspended, you cannot publish or modify jobs, view new candidate information, or change applicant statuses. Contact MHA to discuss restoring your account."
   },
   "companyProfile": {
     "title": "Company profile",
     "description": "The details candidates see on your company page.",
+    "editLead": "These details appear on your public company page. Keep them accurate and complete to attract the right candidates.",
     "emptyTitle": "Company profile incomplete",
     "emptyBody": "Add your description, location, and culture to attract the right candidates.",
-    "edit": "Edit company profile"
+    "edit": "Edit company profile",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "savedTitle": "Company profile saved",
+    "savedBody": "Your changes have been saved.",
+    "sections": {
+      "identity": "Organisation and contact",
+      "public": "Public company details",
+      "cultureBenefits": "Culture and benefits"
+    },
+    "companySize": "{range} employees",
+    "fields": {
+      "companyName": "Company name",
+      "contactPerson": "Contact person",
+      "phone": "Phone number",
+      "companySummary": "Company summary",
+      "companySummaryHint": "A short overview candidates see on your company page.",
+      "website": "Website",
+      "websiteHint": "Include the full address, starting with https://.",
+      "industry": "Industry",
+      "companySize": "Company size",
+      "companySizeUnset": "Not specified",
+      "companyLocation": "Location",
+      "culture": "Company culture",
+      "cultureHint": "What it's like to work at your organisation.",
+      "benefits": "Benefits",
+      "benefitsHint": "Key benefits and perks you offer."
+    }
   },
   "jobs": {
     "title": "Jobs",
