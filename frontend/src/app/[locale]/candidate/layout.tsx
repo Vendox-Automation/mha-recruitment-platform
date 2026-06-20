@@ -2,14 +2,16 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { DashboardShell, type DashboardNavItem } from "@/components/layout";
 import { SkipToContent } from "@/components/ui";
+import { RouteGuard } from "@/lib/auth";
 
 /**
  * Candidate area chrome (spec §14.9, §11.7). Calm dashboard layout with sidebar
  * / topbar. Visibly distinct from the employer area via eyebrow + accent rail
  * while staying one brand (spec §9.1, §5.2).
  *
- * PROTECTED AREA: no auth wiring this phase. Route guards that require an
- * authenticated CANDIDATE session are added in Phase 2 (ADR-0001 §4).
+ * PROTECTED AREA (ADR-0001 §4.1): {@link RouteGuard} requires an authenticated
+ * CANDIDATE session; anonymous users are sent to /sign-in and other roles to
+ * their own area. Guards are UX only — Django remains authoritative (spec §10).
  */
 const NAV: Omit<DashboardNavItem, "label">[] = [
   { key: "dashboard", href: "/candidate/dashboard" },
@@ -47,7 +49,7 @@ export default async function CandidateLayout({
         areaLabel={t("area.label")}
         nav={nav}
       >
-        {children}
+        <RouteGuard requireRole="CANDIDATE">{children}</RouteGuard>
       </DashboardShell>
     </>
   );

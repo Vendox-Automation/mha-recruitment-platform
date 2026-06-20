@@ -2,8 +2,13 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
 import { Alert, Card, EmptyState, LinkButton } from "@/components/ui";
+import { EmployerWorkspaceGuard } from "@/lib/auth";
 
-/** Employer dashboard shell — guided recruitment workspace (spec §14.10). */
+/**
+ * Employer dashboard shell — guided recruitment workspace (spec §14.10).
+ * Wrapped in {@link EmployerWorkspaceGuard}: only an APPROVED employer reaches
+ * this; pending/rejected/suspended employers are routed to /employer/pending.
+ */
 export default async function EmployerDashboardPage({
   params,
 }: {
@@ -14,6 +19,7 @@ export default async function EmployerDashboardPage({
   const t = await getTranslations("employer");
 
   return (
+    <EmployerWorkspaceGuard>
     <PageContainer width="wide" className="flex flex-col gap-8">
       <PageHeader
         eyebrow={t("area.eyebrow")}
@@ -122,5 +128,6 @@ export default async function EmployerDashboardPage({
         </Card>
       </div>
     </PageContainer>
+    </EmployerWorkspaceGuard>
   );
 }

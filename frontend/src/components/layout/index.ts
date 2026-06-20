@@ -12,5 +12,7 @@ export { Section } from "./Section";
 export type { SectionProps, SectionSpacing, SectionTone } from "./Section";
 export { SectionHeading } from "./SectionHeading";
 export type { SectionHeadingProps } from "./SectionHeading";
+export { SignOutButton } from "./SignOutButton";
+export type { SignOutButtonProps } from "./SignOutButton";
 export { Wordmark } from "./Wordmark";
 export type { WordmarkProps } from "./Wordmark";

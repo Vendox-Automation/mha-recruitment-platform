@@ -2,15 +2,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { DashboardShell, type DashboardNavItem } from "@/components/layout";
 import { SkipToContent } from "@/components/ui";
+import { RouteGuard } from "@/lib/auth";
 
 /**
  * Employer area chrome (spec §14.10–14.12, §11.7). Calm recruitment workspace
  * with sidebar / topbar. Visibly distinct from the candidate area via eyebrow +
  * accent rail while staying one brand (spec §9.1, §5.2).
  *
- * PROTECTED AREA: no auth wiring this phase. Route guards (authenticated
- * EMPLOYER; approval-status gating for pending/suspended) are added in
- * Phases 2–3 (ADR-0001 §4, spec §8.3–8.5).
+ * PROTECTED AREA (ADR-0001 §4.1, spec §8.3): the layout {@link RouteGuard}
+ * requires an authenticated EMPLOYER (any approval status, so the pending
+ * screen is reachable). Approval gating for workspace routes lives on those
+ * pages via `EmployerWorkspaceGuard`. Guards are UX only — Django is
+ * authoritative (spec §10).
  */
 const NAV: Omit<DashboardNavItem, "label">[] = [
   { key: "dashboard", href: "/employer/dashboard" },
@@ -47,7 +50,7 @@ export default async function EmployerLayout({
         areaLabel={t("area.label")}
         nav={nav}
       >
-        {children}
+        <RouteGuard requireRole="EMPLOYER">{children}</RouteGuard>
       </DashboardShell>
     </>
   );

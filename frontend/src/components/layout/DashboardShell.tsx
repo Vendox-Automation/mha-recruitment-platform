@@ -8,6 +8,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { SignOutButton } from "./SignOutButton";
 import { Wordmark } from "./Wordmark";
 
 export interface DashboardNavItem {
@@ -143,12 +144,7 @@ export function DashboardShell({
         <nav aria-label={areaLabel}>{navList}</nav>
         <div className="mt-4 flex items-center justify-between border-t border-border-default pt-4">
           <LocaleSwitcher />
-          <Link
-            href="/sign-in"
-            className="type-body-sm text-text-secondary no-underline hover:text-text-primary"
-          >
-            {signOutLabel}
-          </Link>
+          <SignOutButton label={signOutLabel} />
         </div>
       </div>
 
@@ -156,12 +152,7 @@ export function DashboardShell({
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="hidden h-16 items-center justify-end gap-4 border-b border-border-default bg-surface-canvas px-6 lg:flex">
           <LocaleSwitcher />
-          <Link
-            href="/sign-in"
-            className="type-body-sm text-text-secondary no-underline hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-          >
-            {signOutLabel}
-          </Link>
+          <SignOutButton label={signOutLabel} />
         </div>
         <main id="main-content" className="flex-1 px-4 py-8 sm:px-6 lg:px-8">
           {children}
