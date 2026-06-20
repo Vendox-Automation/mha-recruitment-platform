@@ -10,6 +10,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from apps.jobs.api import urls as jobs_urls
+from apps.matching.api import urls as matching_urls
 from config.health import health
 
 urlpatterns = [
@@ -29,6 +30,11 @@ urlpatterns = [
     # (apps.applications owns these, ADR §3.1).
     path("api/v1/employer/", include("apps.applications.api.employer_urls")),
     path("api/v1/employer/", include((jobs_urls.employer_router.urls, "jobs"), namespace="jobs")),
+    # Smart Job Fit (candidate-only): jobs/{slug}/fit/ and .../fit/regenerate/.
+    # Mounted before the public job patterns so the more specific ``fit`` suffixes
+    # resolve cleanly ahead of the ``{slug}/`` detail route (apps.matching owns
+    # the Job Fit API, ADR §3.1).
+    path("api/v1/jobs/", include((matching_urls.job_fit_patterns, "matching"))),
     path("api/v1/jobs/", include((jobs_urls.public_job_patterns, "jobs-public"))),
     path("api/v1/companies/", include((jobs_urls.company_patterns, "companies"))),
     # Applications: candidate apply (jobs/{slug}/apply/) + candidate tracking
