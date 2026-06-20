@@ -37,8 +37,9 @@ coverage/
 .ruff_cache/
 .mypy_cache/
 
-# ---- Agent working memory (not part of the product) ----
-.claude/agent-memory/
+# ---- Agent working memory & local preview config (not part of the product) ----
+**/.claude/agent-memory/
+.claude/launch.json
 
 # ---- Editors / OS ----
 .idea/
