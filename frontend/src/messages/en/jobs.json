@@ -110,8 +110,35 @@
       "signInPrompt": "Sign in to apply and save this role."
     },
     "fit": {
+      "title": "Smart Job Fit",
       "previewTitle": "Smart Job Fit",
       "previewBody": "Sign in to see a transparent, rule-based fit score with matched factors and honest gaps.",
+      "signInBody": "See a transparent, rule-based fit score with matched factors and honest gaps for this role.",
+      "signInPrompt": "Sign in to see your Job Fit",
+      "scoreSr": "Your Job Fit score is {score} percent: {band}.",
+      "band": {
+        "strong": "Strong match",
+        "good": "Good potential",
+        "partial": "Partial match",
+        "limited": "Limited match"
+      },
+      "groups": {
+        "matched": "Matched factors",
+        "gaps": "Possible gaps",
+        "unknown": "Not enough information"
+      },
+      "regenerate": "Regenerate",
+      "regenerating": "Regenerating…",
+      "regenerateErrorTitle": "Could not regenerate",
+      "regenerateErrorBody": "Your existing Job Fit is still shown. Please try again in a moment.",
+      "generatedAt": "Updated {date}",
+      "loadingTitle": "Calculating your Job Fit",
+      "errorTitle": "Job Fit is unavailable",
+      "errorBody": "We could not load your Job Fit for this role. Please try again.",
+      "retry": "Try again",
+      "emptyTitle": "Not enough information yet",
+      "emptyBody": "Add your preferences and upload a resume so we can compute a meaningful Job Fit for this role.",
+      "disclaimerLabel": "About Job Fit",
       "disclaimer": "Job Fit shows alignment only. It does not guarantee an interview or a hire."
     },
     "support": {

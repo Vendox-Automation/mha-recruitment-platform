@@ -110,8 +110,35 @@
       "signInPrompt": "登录后即可申请并收藏此职位。"
     },
     "fit": {
+      "title": "智能职位匹配",
       "previewTitle": "智能职位匹配",
       "previewBody": "登录后查看透明的、基于规则的匹配分数，包含匹配要素与真实差距。",
+      "signInBody": "查看此职位透明的、基于规则的匹配分数，包含匹配要素与真实差距。",
+      "signInPrompt": "登录后查看您的职位匹配",
+      "scoreSr": "您的职位匹配分数为 {score} 分（百分制）：{band}。",
+      "band": {
+        "strong": "高度匹配",
+        "good": "潜力良好",
+        "partial": "部分匹配",
+        "limited": "匹配有限"
+      },
+      "groups": {
+        "matched": "匹配要素",
+        "gaps": "可能的差距",
+        "unknown": "信息不足"
+      },
+      "regenerate": "重新生成",
+      "regenerating": "正在重新生成…",
+      "regenerateErrorTitle": "无法重新生成",
+      "regenerateErrorBody": "仍显示您现有的职位匹配。请稍后重试。",
+      "generatedAt": "更新于 {date}",
+      "loadingTitle": "正在计算您的职位匹配",
+      "errorTitle": "职位匹配暂不可用",
+      "errorBody": "我们无法为此职位加载您的职位匹配。请重试。",
+      "retry": "重试",
+      "emptyTitle": "信息尚不充足",
+      "emptyBody": "请完善您的偏好并上传简历，以便我们为此职位计算有意义的职位匹配。",
+      "disclaimerLabel": "关于职位匹配",
       "disclaimer": "职位匹配仅显示契合度，并不保证面试或录用。"
     },
     "support": {

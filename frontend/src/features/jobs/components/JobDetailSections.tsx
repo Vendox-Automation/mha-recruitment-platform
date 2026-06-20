@@ -2,8 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
-import { Alert, Badge, Card } from "@/components/ui";
+import { Badge, Card } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
+import { SmartJobFit } from "@/features/matching/components/SmartJobFit";
 
 import type { PublicJobDetail } from "../types";
 
@@ -56,16 +57,10 @@ export function JobDetailSections({
         )}
       </Wrapper>
 
-      {/* Smart Job Fit — placeholder only, no fake score (Phase 8). */}
-      <Wrapper className="flex flex-col gap-2">
-        <h2 className="type-heading-3 text-text-primary">
-          {t("sections.jobFit")}
-        </h2>
-        <p className="type-body-sm text-text-secondary">{t("fit.previewBody")}</p>
-        <Alert tone="info" title={t("fit.previewTitle")}>
-          {t("fit.disclaimer")}
-        </Alert>
-      </Wrapper>
+      {/* Smart Job Fit (spec §14.3, §16). Candidate-only, session-scoped fit
+          wired to the fit API. Hidden in the compact split-screen preview pane
+          to keep that pane light — the full detail page shows it. */}
+      {compact ? null : <SmartJobFit slug={job.slug} />}
 
       {/* Screening preview — only when the job has questions. */}
       {job.screening_questions.length > 0 ? (
