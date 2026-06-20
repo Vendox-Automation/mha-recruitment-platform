@@ -9,6 +9,7 @@ all atomically — and records an audit event.
 from __future__ import annotations
 
 from decimal import Decimal, InvalidOperation
+from pathlib import PurePosixPath
 from typing import Any
 
 from django.core.files.base import ContentFile
@@ -98,7 +99,13 @@ def submit_application(*, candidate, job, cover_letter: str, answers_by_question
         resume_bytes = candidate.resume_file.read()
     finally:
         candidate.resume_file.close()
-    original_name = candidate.resume_original_name or candidate.resume_file.name
+    # Use the candidate's display name; if it is empty, fall back to a NEUTRAL
+    # name (never the storage path, which embeds the candidate's internal user
+    # UUID and would otherwise leak to the employer — security review rec 1).
+    original_name = candidate.resume_original_name
+    if not original_name:
+        suffix = PurePosixPath(candidate.resume_file.name).suffix or ".pdf"
+        original_name = f"resume{suffix}"
 
     application = Application(
         job=job,
