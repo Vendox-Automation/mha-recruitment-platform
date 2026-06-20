@@ -2,9 +2,13 @@
 
 The full documented schema is defined now so later phases add behaviour and UI,
 not columns. The OneToOne points at ``settings.AUTH_USER_MODEL`` (never a direct
-import) to avoid app-load cycles (ADR-0001 §8.3). Resume behaviour (private
-storage backend, validation, parsing) lands in Phase 5; here we only model the
-metadata columns.
+import) to avoid app-load cycles (ADR-0001 §8.3).
+
+Resume bytes are private personal data: the ``resume_file`` FileField is bound to
+:data:`apps.candidates.storage.private_resume_storage` (a non-public root) and
+stored under a server-generated opaque name (:data:`resume_upload_to`). The field
+is NEVER serialised as ``.url`` — the only retrieval path is the
+permission-checked download view (ADR-0001 §5, spec §22.2).
 """
 
 from __future__ import annotations
@@ -13,15 +17,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-
-def resume_upload_path(instance: CandidateProfile, filename: str) -> str:
-    """Server-side resume path keyed by the owner id.
-
-    TODO(Phase 5): a private storage backend + opaque server-side filenames land
-    in Phase 5 (ADR-0001 §5). For now the default storage is used and the
-    FileField is never exposed via ``.url`` to clients.
-    """
-    return f"resumes/{instance.user_id}/{filename}"
+from apps.candidates.storage import private_resume_storage, resume_upload_to
 
 
 class CandidateProfile(models.Model):
@@ -55,10 +51,12 @@ class CandidateProfile(models.Model):
         _("preferred employment type"), max_length=50, blank=True, default=""
     )
 
-    # Resume metadata. Storage default is intentional for now (see module TODO).
+    # Resume bytes live in private (non-public) storage under an opaque name.
+    # Never expose ``resume_file.url`` — serve via the permission-checked view.
     resume_file = models.FileField(
         _("resume file"),
-        upload_to=resume_upload_path,
+        upload_to=resume_upload_to,
+        storage=private_resume_storage,
         null=True,
         blank=True,
     )
