@@ -87,7 +87,7 @@ Each phase records scope, validation, independent review, and the push checkpoin
   lingering suspend reason).
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
 
-## Phase 4 — Jobs, companies & search ✅ (public side)
+## Phase 4 — Jobs, companies & search ✅
 
 - **Scope (backend):** Job + ScreeningQuestion models; employer job CRUD +
   lifecycle (draft/publish/close/reopen, own jobs only); public job search
@@ -110,4 +110,31 @@ Each phase records scope, validation, independent review, and the push checkpoin
 - **Employer job-management UI:** list/create/edit/preview own jobs with the
   screening-questions editor and publish/close/reopen actions (approved-only,
   suspended jobs read-only with moderation reason). 63 frontend tests passing.
+- **CI note:** the first Phase 4 push failed the PostgreSQL clean-DB migrate —
+  the employer-slug migration created the varchar `_like` index twice on
+  Postgres (SQLite has no `_like` indexes, so it passed locally). Fixed by
+  adding the slug column without an index on the transient step; CI green.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp` (CI green on Postgres).
+
+## Phase 5 — Candidate profile & secure resume ✅
+
+- **Scope (backend):** Private resume storage (FileSystemStorage outside any
+  public route, `base_url=None`, opaque UUID filenames), magic-byte validation
+  (PDF `%PDF` / DOCX OOXML-zip, ≤5MB, reject exe/zip/mismatch), atomic
+  replace/remove. Candidate API: GET/PATCH `/candidate/profile/` (resume fields
+  read-only), POST/DELETE `/candidate/resume/`, owner-only permission-checked
+  `/candidate/resume/download/` (the ONLY byte path — no public URL), and
+  `/candidate/dashboard/` (profile completion + honest zero app stats). Resume
+  audit events.
+- **Scope (frontend):** profile editor, resume manager (client pre-check +
+  FormData upload, download-link to the permission-checked endpoint, replace/
+  remove), candidate dashboard with next-action logic + profile-completion
+  meter. No public file URL constructed anywhere. EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 159 pytest passing
+  (incl. cross-candidate denial, path-traversal, MIME/size rejection, no-URL);
+  frontend lint/typecheck/build (55 pages) green, 79 Vitest tests passing.
+- **Security review:** PASS, no blockers — private bytes leave only via one
+  owner-scoped FileResponse, no `.url` exposed, traversal structurally
+  impossible, magic-byte validation. 2 recommendations (endpoint throttling,
+  download-audit volume) batched into Phase 12 hardening.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
