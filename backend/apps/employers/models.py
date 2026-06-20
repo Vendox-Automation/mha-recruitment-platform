@@ -8,8 +8,11 @@ actions, audit records, emails, and screens — is Phase 3. The OneToOne points 
 
 from __future__ import annotations
 
+import secrets
+
 from django.conf import settings
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 
@@ -31,6 +34,11 @@ class EmployerProfile(models.Model):
         on_delete=models.CASCADE,
         related_name="employer_profile",
     )
+
+    # Public, non-enumerable handle for the /companies/{slug} route. Generated
+    # from the company name plus a short random suffix so the URL is stable and
+    # not guessable from a sequential id (ADR-0001 §7.4).
+    slug = models.SlugField(_("slug"), max_length=255, unique=True, blank=True)
 
     # Required signup fields (spec §20.3).
     company_name = models.CharField(_("company name"), max_length=200)
@@ -78,6 +86,12 @@ class EmployerProfile(models.Model):
 
     def __str__(self) -> str:
         return f"{self.company_name} <{self.user_id}>"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.company_name)[:200] or "company"
+            self.slug = f"{base}-{secrets.token_hex(4)}"
+        super().save(*args, **kwargs)
 
     @property
     def is_approved(self) -> bool:
