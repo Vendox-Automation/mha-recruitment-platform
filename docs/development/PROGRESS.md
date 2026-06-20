@@ -165,3 +165,25 @@ Each phase records scope, validation, independent review, and the push checkpoin
   duplicate prevention, server-side answer validation. 3 minor recommendations
   (answer-json float precision, snapshot-name length, apply throttle) → Phase 12.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 7 — Employer applicant workspace ✅
+
+- **Scope (backend):** Employer applicant API scoped strictly to own jobs:
+  `/employer/applications/` (+ filters), `/employer/jobs/{id}/applications/`,
+  `/employer/applications/{id}/` (detail incl. employer-only notes), PATCH
+  status (atomic, writes history + audit), PATCH notes, permission-checked
+  applicant resume-snapshot download, `/employer/dashboard/` (real attention
+  queue + active jobs + pipeline). Cross-employer/MHA-job access → 404, no leak.
+  Fixed a snapshot-name path-leak (empty original name → neutral name).
+- **Scope (frontend):** applicant workspace with switchable table / Kanban /
+  split-screen (default), native DnD + keyboard "move to stage" alternative,
+  optimistic status changes with rollback, rejection confirmation dialog,
+  private-notes editor, resume open-link (permission-checked), and the live
+  employer dashboard. EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 196 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 104 Vitest tests passing.
+- **Security review:** PASS, no blockers — employer isolation by scoped queryset
+  (404 no leak), private notes employer-only, resume download permission-checked,
+  status change service-only + audited. Recommendations: snapshot-name leak
+  (FIXED now) and workspace throttle (→ Phase 12).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
