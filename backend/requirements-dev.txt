@@ -1,0 +1,6 @@
+# Development & test dependencies. Installs runtime deps too.
+-r requirements.txt
+ruff==0.15.18
+pytest==9.1.1
+pytest-django==4.12.0
+pytest-cov==7.1.0
