@@ -213,3 +213,28 @@ Each phase records scope, validation, independent review, and the push checkpoin
   shown, resume privacy preserved. Recurring throttle note → Phase 12.
 - **New dependency:** pypdf==5.1.0 (resume PDF text extraction).
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 9 — Saved jobs, support & analytics ✅
+
+- **Scope (backend):** SavedJob (candidate-owned, own-only, is_available label),
+  SupportRequest (guest+candidate intake, private validated attachment served
+  only to owner/admin, admin status workflow + audit), JobViewEvent
+  (privacy-aware salted-hash, no PII, 30-min dedup, best-effort recording on
+  public job views), public insights (real aggregates with k-anonymity ≥3),
+  employer analytics (own-jobs only: views/applications/conversion/
+  time-to-first/stage distribution; null when unreliable, never fake). Real
+  dashboard saved-job count.
+- **Scope (frontend):** SaveJobButton (candidate-only optimistic toggle +
+  rollback) on job detail, saved-jobs page (available/no-longer-open labels),
+  career-support form (guest+candidate, attachment, privacy notice) + candidate
+  support history, employer analytics page (honest null = "not enough data",
+  accessible SVG bars + sr-only data table). EN/zh-CN parity. Fixed a backend
+  gap: saved-job serializer now exposes the job id needed to unsave.
+- **Validation:** backend ruff/check/drift/migrate green, 274 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 136 Vitest tests passing.
+- **Security/privacy review:** PASS, no blockers — saved jobs owner-scoped,
+  support attachments private/owner-admin-only (guest attachments admin-only),
+  no PII in view events, k-anonymity on insights, employer analytics scoped with
+  no candidate identities, unreliable metrics hidden. Recurring throttle + a
+  JobViewEvent retention note → Phase 12.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
