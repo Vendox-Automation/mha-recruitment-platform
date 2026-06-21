@@ -54,16 +54,17 @@ function renderFit(ui: ReactElement) {
 const STRONG_FIT: JobFitResult = {
   score: 82,
   band: "strong",
-  matched: ["Job title aligns with your preference"],
-  gaps: ["Location differs from your preferred area"],
+  matched: ["title_strong"],
+  gaps: ["location_mismatch"],
   unknown: [],
-  explanation: "Strong match — 82%.",
   ai_enabled: false,
+  ai_explanation: "",
   ai_provider: "",
   ai_model: "",
   rule_version: "1",
   generated_at: "2026-06-20T10:00:00Z",
-  disclaimer: "Job Fit is guidance and does not guarantee an interview or hire.",
+  // Backend English disclaimer — the UI renders the LOCALISED one, not this.
+  disclaimer: "Backend English disclaimer that must NOT be shown.",
 };
 
 const SPARSE_FIT: JobFitResult = {
@@ -72,8 +73,7 @@ const SPARSE_FIT: JobFitResult = {
   band: "limited",
   matched: [],
   gaps: [],
-  unknown: ["No resume on file", "No preferred title set"],
-  explanation: "Limited match — 0%.",
+  unknown: ["resume_unknown", "title_unknown"],
 };
 
 describe("SmartJobFit", () => {
@@ -103,7 +103,7 @@ describe("SmartJobFit", () => {
     expect(getJobFit).not.toHaveBeenCalled();
   });
 
-  it("shows the candidate score, band label, grouped factors and disclaimer", async () => {
+  it("localises reason CODES, builds the explanation on the frontend, and shows the localised disclaimer", async () => {
     getJobFit.mockResolvedValue(STRONG_FIT);
 
     renderFit(<SmartJobFit slug="site-engineer" />);
@@ -111,22 +111,63 @@ describe("SmartJobFit", () => {
     expect(await screen.findByText("82%")).toBeInTheDocument();
     // Band conveyed by a text label, not colour alone.
     expect(screen.getByText("Strong match")).toBeInTheDocument();
-    // Grouped, backend-generated factor strings rendered as-is.
+    // Reason codes resolved to localised copy (NOT the raw code).
     expect(screen.getByText("Matched factors")).toBeInTheDocument();
     expect(
-      screen.getByText("Job title aligns with your preference"),
+      screen.getByText("The job title closely matches your preferred role"),
     ).toBeInTheDocument();
+    expect(screen.queryByText("title_strong")).not.toBeInTheDocument();
     expect(screen.getByText("Possible gaps")).toBeInTheDocument();
-    // The backend disclaimer is always rendered.
+    expect(
+      screen.getByText("The location differs from your preferred location"),
+    ).toBeInTheDocument();
+    // Frontend-composed explanation prose (ai disabled → no backend prose).
+    expect(
+      screen.getByText(/Strengths:.*Possible gaps:/),
+    ).toBeInTheDocument();
+    // The LOCALISED disclaimer is shown; the backend English one is NOT.
     expect(
       screen.getByText(
-        "Job Fit is guidance and does not guarantee an interview or hire.",
+        "Job Fit shows alignment only. It does not guarantee an interview or a hire.",
       ),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByText("Backend English disclaimer that must NOT be shown."),
+    ).not.toBeInTheDocument();
     // Regenerate control is a labelled button.
     expect(
       screen.getByRole("button", { name: "Regenerate" }),
     ).toBeInTheDocument();
+  });
+
+  it("drops unrecognised reason codes instead of rendering them raw", async () => {
+    getJobFit.mockResolvedValue({
+      ...STRONG_FIT,
+      matched: ["title_strong", "future_unknown_code"],
+    });
+
+    renderFit(<SmartJobFit slug="site-engineer" />);
+
+    expect(
+      await screen.findByText("The job title closely matches your preferred role"),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("future_unknown_code")).not.toBeInTheDocument();
+  });
+
+  it("renders the backend ai_explanation only when ai_enabled is true", async () => {
+    getJobFit.mockResolvedValue({
+      ...STRONG_FIT,
+      ai_enabled: true,
+      ai_explanation: "An AI-authored summary of your fit.",
+    });
+
+    renderFit(<SmartJobFit slug="site-engineer" />);
+
+    expect(
+      await screen.findByText("An AI-authored summary of your fit."),
+    ).toBeInTheDocument();
+    // The deterministic frontend prose is NOT shown on the AI path.
+    expect(screen.queryByText(/^Strengths:/)).not.toBeInTheDocument();
   });
 
   it("shows the honest empty state (no score) when the result is mostly unknown", async () => {
@@ -139,10 +180,10 @@ describe("SmartJobFit", () => {
     ).toBeInTheDocument();
     // No fabricated/overstated score is presented in the sparse case.
     expect(screen.queryByText("0%")).not.toBeInTheDocument();
-    // The disclaimer is STILL shown even in the empty state.
+    // The localised disclaimer is STILL shown even in the empty state.
     expect(
       screen.getByText(
-        "Job Fit is guidance and does not guarantee an interview or hire.",
+        "Job Fit shows alignment only. It does not guarantee an interview or a hire.",
       ),
     ).toBeInTheDocument();
   });

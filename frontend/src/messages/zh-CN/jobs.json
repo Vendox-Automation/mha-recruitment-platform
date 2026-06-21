@@ -131,6 +131,28 @@
         "gaps": "可能的差距",
         "unknown": "信息不足"
       },
+      "reasons": {
+        "title_strong": "职位名称与您期望的岗位高度匹配",
+        "location_match": "与您期望的工作地点相符",
+        "employment_type_match": "与您期望的工作类型相符",
+        "resume_overlap_strong": "您的简历中出现了多个任职要求关键词",
+        "title_related": "职位名称与您期望的岗位相关，但并非完全一致",
+        "title_mismatch": "职位名称与您期望的岗位不符",
+        "location_mismatch": "工作地点与您期望的地点不同",
+        "employment_type_mismatch": "工作类型与您期望的工作类型不同",
+        "resume_overlap_partial": "您的简历中缺少部分任职要求关键词",
+        "resume_overlap_none": "您的简历中未出现任职要求关键词",
+        "title_unknown": "暂无您期望的岗位信息可供比较",
+        "location_unknown": "暂无您期望的工作地点信息可供比较",
+        "employment_type_unknown": "暂无您期望的工作类型信息可供比较",
+        "resume_unknown": "暂无法将您的简历与职位要求进行比较"
+      },
+      "explanation": {
+        "strengths": "优势：{items}",
+        "gaps": "可能的差距：{items}",
+        "separator": "；",
+        "join": "{strengths}  {gaps}"
+      },
       "regenerate": "重新生成",
       "regenerating": "正在重新生成…",
       "regenerateErrorTitle": "无法重新生成",

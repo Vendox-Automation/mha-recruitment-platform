@@ -15,7 +15,7 @@ import {
 } from "@/components/ui";
 import { useAuth } from "@/lib/auth";
 
-import { bandLabelKey, bandTone, isSparseFit } from "../fit";
+import { bandLabelKey, bandTone, isSparseFit, localizeReasons } from "../fit";
 import { jobFitKey } from "../queryKeys";
 import { getJobFit, regenerateJobFit } from "../service";
 import type { JobFitResult } from "../types";
@@ -34,6 +34,13 @@ import type { JobFitResult } from "../types";
  * Honesty rules: the score is only ever the real API value (never fabricated),
  * the disclaimer is ALWAYS shown, and a sparse result (mostly unknowns) shows an
  * honest "not enough information yet" state rather than an overstated number.
+ *
+ * Localisation (Phase 11 L-B1): the backend returns matched/gaps/unknown as
+ * stable reason CODES; this component resolves each to localised copy under
+ * `jobs.detail.fit.reasons.*` (dropping any unrecognised code), composes the
+ * short explanation prose on the frontend from those localised reasons, and
+ * always renders the localised disclaimer. The backend `ai_explanation` is only
+ * shown on the future AI path (`ai_enabled === true`).
  *
  * Accessibility: the band is conveyed by a text label + the numeric score, not
  * colour alone (spec §13.7); the three reason groups are real `<ul>` lists with
@@ -128,11 +135,23 @@ export function SmartJobFit({ slug }: { slug: string }) {
 
   const generatedAt = formatGeneratedAt(fit.generated_at, locale);
 
+  // Resolve reason CODES to localised copy (unknown codes dropped, never shown
+  // raw). Both locales render natural text rather than the backend identifiers.
+  const matched = localizeReasons(fit.matched, (code) => t(`reasons.${code}`));
+  const gaps = localizeReasons(fit.gaps, (code) => t(`reasons.${code}`));
+  const unknown = localizeReasons(fit.unknown, (code) => t(`reasons.${code}`));
+
+  // Short explanation prose, composed on the FRONTEND from the localised
+  // strengths/gaps. The backend `ai_explanation` is only used on the AI path.
+  const explanation = fit.ai_enabled
+    ? fit.ai_explanation?.trim() || ""
+    : buildExplanation(t, matched, gaps);
+
   const disclaimerBlock = (
     <Alert tone="info" title={t("disclaimerLabel")}>
-      {/* Prefer the backend disclaimer string (spec §16.6); fall back to the
-          localised equivalent if the API ever omits it. Always rendered. */}
-      {fit.disclaimer?.trim() ? fit.disclaimer : t("disclaimer")}
+      {/* Always the localised disclaimer (spec §16.6) — never depends on the
+          backend English string, which may not be localised. */}
+      {t("disclaimer")}
     </Alert>
   );
 
@@ -157,10 +176,10 @@ export function SmartJobFit({ slug }: { slug: string }) {
           description={t("emptyBody")}
           action={regenerateButton}
         />
-        {fit.unknown.length > 0 ? (
+        {unknown.length > 0 ? (
           <ReasonGroup
             title={t("groups.unknown")}
-            items={fit.unknown}
+            items={unknown}
             tone="muted"
           />
         ) : null}
@@ -188,29 +207,29 @@ export function SmartJobFit({ slug }: { slug: string }) {
         </span>
       </div>
 
-      {fit.explanation?.trim() ? (
-        <p className="type-body-sm text-text-secondary">{fit.explanation}</p>
+      {explanation ? (
+        <p className="type-body-sm text-text-secondary">{explanation}</p>
       ) : null}
 
       <dl className="flex flex-col gap-4">
-        {fit.matched.length > 0 ? (
+        {matched.length > 0 ? (
           <ReasonGroup
             title={t("groups.matched")}
-            items={fit.matched}
+            items={matched}
             tone="positive"
           />
         ) : null}
-        {fit.gaps.length > 0 ? (
+        {gaps.length > 0 ? (
           <ReasonGroup
             title={t("groups.gaps")}
-            items={fit.gaps}
+            items={gaps}
             tone="warning"
           />
         ) : null}
-        {fit.unknown.length > 0 ? (
+        {unknown.length > 0 ? (
           <ReasonGroup
             title={t("groups.unknown")}
-            items={fit.unknown}
+            items={unknown}
             tone="muted"
           />
         ) : null}
@@ -261,6 +280,30 @@ function FitSection({
   );
 }
 
+/**
+ * Compose the short deterministic explanation prose on the FRONTEND from the
+ * already-localised strengths/gaps (spec §16; Phase 11 L-B1). Returns an empty
+ * string when there is nothing concrete to say (the surrounding UI then omits
+ * the paragraph). `unknown`-only results never reach here — they render the
+ * sparse empty state instead.
+ */
+function buildExplanation(
+  t: ReturnType<typeof useTranslations>,
+  matched: string[],
+  gaps: string[],
+): string {
+  const separator = t("explanation.separator");
+  const parts: string[] = [];
+  if (matched.length > 0) {
+    parts.push(t("explanation.strengths", { items: matched.join(separator) }));
+  }
+  if (gaps.length > 0) {
+    parts.push(t("explanation.gaps", { items: gaps.join(separator) }));
+  }
+  if (parts.length === 0) return "";
+  return parts.join("  ");
+}
+
 /** Locale-aware date+time for the "generated" timestamp (null if unparseable). */
 function formatGeneratedAt(value: string, locale: string): string | null {
   if (!value) return null;
@@ -276,9 +319,9 @@ function formatGeneratedAt(value: string, locale: string): string | null {
 }
 
 /**
- * A clearly-grouped, accessible list of backend reason strings. The group title
- * is localised chrome; the individual items are backend-generated candidate
- * strings rendered AS-IS (their zh-CN localization is Phase 11).
+ * A clearly-grouped, accessible list of reason strings. Both the group title
+ * and the individual items are already localised by the caller (the backend
+ * reason CODES are resolved to copy under `jobs.detail.fit.reasons.*`).
  */
 function ReasonGroup({
   title,

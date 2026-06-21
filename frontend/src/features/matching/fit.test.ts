@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { bandLabelKey, bandTone, isSparseFit } from "./fit";
+import {
+  bandLabelKey,
+  bandTone,
+  FIT_REASON_CODES,
+  isSparseFit,
+  localizeReasons,
+} from "./fit";
 
 describe("bandTone", () => {
   it("maps each band to a distinct, non-default status tone", () => {
@@ -49,5 +55,30 @@ describe("isSparseFit", () => {
 
   it("is NOT sparse when there are no signals at all (nothing to render)", () => {
     expect(isSparseFit({ matched: [], gaps: [], unknown: [] })).toBe(false);
+  });
+});
+
+describe("localizeReasons", () => {
+  const translate = (code: string) => `t:${code}`;
+
+  it("resolves every known reason code via the translator", () => {
+    const allCodes = [
+      ...FIT_REASON_CODES.matched,
+      ...FIT_REASON_CODES.gaps,
+      ...FIT_REASON_CODES.unknown,
+    ];
+    expect(localizeReasons(allCodes, translate)).toEqual(
+      allCodes.map((code) => `t:${code}`),
+    );
+  });
+
+  it("drops unrecognised codes rather than rendering them raw", () => {
+    expect(
+      localizeReasons(["title_strong", "made_up_code", "location_match"], translate),
+    ).toEqual(["t:title_strong", "t:location_match"]);
+  });
+
+  it("returns an empty array when given no codes", () => {
+    expect(localizeReasons([], translate)).toEqual([]);
   });
 });

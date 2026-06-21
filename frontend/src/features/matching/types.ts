@@ -3,13 +3,14 @@
  *
  * These mirror the candidate-facing `JobFitResultSerializer`
  * (`apps/matching/serializers.py`) plus the `disclaimer` string the view
- * attaches to every response (`apps/matching/api/views.py` — spec §16.6, so it
- * can never be omitted).
+ * attaches to every response (`apps/matching/api/views.py` — spec §16.6).
  *
- * The `matched`/`gaps`/`unknown` arrays and `explanation` are backend-generated
- * CANDIDATE-FACING strings. They are currently English; full zh-CN localization
- * of these backend strings is a Phase 11 item, so the UI renders them verbatim
- * (never fake-translated). Only the UI chrome around them is localised.
+ * Localisation (Phase 11 L-B1): the backend now returns `matched`/`gaps`/
+ * `unknown` as arrays of stable reason CODE strings (NOT prose). The FRONTEND
+ * maps each code to localised copy under `jobs.detail.fit.reasons.<code>` so
+ * both locales stay at full parity. The short explanation is also composed on
+ * the frontend from those localised reasons; the backend `ai_explanation` is
+ * only rendered on the future AI path (`ai_enabled === true`).
  */
 
 /** Fit band — the deterministic engine's bucket for the numeric score. */
@@ -20,21 +21,24 @@ export interface JobFitResult {
   /** Whole-number percentage 0–100 produced by the rule engine. */
   score: number;
   band: JobFitBand;
-  /** Backend-generated strengths (rendered as-is, see file header). */
+  /** Stable reason CODES for strengths (localised on the frontend). */
   matched: string[];
-  /** Backend-generated possible gaps (rendered as-is). */
+  /** Stable reason CODES for possible gaps (localised on the frontend). */
   gaps: string[];
-  /** Backend-generated factors with no data (rendered as-is). */
+  /** Stable reason CODES with no data to compare (localised on the frontend). */
   unknown: string[];
-  /** Friendly one-paragraph explanation (deterministic or AI; rendered as-is). */
-  explanation: string;
   /** Whether a real AI provider phrased the explanation (vs deterministic). */
   ai_enabled: boolean;
+  /**
+   * AI-authored explanation prose. EMPTY in the MVP (deterministic path); only
+   * rendered when `ai_enabled` is true (future AI path).
+   */
+  ai_explanation: string;
   ai_provider: string;
   ai_model: string;
   rule_version: string;
   /** ISO timestamp of when this result was computed. */
   generated_at: string;
-  /** Required disclaimer (spec §16.6) — always present, always rendered. */
+  /** Backend disclaimer (spec §16.6) — the UI always renders the localised one. */
   disclaimer: string;
 }

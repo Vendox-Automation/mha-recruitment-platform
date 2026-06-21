@@ -57,3 +57,55 @@ export function isSparseFit(
   const hasSignal = result.matched.length > 0 || result.gaps.length > 0;
   return !hasSignal && result.unknown.length > 0;
 }
+
+/**
+ * The complete set of stable Job Fit reason codes the backend can emit
+ * (spec §16; Phase 11 L-B1). Kept here so the component can render each via
+ * `t("reasons.<code>")` and FALL BACK gracefully for any unrecognised code
+ * rather than rendering a raw English/code string to a zh-CN user.
+ */
+export const FIT_REASON_CODES = {
+  matched: [
+    "title_strong",
+    "location_match",
+    "employment_type_match",
+    "resume_overlap_strong",
+  ],
+  gaps: [
+    "title_related",
+    "title_mismatch",
+    "location_mismatch",
+    "employment_type_mismatch",
+    "resume_overlap_partial",
+    "resume_overlap_none",
+  ],
+  unknown: [
+    "title_unknown",
+    "location_unknown",
+    "employment_type_unknown",
+    "resume_unknown",
+  ],
+} as const;
+
+const KNOWN_FIT_REASON_CODES = new Set<string>([
+  ...FIT_REASON_CODES.matched,
+  ...FIT_REASON_CODES.gaps,
+  ...FIT_REASON_CODES.unknown,
+]);
+
+/** A resolver from a reason code to its localised label. */
+export type ReasonTranslator = (code: string) => string;
+
+/**
+ * Resolve a list of reason codes to localised strings, dropping any code we do
+ * not recognise. Unknown codes are skipped (never shown raw) so a future
+ * backend code can't leak an English/identifier string into the localised UI.
+ */
+export function localizeReasons(
+  codes: string[],
+  translate: ReasonTranslator,
+): string[] {
+  return codes
+    .filter((code) => KNOWN_FIT_REASON_CODES.has(code))
+    .map((code) => translate(code));
+}

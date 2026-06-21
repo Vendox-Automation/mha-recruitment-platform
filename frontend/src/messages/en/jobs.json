@@ -131,6 +131,28 @@
         "gaps": "Possible gaps",
         "unknown": "Not enough information"
       },
+      "reasons": {
+        "title_strong": "The job title closely matches your preferred role",
+        "location_match": "Matches your preferred location",
+        "employment_type_match": "Matches your preferred employment type",
+        "resume_overlap_strong": "Several requirement keywords appear in your resume",
+        "title_related": "The job title is related to your preferred role but not an exact match",
+        "title_mismatch": "The job title does not match your preferred role",
+        "location_mismatch": "The location differs from your preferred location",
+        "employment_type_mismatch": "The employment type differs from your preferred employment type",
+        "resume_overlap_partial": "Some requirement keywords are missing from your resume",
+        "resume_overlap_none": "The requirement keywords do not appear in your resume",
+        "title_unknown": "Your preferred role is not available to compare",
+        "location_unknown": "Your preferred location is not available to compare",
+        "employment_type_unknown": "Your preferred employment type is not available to compare",
+        "resume_unknown": "A comparison of your resume against the job requirements is not available"
+      },
+      "explanation": {
+        "strengths": "Strengths: {items}",
+        "gaps": "Possible gaps: {items}",
+        "separator": "; ",
+        "join": "{strengths}  {gaps}"
+      },
       "regenerate": "Regenerate",
       "regenerating": "Regenerating…",
       "regenerateErrorTitle": "Could not regenerate",
