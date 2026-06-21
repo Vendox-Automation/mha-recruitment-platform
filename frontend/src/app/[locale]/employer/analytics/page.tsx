@@ -1,17 +1,16 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, PageHeader } from "@/components/layout";
-import { Card, EmptyState } from "@/components/ui";
+import { EmployerAnalyticsView } from "@/features/analytics/components/EmployerAnalyticsView";
+import { EmployerWorkspaceGuard } from "@/lib/auth";
 
-const METRICS = [
-  "views",
-  "applications",
-  "conversion",
-  "timeToFirst",
-  "stageDistribution",
-] as const;
-
-/** Employer analytics shell (spec §14.10 E, §15.8). Honest empty metrics. */
+/**
+ * Employer analytics (spec §14.10 E, §15.8). Composition only: the page provides
+ * the header, then renders the client {@link EmployerAnalyticsView}, which loads
+ * the real, employer-scoped figures and renders honest "not enough data yet" for
+ * any metric the backend withholds as unreliable. Wrapped in
+ * {@link EmployerWorkspaceGuard}: only an APPROVED employer reaches this.
+ */
 export default async function EmployerAnalyticsPage({
   params,
 }: {
@@ -22,28 +21,15 @@ export default async function EmployerAnalyticsPage({
   const t = await getTranslations("employer");
 
   return (
-    <PageContainer width="wide" className="flex flex-col gap-8">
-      <PageHeader
-        eyebrow={t("area.eyebrow")}
-        title={t("analytics.title")}
-        description={t("analytics.description")}
-      />
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {METRICS.map((key) => (
-          <Card key={key} className="flex flex-col gap-1">
-            <span className="type-data text-text-muted" aria-hidden="true">
-              —
-            </span>
-            <span className="type-caption">{t(`analytics.metrics.${key}`)}</span>
-          </Card>
-        ))}
-      </div>
-      <Card>
-        <EmptyState
-          title={t("analytics.emptyTitle")}
-          description={t("analytics.emptyBody")}
+    <EmployerWorkspaceGuard>
+      <PageContainer width="wide" className="flex flex-col gap-8">
+        <PageHeader
+          eyebrow={t("area.eyebrow")}
+          title={t("analytics.title")}
+          description={t("analytics.description")}
         />
-      </Card>
-    </PageContainer>
+        <EmployerAnalyticsView />
+      </PageContainer>
+    </EmployerWorkspaceGuard>
   );
 }

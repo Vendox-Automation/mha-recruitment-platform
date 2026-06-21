@@ -331,14 +331,32 @@
     "title": "Analytics",
     "description": "Reliable recruitment metrics for your roles.",
     "emptyTitle": "Not enough data yet",
-    "emptyBody": "Analytics appear once your roles gather views and applications.",
+    "emptyBody": "Analytics appear once you post a role and it gathers views and applications.",
+    "errorTitle": "We couldn't load your analytics",
+    "errorBody": "Please try again in a moment.",
+    "notEnough": "Not enough data yet",
+    "conversionHint": "Applications per view.",
+    "generatedAt": "Updated {date}",
     "metrics": {
       "views": "Job views",
       "applications": "Applications",
       "conversion": "Conversion rate",
       "timeToFirst": "Time to first application",
       "stageDistribution": "Stage distribution"
-    }
+    },
+    "duration": {
+      "approx": "~{value} {unit}",
+      "minutes": "{value, plural, one {minute} other {minutes}}",
+      "hours": "{value, plural, one {hour} other {hours}}",
+      "days": "{value, plural, one {day} other {days}}"
+    },
+    "stageTitle": "Applications by stage",
+    "stageLead": "Where your applications sit across the hiring pipeline.",
+    "stageEmpty": "No applications yet.",
+    "stageTableCaption": "Number of applications at each stage",
+    "stageColumnStage": "Stage",
+    "stageColumnCount": "Applications",
+    "stageTotal": "Total"
   },
   "settings": {
     "title": "Settings",

@@ -331,14 +331,32 @@
     "title": "数据分析",
     "description": "您职位的可靠招聘指标。",
     "emptyTitle": "数据尚不足",
-    "emptyBody": "当您的职位积累浏览量与申请后，数据分析将显示在这里。",
+    "emptyBody": "当您发布职位并积累浏览量与申请后，数据分析将显示在这里。",
+    "errorTitle": "无法加载数据分析",
+    "errorBody": "请稍后重试。",
+    "notEnough": "数据尚不足",
+    "conversionHint": "每次浏览的申请数。",
+    "generatedAt": "更新于 {date}",
     "metrics": {
       "views": "职位浏览量",
       "applications": "申请数",
       "conversion": "转化率",
       "timeToFirst": "首次申请用时",
       "stageDistribution": "阶段分布"
-    }
+    },
+    "duration": {
+      "approx": "约 {value} {unit}",
+      "minutes": "分钟",
+      "hours": "小时",
+      "days": "天"
+    },
+    "stageTitle": "按阶段划分的申请",
+    "stageLead": "您的申请在招聘流程各阶段的分布。",
+    "stageEmpty": "暂无申请。",
+    "stageTableCaption": "各阶段的申请数量",
+    "stageColumnStage": "阶段",
+    "stageColumnCount": "申请数",
+    "stageTotal": "总计"
   },
   "settings": {
     "title": "设置",
