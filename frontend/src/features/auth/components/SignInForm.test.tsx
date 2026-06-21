@@ -83,11 +83,12 @@ describe("SignInForm", () => {
     );
   });
 
-  it("shows a form-level error from the API envelope on bad credentials", async () => {
+  it("shows the localised invalid-credentials message on a 400 (L-B2)", async () => {
     const user = userEvent.setup();
     login.mockRejectedValue(
       new ApiRequestError({
         code: "validation_error",
+        // Raw English server message — the UI must NOT surface this verbatim.
         message: "These credentials are invalid.",
         fields: { non_field_errors: ["These credentials are invalid."] },
         status: 400,
@@ -100,9 +101,13 @@ describe("SignInForm", () => {
     await user.type(screen.getByLabelText(/password/i), "wrongpassword1");
     await user.click(screen.getByRole("button", { name: "Sign in" }));
 
+    // Contextual localised copy is shown instead of the raw English message.
     expect(
-      await screen.findByText("These credentials are invalid."),
+      await screen.findByText("The email or password is incorrect."),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByText("These credentials are invalid."),
+    ).not.toBeInTheDocument();
     expect(replace).not.toHaveBeenCalled();
   });
 });

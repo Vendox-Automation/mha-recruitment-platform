@@ -10,7 +10,7 @@ import { ensureCsrf, login } from "@/lib/api/auth";
 import { destinationForUser, useAuth } from "@/lib/auth";
 
 import { signInSchema, type SignInValues } from "../schemas";
-import { applyApiError, useFormError } from "../useAuthForm";
+import { applyApiError, useApiErrorLocalizer, useFormError } from "../useAuthForm";
 import { PasswordInput } from "./PasswordInput";
 
 const SIGN_IN_FIELDS = ["email", "password"] as const;
@@ -29,6 +29,7 @@ export function SignInForm() {
   const router = useRouter();
   const { setUser } = useAuth();
   const { formError, setFormError } = useFormError();
+  const localizeError = useApiErrorLocalizer({ includeAuthCopy: true });
 
   const {
     register,
@@ -48,7 +49,13 @@ export function SignInForm() {
       setUser(user);
       router.replace(destinationForUser(user));
     } catch (error) {
-      const message = applyApiError(error, setError, SIGN_IN_FIELDS, tv("generic"));
+      const message = applyApiError(
+        error,
+        setError,
+        SIGN_IN_FIELDS,
+        tv("generic"),
+        localizeError,
+      );
       if (message) setFormError(message);
     }
   });

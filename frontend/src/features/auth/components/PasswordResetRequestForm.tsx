@@ -19,7 +19,7 @@ import {
   passwordResetRequestSchema,
   type PasswordResetRequestValues,
 } from "../schemas";
-import { applyApiError, useFormError } from "../useAuthForm";
+import { applyApiError, useApiErrorLocalizer, useFormError } from "../useAuthForm";
 
 const FIELDS = ["email"] as const;
 
@@ -34,6 +34,7 @@ export function PasswordResetRequestForm() {
   const tv = useTranslations("validation");
   const locale = useLocale();
   const { formError, setFormError } = useFormError();
+  const localizeError = useApiErrorLocalizer();
 
   const {
     register,
@@ -51,7 +52,13 @@ export function PasswordResetRequestForm() {
       await ensureCsrf(locale);
       await requestPasswordReset(values, locale);
     } catch (error) {
-      const message = applyApiError(error, setError, FIELDS, tv("generic"));
+      const message = applyApiError(
+        error,
+        setError,
+        FIELDS,
+        tv("generic"),
+        localizeError,
+      );
       if (message) setFormError(message);
       // Re-throw so react-hook-form marks the submit unsuccessful and keeps the
       // form visible for a retry.

@@ -16,7 +16,11 @@ import {
   SuccessState,
   Textarea,
 } from "@/components/ui";
-import { applyApiError, useFormError } from "@/features/auth/useAuthForm";
+import {
+  applyApiError,
+  useApiErrorLocalizer,
+  useFormError,
+} from "@/features/auth/useAuthForm";
 import {
   RESUME_ACCEPT,
   precheckResumeFile,
@@ -64,6 +68,7 @@ export function SupportForm({ jobSlug }: { jobSlug?: string }) {
   const queryClient = useQueryClient();
   const { user } = useAuth();
   const { formError, setFormError } = useFormError();
+  const localizeError = useApiErrorLocalizer();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -133,6 +138,7 @@ export function SupportForm({ jobSlug }: { jobSlug?: string }) {
           setError,
           SUPPORT_FIELDS,
           tv("generic"),
+          localizeError,
         );
         if (message) setFormError(message);
       },

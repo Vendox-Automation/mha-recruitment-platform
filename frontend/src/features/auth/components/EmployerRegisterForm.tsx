@@ -13,7 +13,7 @@ import {
   employerRegisterSchema,
   type EmployerRegisterValues,
 } from "../schemas";
-import { applyApiError, useFormError } from "../useAuthForm";
+import { applyApiError, useApiErrorLocalizer, useFormError } from "../useAuthForm";
 import { PasswordInput } from "./PasswordInput";
 
 const EMPLOYER_FIELDS = [
@@ -37,6 +37,7 @@ export function EmployerRegisterForm() {
   const router = useRouter();
   const { setUser } = useAuth();
   const { formError, setFormError } = useFormError();
+  const localizeError = useApiErrorLocalizer({ includeAuthCopy: true });
 
   const {
     register,
@@ -65,7 +66,13 @@ export function EmployerRegisterForm() {
       setUser(user);
       router.replace(destinationForUser(user));
     } catch (error) {
-      const message = applyApiError(error, setError, EMPLOYER_FIELDS, tv("generic"));
+      const message = applyApiError(
+        error,
+        setError,
+        EMPLOYER_FIELDS,
+        tv("generic"),
+        localizeError,
+      );
       if (message) setFormError(message);
     }
   });

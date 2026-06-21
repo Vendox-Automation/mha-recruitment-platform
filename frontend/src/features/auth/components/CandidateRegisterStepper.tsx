@@ -25,7 +25,7 @@ import {
   candidateRegisterSchema,
   type CandidateRegisterValues,
 } from "../schemas";
-import { applyApiError, useFormError } from "../useAuthForm";
+import { applyApiError, useApiErrorLocalizer, useFormError } from "../useAuthForm";
 import { PasswordInput } from "./PasswordInput";
 
 const STEPS = ["account", "profile", "preferences", "ready"] as const;
@@ -58,6 +58,7 @@ export function CandidateRegisterStepper() {
   const router = useRouter();
   const { setUser } = useAuth();
   const { formError, setFormError } = useFormError();
+  const localizeError = useApiErrorLocalizer({ includeAuthCopy: true });
   const [step, setStep] = useState(0);
 
   const {
@@ -118,6 +119,7 @@ export function CandidateRegisterStepper() {
         setError,
         CANDIDATE_FIELDS,
         tv("generic"),
+        localizeError,
       );
       if (message) setFormError(message);
       // Surface field errors on their owning step (account holds credentials).

@@ -28,11 +28,21 @@ export function LocaleSwitcher({
 
   function selectLocale(next: Locale) {
     if (next === activeLocale) return;
+    // Preserve the full query string (filters, sort, page) across the switch so
+    // e.g. /en/jobs?keyword=…&sort=relevant survives going to 中文 (L-B3). Read
+    // it from the live URL inside the (client-only) click handler rather than
+    // via useSearchParams(), so the header does not force a static-render
+    // Suspense bailout on every page that uses it.
+    const query =
+      typeof window !== "undefined"
+        ? Object.fromEntries(new URLSearchParams(window.location.search).entries())
+        : {};
     startTransition(() => {
-      // Preserve the current route and dynamic params; only the locale changes.
+      // Preserve the current route, dynamic params, AND query; only the locale
+      // changes.
       router.replace(
         // @ts-expect-error -- pathname is a typed route; params satisfy it.
-        { pathname, params },
+        { pathname, params, query },
         { locale: next },
       );
     });

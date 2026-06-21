@@ -76,5 +76,17 @@
     "approvedEmployer": "已认证雇主",
     "mhaSupported": "MHA 顾问支持",
     "easyApply": "一键申请"
+  },
+  "apiErrors": {
+    "validation_error": "请检查标记的字段后重试。",
+    "authentication_required": "请先登录以继续。",
+    "permission_denied": "您的账户没有执行此操作的权限。",
+    "not_found": "未找到您要查找的内容。",
+    "conflict": "这与现有信息冲突。请检查后重试。",
+    "throttled": "尝试次数过多。请稍候片刻后重试。",
+    "server_error": "我们这边出现了问题，请重试。",
+    "generic": "出现了问题，请重试。",
+    "invalidCredentials": "邮箱或密码不正确。",
+    "emailExists": "该邮箱已被注册。"
   }
 }

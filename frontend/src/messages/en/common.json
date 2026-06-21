@@ -76,5 +76,17 @@
     "approvedEmployer": "Approved employer",
     "mhaSupported": "MHA Recruiter Supported",
     "easyApply": "Easy Apply"
+  },
+  "apiErrors": {
+    "validation_error": "Please review the highlighted fields and try again.",
+    "authentication_required": "Please sign in to continue.",
+    "permission_denied": "Your account does not have permission to do this.",
+    "not_found": "We could not find what you were looking for.",
+    "conflict": "This conflicts with existing information. Please review and try again.",
+    "throttled": "Too many attempts. Please wait a moment and try again.",
+    "server_error": "Something went wrong on our side. Please try again.",
+    "generic": "Something went wrong. Please try again.",
+    "invalidCredentials": "The email or password is incorrect.",
+    "emailExists": "An account with this email already exists."
   }
 }
