@@ -264,3 +264,27 @@ Each phase records scope, validation, independent review, and the push checkpoin
   frontend lint/typecheck/build (55 pages) green, 144 Vitest tests passing.
 - **New dependency:** framer-motion@12 (single approved motion library).
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 11 — English & Simplified Chinese completion ✅
+
+- **Audit:** independent localisation + accessibility audit of the whole app
+  found 5 blockers (3 i18n, 2 a11y); all fixed.
+- **L-B1 (i18n):** Smart Job Fit reasons rendered English on the zh-CN UI →
+  engine now emits 14 stable reason CODES; frontend maps them to localised text,
+  composes the explanation, and renders a localised disclaimer.
+- **L-B2 (i18n):** server error messages rendered English → frontend localises by
+  envelope `code` + contextual auth copy (gettext `.mo` toolchain unavailable in
+  this environment, so code-mapping was chosen).
+- **L-B3 (i18n):** locale switch dropped the URL query → LocaleSwitcher now
+  preserves it (job-search filters survive a language switch).
+- **A-B1 (a11y):** success badge contrast 4.45 → `--status-success` darkened to
+  meet AA (5.29 on subtle).
+- **A-B2 (a11y):** rejection ConfirmDialog now traps Tab and restores focus to
+  the opener.
+- **A-M1:** kanban move now announced via aria-live. Removed dead `status_display`.
+- **Coverage report:** docs/development/I18N_COVERAGE.md — full parity (10
+  namespaces), flagged for production: native zh-CN review of all copy +
+  transactional-email localisation (needs `.mo` compilation).
+- **Validation:** backend 280 pytest green; frontend lint/typecheck/build (55
+  pages) green, 160 Vitest tests passing; all 10 namespaces verified at parity.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
