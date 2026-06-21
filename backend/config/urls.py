@@ -9,8 +9,10 @@ from __future__ import annotations
 from django.contrib import admin
 from django.urls import include, path
 
+from apps.analytics.api import urls as analytics_urls
 from apps.jobs.api import urls as jobs_urls
 from apps.matching.api import urls as matching_urls
+from apps.support.api import urls as support_urls
 from config.health import health
 
 urlpatterns = [
@@ -18,9 +20,15 @@ urlpatterns = [
     path("api/v1/health/", health, name="health"),
     path("api/v1/auth/", include("apps.accounts.api.urls")),
     path("api/v1/employer/", include("apps.employers.api.urls")),
-    # Candidate self-service: profile editor, private resume management, and the
-    # permission-checked resume download (apps.candidates owns these, ADR §3.1).
+    # Employer own-job analytics (views/applications/conversion/etc.). Mounted
+    # before the jobs employer router so ``analytics/`` resolves cleanly
+    # (apps.analytics owns it, ADR §3.1).
+    path("api/v1/employer/", include((analytics_urls.employer_patterns, "analytics-employer"))),
+    # Candidate self-service: profile editor, private resume management, the
+    # permission-checked resume download, saved jobs, and the candidate's own
+    # support-request history (apps.candidates owns the first set, ADR §3.1).
     path("api/v1/candidate/", include("apps.candidates.api.urls")),
+    path("api/v1/candidate/", include((support_urls.candidate_patterns, "support-candidate"))),
     # Jobs: employer CRUD/lifecycle, public search/detail, and the public
     # company directory (apps.jobs owns public job + company APIs, ADR §3.1).
     # Employer applicant workspace (applications to the employer's OWN jobs):
@@ -37,6 +45,10 @@ urlpatterns = [
     path("api/v1/jobs/", include((matching_urls.job_fit_patterns, "matching"))),
     path("api/v1/jobs/", include((jobs_urls.public_job_patterns, "jobs-public"))),
     path("api/v1/companies/", include((jobs_urls.company_patterns, "companies"))),
+    # Public career-support intake + permission-checked attachment download, and
+    # the public insights aggregate (apps.support / apps.analytics own these).
+    path("api/v1/", include((support_urls.public_patterns, "support"))),
+    path("api/v1/", include((analytics_urls.public_patterns, "analytics-public"))),
     # Applications: candidate apply (jobs/{slug}/apply/) + candidate tracking
     # (candidate/applications/). Mounted last so the more specific job/candidate
     # patterns above resolve first (apps.applications owns these, ADR §3.1).
