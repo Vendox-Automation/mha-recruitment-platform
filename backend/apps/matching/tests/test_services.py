@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from django.core.files.base import ContentFile
 
-from apps.matching import ai
+from apps.matching import ai, engine
 from apps.matching.models import JobFitResult
 from apps.matching.services import compute_job_fit
 from apps.matching.tests.conftest import docx_bytes
@@ -60,7 +60,9 @@ def test_resume_keywords_feed_overlap(make_candidate, make_job):
     assert candidate.resume_extracted_keywords_json  # cached
 
 
-def test_ai_disabled_uses_deterministic_fallback(make_candidate, make_job, settings):
+def test_ai_disabled_stores_empty_explanation_and_codes(make_candidate, make_job, settings):
+    # With AI disabled (the MVP default) no backend prose is stored — the engine
+    # emits stable reason codes and the frontend builds localized prose (spec §17).
     settings.AI_JOB_FIT_ENABLED = False
     candidate = make_candidate()
     job = make_job()
@@ -68,7 +70,12 @@ def test_ai_disabled_uses_deterministic_fallback(make_candidate, make_job, setti
     assert result.ai_enabled is False
     assert result.ai_provider == ""
     assert result.ai_model == ""
-    assert str(result.score) + "%" in result.ai_explanation
+    assert result.ai_explanation == ""
+    # Reasons are stable codes, not prose.
+    for code in result.matched_json:
+        assert code in engine.MATCHED_CODES
+    for code in result.unknown_json:
+        assert code in engine.UNKNOWN_CODES
 
 
 def test_mock_provider_cannot_change_score(make_candidate, make_job, settings):
@@ -102,7 +109,10 @@ def test_failing_provider_falls_back(make_candidate, make_job, settings):
     candidate = make_candidate()
     job = make_job()
     result = compute_job_fit(candidate, job)
-    # Fell back to deterministic copy; not marked ai_enabled.
+    # Provider failure → not marked ai_enabled, no prose stored; the engine score
+    # is untouched and the frontend builds wording from the reason codes.
     assert result.ai_enabled is False
+    assert result.ai_provider == ""
+    assert result.ai_model == ""
     assert result.score > 0
-    assert str(result.score) + "%" in result.ai_explanation
+    assert result.ai_explanation == ""

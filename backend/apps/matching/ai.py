@@ -6,6 +6,14 @@ short friendly candidate-facing prose. It is provider-neutral so AI can be enabl
 disabled, or swapped without touching core scoring (spec §22.3 — "AI explanation
 can be disabled without losing core functionality").
 
+Localisation note (spec §17): when AI is DISABLED (the MVP default) no prose is
+generated here at all — the engine emits stable reason CODES and the frontend
+builds the localized en / zh-CN wording from them. The deterministic copy below is
+retained only so a future locale-aware provider has a reference and so the provider
+contract stays exercised in tests; its English string is not persisted or rendered
+in the MVP. A future real provider returns locale-aware prose for the requested
+``locale`` and still must NOT change the score.
+
 Hard rules enforced here:
 
 * The provider receives ONLY the structured facts (locale, score, band, matched /

@@ -6,9 +6,12 @@ pure pieces together:
   1. gather the candidate's stated preferences,
   2. extract the resume keyword set (cached on the profile when freshly derived),
   3. extract the job's requirement keyword set,
-  4. run the deterministic rule engine (:mod:`apps.matching.engine`),
-  5. phrase the result (real AI provider if enabled, else deterministic fallback —
-     :mod:`apps.matching.ai`), keeping the engine's numeric score untouched,
+  4. run the deterministic rule engine (:mod:`apps.matching.engine`), which emits
+     stable language-neutral reason CODES,
+  5. phrase the result ONLY when a real (locale-aware) AI provider is enabled
+     (:mod:`apps.matching.ai`), keeping the engine's numeric score untouched; when
+     AI is disabled (the MVP default) the explanation is stored empty and the
+     frontend builds localized prose from the codes (spec §16.5, §17),
   6. upsert the single current :class:`JobFitResult` for the (candidate, job) pair.
 
 It is synchronous and runs inside a transaction (ADR-0001 §9.3): the model's
@@ -84,27 +87,30 @@ def compute_job_fit(candidate: CandidateProfile, job: Job) -> JobFitResult:
     )
 
     provider, ai_enabled = ai.get_provider()
-    try:
-        explanation = provider.generate_explanation(
-            locale="en",
-            score=fit.score,
-            band=fit.band,
-            matched=fit.matched,
-            gaps=fit.gaps,
-            unknown=fit.unknown,
-        )
-    except Exception:
-        # Any provider failure → deterministic fallback (spec §16.5). The score is
-        # already fixed by the engine, so a failed AI call never affects it.
-        explanation = ai.FallbackProvider().generate_explanation(
-            locale="en",
-            score=fit.score,
-            band=fit.band,
-            matched=fit.matched,
-            gaps=fit.gaps,
-            unknown=fit.unknown,
-        )
-        provider, ai_enabled = ai.FallbackProvider(), False
+    if ai_enabled:
+        # A real (locale-aware) AI provider is configured: it phrases the prose.
+        # The score/band are already fixed by the engine and are passed in as
+        # facts the provider must not contradict — it returns a string only.
+        try:
+            explanation = provider.generate_explanation(
+                locale="en",
+                score=fit.score,
+                band=fit.band,
+                matched=fit.matched,
+                gaps=fit.gaps,
+                unknown=fit.unknown,
+            )
+        except Exception:
+            # Any provider failure → no prose; the frontend builds wording from the
+            # stable reason codes (spec §16.5, §17). The score is already fixed by
+            # the engine, so a failed AI call never affects it.
+            explanation = ""
+            ai_enabled = False
+    else:
+        # AI disabled (the MVP default): the engine emits stable, language-neutral
+        # reason CODES and the frontend builds the localized prose from them, so no
+        # backend-built English explanation is stored (spec §16.5, §17).
+        explanation = ""
 
     result, _created = JobFitResult.objects.update_or_create(
         candidate=candidate,

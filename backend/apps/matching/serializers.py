@@ -13,7 +13,14 @@ from apps.matching.models import JobFitResult
 
 
 class JobFitResultSerializer(serializers.ModelSerializer):
-    """Candidate-facing view of a :class:`JobFitResult`."""
+    """Candidate-facing view of a :class:`JobFitResult`.
+
+    ``matched``/``gaps``/``unknown`` are returned as-is: stable language-neutral
+    reason CODES (see :mod:`apps.matching.engine`), which the frontend maps to
+    localized en / zh-CN text (spec §17). ``explanation`` is empty unless a real
+    locale-aware AI provider is enabled; when ``ai_enabled`` is False the frontend
+    builds the prose from the codes.
+    """
 
     matched = serializers.ListField(source="matched_json", child=serializers.CharField())
     gaps = serializers.ListField(source="gaps_json", child=serializers.CharField())

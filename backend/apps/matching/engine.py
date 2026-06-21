@@ -50,6 +50,63 @@ BAND_GOOD: Final = "good"
 BAND_PARTIAL: Final = "partial"
 BAND_LIMITED: Final = "limited"
 
+# --- Reason codes (spec §16.4, §17 localisation) ---------------------------
+# The engine emits STABLE, language-neutral snake_case CODES, never prose. The
+# frontend maps each code to localized text (en + zh-CN), so the same result
+# renders correctly in either locale and the wording can change without a backend
+# change. This is the COMPLETE enumerated set the engine can ever emit; adding a
+# new reason MUST add a code here AND a frontend translation, or it renders raw.
+#
+# matched (a positive alignment):
+REASON_TITLE_STRONG: Final = "title_strong"
+REASON_LOCATION_MATCH: Final = "location_match"
+REASON_EMPLOYMENT_TYPE_MATCH: Final = "employment_type_match"
+REASON_RESUME_OVERLAP_STRONG: Final = "resume_overlap_strong"
+#
+# gaps (a present-but-weaker or mismatched factor):
+REASON_TITLE_RELATED: Final = "title_related"
+REASON_TITLE_MISMATCH: Final = "title_mismatch"
+REASON_LOCATION_MISMATCH: Final = "location_mismatch"
+REASON_EMPLOYMENT_TYPE_MISMATCH: Final = "employment_type_mismatch"
+REASON_RESUME_OVERLAP_PARTIAL: Final = "resume_overlap_partial"
+REASON_RESUME_OVERLAP_NONE: Final = "resume_overlap_none"
+#
+# unknown (a factor excluded for lack of usable data on either side):
+REASON_TITLE_UNKNOWN: Final = "title_unknown"
+REASON_LOCATION_UNKNOWN: Final = "location_unknown"
+REASON_EMPLOYMENT_TYPE_UNKNOWN: Final = "employment_type_unknown"
+REASON_RESUME_UNKNOWN: Final = "resume_unknown"
+
+# Frozen membership sets — the authoritative enumeration of valid codes per
+# bucket. Used for documentation, tests, and any future validation.
+MATCHED_CODES: Final = frozenset(
+    {
+        REASON_TITLE_STRONG,
+        REASON_LOCATION_MATCH,
+        REASON_EMPLOYMENT_TYPE_MATCH,
+        REASON_RESUME_OVERLAP_STRONG,
+    }
+)
+GAP_CODES: Final = frozenset(
+    {
+        REASON_TITLE_RELATED,
+        REASON_TITLE_MISMATCH,
+        REASON_LOCATION_MISMATCH,
+        REASON_EMPLOYMENT_TYPE_MISMATCH,
+        REASON_RESUME_OVERLAP_PARTIAL,
+        REASON_RESUME_OVERLAP_NONE,
+    }
+)
+UNKNOWN_CODES: Final = frozenset(
+    {
+        REASON_TITLE_UNKNOWN,
+        REASON_LOCATION_UNKNOWN,
+        REASON_EMPLOYMENT_TYPE_UNKNOWN,
+        REASON_RESUME_UNKNOWN,
+    }
+)
+ALL_REASON_CODES: Final = MATCHED_CODES | GAP_CODES | UNKNOWN_CODES
+
 # Light, language-neutral-ish stopword set for title tokenisation. Deliberately
 # small (spec calls for "stopword-light"): only words that add no matching signal.
 _TITLE_STOPWORDS: Final = frozenset(
@@ -128,9 +185,11 @@ class JobFit:
     """Result of a pure scoring run.
 
     ``score`` is an integer 0..100, ``band`` one of the four band constants, and
-    the three reason lists are plain candidate-facing English strings (spec
-    §16.4). ``factors`` exposes the per-factor fraction/weight breakdown for
-    transparency and testing; it is not part of the persisted candidate output.
+    the three reason lists are STABLE reason CODES (spec §16.4, §17) — never
+    prose. The frontend maps each code to localized en / zh-CN text, so the same
+    result renders correctly in either locale. ``factors`` exposes the per-factor
+    fraction/weight breakdown for transparency and testing; it is not part of the
+    persisted candidate output.
     """
 
     score: int
@@ -240,13 +299,13 @@ def compute(
         total_weight += WEIGHT_TITLE
         factors["title"] = {"fraction": frac, "weight": WEIGHT_TITLE}
         if frac >= 0.6:
-            matched.append("The job title closely matches your preferred role")
+            matched.append(REASON_TITLE_STRONG)
         elif frac > 0.0:
-            gaps.append("The job title is related to your preferred role but not an exact match")
+            gaps.append(REASON_TITLE_RELATED)
         else:
-            gaps.append("The job title does not match your preferred role")
+            gaps.append(REASON_TITLE_MISMATCH)
     else:
-        unknown.append("Your preferred role is not available to compare")
+        unknown.append(REASON_TITLE_UNKNOWN)
 
     # --- Location --------------------------------------------------------
     if preferred_location.strip() and job_location.strip():
@@ -255,11 +314,11 @@ def compute(
         total_weight += WEIGHT_LOCATION
         factors["location"] = {"fraction": frac, "weight": WEIGHT_LOCATION}
         if frac >= 1.0:
-            matched.append("Matches your preferred location")
+            matched.append(REASON_LOCATION_MATCH)
         else:
-            gaps.append("The location differs from your preferred location")
+            gaps.append(REASON_LOCATION_MISMATCH)
     else:
-        unknown.append("Your preferred location is not available to compare")
+        unknown.append(REASON_LOCATION_UNKNOWN)
 
     # --- Employment type -------------------------------------------------
     if preferred_employment_type.strip() and job_employment_type.strip():
@@ -268,11 +327,11 @@ def compute(
         total_weight += WEIGHT_EMPLOYMENT_TYPE
         factors["employment_type"] = {"fraction": frac, "weight": WEIGHT_EMPLOYMENT_TYPE}
         if frac >= 1.0:
-            matched.append("Matches your preferred employment type")
+            matched.append(REASON_EMPLOYMENT_TYPE_MATCH)
         else:
-            gaps.append("The employment type differs from your preferred employment type")
+            gaps.append(REASON_EMPLOYMENT_TYPE_MISMATCH)
     else:
-        unknown.append("Your preferred employment type is not available to compare")
+        unknown.append(REASON_EMPLOYMENT_TYPE_UNKNOWN)
 
     # --- Resume-to-requirements overlap ----------------------------------
     if resume_keywords and requirement_keywords:
@@ -281,13 +340,13 @@ def compute(
         total_weight += WEIGHT_RESUME_OVERLAP
         factors["resume_overlap"] = {"fraction": frac, "weight": WEIGHT_RESUME_OVERLAP}
         if frac >= 0.5:
-            matched.append("Several requirement keywords appear in your resume")
+            matched.append(REASON_RESUME_OVERLAP_STRONG)
         elif frac > 0.0:
-            gaps.append("Some requirement keywords are missing from your resume")
+            gaps.append(REASON_RESUME_OVERLAP_PARTIAL)
         else:
-            gaps.append("The requirement keywords do not appear in your resume")
+            gaps.append(REASON_RESUME_OVERLAP_NONE)
     else:
-        unknown.append("A comparison of your resume against the job requirements is not available")
+        unknown.append(REASON_RESUME_UNKNOWN)
 
     # --- Aggregate + re-normalise ----------------------------------------
     # ``total_weight`` is the sum of weights of the AVAILABLE factors only;

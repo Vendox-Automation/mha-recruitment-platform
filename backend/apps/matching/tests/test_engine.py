@@ -65,14 +65,15 @@ def test_each_factor_contributes_independently():
     # Only the 25-weight location factor scores 1.0; all four are present.
     # score = 100 * (1.0*25) / 100 = 25
     assert fit.score == 25
-    assert "Matches your preferred location" in fit.matched
+    assert engine.REASON_LOCATION_MATCH in fit.matched
 
 
 def test_employment_type_exact_only():
     matched = compute(**_full_inputs(preferred_employment_type="full_time"))
     mismatch = compute(**_full_inputs(job_employment_type="contract"))
-    assert "Matches your preferred employment type" in matched.matched
-    assert "Matches your preferred employment type" not in mismatch.matched
+    assert engine.REASON_EMPLOYMENT_TYPE_MATCH in matched.matched
+    assert engine.REASON_EMPLOYMENT_TYPE_MATCH not in mismatch.matched
+    assert engine.REASON_EMPLOYMENT_TYPE_MISMATCH in mismatch.gaps
     assert mismatch.score < matched.score
 
 
@@ -105,7 +106,7 @@ def test_missing_location_renormalises_denominator():
     # title 1.0*35 + type 1.0*20 + resume 1.0*20 = 75; denominator 75 -> 100.
     assert fit.score == 100
     assert "location" not in fit.factors
-    assert any("preferred location is not available" in u for u in fit.unknown)
+    assert engine.REASON_LOCATION_UNKNOWN in fit.unknown
 
 
 def test_missing_factor_only_uses_available_information():
@@ -127,6 +128,9 @@ def test_missing_factor_only_uses_available_information():
     assert "employment_type" not in fit.factors
     assert "resume_overlap" not in fit.factors
     assert len(fit.unknown) == 2
+    assert engine.REASON_EMPLOYMENT_TYPE_UNKNOWN in fit.unknown
+    assert engine.REASON_RESUME_UNKNOWN in fit.unknown
+    assert engine.REASON_LOCATION_MISMATCH in fit.gaps
 
 
 def test_no_usable_data_scores_zero_limited():
@@ -134,6 +138,12 @@ def test_no_usable_data_scores_zero_limited():
     assert fit.score == 0
     assert fit.band == "limited"
     assert len(fit.unknown) == 4
+    assert set(fit.unknown) == {
+        engine.REASON_TITLE_UNKNOWN,
+        engine.REASON_LOCATION_UNKNOWN,
+        engine.REASON_EMPLOYMENT_TYPE_UNKNOWN,
+        engine.REASON_RESUME_UNKNOWN,
+    }
     assert not fit.factors
 
 
@@ -158,7 +168,7 @@ def test_title_partial_is_gap_not_matched():
         requirement_keywords=set(),
     )
     # "data" overlaps; jaccard = 1/4 = 0.25 -> a gap, not a match.
-    assert any("related to your preferred role" in g for g in fit.gaps)
+    assert engine.REASON_TITLE_RELATED in fit.gaps
     assert not fit.matched
 
 
@@ -172,15 +182,32 @@ def test_location_containment_matches():
         requirement_keywords=set(),
     )
     assert fit.score == 100
-    assert "Matches your preferred location" in fit.matched
+    assert engine.REASON_LOCATION_MATCH in fit.matched
 
 
-def test_structured_reasons_are_candidate_facing_strings():
+def test_structured_reasons_are_known_codes():
+    # Every emitted reason is a stable code drawn from the enumerated sets, never
+    # prose. This is what lets the frontend code-map to localized text (spec §17).
     fit = compute(**_full_inputs(job_location="Penang"))
-    for lst in (fit.matched, fit.gaps, fit.unknown):
-        for item in lst:
-            assert isinstance(item, str)
-            assert item  # non-empty
+    for code in fit.matched:
+        assert code in engine.MATCHED_CODES
+    for code in fit.gaps:
+        assert code in engine.GAP_CODES
+    for code in fit.unknown:
+        assert code in engine.UNKNOWN_CODES
+    # Codes are stable snake_case identifiers (no spaces, lowercased).
+    for code in (*fit.matched, *fit.gaps, *fit.unknown):
+        assert code == code.lower()
+        assert " " not in code
+
+
+def test_reason_code_sets_are_disjoint():
+    assert not (engine.MATCHED_CODES & engine.GAP_CODES)
+    assert not (engine.MATCHED_CODES & engine.UNKNOWN_CODES)
+    assert not (engine.GAP_CODES & engine.UNKNOWN_CODES)
+    assert engine.ALL_REASON_CODES == (
+        engine.MATCHED_CODES | engine.GAP_CODES | engine.UNKNOWN_CODES
+    )
 
 
 def test_tokenize_text_filters_stopwords_and_short_tokens():
