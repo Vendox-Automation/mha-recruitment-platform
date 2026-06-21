@@ -288,3 +288,22 @@ Each phase records scope, validation, independent review, and the push checkpoin
 - **Validation:** backend 280 pytest green; frontend lint/typecheck/build (55
   pages) green, 160 Vitest tests passing; all 10 namespaces verified at parity.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 12 — Hardening & final review ✅
+
+- **Scope:** idempotent, DEBUG-guarded `seed_demo_data` command (synthetic demo
+  content + documented demo accounts, password `DemoPass123!`); throttle
+  hardening (global Anon/User throttles closing the recurring "unthrottled
+  authenticated endpoint" recommendation, tests stay unthrottled); lossless
+  numeric screening-answer storage; final docs (API.md, DEFINITION_OF_DONE.md,
+  I18N_COVERAGE.md, README demo section); CI now runs the frontend Vitest suite.
+- **Data-driven visual QA (supervisor):** seeded the DB and inspected the live
+  app — the Career Intelligence Console renders real Platform analytics + curated
+  MHA insights + honest illustrative previews, and job search lists all 20
+  seeded jobs. Confirmed honest sourcing works with real data.
+- **Validation:** backend 286 pytest green; frontend lint/typecheck/build green +
+  160 Vitest; clean-DB migrate + no drift; seed idempotent (verified twice).
+- **Final independent reviews:** final-release (code PASS; only gate = open the
+  PR), repository-quality (PASS), security/privacy (PASS — throttle gap
+  addressed). No code blockers.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.

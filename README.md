@@ -76,7 +76,7 @@ mha-recruitment-platform/
 │                          #   jobs, applications, matching, support,
 │                          #   analytics, audit
 ├── frontend/              # Next.js App Router + TypeScript
-│   └── src/{app,components,features,lib,messages,styles}
+│   └── src/{app,components,features,lib,i18n,messages}
 ├── docs/
 │   ├── architecture/      # ADRs
 │   ├── development/        # commit convention
