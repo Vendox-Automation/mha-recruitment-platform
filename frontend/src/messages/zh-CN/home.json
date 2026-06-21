@@ -14,12 +14,20 @@
     "candidate": {
       "lead": "搜索专业机会、了解匹配程度、追踪每一份申请，并在需要时获得 MHA 职业支持。",
       "primaryCta": "寻找职位",
-      "secondaryCta": "创建求职者账户"
+      "secondaryCta": "创建求职者账户",
+      "highlight": {
+        "title": "在申请前了解契合度",
+        "body": "可解释的职位匹配会列出匹配要素与真实差距——来源于 MHA，绝非黑箱。"
+      }
     },
     "employer": {
       "lead": "规划并发布职位、高效审阅申请、跟进招聘进度，并借助 MHA 的招聘专业能力。",
       "primaryCta": "雇主专区",
-      "secondaryCta": "注册您的机构"
+      "secondaryCta": "注册您的机构",
+      "highlight": {
+        "title": "值得信赖的招聘情报",
+        "body": "招聘洞察与平台数据，来源清晰；在需要判断时还有 MHA 顾问支持。"
+      }
     }
   },
   "value": {
@@ -69,19 +77,39 @@
     "lead": "每个模块都会标明它是 MHA 洞察、真实平台数据，还是示例预览。我们绝不展示虚构的活动数据。",
     "rolesInFocus": {
       "title": "关注的职位族",
-      "body": "MHA 在专业招聘中观察到需求的职位族。"
+      "body": "MHA 在专业招聘中观察到需求的职位族。",
+      "count": "{count, plural, other {# 个职位}}"
     },
     "hiringOutlook": {
       "title": "招聘前景",
-      "body": "MHA 顾问对招聘环境的定性解读。"
+      "body": "MHA 顾问对招聘环境的定性解读。",
+      "recent": "过去 30 天内新发布 {count, plural, other {# 个职位}}。"
     },
     "salaryGuidance": {
       "title": "薪资参考",
-      "body": "仅在 MHA 拥有可靠来源时才展示参考区间。"
+      "body": "仅在 MHA 拥有可靠来源时，才会在此展示参考区间。",
+      "previewNote": "示例预览。我们绝不展示无法支撑的薪资区间。"
     },
     "skillsThemes": {
       "title": "热门技能",
-      "body": "主题取自已审核的洞察内容，而非用户数据。"
+      "body": "主题取自已审核的洞察内容，而非用户数据。",
+      "locationsTitle": "职位集中的地区"
+    },
+    "spotlight": {
+      "title": "MHA 招聘观察",
+      "body": "MHA 顾问精选的招聘观察将在发布后显示于此。"
+    },
+    "actionPrompt": {
+      "candidate": {
+        "title": "您的下一步",
+        "body": "浏览专业职位，再创建个人资料以追踪申请并查看职位匹配。",
+        "cta": "浏览职位"
+      },
+      "employer": {
+        "title": "您的下一步",
+        "body": "了解职位发布与申请审阅的流程，再注册您的机构以获得 MHA 审核。",
+        "cta": "雇主专区"
+      }
     },
     "previewNote": "示例预览。当积累足够的真实平台数据后，将显示实时汇总。"
   },
@@ -100,6 +128,7 @@
     "title": "为双方提供清晰的路径",
     "candidateTitle": "求职者",
     "employerTitle": "雇主",
+    "yourPath": "您的路径",
     "candidate": {
       "step1": "创建个人资料",
       "step2": "上传简历",
@@ -131,6 +160,8 @@
     "eyebrow": "雇主工作区",
     "title": "现代、真实的招聘工作区",
     "lead": "在表格中审阅申请、在看板上跟进候选人、在分屏中评估人才——全部在沉稳而高效的界面中完成。",
+    "dashboardTitle": "雇主仪表板",
+    "previewBadge": "界面预览",
     "attentionQueue": "待办队列",
     "activeJobs": "在招职位",
     "applicantTable": "申请人表格",

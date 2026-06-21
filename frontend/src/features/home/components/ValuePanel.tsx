@@ -1,27 +1,33 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useId, useState } from "react";
+import { useId } from "react";
 
 import { Card } from "@/components/ui";
 import { cn } from "@/lib/cn";
 
-type Perspective = "candidate" | "employer";
+import { PERSPECTIVES } from "../perspective";
+import { usePerspective } from "../PerspectiveContext";
 
-const PILLARS: Record<Perspective, string[]> = {
+const PILLARS: Record<"candidate" | "employer", string[]> = {
   candidate: ["tracking", "fit", "opportunities", "guidance"],
   employer: ["publishing", "review", "pipeline", "expertise"],
 };
 
 /**
  * Perspective value panel (spec §14.1 C). An accessible tablist switches
- * between candidate and employer value pillars; both sets stay semantically
- * present and are simple to toggle (spec §11.2 equal clarity). No content is
- * hidden from assistive tech beyond the inactive panel.
+ * between candidate and employer value pillars and is wired to the SHARED
+ * {@link usePerspective} state, so switching here also updates the hero,
+ * console, and journey (and vice-versa) — one coherent perspective, not
+ * disconnected sub-pages (spec §5.2).
+ *
+ * Both pillar sets stay semantically present in the DOM; only the inactive
+ * tabpanel is `hidden`, so content remains accessible across the transition
+ * (spec §14.1 C "content must remain semantically present and accessible").
  */
 export function ValuePanel() {
   const t = useTranslations("home.value");
-  const [perspective, setPerspective] = useState<Perspective>("candidate");
+  const { perspective, setPerspective } = usePerspective();
   const baseId = useId();
 
   return (
@@ -33,8 +39,12 @@ export function ValuePanel() {
             {t(`${perspective}Title`)}
           </h2>
         </div>
-        <div role="tablist" aria-label={t("eyebrow")} className="inline-flex rounded-md border border-border-strong p-1">
-          {(["candidate", "employer"] as const).map((value) => {
+        <div
+          role="tablist"
+          aria-label={t("eyebrow")}
+          className="inline-flex rounded-md border border-border-strong p-1"
+        >
+          {PERSPECTIVES.map((value, index) => {
             const selected = value === perspective;
             return (
               <button
@@ -46,6 +56,14 @@ export function ValuePanel() {
                 aria-controls={`${baseId}-panel-${value}`}
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setPerspective(value)}
+                onKeyDown={(event) => {
+                  if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                    event.preventDefault();
+                    setPerspective(
+                      PERSPECTIVES[(index + 1) % PERSPECTIVES.length],
+                    );
+                  }
+                }}
                 className={cn(
                   "rounded-[0.3rem] px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
                   selected
@@ -60,7 +78,7 @@ export function ValuePanel() {
         </div>
       </div>
 
-      {(["candidate", "employer"] as const).map((value) => (
+      {PERSPECTIVES.map((value) => (
         <div
           key={value}
           role="tabpanel"

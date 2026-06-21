@@ -2,22 +2,21 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import {
-  AnalyticalGraphic,
-  IntelligenceCard,
-} from "@/components/intelligence";
-import {
   PageContainer,
   Section,
   SectionHeading,
 } from "@/components/layout";
-import {
-  Card,
-  EmptyState,
-  LinkButton,
-} from "@/components/ui";
+import { Card, LinkButton } from "@/components/ui";
+import { parsePerspective } from "@/features/home/perspective";
+import { FinalCta } from "@/features/home/components/FinalCta";
 import { HeroPerspective } from "@/features/home/components/HeroPerspective";
+import { HomeProviders } from "@/features/home/components/HomeProviders";
 import { JourneySteps } from "@/features/home/components/JourneySteps";
+import { LazyConsole } from "@/features/home/components/LazyConsole";
+import { LazyOpportunities } from "@/features/home/components/LazyOpportunities";
+import { Reveal } from "@/features/home/components/Reveal";
 import { ValuePanel } from "@/features/home/components/ValuePanel";
+import { WorkspacePreview } from "@/features/home/components/WorkspacePreview";
 
 export async function generateMetadata({
   params,
@@ -30,24 +29,38 @@ export async function generateMetadata({
 }
 
 /**
- * Executive homepage shell (spec §14.1). Phase 1 delivers the full section
- * sequence, perspective switching, the Career Intelligence Console (with honest
- * source labels), and editorial storytelling — using static/illustrative
- * content and honest empty states. No fake live metrics, no mascots. Live data
- * is connected in later phases.
+ * Executive homepage (spec §14.1) — the signature "wow" surface. Delivers the
+ * full section order A–K: an integrated executive hero with equal
+ * candidate/employer perspective controls, a perspective value panel, the
+ * Career Intelligence Console (real platform analytics + MHA insights +
+ * clearly-labelled illustrative previews), real latest opportunities, the
+ * architectural journey, the MHA expert layer, an honest employer workspace
+ * preview, the trust & operating model, and a final dual CTA.
+ *
+ * Composition-only (ADR-0001 §3.2): every section lives in
+ * `features/home/components` or `components/intelligence`. The page reads
+ * `?view=` to seed the perspective server-side so a shared link opens in the
+ * right lens, then hands its server-rendered section tree to {@link HomeProviders}
+ * (shared perspective + scoped framer-motion). All content is meaningful before
+ * JS hydrates; motion is purposeful and reduced-motion-safe.
  */
 export default async function HomePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ view?: string }>;
 }) {
   const { locale } = await params;
+  const { view } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("home");
 
+  const initialPerspective = parsePerspective(view) ?? undefined;
+
   return (
-    <>
-      {/* B. Integrated executive hero */}
+    <HomeProviders initialPerspective={initialPerspective}>
+      {/* B. Integrated executive hero (first viewport: immediate perspective + CTA). */}
       <Section spacing="sm" className="border-b border-border-default">
         <HeroPerspective />
       </Section>
@@ -55,11 +68,13 @@ export default async function HomePage({
       {/* C. Perspective value panel */}
       <Section tone="raised">
         <PageContainer>
-          <ValuePanel />
+          <Reveal>
+            <ValuePanel />
+          </Reveal>
         </PageContainer>
       </Section>
 
-      {/* D. Career Intelligence Console */}
+      {/* D. Career Intelligence Console (lazy, real-sourced, never a ticker). */}
       <Section>
         <PageContainer>
           <SectionHeading
@@ -67,69 +82,22 @@ export default async function HomePage({
             title={t("console.title")}
             lead={t("console.lead")}
           />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <IntelligenceCard
-              title={t("console.rolesInFocus.title")}
-              body={t("console.rolesInFocus.body")}
-              source="mhaInsight"
-            />
-            <IntelligenceCard
-              title={t("console.hiringOutlook.title")}
-              body={t("console.hiringOutlook.body")}
-              source="mhaInsight"
-            />
-            <IntelligenceCard
-              title={t("console.salaryGuidance.title")}
-              body={t("console.salaryGuidance.body")}
-              source="mhaInsight"
-            />
-            <IntelligenceCard
-              title={t("console.skillsThemes.title")}
-              body={t("console.skillsThemes.body")}
-              source="illustrativePreview"
-              note={t("console.previewNote")}
-            />
-          </div>
+          <Reveal className="mt-8">
+            <LazyConsole />
+          </Reveal>
         </PageContainer>
       </Section>
 
-      {/* E. Opportunities and organisations (honest empty states) */}
+      {/* E. Opportunities and organisations (lazy, real data, honest empties). */}
       <Section tone="raised">
         <PageContainer>
           <SectionHeading
             eyebrow={t("opportunities.eyebrow")}
             title={t("opportunities.title")}
           />
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="flex flex-col gap-4">
-              <h3 className="type-heading-3 text-text-primary">
-                {t("opportunities.jobsTitle")}
-              </h3>
-              <EmptyState
-                title={t("opportunities.jobsTitle")}
-                description={t("opportunities.jobsEmpty")}
-                action={
-                  <LinkButton href="/jobs" variant="secondary" size="sm">
-                    {t("opportunities.jobsCta")}
-                  </LinkButton>
-                }
-              />
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="type-heading-3 text-text-primary">
-                {t("opportunities.companiesTitle")}
-              </h3>
-              <EmptyState
-                title={t("opportunities.companiesTitle")}
-                description={t("opportunities.companiesEmpty")}
-                action={
-                  <LinkButton href="/companies" variant="secondary" size="sm">
-                    {t("opportunities.companiesCta")}
-                  </LinkButton>
-                }
-              />
-            </div>
-          </div>
+          <Reveal className="mt-8">
+            <LazyOpportunities />
+          </Reveal>
         </PageContainer>
       </Section>
 
@@ -140,49 +108,51 @@ export default async function HomePage({
             eyebrow={t("journey.eyebrow")}
             title={t("journey.title")}
           />
-          <div className="mt-8">
+          <Reveal className="mt-8">
             <JourneySteps />
-          </div>
+          </Reveal>
         </PageContainer>
       </Section>
 
       {/* G. MHA expert layer */}
       <Section tone="inverse">
         <PageContainer>
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
-            <SectionHeading
-              eyebrow={t("expert.eyebrow")}
-              title={t("expert.title")}
-              lead={t("expert.lead")}
-              tone="inverse"
-            />
-            <Card tone="inverse" className="flex flex-col gap-3">
-              <ul className="flex flex-col gap-3">
-                {[
-                  "careerSupport",
-                  "resumeHelp",
-                  "vacancyHelp",
-                  "recruitmentHelp",
-                ].map((key) => (
-                  <li
-                    key={key}
-                    className="type-body flex items-start gap-3 text-text-inverse/90"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-primary-soft"
-                    />
-                    {t(`expert.${key}`)}
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-2">
-                <LinkButton href="/career-support" variant="primary">
-                  {t("expert.cta")}
-                </LinkButton>
-              </div>
-            </Card>
-          </div>
+          <Reveal>
+            <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
+              <SectionHeading
+                eyebrow={t("expert.eyebrow")}
+                title={t("expert.title")}
+                lead={t("expert.lead")}
+                tone="inverse"
+              />
+              <Card tone="inverse" className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-3">
+                  {[
+                    "careerSupport",
+                    "resumeHelp",
+                    "vacancyHelp",
+                    "recruitmentHelp",
+                  ].map((key) => (
+                    <li
+                      key={key}
+                      className="type-body flex items-start gap-3 text-text-inverse/90"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-primary-soft"
+                      />
+                      {t(`expert.${key}`)}
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-2">
+                  <LinkButton href="/career-support" variant="primary">
+                    {t("expert.cta")}
+                  </LinkButton>
+                </div>
+              </Card>
+            </div>
+          </Reveal>
         </PageContainer>
       </Section>
 
@@ -194,38 +164,9 @@ export default async function HomePage({
             title={t("workspace.title")}
             lead={t("workspace.lead")}
           />
-          <Card className="mt-8 flex flex-col gap-5" padded>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                "attentionQueue",
-                "activeJobs",
-                "applicantTable",
-                "kanban",
-                "insights",
-              ].map((key) => (
-                <div
-                  key={key}
-                  className="rounded-md border border-border-default bg-surface-raised p-4"
-                >
-                  <p className="type-label text-text-primary">
-                    {t(`workspace.${key}`)}
-                  </p>
-                  <div
-                    aria-hidden="true"
-                    className="mt-3 flex flex-col gap-2"
-                  >
-                    <span className="h-2 w-3/4 rounded-full bg-surface-subtle" />
-                    <span className="h-2 w-1/2 rounded-full bg-surface-subtle" />
-                    <span className="h-2 w-2/3 rounded-full bg-surface-subtle" />
-                  </div>
-                </div>
-              ))}
-              <div className="flex items-center justify-center rounded-md border border-dashed border-border-strong p-4">
-                <AnalyticalGraphic className="max-h-28" />
-              </div>
-            </div>
-            <p className="type-caption">{t("workspace.previewNote")}</p>
-          </Card>
+          <Reveal className="mt-8">
+            <WorkspacePreview />
+          </Reveal>
         </PageContainer>
       </Section>
 
@@ -244,15 +185,17 @@ export default async function HomePage({
               "fitLimits",
               "humanSupport",
               "responsibleData",
-            ].map((key) => (
-              <Card key={key} tone="subtle" className="flex flex-col gap-2">
-                <h3 className="type-heading-3 text-text-primary">
-                  {t(`trust.${key}.title`)}
-                </h3>
-                <p className="type-body-sm text-text-secondary">
-                  {t(`trust.${key}.body`)}
-                </p>
-              </Card>
+            ].map((key, index) => (
+              <Reveal key={key} delay={index * 0.04}>
+                <Card tone="subtle" className="flex h-full flex-col gap-2">
+                  <h3 className="type-heading-3 text-text-primary">
+                    {t(`trust.${key}.title`)}
+                  </h3>
+                  <p className="type-body-sm text-text-secondary">
+                    {t(`trust.${key}.body`)}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </PageContainer>
@@ -266,40 +209,9 @@ export default async function HomePage({
             title={t("finalCta.title")}
             align="center"
           />
-          <div className="mx-auto mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
-            <Card className="flex flex-col gap-3">
-              <h3 className="type-heading-3 text-text-primary">
-                {t("finalCta.candidateTitle")}
-              </h3>
-              <p className="type-body-sm text-text-secondary">
-                {t("finalCta.candidateBody")}
-              </p>
-              <div className="mt-1">
-                <LinkButton href="/register/candidate" fullWidth>
-                  {t("finalCta.candidateCta")}
-                </LinkButton>
-              </div>
-            </Card>
-            <Card className="flex flex-col gap-3">
-              <h3 className="type-heading-3 text-text-primary">
-                {t("finalCta.employerTitle")}
-              </h3>
-              <p className="type-body-sm text-text-secondary">
-                {t("finalCta.employerBody")}
-              </p>
-              <div className="mt-1">
-                <LinkButton
-                  href="/register/employer"
-                  variant="secondary"
-                  fullWidth
-                >
-                  {t("finalCta.employerCta")}
-                </LinkButton>
-              </div>
-            </Card>
-          </div>
+          <FinalCta />
         </PageContainer>
       </Section>
-    </>
+    </HomeProviders>
   );
 }

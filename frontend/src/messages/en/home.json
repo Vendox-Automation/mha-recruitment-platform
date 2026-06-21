@@ -14,12 +14,20 @@
     "candidate": {
       "lead": "Search professional opportunities, understand your fit, track every application, and reach MHA career support when you need it.",
       "primaryCta": "Find Jobs",
-      "secondaryCta": "Create candidate account"
+      "secondaryCta": "Create candidate account",
+      "highlight": {
+        "title": "Understand your fit before you apply",
+        "body": "Explainable Job Fit shows matched factors and honest gaps — sourced from MHA, never a black box."
+      }
     },
     "employer": {
       "lead": "Plan and publish vacancies, review applicants efficiently, follow recruitment progress, and call on MHA hiring expertise.",
       "primaryCta": "For Employers",
-      "secondaryCta": "Register your organisation"
+      "secondaryCta": "Register your organisation",
+      "highlight": {
+        "title": "Recruitment intelligence you can trust",
+        "body": "Hiring insight and platform analytics, each clearly sourced — with MHA consultants when judgement matters."
+      }
     }
   },
   "value": {
@@ -69,19 +77,39 @@
     "lead": "Every module states whether it is MHA insight, real platform analytics, or an illustrative preview. We never display invented activity.",
     "rolesInFocus": {
       "title": "Roles in focus",
-      "body": "Role families MHA observes demand for across professional hiring."
+      "body": "Role families MHA observes demand for across professional hiring.",
+      "count": "{count, plural, one {# role} other {# roles}}"
     },
     "hiringOutlook": {
       "title": "Hiring outlook",
-      "body": "A qualitative read on hiring conditions from MHA consultants."
+      "body": "A qualitative read on hiring conditions from MHA consultants.",
+      "recent": "{count, plural, one {# new role published in the last 30 days} other {# new roles published in the last 30 days}}."
     },
     "salaryGuidance": {
       "title": "Salary guidance",
-      "body": "Indicative ranges are shown only where MHA has a reliable source."
+      "body": "Indicative ranges appear here only where MHA has a reliable source.",
+      "previewNote": "Illustrative preview. We never display a salary range we cannot support."
     },
     "skillsThemes": {
       "title": "Skills in demand",
-      "body": "Themes drawn from approved insight content, not user data."
+      "body": "Themes drawn from approved insight content, not user data.",
+      "locationsTitle": "Where roles are concentrated"
+    },
+    "spotlight": {
+      "title": "MHA recruitment observation",
+      "body": "Curated hiring observations from MHA consultants appear here as they are published."
+    },
+    "actionPrompt": {
+      "candidate": {
+        "title": "Your next step",
+        "body": "Browse professional roles, then create a profile to track applications and see Job Fit.",
+        "cta": "Browse jobs"
+      },
+      "employer": {
+        "title": "Your next step",
+        "body": "See how publishing and applicant review work, then register your organisation for MHA approval.",
+        "cta": "For employers"
+      }
     },
     "previewNote": "Illustrative preview. Live aggregates appear once enough real platform data exists."
   },
@@ -100,6 +128,7 @@
     "title": "A clear path for both sides",
     "candidateTitle": "For candidates",
     "employerTitle": "For employers",
+    "yourPath": "Your path",
     "candidate": {
       "step1": "Create your profile",
       "step2": "Add your resume",
@@ -131,6 +160,8 @@
     "eyebrow": "Employer workspace",
     "title": "A modern, honest recruitment workspace",
     "lead": "Review applicants in a table, track them on a Kanban board, and assess candidates in split-screen — all in a calm, fast interface.",
+    "dashboardTitle": "Employer dashboard",
+    "previewBadge": "Interface preview",
     "attentionQueue": "Attention queue",
     "activeJobs": "Active jobs",
     "applicantTable": "Applicant table",
