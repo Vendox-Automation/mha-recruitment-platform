@@ -72,8 +72,12 @@
     "backToSearch": "返回搜索",
     "applyNow": "立即申请",
     "applySignIn": "登录后申请",
-    "saveJob": "收藏职位",
-    "saveComingSoon": "职位收藏功能即将推出",
+    "save": {
+      "save": "收藏职位",
+      "saved": "已收藏",
+      "signInToSave": "登录后收藏",
+      "error": "无法更新您的收藏职位，请重试。"
+    },
     "shareJob": "分享职位",
     "viewApplication": "查看申请",
     "alreadyApplied": "您已申请此职位",

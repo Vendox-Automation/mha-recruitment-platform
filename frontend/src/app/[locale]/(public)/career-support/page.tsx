@@ -2,9 +2,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageContainer, Section, SectionHeading } from "@/components/layout";
 import { Card } from "@/components/ui";
-import { SupportFormShell } from "@/features/support/components/SupportFormShell";
+import { SupportForm } from "@/features/support/components/SupportForm";
 
-/** Career support page shell (spec §14.5). */
+/** Career support page (spec §14.5). Composition only — the form lives in the feature. */
 export default async function CareerSupportPage({
   params,
 }: {
@@ -24,7 +24,7 @@ export default async function CareerSupportPage({
           as="h1"
         />
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-          <SupportFormShell />
+          <SupportForm />
           <div className="flex flex-col gap-6">
             <Card tone="subtle" className="flex flex-col gap-2">
               <h2 className="type-heading-3 text-text-primary">

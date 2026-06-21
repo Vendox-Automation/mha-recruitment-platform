@@ -3,12 +3,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 
-import { Badge, Button, LinkButton } from "@/components/ui";
+import { Badge, LinkButton } from "@/components/ui";
 import { jobApplicationStatusKey } from "@/features/applications/queryKeys";
 import { getJobApplicationStatus } from "@/features/applications/service";
 import { statusLabelKey, statusTone } from "@/features/applications/status";
 import { useAuth } from "@/lib/auth";
 
+import { SaveJobButton } from "./SaveJobButton";
 import { ShareJobButton } from "./ShareJobButton";
 
 /**
@@ -20,14 +21,18 @@ import { ShareJobButton } from "./ShareJobButton";
  *     candidate (applied)  -> "View Application" + current stage, no duplicate
  *                             (spec §14.3)
  *     employer / admin     -> apply is hidden (they cannot apply to roles)
- * - Save Job is an HONEST disabled affordance — saved jobs is Phase 9.
+ * - Save Job is a real candidate-only toggle ({@link SaveJobButton}): anonymous
+ *   visitors get a sign-in link, employers/admins see nothing.
  * - Share uses the existing ShareJobButton (native share / copy URL).
  */
 export function JobActions({
   slug,
+  jobId,
   layout = "stacked",
 }: {
   slug: string;
+  /** The job's UUID, when known — lets the Save toggle un-save directly. */
+  jobId?: string;
   layout?: "stacked" | "inline";
 }) {
   const t = useTranslations("jobs.detail");
@@ -88,15 +93,7 @@ export function JobActions({
         )
       ) : null}
 
-      <Button
-        variant="secondary"
-        fullWidth={fullWidth}
-        disabled
-        aria-disabled="true"
-        title={t("saveComingSoon")}
-      >
-        {t("saveJob")}
-      </Button>
+      <SaveJobButton slug={slug} jobId={jobId} fullWidth={fullWidth} />
 
       {layout === "stacked" ? <ShareJobButton fullWidth /> : null}
 

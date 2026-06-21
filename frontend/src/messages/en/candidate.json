@@ -234,12 +234,28 @@
     "description": "Roles you've saved to revisit.",
     "emptyTitle": "No saved jobs",
     "emptyBody": "Save roles from search or a job page to find them here.",
-    "browseJobs": "Browse jobs"
+    "browseJobs": "Browse jobs",
+    "available": "Open",
+    "unavailable": "No longer open",
+    "savedOn": "Saved",
+    "remove": "Remove",
+    "removeLabel": "Remove {title} from saved jobs",
+    "removeUnavailable": "Can't remove this saved role right now.",
+    "errorTitle": "We couldn't load your saved jobs",
+    "errorBody": "Please try again in a moment."
   },
   "support": {
     "title": "MHA support",
     "description": "Request help with your applications or career direction.",
-    "cta": "Request support"
+    "cta": "Request support",
+    "newRequestTitle": "Request support",
+    "historyTitle": "Your requests",
+    "historyEmptyTitle": "No requests yet",
+    "historyEmptyBody": "When you send a support request, it will appear here with its status.",
+    "historyErrorTitle": "We couldn't load your requests",
+    "historyErrorBody": "Please try again in a moment.",
+    "aboutJob": "About: {title}",
+    "attachmentLabel": "Attachment included"
   },
   "settings": {
     "title": "Settings",

@@ -72,8 +72,12 @@
     "backToSearch": "Back to search",
     "applyNow": "Apply Now",
     "applySignIn": "Sign in to apply",
-    "saveJob": "Save Job",
-    "saveComingSoon": "Saving roles is coming soon",
+    "save": {
+      "save": "Save Job",
+      "saved": "Saved",
+      "signInToSave": "Sign in to save",
+      "error": "We couldn't update your saved jobs. Please try again."
+    },
     "shareJob": "Share Job",
     "viewApplication": "View Application",
     "alreadyApplied": "You applied to this role",

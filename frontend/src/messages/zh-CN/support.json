@@ -8,6 +8,8 @@
     "title": "申请支持",
     "name": "您的姓名",
     "email": "电子邮箱",
+    "phone": "电话",
+    "phoneHint": "选填。如希望我们回电，请留下号码。",
     "category": "我们能为您做些什么？",
     "categoryPlaceholder": "选择一个类别",
     "categories": {
@@ -22,6 +24,7 @@
     "resume": "附上您的简历",
     "resumeHint": "选填。PDF 或 DOCX，不超过 5 MB。",
     "submit": "发送请求",
+    "submitting": "正在发送…",
     "privacyNotice": "我们仅将您的信息用于回复此次请求。简历将保持私密，未经您申请绝不分享。"
   },
   "response": {
@@ -30,6 +33,13 @@
   },
   "success": {
     "title": "请求已收到",
-    "body": "感谢您。MHA 顾问将通过电子邮件跟进。"
+    "body": "感谢您。MHA 顾问将通过电子邮件跟进。",
+    "again": "再发送一个请求"
+  },
+  "status": {
+    "NEW": "新建",
+    "IN_PROGRESS": "处理中",
+    "RESOLVED": "已解决",
+    "CLOSED": "已关闭"
   }
 }

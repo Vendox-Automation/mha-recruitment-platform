@@ -8,6 +8,8 @@
     "title": "Request support",
     "name": "Your name",
     "email": "Email",
+    "phone": "Phone",
+    "phoneHint": "Optional. Add a number if you'd prefer a call back.",
     "category": "How can we help?",
     "categoryPlaceholder": "Select a category",
     "categories": {
@@ -22,6 +24,7 @@
     "resume": "Attach your resume",
     "resumeHint": "Optional. PDF or DOCX, up to 5 MB.",
     "submit": "Send request",
+    "submitting": "Sending…",
     "privacyNotice": "We use your details only to respond to this request. Resumes are kept private and never shared without your application."
   },
   "response": {
@@ -30,6 +33,13 @@
   },
   "success": {
     "title": "Request received",
-    "body": "Thank you. An MHA consultant will follow up by email."
+    "body": "Thank you. An MHA consultant will follow up by email.",
+    "again": "Send another request"
+  },
+  "status": {
+    "NEW": "New",
+    "IN_PROGRESS": "In progress",
+    "RESOLVED": "Resolved",
+    "CLOSED": "Closed"
   }
 }

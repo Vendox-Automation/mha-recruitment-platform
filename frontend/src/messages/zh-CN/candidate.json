@@ -234,12 +234,28 @@
     "description": "您收藏以便日后查看的职位。",
     "emptyTitle": "暂无收藏的职位",
     "emptyBody": "从搜索或职位页面收藏职位，即可在此找到。",
-    "browseJobs": "浏览职位"
+    "browseJobs": "浏览职位",
+    "available": "招聘中",
+    "unavailable": "已结束",
+    "savedOn": "收藏于",
+    "remove": "移除",
+    "removeLabel": "将“{title}”从收藏中移除",
+    "removeUnavailable": "暂时无法移除此收藏职位。",
+    "errorTitle": "无法加载您的收藏职位",
+    "errorBody": "请稍后重试。"
   },
   "support": {
     "title": "MHA 支持",
     "description": "就您的申请或职业方向寻求帮助。",
-    "cta": "申请支持"
+    "cta": "申请支持",
+    "newRequestTitle": "申请支持",
+    "historyTitle": "您的请求",
+    "historyEmptyTitle": "暂无请求",
+    "historyEmptyBody": "当您发送支持请求后，它将连同其状态显示在此处。",
+    "historyErrorTitle": "无法加载您的请求",
+    "historyErrorBody": "请稍后重试。",
+    "aboutJob": "关于：{title}",
+    "attachmentLabel": "含附件"
   },
   "settings": {
     "title": "设置",
