@@ -147,8 +147,18 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "config.pagination.DefaultPagination",
     "PAGE_SIZE": 20,
     "EXCEPTION_HANDLER": "config.exceptions.api_exception_handler",
+    # Defence-in-depth throttling. ``ScopedRateThrottle`` keeps the tight,
+    # endpoint-specific limits (auth/register/etc.); the added User/Anon
+    # throttles give a GENEROUS global ceiling so endpoints WITHOUT an explicit
+    # scope (saved jobs, support-attachment download, employer workspace +
+    # analytics, Job Fit GET/regenerate, candidate resume download, public
+    # job/company detail) are no longer effectively un-throttled. The default
+    # rates are tuned so normal interactive use never trips them; they exist to
+    # bound abuse/scraping (recurring security-review recommendation, spec §22).
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.ScopedRateThrottle",
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
         "auth": "10/min",
@@ -156,6 +166,9 @@ REST_FRAMEWORK = {
         "password_reset": "5/hour",
         "support": "10/hour",
         "public": "120/min",
+        # Generous global ceilings for otherwise-unscoped endpoints.
+        "anon": "120/min",
+        "user": "2000/hour",
     },
 }
 
