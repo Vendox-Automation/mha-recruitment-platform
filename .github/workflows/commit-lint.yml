@@ -1,0 +1,33 @@
+name: commit-lint
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  commit-messages:
+    name: validate commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: python scripts/validate_commit_message.py --message "$PR_TITLE"
+      - name: Validate each commit subject
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          fail=0
+          for sha in $(git rev-list "$base".."$head"); do
+            subject="$(git log -1 --format=%s "$sha")"
+            if ! python scripts/validate_commit_message.py --message "$subject"; then
+              fail=1
+            fi
+          done
+          exit $fail

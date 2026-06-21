@@ -1,0 +1,267 @@
+{
+  "area": {
+    "eyebrow": "求职者",
+    "label": "职业指挥中心"
+  },
+  "nav": {
+    "dashboard": "控制台",
+    "profile": "个人资料",
+    "resume": "简历",
+    "applications": "申请",
+    "savedJobs": "收藏的职位",
+    "support": "MHA 支持",
+    "settings": "设置"
+  },
+  "protectedNote": "求职者专区。访问控制将在第二阶段加入；此预览展示沉稳的工作布局及其各种状态。",
+  "dashboard": {
+    "title": "欢迎回来",
+    "description": "这里汇总了您的申请、匹配与下一步。",
+    "nextAction": {
+      "eyebrow": "您的下一步",
+      "completeProfile": {
+        "title": "完善个人资料",
+        "body": "填写基本信息，让雇主与匹配结果更准确。",
+        "cta": "完善资料"
+      },
+      "uploadResume": {
+        "title": "上传您的简历",
+        "body": "上传最新简历，即可一步申请职位。",
+        "cta": "上传简历"
+      },
+      "browseJobs": {
+        "title": "您已可以开始申请",
+        "body": "资料与简历均已就绪。找到合适的职位并申请吧。",
+        "cta": "浏览职位"
+      }
+    },
+    "completion": {
+      "label": "资料完成度",
+      "percent": "{percent}%",
+      "complete": "您的资料已完整。",
+      "incomplete": "完善资料以提升匹配效果。"
+    },
+    "profileSummary": {
+      "title": "个人资料",
+      "edit": "编辑",
+      "jobTitle": "期望职位",
+      "location": "期望地点",
+      "type": "工作类型",
+      "notSet": "未设置"
+    },
+    "snapshot": {
+      "title": "申请概览",
+      "viewAll": "查看全部",
+      "total": "总计",
+      "active": "进行中",
+      "emptyTitle": "暂无申请",
+      "emptyBody": "申请职位后，您的进度将显示在这里。"
+    }
+  },
+  "profile": {
+    "title": "您的个人资料",
+    "description": "保持信息最新，让雇主与匹配结果更准确。",
+    "editLead": "更新您的信息与偏好。简历单独管理。",
+    "savedTitle": "资料已保存",
+    "savedBody": "您的更改已保存。",
+    "saving": "保存中…",
+    "save": "保存更改",
+    "sections": {
+      "basics": "基本信息",
+      "preferences": "匹配偏好",
+      "preferencesHint": "选填——这些信息有助于为您匹配合适的职位。"
+    },
+    "fields": {
+      "fullName": "姓名",
+      "phone": "电话",
+      "preferredJobTitle": "期望职位",
+      "preferredLocation": "期望地点",
+      "preferredEmploymentType": "期望工作类型",
+      "preferredEmploymentTypeAny": "无偏好"
+    }
+  },
+  "resume": {
+    "title": "简历",
+    "description": "管理您申请时雇主所看到的简历。",
+    "privacyNote": "您的简历保持私密，仅与您申请的职位分享，绝不会以公开链接形式暴露。",
+    "current": "当前简历",
+    "onFileBadge": "已上传",
+    "unnamedFile": "简历",
+    "noneOnFile": "尚未上传简历。",
+    "uploadedOn": "上传于 {date}",
+    "download": "下载 / 打开",
+    "manage": "管理简历",
+    "upload": "上传简历",
+    "emptyTitle": "上传简历即可申请",
+    "emptyBody": "上传 PDF 或 DOCX（不超过 5 MB），即可申请职位。",
+    "uploadLabel": "上传简历",
+    "replaceLabel": "替换您的简历",
+    "inputHint": "PDF 或 DOCX，不超过 5 MB。",
+    "uploading": "上传中…",
+    "remove": "删除简历",
+    "removing": "删除中…",
+    "removeConfirm": "删除简历",
+    "removeCancel": "保留简历",
+    "removeConfirmBody": "确定删除简历吗？再次申请前需要重新上传。",
+    "notice": {
+      "savedTitle": "完成",
+      "uploaded": "您的简历已上传。",
+      "replaced": "您的简历已替换。",
+      "removed": "您的简历已删除。"
+    }
+  },
+  "applications": {
+    "title": "您的申请",
+    "description": "追踪每一份申请及其当前阶段。",
+    "emptyTitle": "您还没有申请",
+    "emptyBody": "当您申请职位后，它将连同状态历史显示在这里。",
+    "browseJobs": "浏览职位",
+    "columns": {
+      "role": "职位",
+      "company": "公司",
+      "applied": "申请时间",
+      "stage": "阶段",
+      "updated": "更新时间"
+    },
+    "status": {
+      "APPLIED": {
+        "label": "已申请",
+        "meaning": "您的申请已提交，正在等待雇主审核。",
+        "next": "无需操作——雇主审核您的申请后，我们会通知您。"
+      },
+      "UNDER_REVIEW": {
+        "label": "审核中",
+        "meaning": "雇主正在审核您的申请。",
+        "next": "目前无需操作。请保持您的资料与简历为最新。"
+      },
+      "SHORTLISTED": {
+        "label": "已入围",
+        "meaning": "您已入围——雇主正在考虑让您进入下一步。",
+        "next": "请留意雇主关于后续步骤的消息。"
+      },
+      "INTERVIEW": {
+        "label": "面试",
+        "meaning": "您已进入该职位的面试阶段。",
+        "next": "请准备面试。雇主会与您分享相关细节。"
+      },
+      "OFFERED": {
+        "label": "已发录用通知",
+        "meaning": "雇主已就该职位向您发出录用通知。",
+        "next": "请查看录用通知并回复雇主。"
+      },
+      "HIRED": {
+        "label": "已录用",
+        "meaning": "恭喜——您已被该职位录用。",
+        "next": "雇主将就入职事宜与您联系。"
+      },
+      "REJECTED": {
+        "label": "未进入下一步",
+        "meaning": "此申请不再继续推进。这很常见，并不代表您的能力——请继续申请。",
+        "next": "探索其他适合您的职位。MHA 支持可协助您求职。"
+      }
+    },
+    "errors": {
+      "required": "此问题为必填项。",
+      "invalidNumber": "请输入有效的数字。",
+      "invalidChoice": "请从所列选项中选择一项。"
+    },
+    "apply": {
+      "title": "申请此职位",
+      "lead": "完成您对 {job} 的申请。",
+      "leadWithCompany": "完成您对 {company} 的 {job} 职位的申请。",
+      "backToRole": "返回职位",
+      "browseRoles": "浏览职位",
+      "notCandidate": "只有求职者账户才能申请职位。",
+      "jobUnavailable": "该职位已不可用",
+      "jobUnavailableBody": "该职位可能已关闭或被移除。浏览其他在招职位。",
+      "resumeNeededTitle": "申请前请先添加简历",
+      "resumeNeededBody": "雇主会随您的申请收到您的简历。",
+      "noResumeTitle": "申请需要简历",
+      "noResumeBody": "请上传简历，然后返回提交您的申请。",
+      "uploadResume": "上传简历",
+      "coverLetterLabel": "求职信",
+      "coverLetterHint": "选填。简要说明您为何适合此职位。",
+      "coverLetterPlaceholder": "分享您对此职位感兴趣的原因……",
+      "coverLetterEmpty": "未添加求职信。",
+      "screeningTitle": "筛选问题",
+      "choosePlaceholder": "请选择",
+      "yes": "是",
+      "no": "否",
+      "notAnswered": "未回答",
+      "reviewCta": "检查申请",
+      "reviewTitle": "检查您的申请",
+      "reviewBody": "提交前请检查您的回答。申请后将无法修改。",
+      "submit": "提交申请",
+      "submitting": "提交中…",
+      "editAgain": "修改回答",
+      "successTitle": "申请已提交",
+      "successBody": "您对 {job} 的申请已发送。您可以在这里跟踪进度。",
+      "viewApplication": "查看申请",
+      "errorGeneric": "无法提交您的申请。请重试。",
+      "conflict": "您已申请此职位。",
+      "alreadyAppliedTitle": "您已申请",
+      "alreadyAppliedBody": "您已对 {job} 提交过申请。查看它以跟踪进度。"
+    },
+    "timeline": {
+      "empty": "暂无状态更新。",
+      "source": {
+        "employer": "由雇主操作",
+        "platform": "由平台操作",
+        "candidate": "由您操作"
+      }
+    },
+    "detail": {
+      "title": "申请",
+      "backToApplications": "返回申请列表",
+      "currentStage": "当前阶段",
+      "nextLabel": "接下来",
+      "timelineTitle": "状态时间线",
+      "submissionTitle": "您的提交内容",
+      "resumeLabel": "简历",
+      "resumeOnFile": "已附简历",
+      "noResumeSnapshot": "未附简历。",
+      "coverLetterLabel": "求职信",
+      "coverLetterEmpty": "未添加求职信。",
+      "answersLabel": "筛选问题回答",
+      "yes": "是",
+      "no": "否",
+      "notAnswered": "未回答",
+      "notFoundTitle": "申请不可用",
+      "notFoundBody": "未找到此申请，或您没有访问权限。"
+    }
+  },
+  "savedJobs": {
+    "title": "收藏的职位",
+    "description": "您收藏以便日后查看的职位。",
+    "emptyTitle": "暂无收藏的职位",
+    "emptyBody": "从搜索或职位页面收藏职位，即可在此找到。",
+    "browseJobs": "浏览职位",
+    "available": "招聘中",
+    "unavailable": "已结束",
+    "savedOn": "收藏于",
+    "remove": "移除",
+    "removeLabel": "将“{title}”从收藏中移除",
+    "removeUnavailable": "暂时无法移除此收藏职位。",
+    "errorTitle": "无法加载您的收藏职位",
+    "errorBody": "请稍后重试。"
+  },
+  "support": {
+    "title": "MHA 支持",
+    "description": "就您的申请或职业方向寻求帮助。",
+    "cta": "申请支持",
+    "newRequestTitle": "申请支持",
+    "historyTitle": "您的请求",
+    "historyEmptyTitle": "暂无请求",
+    "historyEmptyBody": "当您发送支持请求后，它将连同其状态显示在此处。",
+    "historyErrorTitle": "无法加载您的请求",
+    "historyErrorBody": "请稍后重试。",
+    "aboutJob": "关于：{title}",
+    "attachmentLabel": "含附件"
+  },
+  "settings": {
+    "title": "设置",
+    "description": "管理您的账户、语言与通知。",
+    "language": "语言",
+    "account": "账户",
+    "emptyBody": "账户设置将在第二阶段账户接入后提供。"
+  }
+}

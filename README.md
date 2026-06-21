@@ -64,23 +64,30 @@ Read in this order:
 4. [`docs/development/COMMIT_CONVENTION.md`](docs/development/COMMIT_CONVENTION.md)
 5. Project subagents under [`.claude/agents/`](.claude/agents/)
 
-## Initial repository package
+## Repository structure
 
 ```text
-talent-bridge-claude/
-├── .claude/
-│   └── agents/
+mha-recruitment-platform/
+├── .claude/agents/        # project subagent definitions
+├── .github/workflows/     # CI and commit-message validation
+├── backend/               # Django + DRF API
+│   ├── config/            # settings (base/dev/prod/test), urls, glue
+│   └── apps/              # domain apps: accounts, candidates, employers,
+│                          #   jobs, applications, matching, support,
+│                          #   analytics, audit
+├── frontend/              # Next.js App Router + TypeScript
+│   └── src/{app,components,features,lib,i18n,messages}
 ├── docs/
-│   ├── development/
-│   │   └── COMMIT_CONVENTION.md
-│   └── product/
-│       └── MHA_Standalone_Job_Platform_Claude_Executive_Full_Developer_Package_v1.0.md
-├── CLAUDE.md
-├── AGENTS.md
-└── README.md
+│   ├── architecture/      # ADRs
+│   ├── development/        # commit convention
+│   └── product/            # product specification
+├── scripts/               # repository tooling (commit-msg validator)
+├── docker-compose.yml      # local PostgreSQL (+ optional Mailpit)
+├── CLAUDE.md  AGENTS.md  README.md
 ```
 
-Phase 0 creates the application directories, environment examples, CI, local PostgreSQL service, health checks, and verified startup documentation.
+Architecture decisions are recorded in
+[`docs/architecture/ADR-0001-stack-and-structure.md`](docs/architecture/ADR-0001-stack-and-structure.md).
 
 ## Autonomous workflow
 
@@ -174,9 +181,90 @@ This preserves every validated atomic commit message in the `main` branch histor
 
 ## Local setup
 
-Verified local setup commands will be created during Phase 0 after the application scaffold and exact dependency versions exist.
+Requirements: Node.js 20+ (developed on 24), Python 3.12–3.14 (developed on
+3.14), and PostgreSQL — either via Docker or a local install.
 
-Do not add unverified startup commands to this README.
+### 1. Database
+
+PostgreSQL is the canonical database. Start it with Docker:
+
+```bash
+cp .env.example .env
+docker compose up -d db
+```
+
+If Docker and PostgreSQL are unavailable, the backend falls back to SQLite for
+local development by setting a SQLite `DATABASE_URL` (see the note below). CI
+runs migrations and tests against PostgreSQL.
+
+### 2. Backend (Django API — http://localhost:8000)
+
+```bash
+cd backend
+python -m venv .venv
+# Windows:  .venv\Scripts\activate     macOS/Linux:  source .venv/bin/activate
+pip install -r requirements-dev.txt
+cp .env.example .env            # set DATABASE_URL (Postgres canonical)
+python manage.py migrate
+python manage.py runserver
+```
+
+Health check: `GET http://localhost:8000/api/v1/health/`.
+
+Run checks: `ruff check . && ruff format --check . && python manage.py check && pytest`.
+
+> **Database note (ADR-0001 §6).** PostgreSQL is canonical. Where Postgres is
+> unavailable, set `DATABASE_URL=sqlite:///./db.sqlite3` in `backend/.env` to
+> run locally; all code stays backend-agnostic and CI exercises PostgreSQL.
+
+### 3. Frontend (Next.js — http://localhost:3000)
+
+```bash
+cd frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Run checks: `npm run lint && npm run typecheck && npm run build`.
+
+The app is locale-prefixed: open `http://localhost:3000/en` or
+`http://localhost:3000/zh-CN`.
+
+### 4. Commit-message hook (optional but recommended)
+
+```bash
+git config core.hooksPath .githooks
+```
+
+This enforces `docs/development/COMMIT_CONVENTION.md` locally; CI enforces it on
+pull requests.
+
+### 5. Seed demo data (optional)
+
+From `backend/` (with the venv active and `DATABASE_URL` set):
+
+```bash
+python manage.py seed_demo_data
+```
+
+Idempotent and DEBUG-guarded. It creates synthetic demo content (employers,
+~20 jobs across Malaysian locations, applications across every status, saved
+jobs, Job Fit examples, support requests, market insights) and prints local-only
+demo accounts — all sharing the password `DemoPass123!`:
+
+| Role | Email |
+|---|---|
+| Administrator (Django admin) | `admin@demo.mha-jobs.local` |
+| Approved employer | `talent@demo.aurorabank.example.com` |
+| Pending employer | `pending@demo.summitventures.example.com` |
+| Candidate (complete profile + resume) | `candidate.complete@demo.mha-jobs.local` |
+| Candidate (incomplete profile) | `candidate.incomplete@demo.mha-jobs.local` |
+
+The demo data is synthetic and must never be used in production. See
+[`docs/development/API.md`](docs/development/API.md) for the API reference and
+[`docs/development/DEFINITION_OF_DONE.md`](docs/development/DEFINITION_OF_DONE.md)
+for the MVP definition-of-done and known limitations.
 
 ## Security
 

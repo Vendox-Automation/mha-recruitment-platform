@@ -1,0 +1,14 @@
+{
+  "required": "This field is required.",
+  "email": "Enter a valid email address.",
+  "workEmail": "Enter a valid work email address.",
+  "minLength": "This is too short.",
+  "passwordWeak": "Use at least 10 characters with letters and numbers.",
+  "phone": "Enter a valid phone number.",
+  "website": "Enter a full URL starting with http:// or https://.",
+  "salaryRange": "Maximum salary must be higher than the minimum.",
+  "singleChoiceOptions": "Add at least two answer options.",
+  "fileType": "Upload a PDF or DOCX file.",
+  "fileSize": "File must be 5 MB or smaller.",
+  "generic": "Please review the highlighted fields."
+}

@@ -1,0 +1,309 @@
+# Implementation Progress Log
+
+Durable checkpoint record for the autonomous MVP build on `feat/claude-full-mvp`.
+Each phase records scope, validation, independent review, and the push checkpoint.
+
+## Phase 0 — Repository & environment bootstrap ✅
+
+- **Scope:** Monorepo structure (`backend/`, `frontend/`, `scripts/`, `.github/`,
+  `docs/architecture/`). Django 5.2 + DRF backend skeleton (`config/` settings
+  split, nine domain apps, custom UUID `accounts.User` created before first
+  migration per ADR §8, normalised API error envelope, request-id middleware,
+  health endpoint). Next.js 16 + TS frontend skeleton (next-intl locale routing
+  `en`/`zh-CN`, semantic design tokens, central API client). Tooling:
+  docker-compose Postgres, pinned requirements, ruff, ESLint, commit-msg
+  validator + hook, CI (backend on PostgreSQL + frontend build), PR template.
+- **Architecture review:** ADR-0001 accepted (PASS).
+- **Validation:** backend ruff/format/check/migrate/pytest (7 passed) green;
+  frontend lint/typecheck/build green; clean-DB migrate + tests pass on
+  PostgreSQL in CI (run 27874080229, both jobs success).
+- **Repository-quality review:** PASS, no blockers.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 1 — Design system & localisation shell ✅
+
+- **Scope:** Semantic design-token system + typography scale + CSS-only motion
+  with reduced-motion fallback. Accessible UI primitives (Button, Input,
+  Textarea, Select, Checkbox, Radio, Label, Field, Card, Badge, Tag, Alert,
+  Skeleton, Spinner, five user-facing StateBlocks, SkipToContent,
+  VisuallyHidden). Global chrome (PublicHeader with accessible mobile menu,
+  PublicFooter, route-preserving LocaleSwitcher, DashboardShell, Wordmark) and
+  Career Intelligence Console presentation pieces with honest source labels.
+  Static shells for all 13 public + 8 candidate + 10 employer routes (locale
+  groups). 10 translation namespaces in English and Simplified Chinese at full
+  key parity. No real API calls, no fabricated data.
+- **Validation:** eslint, tsc, and production build (53 static pages, both
+  locales) all green; i18n parity verified by script.
+- **Accessibility & localisation review:** 4 blockers found and resolved
+  (missing h1 on company detail; provisional-token contrast for muted text,
+  input borders, and warning badge — darkened to meet AA); structural a11y and
+  full EN/zh-CN parity confirmed PASS.
+- **Visual check:** homepage inspected live at desktop and narrow widths in EN
+  and zh-CN (lang=zh-Hans correct, Chinese typography clean, executive
+  composition delivered). Full route-sweep visual QA deferred to Phase 10/12.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 2 — Django core & authentication ✅
+
+- **Scope (backend):** CandidateProfile + EmployerProfile models (full §20.2/§20.3
+  schemas, migrations). Session-cookie auth API under `/api/v1/auth/`:
+  candidate/employer registration (atomic user+profile, auto-login, console
+  verification email), login/logout/me/refresh/csrf, password-reset
+  request+confirm, email-verification foundation. Role/status permission classes.
+  Status is the lifecycle source of truth — `DEACTIVATED` syncs `is_active=False`;
+  DB-level case-insensitive email uniqueness constraint. No long-lived tokens in
+  any response body.
+- **Scope (frontend):** central auth service + TanStack Query session provider
+  (`["me"]`), react-hook-form + zod wiring for sign-in / candidate stepper /
+  employer registration / password-reset request, role-aware post-login
+  redirects, route guards for candidate & employer areas (pending employer →
+  pending screen), sign-out. No token in localStorage/sessionStorage. Vitest +
+  RTL test harness added.
+- **Validation:** backend ruff/check/drift/migrate green, 50 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 16 Vitest tests passing; i18n
+  parity maintained.
+- **Security review:** PASS, no blockers; two priority recommendations
+  (is_active sync, DB-level email uniqueness) implemented immediately.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp` (backend + frontend).
+
+## Phase 3 — Employer approval ✅
+
+- **Scope (backend):** AuditLog model + append-only admin + single `record_action`
+  write path. Approval service (approve/reject/suspend/restore) — atomic, syncs
+  employer `approval_status` + `user.status`/`is_active`, writes one audit entry,
+  sends approval/rejection emails (console). Django Admin approval actions
+  (bulk + reject-with-reason) routed through the service. Employer API:
+  GET/PATCH `/employer/profile/` (own profile only, approval fields read-only),
+  GET `/employer/approval-status/`.
+- **Scope (frontend):** `/employer/pending` state-branching view (PENDING editable
+  details + next step + contact MHA; REJECTED reason + resubmit; SUSPENDED
+  notice), approved-only `/employer/company-profile` editor, both over the
+  approval API. EN/zh-CN parity maintained.
+- **Validation:** backend ruff/check/drift/migrate green, 81 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 24 Vitest tests passing.
+- **Security review:** PASS, no blockers (employer isolation by construction,
+  approval fields non-settable, audit append-only, status sync correct); 3 minor
+  recommendations deferred (profile-endpoint throttle, a CSRF assertion test,
+  lingering suspend reason).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 4 — Jobs, companies & search ✅
+
+- **Scope (backend):** Job + ScreeningQuestion models; employer job CRUD +
+  lifecycle (draft/publish/close/reopen, own jobs only); public job search
+  (portable keyword/location/type/salary filters, newest/relevant sort,
+  pagination, URL-state) and detail; public company directory + detail
+  (approved employers only); Django Admin job moderation (suspend/close/remove/
+  mark-supported) writing audit entries; company slug on EmployerProfile.
+- **Scope (frontend, public):** adaptive job search (desktop split-screen,
+  mobile list + filter drawer, URL-synced filters, debounced keyword, skeletons,
+  honest empty/error states), job detail (decision-first header, Apply/Save/Share,
+  sections incl. a labelled Job-Fit placeholder, missing-data + undisclosed-salary
+  handling, sticky panels), company directory + detail. EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 132 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 45 Vitest tests passing.
+- **Security review:** found 1 BLOCKER — `Job.objects.public()` did not gate on
+  employer approval, so a suspended employer's published jobs stayed publicly
+  visible. FIXED (public() now requires employer APPROVED or MHA-owned) with a
+  regression test; also added public-endpoint throttle and salary-oracle
+  hardening (the two recommendations). Re-verified PASS.
+- **Employer job-management UI:** list/create/edit/preview own jobs with the
+  screening-questions editor and publish/close/reopen actions (approved-only,
+  suspended jobs read-only with moderation reason). 63 frontend tests passing.
+- **CI note:** the first Phase 4 push failed the PostgreSQL clean-DB migrate —
+  the employer-slug migration created the varchar `_like` index twice on
+  Postgres (SQLite has no `_like` indexes, so it passed locally). Fixed by
+  adding the slug column without an index on the transient step; CI green.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp` (CI green on Postgres).
+
+## Phase 5 — Candidate profile & secure resume ✅
+
+- **Scope (backend):** Private resume storage (FileSystemStorage outside any
+  public route, `base_url=None`, opaque UUID filenames), magic-byte validation
+  (PDF `%PDF` / DOCX OOXML-zip, ≤5MB, reject exe/zip/mismatch), atomic
+  replace/remove. Candidate API: GET/PATCH `/candidate/profile/` (resume fields
+  read-only), POST/DELETE `/candidate/resume/`, owner-only permission-checked
+  `/candidate/resume/download/` (the ONLY byte path — no public URL), and
+  `/candidate/dashboard/` (profile completion + honest zero app stats). Resume
+  audit events.
+- **Scope (frontend):** profile editor, resume manager (client pre-check +
+  FormData upload, download-link to the permission-checked endpoint, replace/
+  remove), candidate dashboard with next-action logic + profile-completion
+  meter. No public file URL constructed anywhere. EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 159 pytest passing
+  (incl. cross-candidate denial, path-traversal, MIME/size rejection, no-URL);
+  frontend lint/typecheck/build (55 pages) green, 79 Vitest tests passing.
+- **Security review:** PASS, no blockers — private bytes leave only via one
+  owner-scoped FileResponse, no `.url` exposed, traversal structurally
+  impossible, magic-byte validation. 2 recommendations (endpoint throttling,
+  download-audit volume) batched into Phase 12 hardening.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 6 — Applications & candidate tracking ✅
+
+- **Scope (backend):** Application + ApplicationAnswer + ApplicationStatusHistory
+  models (status enum APPLIED→…→HIRED/REJECTED, unique job+candidate). Apply flow
+  POST `/jobs/{slug}/apply/`: requires a resume, one application per job (409 on
+  duplicate, race-safe), validates required screening answers per type, copies
+  the resume into an immutable private snapshot, records initial APPLIED history
+  + audit. Candidate tracking: `/candidate/applications/` list + `{id}/` detail
+  (own-only, full status timeline, employer notes NEVER exposed), already-applied
+  signal `/jobs/{slug}/application/`. Real candidate dashboard counts (Rejected
+  excluded from active).
+- **Scope (frontend):** apply experience (cover letter + per-type screening
+  controls, review, confirmation, error mapping incl. no-resume→resume page and
+  409→View Application), job-detail Apply↔View switch, applications list +
+  detail with a localized status timeline + plain-language meanings, real
+  dashboard snapshot. EN/zh-CN parity.
+- **Note:** the Phase 6 backend was implemented directly by the supervisor
+  (subagent API was transiently overloaded); frontend was delegated once the API
+  recovered.
+- **Validation:** backend ruff/check/drift/migrate green, 173 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 96 Vitest tests passing.
+- **Security review:** PASS, no blockers — own-only scoping (404 no leak),
+  private notes never serialised, immutable private resume snapshot, race-safe
+  duplicate prevention, server-side answer validation. 3 minor recommendations
+  (answer-json float precision, snapshot-name length, apply throttle) → Phase 12.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 7 — Employer applicant workspace ✅
+
+- **Scope (backend):** Employer applicant API scoped strictly to own jobs:
+  `/employer/applications/` (+ filters), `/employer/jobs/{id}/applications/`,
+  `/employer/applications/{id}/` (detail incl. employer-only notes), PATCH
+  status (atomic, writes history + audit), PATCH notes, permission-checked
+  applicant resume-snapshot download, `/employer/dashboard/` (real attention
+  queue + active jobs + pipeline). Cross-employer/MHA-job access → 404, no leak.
+  Fixed a snapshot-name path-leak (empty original name → neutral name).
+- **Scope (frontend):** applicant workspace with switchable table / Kanban /
+  split-screen (default), native DnD + keyboard "move to stage" alternative,
+  optimistic status changes with rollback, rejection confirmation dialog,
+  private-notes editor, resume open-link (permission-checked), and the live
+  employer dashboard. EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 196 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 104 Vitest tests passing.
+- **Security review:** PASS, no blockers — employer isolation by scoped queryset
+  (404 no leak), private notes employer-only, resume download permission-checked,
+  status change service-only + audited. Recommendations: snapshot-name leak
+  (FIXED now) and workspace throttle (→ Phase 12).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 8 — Smart Job Fit ✅
+
+- **Scope (backend):** Pure deterministic rule engine (title 35 / location 25 /
+  employment-type 20 / resume-overlap 20) with missing-factor exclusion +
+  re-normalisation, bands (strong/good/partial/limited), structured
+  matched/gaps/unknown reasons. Lightweight resume keyword extraction (DOCX via
+  stdlib, PDF via pypdf). JobFitResult model (one current result per
+  candidate+job). Provider-neutral `JobFitExplanationProvider` + deterministic
+  fallback + env-gated factory (AI off by default; AI receives only structured
+  facts, never resume text, and cannot change the score). Endpoints
+  GET/POST `/jobs/{slug}/fit/` + regenerate, candidate-only, disclaimer always
+  attached. No employer ranking, no sensitive-trait inference.
+- **Scope (frontend):** SmartJobFit section on job detail — score + band (not
+  colour-only) + matched/gaps/unknown groups + explanation + always-visible
+  disclaimer + regenerate; candidate-only (anon → sign-in prompt). Backend
+  reason strings rendered as-is (their zh-CN localization is a Phase 11 item).
+  UI chrome EN/zh-CN parity.
+- **Validation:** backend ruff/check/drift/migrate green, 238 pytest passing
+  (incl. band boundaries, re-normalisation, AI-cannot-change-score, fallback);
+  frontend lint/typecheck/build green, 116 Vitest tests passing.
+- **Integrity review:** PASS, no blockers — candidate-only/self-scoped, no
+  ranking, no sensitive inference, AI gated + score-safe, disclaimer always
+  shown, resume privacy preserved. Recurring throttle note → Phase 12.
+- **New dependency:** pypdf==5.1.0 (resume PDF text extraction).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 9 — Saved jobs, support & analytics ✅
+
+- **Scope (backend):** SavedJob (candidate-owned, own-only, is_available label),
+  SupportRequest (guest+candidate intake, private validated attachment served
+  only to owner/admin, admin status workflow + audit), JobViewEvent
+  (privacy-aware salted-hash, no PII, 30-min dedup, best-effort recording on
+  public job views), public insights (real aggregates with k-anonymity ≥3),
+  employer analytics (own-jobs only: views/applications/conversion/
+  time-to-first/stage distribution; null when unreliable, never fake). Real
+  dashboard saved-job count.
+- **Scope (frontend):** SaveJobButton (candidate-only optimistic toggle +
+  rollback) on job detail, saved-jobs page (available/no-longer-open labels),
+  career-support form (guest+candidate, attachment, privacy notice) + candidate
+  support history, employer analytics page (honest null = "not enough data",
+  accessible SVG bars + sr-only data table). EN/zh-CN parity. Fixed a backend
+  gap: saved-job serializer now exposes the job id needed to unsave.
+- **Validation:** backend ruff/check/drift/migrate green, 274 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 136 Vitest tests passing.
+- **Security/privacy review:** PASS, no blockers — saved jobs owner-scoped,
+  support attachments private/owner-admin-only (guest attachments admin-only),
+  no PII in view events, k-anonymity on insights, employer analytics scoped with
+  no candidate identities, unreliable metrics hidden. Recurring throttle + a
+  JobViewEvent retention note → Phase 12.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 10 — Executive homepage & intelligence ✅
+
+- **Scope (backend):** admin-managed MarketInsight model (curated "MHA insight"
+  content) surfaced under `mha_insights` in GET /insights/public/ alongside the
+  real platform aggregates — only published rows, honest empty default.
+- **Scope (frontend):** full executive homepage (§14.1 A–K) — integrated
+  asymmetric hero with equal candidate/employer perspective controls
+  (keyboard-accessible, URL `?view=` + sessionStorage state), perspective value
+  panel, Career Intelligence Console (real platform analytics + MHA insights +
+  clearly-labelled illustrative previews, every module source-labelled), real
+  latest opportunities + companies, architectural journey, MHA expert layer,
+  honest employer workspace preview, trust & operating model, final dual CTA.
+  framer-motion as the single motion library (scoped/lazy, reduced-motion-safe,
+  no scroll hijack). No fabricated metrics. EN/zh-CN parity.
+- **Live visual QA (supervisor, via preview):** inspected the homepage at
+  desktop + mobile in EN and zh-CN; verified perspective switching (copy/CTA/
+  card + URL state), honest source labels (13 on the page), clean CJK wrapping.
+  CAUGHT AND FIXED a real RSC-boundary bug the build/tests missed — the dynamic
+  homepage called a `"use client"` helper from the server; extracted the pure
+  `parsePerspective`/`PERSPECTIVES` into a server-safe module. Confirmed clean
+  console after the fix.
+- **Validation:** backend ruff/check/drift/migrate green, 279 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 144 Vitest tests passing.
+- **New dependency:** framer-motion@12 (single approved motion library).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 11 — English & Simplified Chinese completion ✅
+
+- **Audit:** independent localisation + accessibility audit of the whole app
+  found 5 blockers (3 i18n, 2 a11y); all fixed.
+- **L-B1 (i18n):** Smart Job Fit reasons rendered English on the zh-CN UI →
+  engine now emits 14 stable reason CODES; frontend maps them to localised text,
+  composes the explanation, and renders a localised disclaimer.
+- **L-B2 (i18n):** server error messages rendered English → frontend localises by
+  envelope `code` + contextual auth copy (gettext `.mo` toolchain unavailable in
+  this environment, so code-mapping was chosen).
+- **L-B3 (i18n):** locale switch dropped the URL query → LocaleSwitcher now
+  preserves it (job-search filters survive a language switch).
+- **A-B1 (a11y):** success badge contrast 4.45 → `--status-success` darkened to
+  meet AA (5.29 on subtle).
+- **A-B2 (a11y):** rejection ConfirmDialog now traps Tab and restores focus to
+  the opener.
+- **A-M1:** kanban move now announced via aria-live. Removed dead `status_display`.
+- **Coverage report:** docs/development/I18N_COVERAGE.md — full parity (10
+  namespaces), flagged for production: native zh-CN review of all copy +
+  transactional-email localisation (needs `.mo` compilation).
+- **Validation:** backend 280 pytest green; frontend lint/typecheck/build (55
+  pages) green, 160 Vitest tests passing; all 10 namespaces verified at parity.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 12 — Hardening & final review ✅
+
+- **Scope:** idempotent, DEBUG-guarded `seed_demo_data` command (synthetic demo
+  content + documented demo accounts, password `DemoPass123!`); throttle
+  hardening (global Anon/User throttles closing the recurring "unthrottled
+  authenticated endpoint" recommendation, tests stay unthrottled); lossless
+  numeric screening-answer storage; final docs (API.md, DEFINITION_OF_DONE.md,
+  I18N_COVERAGE.md, README demo section); CI now runs the frontend Vitest suite.
+- **Data-driven visual QA (supervisor):** seeded the DB and inspected the live
+  app — the Career Intelligence Console renders real Platform analytics + curated
+  MHA insights + honest illustrative previews, and job search lists all 20
+  seeded jobs. Confirmed honest sourcing works with real data.
+- **Validation:** backend 286 pytest green; frontend lint/typecheck/build green +
+  160 Vitest; clean-DB migrate + no drift; seed idempotent (verified twice).
+- **Final independent reviews:** final-release (code PASS; only gate = open the
+  PR), repository-quality (PASS), security/privacy (PASS — throttle gap
+  addressed). No code blockers.
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.

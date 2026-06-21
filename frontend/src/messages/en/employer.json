@@ -1,0 +1,511 @@
+{
+  "area": {
+    "eyebrow": "Employer",
+    "label": "Recruitment workspace"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "pending": "Approval status",
+    "companyProfile": "Company Profile",
+    "jobs": "Jobs",
+    "newJob": "Post a Job",
+    "analytics": "Analytics",
+    "settings": "Settings"
+  },
+  "protectedNote": "Employer area. Access control and approval gating are added in Phases 2–3; this preview shows the calm workspace layout and its states.",
+  "dashboard": {
+    "title": "Recruitment workspace",
+    "description": "Your attention queue, active roles, and pipeline at a glance.",
+    "attention": {
+      "title": "Attention queue",
+      "emptyBody": "New applicants and items needing review will appear here."
+    },
+    "quickActions": {
+      "title": "Quick actions",
+      "postJob": "Post a Job",
+      "reviewApplicants": "Review Applicants",
+      "viewJobs": "View Active Jobs",
+      "viewAnalytics": "View Analytics"
+    },
+    "activeJobs": {
+      "title": "Active jobs",
+      "emptyBody": "Publish your first role to start receiving applications.",
+      "columns": {
+        "role": "Role",
+        "views": "Views",
+        "applications": "Applications",
+        "newApplicants": "New",
+        "status": "Status",
+        "deadline": "Deadline"
+      }
+    },
+    "pipeline": {
+      "title": "Candidate pipeline",
+      "emptyBody": "Pipeline counts appear once candidates apply."
+    },
+    "insights": {
+      "title": "Recruitment insights",
+      "emptyBody": "Reliable analytics appear once your roles gather views and applications."
+    },
+    "setup": {
+      "title": "Get set up",
+      "step1": "Complete your company profile",
+      "step2": "Publish your first job",
+      "step3": "Review your first applicant"
+    }
+  },
+  "approval": {
+    "companyLabel": "Organisation",
+    "accountLabel": "Account email",
+    "signInOther": "Sign in with another account",
+    "statusBadge": {
+      "PENDING": "Pending approval",
+      "APPROVED": "Approved",
+      "REJECTED": "Not approved",
+      "SUSPENDED": "Suspended"
+    }
+  },
+  "pending": {
+    "title": "Your account is under review",
+    "description": "An MHA administrator is reviewing your organisation.",
+    "statusLabel": "Status",
+    "statusPending": "Pending approval",
+    "submittedTitle": "Submitted information",
+    "nextStepTitle": "Expected next step",
+    "nextStepBody": "We'll email you once a decision is made. You can update allowed company details below in the meantime.",
+    "contactCta": "Contact MHA",
+    "editTitle": "Update your company details",
+    "editBody": "Keep your organisation information accurate while your account is reviewed. Changes are saved immediately.",
+    "rejected": {
+      "title": "Registration not approved",
+      "body": "Your registration was not approved. You can review the reason, update your details, and resubmit where allowed.",
+      "reasonTitle": "Reason",
+      "reasonFallback": "MHA did not provide a specific reason. Contact us for details before resubmitting.",
+      "editTitle": "Update and resubmit",
+      "editBody": "Correct the details below and save to resubmit your organisation for review.",
+      "resubmit": "Update and resubmit"
+    }
+  },
+  "suspended": {
+    "title": "Your account is suspended",
+    "body": "Your employer account has been suspended. You can review your account information and contact MHA.",
+    "noticeTitle": "Account suspended",
+    "noticeBody": "While suspended, you cannot publish or modify jobs, view new candidate information, or change applicant statuses. Contact MHA to discuss restoring your account."
+  },
+  "companyProfile": {
+    "title": "Company profile",
+    "description": "The details candidates see on your company page.",
+    "editLead": "These details appear on your public company page. Keep them accurate and complete to attract the right candidates.",
+    "emptyTitle": "Company profile incomplete",
+    "emptyBody": "Add your description, location, and culture to attract the right candidates.",
+    "edit": "Edit company profile",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "savedTitle": "Company profile saved",
+    "savedBody": "Your changes have been saved.",
+    "sections": {
+      "identity": "Organisation and contact",
+      "public": "Public company details",
+      "cultureBenefits": "Culture and benefits"
+    },
+    "companySize": "{range} employees",
+    "fields": {
+      "companyName": "Company name",
+      "contactPerson": "Contact person",
+      "phone": "Phone number",
+      "companySummary": "Company summary",
+      "companySummaryHint": "A short overview candidates see on your company page.",
+      "website": "Website",
+      "websiteHint": "Include the full address, starting with https://.",
+      "industry": "Industry",
+      "companySize": "Company size",
+      "companySizeUnset": "Not specified",
+      "companyLocation": "Location",
+      "culture": "Company culture",
+      "cultureHint": "What it's like to work at your organisation.",
+      "benefits": "Benefits",
+      "benefitsHint": "Key benefits and perks you offer."
+    }
+  },
+  "jobs": {
+    "title": "Jobs",
+    "description": "Create, publish, and manage your vacancies.",
+    "newJob": "Post a Job",
+    "emptyTitle": "No jobs yet",
+    "emptyBody": "Create your first role to start receiving applications.",
+    "columns": {
+      "role": "Role",
+      "status": "Status",
+      "applications": "Applications",
+      "deadline": "Deadline",
+      "updated": "Updated"
+    },
+    "status": {
+      "draft": "Draft",
+      "published": "Published",
+      "closed": "Closed",
+      "suspended": "Suspended",
+      "expired": "Expired",
+      "archived": "Archived"
+    }
+  },
+  "newJob": {
+    "title": "Post a job",
+    "description": "Provide complete, accurate details. You can save a draft and publish when ready.",
+    "fields": {
+      "jobTitle": "Job title",
+      "location": "Location",
+      "employmentType": "Employment type",
+      "salaryMin": "Minimum salary",
+      "salaryMax": "Maximum salary",
+      "salaryUndisclosed": "Do not disclose salary",
+      "description": "Job description",
+      "requirements": "Requirements",
+      "deadline": "Application deadline"
+    },
+    "actions": {
+      "saveDraft": "Save draft",
+      "preview": "Preview",
+      "publish": "Publish"
+    },
+    "shellNote": "This form is a layout preview. Job creation is wired up in Phase 4."
+  },
+  "jobDetail": {
+    "title": "Job",
+    "backToJobs": "Back to jobs",
+    "edit": "Edit",
+    "viewApplicants": "View Applicants",
+    "notFoundTitle": "Job not available",
+    "notFoundBody": "This job could not be found, or it doesn't belong to your organisation."
+  },
+  "jobEdit": {
+    "title": "Edit job",
+    "description": "Update the details of this role."
+  },
+  "applicants": {
+    "title": "Applicants",
+    "description": "Review and progress candidates for this role.",
+    "viewsLabel": "Applicant view",
+    "views": {
+      "split": "Split-screen",
+      "table": "Table",
+      "kanban": "Kanban"
+    },
+    "emptyTitle": "No applicants yet",
+    "emptyBody": "Applicants appear here once candidates apply to this role.",
+    "emptyFilteredBody": "No applicants match your current search and filter.",
+    "review": "Review",
+    "tableCaption": "Applicants to this role and their status",
+    "columns": {
+      "candidate": "Candidate",
+      "job": "Job",
+      "applied": "Applied",
+      "status": "Status",
+      "resume": "Resume",
+      "updated": "Last updated",
+      "actions": "Actions"
+    },
+    "filters": {
+      "searchLabel": "Search candidates",
+      "searchPlaceholder": "Search by name or title",
+      "statusLabel": "Stage",
+      "statusAll": "All stages",
+      "sortLabel": "Sort",
+      "sort": {
+        "newest": "Newest applied",
+        "oldest": "Oldest applied",
+        "updated": "Recently updated",
+        "status": "Stage"
+      }
+    },
+    "status": {
+      "APPLIED": { "label": "Applied" },
+      "UNDER_REVIEW": { "label": "Under review" },
+      "SHORTLISTED": { "label": "Shortlisted" },
+      "INTERVIEW": { "label": "Interview" },
+      "OFFERED": { "label": "Offered" },
+      "HIRED": { "label": "Hired" },
+      "REJECTED": { "label": "Rejected" }
+    },
+    "split": {
+      "listTitle": "Candidates",
+      "selectPrompt": "Select a candidate to review their profile, resume, and answers."
+    },
+    "profile": {
+      "phone": "Phone",
+      "location": "Preferred location",
+      "type": "Preferred employment type",
+      "applied": "Applied"
+    },
+    "resume": {
+      "title": "Resume",
+      "open": "Open resume",
+      "openNamed": "Open resume ({name})",
+      "none": "No resume attached to this application."
+    },
+    "coverLetter": {
+      "title": "Cover letter",
+      "none": "No cover letter provided."
+    },
+    "answers": {
+      "title": "Screening answers",
+      "none": "No screening questions for this role.",
+      "blank": "No answer provided."
+    },
+    "stage": {
+      "title": "Stage controls",
+      "changeLabel": "Move to stage",
+      "noteLabel": "Change note",
+      "noteHint": "Optional. Recorded in the application history.",
+      "notePlaceholder": "Add an internal note about this change",
+      "update": "Update stage",
+      "updating": "Updating…",
+      "rejectWarning": "This will reject the candidate.",
+      "error": "We couldn't update the stage. Please try again."
+    },
+    "notes": {
+      "title": "Private notes",
+      "label": "Employer private notes",
+      "hint": "Only your team sees these. Candidates never see your notes.",
+      "placeholder": "Add notes about this candidate",
+      "save": "Save notes",
+      "saving": "Saving…",
+      "saved": "Notes saved",
+      "error": "We couldn't save your notes. Please try again."
+    },
+    "kanban": {
+      "moveLabel": "Move to stage",
+      "emptyColumn": "No candidates in this stage.",
+      "moveError": "We couldn't move the candidate. The change was undone — please try again.",
+      "moveAnnouncement": "Moved {name} to {stage}"
+    },
+    "rejectConfirm": {
+      "title": "Reject this candidate?",
+      "body": "The candidate will be moved to Rejected. You can move them back to another stage later if needed.",
+      "confirm": "Reject candidate",
+      "cancel": "Cancel"
+    },
+    "privacyNote": "You only see candidates who applied to your roles."
+  },
+  "dashboardLive": {
+    "attention": {
+      "title": "Attention queue",
+      "newApplicants": "New applicants to review",
+      "jobsNearDeadline": "Jobs near their deadline",
+      "draftJobs": "Draft jobs not yet published",
+      "reviewLink": "Review applicants",
+      "manageLink": "Manage jobs",
+      "publishLink": "Finish and publish"
+    },
+    "activeJobs": {
+      "title": "Your jobs",
+      "caption": "Your jobs with application counts",
+      "emptyTitle": "No jobs yet",
+      "emptyBody": "Post your first role to start receiving applications.",
+      "postJob": "Post a Job",
+      "reviewApplicants": "Review applicants",
+      "columns": {
+        "role": "Role",
+        "status": "Status",
+        "deadline": "Deadline",
+        "applications": "Applications",
+        "newApplicants": "New",
+        "actions": "Actions"
+      }
+    },
+    "pipeline": {
+      "title": "Candidate pipeline",
+      "emptyTitle": "No candidates yet",
+      "emptyBody": "Pipeline counts appear once candidates apply to your roles.",
+      "totals": "{applications} applications across {jobs} jobs."
+    },
+    "jobStatus": {
+      "DRAFT": "Draft",
+      "PUBLISHED": "Published",
+      "CLOSED": "Closed",
+      "SUSPENDED": "Suspended",
+      "EXPIRED": "Expired",
+      "ARCHIVED": "Archived"
+    }
+  },
+  "analytics": {
+    "title": "Analytics",
+    "description": "Reliable recruitment metrics for your roles.",
+    "emptyTitle": "Not enough data yet",
+    "emptyBody": "Analytics appear once you post a role and it gathers views and applications.",
+    "errorTitle": "We couldn't load your analytics",
+    "errorBody": "Please try again in a moment.",
+    "notEnough": "Not enough data yet",
+    "conversionHint": "Applications per view.",
+    "generatedAt": "Updated {date}",
+    "metrics": {
+      "views": "Job views",
+      "applications": "Applications",
+      "conversion": "Conversion rate",
+      "timeToFirst": "Time to first application",
+      "stageDistribution": "Stage distribution"
+    },
+    "duration": {
+      "approx": "~{value} {unit}",
+      "minutes": "{value, plural, one {minute} other {minutes}}",
+      "hours": "{value, plural, one {hour} other {hours}}",
+      "days": "{value, plural, one {day} other {days}}"
+    },
+    "stageTitle": "Applications by stage",
+    "stageLead": "Where your applications sit across the hiring pipeline.",
+    "stageEmpty": "No applications yet.",
+    "stageTableCaption": "Number of applications at each stage",
+    "stageColumnStage": "Stage",
+    "stageColumnCount": "Applications",
+    "stageTotal": "Total"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your workspace, language, and team access.",
+    "emptyBody": "Settings will be available once accounts are connected in Phase 2."
+  },
+  "jobsList": {
+    "loading": "Loading your jobs…",
+    "errorTitle": "We couldn't load your jobs",
+    "errorBody": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "emptyTitle": "No jobs yet",
+    "emptyBody": "Post your first job to start receiving applications.",
+    "postFirstJob": "Post your first job",
+    "refreshing": "Updating…",
+    "tableCaption": "Your jobs and their status",
+    "actionErrorTitle": "Action could not be completed",
+    "actionError": "Something went wrong. Please try again.",
+    "columns": {
+      "role": "Role",
+      "status": "Status",
+      "type": "Type",
+      "deadline": "Deadline",
+      "applications": "Applications",
+      "actions": "Actions"
+    },
+    "actions": {
+      "view": "View",
+      "edit": "Edit",
+      "publish": "Publish",
+      "close": "Close",
+      "reopen": "Reopen"
+    }
+  },
+  "jobForm": {
+    "createTitle": "Post a job",
+    "createDescription": "Provide complete, accurate details. Your job is saved as a draft so you can review and publish it when ready.",
+    "backToJobs": "Back to jobs",
+    "saveChanges": "Save changes",
+    "createDraft": "Save draft",
+    "saving": "Saving…",
+    "createNote": "Saved as a draft. You can publish it from the job's page.",
+    "editNote": "Changes are saved immediately.",
+    "sections": {
+      "role": "Role",
+      "salary": "Salary",
+      "detail": "Job detail"
+    },
+    "fields": {
+      "title": "Job title",
+      "location": "Location",
+      "employmentType": "Employment type",
+      "salaryMin": "Minimum salary",
+      "salaryMax": "Maximum salary",
+      "currency": "Currency",
+      "period": "Salary period",
+      "salaryUndisclosed": "Do not disclose salary",
+      "salaryUndisclosedHint": "Candidates will see \"Salary not disclosed\" and no figures.",
+      "description": "Job description",
+      "requirements": "Requirements",
+      "deadline": "Application deadline",
+      "deadlineHint": "After this date the job can no longer be published.",
+      "listingLanguage": "Listing language",
+      "listingLanguageHint": "The language you wrote this listing in. Content is shown as written and is not translated."
+    },
+    "period": {
+      "HOURLY": "Per hour",
+      "DAILY": "Per day",
+      "MONTHLY": "Per month",
+      "YEARLY": "Per year"
+    },
+    "language": {
+      "en": "English",
+      "zhCN": "Simplified Chinese"
+    }
+  },
+  "screening": {
+    "title": "Screening questions",
+    "hint": "Optional questions candidates answer when they apply.",
+    "empty": "No screening questions yet.",
+    "addQuestion": "Add a question",
+    "questionLabel": "Question {number}",
+    "questionText": "Question",
+    "questionType": "Answer type",
+    "required": "Required",
+    "moveUp": "Move question {number} up",
+    "moveDown": "Move question {number} down",
+    "remove": "Remove question {number}",
+    "removeLabel": "Remove",
+    "options": "Answer options",
+    "optionLabel": "Option {number}",
+    "addOption": "Add option",
+    "removeOption": "Remove option {number}",
+    "types": {
+      "SHORT_TEXT": "Short text",
+      "LONG_TEXT": "Long text",
+      "YES_NO": "Yes / No",
+      "SINGLE_CHOICE": "Single choice",
+      "NUMBER": "Number"
+    }
+  },
+  "jobDetailView": {
+    "title": "Job",
+    "description": "Preview and manage this role.",
+    "loading": "Loading job…",
+    "errorTitle": "We couldn't load this job",
+    "errorBody": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Job not available",
+    "notFoundBody": "This job could not be found, or it doesn't belong to your organisation.",
+    "backToJobs": "Back to jobs",
+    "backToDetail": "Back to job",
+    "edit": "Edit",
+    "publish": "Publish",
+    "close": "Close",
+    "reopen": "Reopen",
+    "actionError": "Something went wrong. Please try again.",
+    "mhaSupported": "MHA Recruiter Supported",
+    "suspendedNotice": "This job is suspended by MHA and cannot be edited or published.",
+    "salaryNotDisclosed": "Salary not disclosed",
+    "noDescription": "No description provided.",
+    "noRequirements": "No requirements listed.",
+    "noScreening": "No screening questions.",
+    "sections": {
+      "description": "Job description",
+      "requirements": "Requirements"
+    },
+    "fields": {
+      "salary": "Salary",
+      "deadline": "Application deadline",
+      "listingLanguage": "Listing language",
+      "published": "Published"
+    }
+  },
+  "jobEditView": {
+    "title": "Edit job",
+    "description": "Update the details of this role.",
+    "loading": "Loading job…",
+    "errorTitle": "We couldn't load this job",
+    "errorBody": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Job not available",
+    "notFoundBody": "This job could not be found, or it doesn't belong to your organisation.",
+    "backToJobs": "Back to jobs",
+    "backToDetail": "Back to job",
+    "savedTitle": "Job updated",
+    "savedBody": "Your changes have been saved.",
+    "suspendedNotice": "This job is suspended by MHA and cannot be edited. Contact MHA to discuss restoring it.",
+    "moderationReason": "Reason from MHA"
+  }
+}

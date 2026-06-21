@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# Local commit-msg hook enforcing the repository commit convention.
+# Enable once with:  git config core.hooksPath .githooks
+python scripts/validate_commit_message.py "$1" || python3 scripts/validate_commit_message.py "$1"

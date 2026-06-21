@@ -1,0 +1,45 @@
+{
+  "eyebrow": "MHA expert layer",
+  "title": "Career and recruitment support from MHA",
+  "lead": "Self-service is the default. When you need a person, MHA consultants are here to help candidates and employers alike.",
+  "explainerTitle": "How MHA support works",
+  "explainer": "Submit a request and an MHA consultant will follow up. There is no live chat — we respond thoughtfully rather than instantly.",
+  "form": {
+    "title": "Request support",
+    "name": "Your name",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneHint": "Optional. Add a number if you'd prefer a call back.",
+    "category": "How can we help?",
+    "categoryPlaceholder": "Select a category",
+    "categories": {
+      "application": "Job application",
+      "resume": "Resume",
+      "career": "Career direction",
+      "status": "Application status",
+      "other": "Other"
+    },
+    "message": "Tell us a little more",
+    "messageHint": "Optional. Share any detail that helps us respond well.",
+    "resume": "Attach your resume",
+    "resumeHint": "Optional. PDF or DOCX, up to 5 MB.",
+    "submit": "Send request",
+    "submitting": "Sending…",
+    "privacyNotice": "We use your details only to respond to this request. Resumes are kept private and never shared without your application."
+  },
+  "response": {
+    "title": "What to expect",
+    "body": "An MHA consultant typically follows up within two business days. Urgent items are prioritised."
+  },
+  "success": {
+    "title": "Request received",
+    "body": "Thank you. An MHA consultant will follow up by email.",
+    "again": "Send another request"
+  },
+  "status": {
+    "NEW": "New",
+    "IN_PROGRESS": "In progress",
+    "RESOLVED": "Resolved",
+    "CLOSED": "Closed"
+  }
+}

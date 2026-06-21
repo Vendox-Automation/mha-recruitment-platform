@@ -1,0 +1,32 @@
+# Local development services. PostgreSQL is the canonical database for the
+# platform (spec §18, ADR-0001 §6). The backend and frontend are run directly
+# during development (see README); this compose file provides the database and
+# an optional mail-testing service.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-mha}
+      POSTGRES_USER: ${POSTGRES_USER:-mha}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mha}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-mha} -d ${POSTGRES_DB:-mha}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Optional local SMTP capture for previewing transactional emails.
+  # Enable with: docker compose --profile mail up
+  mailpit:
+    image: axllent/mailpit:latest
+    profiles: ["mail"]
+    ports:
+      - "8025:8025" # web UI
+      - "1025:1025" # SMTP
+
+volumes:
+  postgres_data:

@@ -1,0 +1,92 @@
+{
+  "brand": "MHA Jobs",
+  "operatedByMha": "Operated by MHA Consultancy",
+  "skipToContent": "Skip to main content",
+  "nav": {
+    "home": "MHA Jobs — home",
+    "primary": "Primary navigation",
+    "findJobs": "Find Jobs",
+    "companies": "Explore Companies",
+    "careerSupport": "Career Support",
+    "forEmployers": "For Employers",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "createAccount": "Create Account",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "about": "A professional bilingual recruitment platform connecting candidates and employers, operated by MHA Consultancy.",
+    "candidates": "For Candidates",
+    "employers": "For Employers",
+    "platform": "Platform",
+    "copyright": "© MHA Consultancy. All rights reserved.",
+    "links": {
+      "findJobs": "Find Jobs",
+      "companies": "Explore Companies",
+      "careerSupport": "Career Support",
+      "createAccount": "Create candidate account",
+      "forEmployers": "For Employers",
+      "employerAccess": "Register your organisation",
+      "signIn": "Sign In",
+      "support": "Contact support",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "states": {
+    "loadingTitle": "Loading",
+    "loadingDescription": "Fetching the latest information.",
+    "loadingSpinner": "Loading content",
+    "emptyTitle": "Nothing to show yet",
+    "emptyDescription": "There is no content here at the moment.",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "We could not load this right now. Please try again.",
+    "successTitle": "Done",
+    "permissionTitle": "You do not have access",
+    "permissionDescription": "Your account does not have permission to view this. Sign in with the right account or contact MHA support.",
+    "retry": "Try again",
+    "shellNotice": "Phase 1 preview: this screen shows layout and states only. Live data arrives in a later phase."
+  },
+  "actions": {
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "back": "Back",
+    "next": "Next",
+    "cancel": "Cancel",
+    "save": "Save",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "apply": "Apply",
+    "close": "Close"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "zh-CN": "简体中文"
+  },
+  "source": {
+    "mhaInsight": "MHA insight",
+    "platformAnalytics": "Platform analytics",
+    "illustrativePreview": "Illustrative preview"
+  },
+  "badge": {
+    "approvedEmployer": "Approved employer",
+    "mhaSupported": "MHA Recruiter Supported",
+    "easyApply": "Easy Apply"
+  },
+  "apiErrors": {
+    "validation_error": "Please review the highlighted fields and try again.",
+    "authentication_required": "Please sign in to continue.",
+    "permission_denied": "Your account does not have permission to do this.",
+    "not_found": "We could not find what you were looking for.",
+    "conflict": "This conflicts with existing information. Please review and try again.",
+    "throttled": "Too many attempts. Please wait a moment and try again.",
+    "server_error": "Something went wrong on our side. Please try again.",
+    "generic": "Something went wrong. Please try again.",
+    "invalidCredentials": "The email or password is incorrect.",
+    "emailExists": "An account with this email already exists."
+  }
+}

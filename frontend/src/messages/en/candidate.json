@@ -1,0 +1,267 @@
+{
+  "area": {
+    "eyebrow": "Candidate",
+    "label": "Career command centre"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "resume": "Resume",
+    "applications": "Applications",
+    "savedJobs": "Saved Jobs",
+    "support": "MHA Support",
+    "settings": "Settings"
+  },
+  "protectedNote": "Candidate area. Access control is added in Phase 2; this preview shows the calm working layout and its states.",
+  "dashboard": {
+    "title": "Welcome back",
+    "description": "Here's where your applications, matches, and next steps live.",
+    "nextAction": {
+      "eyebrow": "Your next step",
+      "completeProfile": {
+        "title": "Complete your profile",
+        "body": "Add your basic details so employers and matches stay accurate.",
+        "cta": "Complete profile"
+      },
+      "uploadResume": {
+        "title": "Upload your resume",
+        "body": "Add a current resume so you can apply to roles in one step.",
+        "cta": "Upload resume"
+      },
+      "browseJobs": {
+        "title": "You're ready to apply",
+        "body": "Your profile and resume are set. Find roles that fit and apply.",
+        "cta": "Browse jobs"
+      }
+    },
+    "completion": {
+      "label": "Profile completion",
+      "percent": "{percent}%",
+      "complete": "Your profile is complete.",
+      "incomplete": "Finish your profile to improve matching."
+    },
+    "profileSummary": {
+      "title": "Profile",
+      "edit": "Edit",
+      "jobTitle": "Preferred role",
+      "location": "Preferred location",
+      "type": "Employment type",
+      "notSet": "Not set"
+    },
+    "snapshot": {
+      "title": "Application snapshot",
+      "viewAll": "View all",
+      "total": "Total",
+      "active": "Active",
+      "emptyTitle": "No applications yet",
+      "emptyBody": "Apply to a role and your progress will appear here."
+    }
+  },
+  "profile": {
+    "title": "Your profile",
+    "description": "Keep your details current so employers and matches stay accurate.",
+    "editLead": "Update your details and preferences. Your resume is managed separately.",
+    "savedTitle": "Profile saved",
+    "savedBody": "Your changes have been saved.",
+    "saving": "Saving…",
+    "save": "Save changes",
+    "sections": {
+      "basics": "Basic details",
+      "preferences": "Matching preferences",
+      "preferencesHint": "Optional — these help us match you to relevant roles."
+    },
+    "fields": {
+      "fullName": "Full name",
+      "phone": "Phone",
+      "preferredJobTitle": "Preferred job title",
+      "preferredLocation": "Preferred location",
+      "preferredEmploymentType": "Preferred employment type",
+      "preferredEmploymentTypeAny": "No preference"
+    }
+  },
+  "resume": {
+    "title": "Resume",
+    "description": "Manage the resume employers see when you apply.",
+    "privacyNote": "Your resume stays private. It is only shared with roles you apply to, and it is never exposed as a public link.",
+    "current": "Current resume",
+    "onFileBadge": "On file",
+    "unnamedFile": "Resume",
+    "noneOnFile": "No resume on file yet.",
+    "uploadedOn": "Uploaded {date}",
+    "download": "Download / open",
+    "manage": "Manage resume",
+    "upload": "Upload resume",
+    "emptyTitle": "Upload your resume to apply",
+    "emptyBody": "Add a PDF or DOCX (up to 5 MB) so you can apply to roles.",
+    "uploadLabel": "Upload a resume",
+    "replaceLabel": "Replace your resume",
+    "inputHint": "PDF or DOCX, up to 5 MB.",
+    "uploading": "Uploading…",
+    "remove": "Remove resume",
+    "removing": "Removing…",
+    "removeConfirm": "Remove resume",
+    "removeCancel": "Keep resume",
+    "removeConfirmBody": "Remove your resume? You will need to upload one again before you can apply.",
+    "notice": {
+      "savedTitle": "Done",
+      "uploaded": "Your resume has been uploaded.",
+      "replaced": "Your resume has been replaced.",
+      "removed": "Your resume has been removed."
+    }
+  },
+  "applications": {
+    "title": "Your applications",
+    "description": "Track every application and its current stage.",
+    "emptyTitle": "You haven't applied yet",
+    "emptyBody": "When you apply to a role, it will appear here with its status history.",
+    "browseJobs": "Browse jobs",
+    "columns": {
+      "role": "Role",
+      "company": "Company",
+      "applied": "Applied",
+      "stage": "Stage",
+      "updated": "Updated"
+    },
+    "status": {
+      "APPLIED": {
+        "label": "Applied",
+        "meaning": "Your application has been submitted and is waiting to be reviewed by the employer.",
+        "next": "No action needed — we'll update you when the employer reviews your application."
+      },
+      "UNDER_REVIEW": {
+        "label": "Under review",
+        "meaning": "The employer is currently reviewing your application.",
+        "next": "No action needed right now. Keep your profile and resume up to date."
+      },
+      "SHORTLISTED": {
+        "label": "Shortlisted",
+        "meaning": "You've been shortlisted — the employer is considering you for the next step.",
+        "next": "Watch for a message from the employer about next steps."
+      },
+      "INTERVIEW": {
+        "label": "Interview",
+        "meaning": "You've reached the interview stage for this role.",
+        "next": "Prepare for your interview. The employer will share the details with you."
+      },
+      "OFFERED": {
+        "label": "Offer",
+        "meaning": "The employer has extended an offer for this role.",
+        "next": "Review the offer and respond to the employer."
+      },
+      "HIRED": {
+        "label": "Hired",
+        "meaning": "Congratulations — you've been hired for this role.",
+        "next": "The employer will be in touch about onboarding."
+      },
+      "REJECTED": {
+        "label": "Not progressed",
+        "meaning": "This application is not progressing further. It happens often and isn't a reflection of your worth — keep applying.",
+        "next": "Explore other roles that fit you. MHA support can help with your search."
+      }
+    },
+    "errors": {
+      "required": "This question is required.",
+      "invalidNumber": "Enter a valid number.",
+      "invalidChoice": "Choose one of the listed options."
+    },
+    "apply": {
+      "title": "Apply for this role",
+      "lead": "Complete your application for {job}.",
+      "leadWithCompany": "Complete your application for {job} at {company}.",
+      "backToRole": "Back to role",
+      "browseRoles": "Browse roles",
+      "notCandidate": "Only candidate accounts can apply to roles.",
+      "jobUnavailable": "This role is no longer available",
+      "jobUnavailableBody": "It may have closed or been removed. Browse other open roles.",
+      "resumeNeededTitle": "Add a resume before you apply",
+      "resumeNeededBody": "Employers receive your resume with your application.",
+      "noResumeTitle": "A resume is required to apply",
+      "noResumeBody": "Upload a resume, then return to submit your application.",
+      "uploadResume": "Upload resume",
+      "coverLetterLabel": "Cover letter",
+      "coverLetterHint": "Optional. Briefly tell the employer why you're a fit.",
+      "coverLetterPlaceholder": "Share why you're interested in this role…",
+      "coverLetterEmpty": "No cover letter added.",
+      "screeningTitle": "Screening questions",
+      "choosePlaceholder": "Choose an option",
+      "yes": "Yes",
+      "no": "No",
+      "notAnswered": "Not answered",
+      "reviewCta": "Review application",
+      "reviewTitle": "Review your application",
+      "reviewBody": "Check your answers before submitting. You can't edit after you apply.",
+      "submit": "Submit application",
+      "submitting": "Submitting…",
+      "editAgain": "Edit answers",
+      "successTitle": "Application submitted",
+      "successBody": "Your application for {job} has been sent. You can track its progress here.",
+      "viewApplication": "View application",
+      "errorGeneric": "We couldn't submit your application. Please try again.",
+      "conflict": "You've already applied to this role.",
+      "alreadyAppliedTitle": "You've already applied",
+      "alreadyAppliedBody": "You already have an application for {job}. View it to track its progress."
+    },
+    "timeline": {
+      "empty": "No status updates yet.",
+      "source": {
+        "employer": "By the employer",
+        "platform": "By the platform",
+        "candidate": "By you"
+      }
+    },
+    "detail": {
+      "title": "Application",
+      "backToApplications": "Back to applications",
+      "currentStage": "Current stage",
+      "nextLabel": "What's next",
+      "timelineTitle": "Status timeline",
+      "submissionTitle": "Your submission",
+      "resumeLabel": "Resume",
+      "resumeOnFile": "Resume attached",
+      "noResumeSnapshot": "No resume was attached.",
+      "coverLetterLabel": "Cover letter",
+      "coverLetterEmpty": "No cover letter was added.",
+      "answersLabel": "Screening answers",
+      "yes": "Yes",
+      "no": "No",
+      "notAnswered": "Not answered",
+      "notFoundTitle": "Application not available",
+      "notFoundBody": "This application could not be found, or you don't have access to it."
+    }
+  },
+  "savedJobs": {
+    "title": "Saved jobs",
+    "description": "Roles you've saved to revisit.",
+    "emptyTitle": "No saved jobs",
+    "emptyBody": "Save roles from search or a job page to find them here.",
+    "browseJobs": "Browse jobs",
+    "available": "Open",
+    "unavailable": "No longer open",
+    "savedOn": "Saved",
+    "remove": "Remove",
+    "removeLabel": "Remove {title} from saved jobs",
+    "removeUnavailable": "Can't remove this saved role right now.",
+    "errorTitle": "We couldn't load your saved jobs",
+    "errorBody": "Please try again in a moment."
+  },
+  "support": {
+    "title": "MHA support",
+    "description": "Request help with your applications or career direction.",
+    "cta": "Request support",
+    "newRequestTitle": "Request support",
+    "historyTitle": "Your requests",
+    "historyEmptyTitle": "No requests yet",
+    "historyEmptyBody": "When you send a support request, it will appear here with its status.",
+    "historyErrorTitle": "We couldn't load your requests",
+    "historyErrorBody": "Please try again in a moment.",
+    "aboutJob": "About: {title}",
+    "attachmentLabel": "Attachment included"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account, language, and notifications.",
+    "language": "Language",
+    "account": "Account",
+    "emptyBody": "Account settings will be available once accounts are connected in Phase 2."
+  }
+}
