@@ -29,6 +29,66 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class MarketInsight(models.Model):
+    """Administrator-curated "MHA insight" content (spec §13.5, §15.8).
+
+    This is the *honest* source for the Career Intelligence Console's editorial
+    "MHA insight" cards: short, human-written hiring observations curated by an
+    MHA administrator through Django admin. It is deliberately separate from the
+    computed *platform analytics* aggregates (``selectors.public_insights``) so
+    the two are never conflated (AGENTS §13 — distinguish "MHA insight" from
+    "platform analytics"; never fabricate).
+
+    Integrity guarantees:
+
+    * Nothing is invented by the system — every card is a real row an admin wrote.
+    * Only ``is_published`` rows are surfaced publicly; the honest default for a
+      fresh install is an EMPTY list until an administrator adds content.
+
+    Portability (ADR-0001 §6.1): UUID PK, ``django.db.models`` only, ordering via
+    ``Meta.ordering`` (no per-field ``db_index`` so the migration is a single
+    ``CreateModel`` with constraints inline — avoiding the ``*_like`` Postgres
+    pattern-index pitfall, §6.1).
+    """
+
+    class Category(models.TextChoices):
+        ROLES_IN_FOCUS = "roles_in_focus", _("Roles in focus")
+        HIRING_OUTLOOK = "hiring_outlook", _("Hiring outlook")
+        SKILLS = "skills", _("Skills")
+        SALARY_GUIDANCE = "salary_guidance", _("Salary guidance")
+        OTHER = "other", _("Other")
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(_("title"), max_length=200)
+    body = models.TextField(_("body"))
+    category = models.CharField(
+        _("category"),
+        max_length=32,
+        choices=Category.choices,
+        default=Category.OTHER,
+    )
+    display_order = models.PositiveIntegerField(
+        _("display order"),
+        default=0,
+        help_text=_("Lower numbers appear first in the public list."),
+    )
+    is_published = models.BooleanField(
+        _("published"),
+        default=False,
+        help_text=_("Only published insights are shown publicly."),
+    )
+    created_at = models.DateTimeField(_("created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("updated at"), auto_now=True)
+
+    class Meta:
+        verbose_name = _("market insight")
+        verbose_name_plural = _("market insights")
+        ordering = ["display_order", "-created_at"]
+
+    def __str__(self) -> str:
+        return self.title
+
+
 class JobViewEvent(models.Model):
     """One de-duplicated public view of a job (spec §20.12)."""
 

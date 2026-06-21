@@ -23,6 +23,7 @@ from typing import Any
 from django.db.models import Count
 from django.utils import timezone
 
+from apps.analytics.models import MarketInsight
 from apps.employers.models import EmployerProfile
 from apps.jobs.models import Job
 
@@ -98,8 +99,42 @@ def _popular_role_keywords(public_jobs) -> list[dict[str, Any]]:
     ][:TOP_N]
 
 
+def _mha_insights() -> list[dict[str, Any]]:
+    """Administrator-curated "MHA insight" cards, PUBLISHED only.
+
+    These are editorial rows written by an MHA administrator (spec §13.5) — a
+    source distinct from the computed platform aggregates above. Only published
+    rows are surfaced and the honest default is an empty list until an admin adds
+    content; nothing here is fabricated by the system. Each item carries
+    ``source_label="mha_insight"`` so the client can label it correctly and never
+    present it as platform analytics (AGENTS §13).
+    """
+    rows = MarketInsight.objects.filter(is_published=True).order_by("display_order", "-created_at")
+    return [
+        {
+            "id": str(row.id),
+            "title": row.title,
+            "body": row.body,
+            "category": row.category,
+            "source_label": "mha_insight",
+        }
+        for row in rows
+    ]
+
+
 def public_insights() -> dict[str, Any]:
-    """Assemble the public insights payload (only reliable aggregates)."""
+    """Assemble the public insights payload.
+
+    The response holds two clearly separated sources:
+
+    * Computed *platform analytics* — the real, reliable aggregates below
+      (job/employer/recent counts and small-group-protected popularity lists).
+    * Curated *MHA insights* — the ``mha_insights`` list of administrator-written
+      editorial cards, each tagged ``source_label="mha_insight"``.
+
+    The client labels the aggregates "platform analytics" and the list
+    "MHA insight"; the two are never conflated (AGENTS §13).
+    """
     public_jobs = Job.objects.public()
     published_job_count = public_jobs.count()
 
@@ -119,4 +154,7 @@ def public_insights() -> dict[str, Any]:
         # Surfaced so the client knows entries below this size were withheld
         # (transparency, not fabrication).
         "min_group_size": MIN_GROUP_SIZE,
+        # Curated editorial cards — a SEPARATE source from the aggregates above
+        # (administrator-managed; published-only; empty until an admin curates).
+        "mha_insights": _mha_insights(),
     }

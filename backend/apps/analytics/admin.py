@@ -1,10 +1,14 @@
-"""Read-only admin for job-view telemetry (spec §15.8, AGENTS §13).
+"""Analytics admin (spec §13.5, §15.8, AGENTS §13).
 
-``JobViewEvent`` rows are privacy-sensitive telemetry written exclusively by the
-recording service. The admin is fully read-only — no add/change/delete — so the
-signal cannot be fabricated or edited, and it surfaces only the non-identifying
-fields (the salted hash is shown truncated, never a raw identifier or IP, which
-are never stored in the first place).
+Two surfaces with deliberately opposite permissions:
+
+* :class:`MarketInsightAdmin` — FULL CRUD. This is the administrator-managed
+  source of curated "MHA insight" content the Career Intelligence Console shows.
+  An MHA administrator authors and publishes these cards here.
+* :class:`JobViewEventAdmin` — fully READ-ONLY. ``JobViewEvent`` rows are
+  privacy-sensitive telemetry written exclusively by the recording service, so
+  the signal cannot be fabricated or edited; it surfaces only non-identifying
+  fields (the salted hash is shown truncated, never a raw identifier or IP).
 """
 
 from __future__ import annotations
@@ -12,7 +16,29 @@ from __future__ import annotations
 from django.contrib import admin
 from django.http import HttpRequest
 
-from apps.analytics.models import JobViewEvent
+from apps.analytics.models import JobViewEvent, MarketInsight
+
+
+@admin.register(MarketInsight)
+class MarketInsightAdmin(admin.ModelAdmin):
+    """Full management of curated MHA insight content (spec §13.5)."""
+
+    list_display = ["title", "category", "display_order", "is_published", "updated_at"]
+    list_filter = ["is_published", "category"]
+    list_editable = ["display_order", "is_published"]
+    search_fields = ["title", "body"]
+    ordering = ["display_order", "-created_at"]
+    readonly_fields = ["id", "created_at", "updated_at"]
+    fields = [
+        "id",
+        "title",
+        "body",
+        "category",
+        "display_order",
+        "is_published",
+        "created_at",
+        "updated_at",
+    ]
 
 
 @admin.register(JobViewEvent)
