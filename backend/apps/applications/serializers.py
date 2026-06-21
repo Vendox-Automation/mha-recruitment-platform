@@ -71,16 +71,14 @@ class StatusHistorySerializer(serializers.ModelSerializer):
 
 class ApplicationListSerializer(serializers.ModelSerializer):
     job = _JobSummarySerializer(read_only=True)
-    status_display = serializers.CharField(source="get_status_display", read_only=True)
 
     class Meta:
         model = Application
-        fields = ["id", "job", "status", "status_display", "submitted_at", "updated_at"]
+        fields = ["id", "job", "status", "submitted_at", "updated_at"]
 
 
 class ApplicationDetailSerializer(serializers.ModelSerializer):
     job = _JobSummarySerializer(read_only=True)
-    status_display = serializers.CharField(source="get_status_display", read_only=True)
     answers = ApplicationAnswerSerializer(many=True, read_only=True)
     status_history = StatusHistorySerializer(many=True, read_only=True)
     has_resume_snapshot = serializers.SerializerMethodField()
@@ -92,7 +90,6 @@ class ApplicationDetailSerializer(serializers.ModelSerializer):
             "id",
             "job",
             "status",
-            "status_display",
             "cover_letter",
             "answers",
             "status_history",

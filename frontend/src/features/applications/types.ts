@@ -61,13 +61,17 @@ export interface ApplicationStatusHistoryEntry {
   source: StatusSource;
 }
 
-/** GET /candidate/applications/ row (ApplicationListSerializer). */
+/**
+ * GET /candidate/applications/ row (ApplicationListSerializer).
+ *
+ * Note: the backend no longer emits `status_display`; the frontend maps the
+ * `status` code to a localised label via `status.ts` so both locales stay at
+ * parity (Phase 11).
+ */
 export interface ApplicationListItem {
   id: string | number;
   job: ApplicationJobSummary;
   status: ApplicationStatus;
-  /** Backend label — NOT used for display; the frontend maps status → text. */
-  status_display: string;
   submitted_at: string;
   updated_at: string;
 }

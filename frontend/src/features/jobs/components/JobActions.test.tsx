@@ -61,7 +61,6 @@ const APPLICATION: ApplicationDetail = {
     employment_type: "FULL_TIME",
   },
   status: "UNDER_REVIEW",
-  status_display: "Under review",
   submitted_at: "2026-06-01T00:00:00Z",
   updated_at: "2026-06-02T00:00:00Z",
   cover_letter: "",
