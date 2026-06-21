@@ -238,3 +238,29 @@ Each phase records scope, validation, independent review, and the push checkpoin
   no candidate identities, unreliable metrics hidden. Recurring throttle + a
   JobViewEvent retention note → Phase 12.
 - **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
+
+## Phase 10 — Executive homepage & intelligence ✅
+
+- **Scope (backend):** admin-managed MarketInsight model (curated "MHA insight"
+  content) surfaced under `mha_insights` in GET /insights/public/ alongside the
+  real platform aggregates — only published rows, honest empty default.
+- **Scope (frontend):** full executive homepage (§14.1 A–K) — integrated
+  asymmetric hero with equal candidate/employer perspective controls
+  (keyboard-accessible, URL `?view=` + sessionStorage state), perspective value
+  panel, Career Intelligence Console (real platform analytics + MHA insights +
+  clearly-labelled illustrative previews, every module source-labelled), real
+  latest opportunities + companies, architectural journey, MHA expert layer,
+  honest employer workspace preview, trust & operating model, final dual CTA.
+  framer-motion as the single motion library (scoped/lazy, reduced-motion-safe,
+  no scroll hijack). No fabricated metrics. EN/zh-CN parity.
+- **Live visual QA (supervisor, via preview):** inspected the homepage at
+  desktop + mobile in EN and zh-CN; verified perspective switching (copy/CTA/
+  card + URL state), honest source labels (13 on the page), clean CJK wrapping.
+  CAUGHT AND FIXED a real RSC-boundary bug the build/tests missed — the dynamic
+  homepage called a `"use client"` helper from the server; extracted the pure
+  `parsePerspective`/`PERSPECTIVES` into a server-safe module. Confirmed clean
+  console after the fix.
+- **Validation:** backend ruff/check/drift/migrate green, 279 pytest passing;
+  frontend lint/typecheck/build (55 pages) green, 144 Vitest tests passing.
+- **New dependency:** framer-motion@12 (single approved motion library).
+- **Checkpoint:** pushed to `origin/feat/claude-full-mvp`.
