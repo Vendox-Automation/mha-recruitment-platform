@@ -109,3 +109,25 @@ def test_cannot_apply_to_non_public_job(login, make_candidate, make_job):
     draft = make_job(status=Job.Status.DRAFT, published_at=None)
     api = login(profile)
     assert api.post(_apply_url(draft), {}, format="json").status_code == 404
+
+
+@pytest.mark.django_db
+def test_number_answer_stored_losslessly(login, make_candidate, make_job):
+    """A large/precise NUMBER answer is stored as an exact string, not a float.
+
+    A JSON float would drift for very large integers; ``answer_json["value"]``
+    must preserve the input exactly (Phase 6 review).
+    """
+    profile = make_candidate()
+    job = make_job()
+    question = add_question(job, qtype=ScreeningQuestion.QuestionType.NUMBER, required=True)
+    api = login(profile)
+
+    big = "123456789012345678"  # exceeds 2**53 — would lose precision as a float
+    ok = api.post(_apply_url(job), {"answers": {str(question.id): big}}, format="json")
+    assert ok.status_code == 201
+
+    answer = Application.objects.get(job=job, candidate=profile).answers.get()
+    assert answer.answer_json["value"] == big
+    assert isinstance(answer.answer_json["value"], str)
+    assert answer.answer_text == big

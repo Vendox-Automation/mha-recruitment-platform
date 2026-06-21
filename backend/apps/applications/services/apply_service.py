@@ -39,7 +39,11 @@ def _coerce_answer(question: ScreeningQuestion, value: Any) -> tuple[str, dict]:
             number = Decimal(str(value))
         except (InvalidOperation, TypeError):
             raise serializers.ValidationError("Answer must be a number.") from None
-        return (str(number), {"value": float(number)})
+        # Store the number as a STRING in answer_json so large/precise values are
+        # preserved losslessly (a JSON float would drift for big integers or many
+        # decimal places). ``answer_text`` already carries the same canonical
+        # string; both stay exact (Phase 6 review).
+        return (str(number), {"value": str(number)})
     if qtype == ScreeningQuestion.QuestionType.SINGLE_CHOICE:
         options = question.options_json or []
         if value not in options:
