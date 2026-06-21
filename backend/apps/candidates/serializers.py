@@ -13,7 +13,7 @@ from typing import Any
 
 from rest_framework import serializers
 
-from apps.candidates.models import CandidateProfile
+from apps.candidates.models import CandidateProfile, SavedJob
 from apps.candidates.selectors import profile_completion
 
 
@@ -74,4 +74,66 @@ class ResumeMetadataSerializer(serializers.Serializer):
             "original_name": profile.resume_original_name or None,
             "uploaded_at": profile.resume_uploaded_at,
             "parsing_status": profile.resume_parsing_status,
+        }
+
+
+class SavedJobSerializer(serializers.ModelSerializer):
+    """A saved-job row: when it was saved + a compact, safe job summary.
+
+    ``is_available`` reflects whether the underlying job is still publicly
+    visible (``Job.objects.public()``); an unavailable job is LABELLED, not
+    hidden (spec §15.5). Only presentation-safe job fields are exposed — the
+    same fields a public listing row shows — and salary figures the employer
+    chose not to disclose are blanked, matching the public job surface.
+    """
+
+    job = serializers.SerializerMethodField()
+    is_available = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SavedJob
+        fields = ["id", "created_at", "is_available", "job"]
+        read_only_fields = fields
+
+    def get_is_available(self, obj: SavedJob) -> bool:
+        """Whether the saved job is still publicly visible (spec §15.5).
+
+        The view passes the set of currently-public job ids in ``context`` so a
+        list render runs a single ``public()`` membership query instead of one
+        per row; falls back to a per-row check if the context is absent.
+        """
+        available = self.context.get("available_job_ids")
+        if available is not None:
+            return obj.job_id in available
+        from apps.jobs.models import Job
+
+        return Job.objects.public().filter(pk=obj.job_id).exists()
+
+    def get_job(self, obj: SavedJob) -> dict[str, Any]:
+        job = obj.job
+        company = None
+        if job.employer_id is not None:
+            company = {
+                "slug": job.employer.slug,
+                "company_name": job.employer.company_name,
+            }
+        salary_min = job.salary_min if job.salary_disclosed else None
+        salary_max = job.salary_max if job.salary_disclosed else None
+        return {
+            # The job id is needed by the owner to unsave (DELETE
+            # /candidate/saved-jobs/{job_id}/, spec §21.2); it is the
+            # candidate's own bookmark, so exposing it to them leaks nothing.
+            "id": str(job.id),
+            "slug": job.slug,
+            "title": job.title,
+            "location": job.location,
+            "employment_type": job.employment_type,
+            "salary_min": salary_min,
+            "salary_max": salary_max,
+            "salary_currency": job.salary_currency,
+            "salary_period": job.salary_period,
+            "salary_disclosed": job.salary_disclosed,
+            "status": job.status,
+            "is_mha_supported": job.is_mha_supported,
+            "company": company,
         }

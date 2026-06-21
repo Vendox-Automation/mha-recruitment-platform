@@ -14,6 +14,8 @@ from apps.candidates.api.views import (
     CandidateProfileView,
     ResumeDownloadView,
     ResumeView,
+    SavedJobDetailView,
+    SavedJobsView,
 )
 
 app_name = "candidates"
@@ -23,4 +25,6 @@ urlpatterns = [
     path("resume/", ResumeView.as_view(), name="resume"),
     path("resume/download/", ResumeDownloadView.as_view(), name="resume-download"),
     path("dashboard/", CandidateDashboardView.as_view(), name="dashboard"),
+    path("saved-jobs/", SavedJobsView.as_view(), name="saved-jobs"),
+    path("saved-jobs/<uuid:job_id>/", SavedJobDetailView.as_view(), name="saved-job-detail"),
 ]

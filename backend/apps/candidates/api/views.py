@@ -29,12 +29,13 @@ from rest_framework.views import APIView
 from apps.accounts.permissions import IsCandidate
 from apps.audit.services import record_action
 from apps.candidates.models import CandidateProfile
-from apps.candidates.selectors import dashboard_snapshot
+from apps.candidates.selectors import dashboard_snapshot, saved_jobs_list
 from apps.candidates.serializers import (
     CandidateProfileSerializer,
     ResumeMetadataSerializer,
+    SavedJobSerializer,
 )
-from apps.candidates.services import resume_service
+from apps.candidates.services import resume_service, saved_job_service
 
 
 def _own_profile(request: Request) -> CandidateProfile:
@@ -129,10 +130,73 @@ class ResumeDownloadView(APIView):
 
 
 class CandidateDashboardView(APIView):
-    """GET the signed-in candidate's dashboard snapshot (honest zero stats)."""
+    """GET the signed-in candidate's dashboard snapshot (real stats)."""
 
     permission_classes = [IsCandidate]
 
     def get(self, request: Request) -> Response:
         profile = _own_profile(request)
         return Response(dashboard_snapshot(profile))
+
+
+class SavedJobsView(APIView):
+    """List (GET) / create (POST) the signed-in candidate's saved jobs.
+
+    Structurally owner-scoped via :func:`_own_profile` (no candidate id in the
+    path), so one candidate can never see or modify another's bookmarks.
+
+    POST accepts ``{"job": "<slug-or-id>"}`` and is idempotent: saving an
+    already-saved job returns 200 with the existing row (a no-op) rather than a
+    409, which keeps an over-eager "save" button harmless. Only currently-public
+    jobs may be saved (resolved through ``Job.objects.public()`` in the service).
+    """
+
+    permission_classes = [IsCandidate]
+
+    def get(self, request: Request) -> Response:
+        profile = _own_profile(request)
+        saved = saved_jobs_list(profile)
+        context = self._availability_context(saved)
+        return Response(SavedJobSerializer(saved, many=True, context=context).data)
+
+    def post(self, request: Request) -> Response:
+        profile = _own_profile(request)
+        job_ref = request.data.get("job")
+        saved, created = saved_job_service.save_job(profile=profile, job_ref=job_ref)
+        context = self._availability_context([saved])
+        status_code = status.HTTP_201_CREATED if created else status.HTTP_200_OK
+        return Response(
+            SavedJobSerializer(saved, context=context).data,
+            status=status_code,
+        )
+
+    @staticmethod
+    def _availability_context(saved) -> dict:
+        """Resolve the public job-id set once for the rows being serialised."""
+        from apps.jobs.models import Job
+
+        job_ids = [sj.job_id for sj in saved]
+        available = set(Job.objects.public().filter(pk__in=job_ids).values_list("pk", flat=True))
+        return {"available_job_ids": available}
+
+
+class SavedJobDetailView(APIView):
+    """DELETE a saved job by JOB id (spec §21.2).
+
+    The path parameter is the JOB id (not the SavedJob row id) so the client can
+    un-save directly from a job card without first looking up the bookmark id.
+    Deletion is scoped to the signed-in candidate's own profile; an unknown or
+    non-owned bookmark yields 404 (no existence leak across candidates).
+    """
+
+    permission_classes = [IsCandidate]
+
+    def delete(self, request: Request, job_id: str) -> Response:
+        profile = _own_profile(request)
+        deleted = saved_job_service.unsave_job(profile=profile, job_id=job_id)
+        if not deleted:
+            return Response(
+                {"code": "not_found", "message": "The requested resource was not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        return Response(status=status.HTTP_204_NO_CONTENT)

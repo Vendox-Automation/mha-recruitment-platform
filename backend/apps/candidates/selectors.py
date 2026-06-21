@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from apps.candidates.models import CandidateProfile
+from apps.candidates.models import CandidateProfile, SavedJob
 
 # Deterministic completion checklist. Order is stable so the breakdown is
 # reproducible for the UI's "what's missing" nudges.
@@ -71,9 +71,43 @@ def dashboard_snapshot(profile: CandidateProfile) -> dict[str, Any]:
             "preferred_employment_type": profile.preferred_employment_type,
         },
         "applications": _application_stats(profile),
-        # Saved jobs land in Phase 9 — honest empty until then.
-        "saved_jobs": {"total": 0},
+        "saved_jobs": saved_jobs_stats(profile),
     }
+
+
+def saved_jobs_list(profile: CandidateProfile) -> list[SavedJob]:
+    """The candidate's saved jobs, newest first, with related job/employer.
+
+    ``select_related`` keeps the availability check (which reads the job's status
+    and employer approval via ``Job.objects.public``) from issuing per-row
+    queries when serialised.
+    """
+    return list(
+        SavedJob.objects.filter(candidate=profile)
+        .select_related("job", "job__employer")
+        .order_by("-created_at")
+    )
+
+
+def saved_jobs_stats(profile: CandidateProfile) -> dict[str, Any]:
+    """Real saved-job counts for the dashboard (spec §14.9, §15.5).
+
+    ``total`` is every bookmark; ``available`` counts only those still public so
+    the UI can nudge "N of your saved jobs are no longer open" without hiding the
+    rest (spec §15.5: label, do not hide).
+    """
+    from apps.jobs.models import Job
+
+    saved_job_ids = list(
+        SavedJob.objects.filter(candidate=profile).values_list("job_id", flat=True)
+    )
+    total = len(saved_job_ids)
+    if total == 0:
+        return {"total": 0, "available": 0}
+    available = (
+        Job.objects.public().filter(pk__in=saved_job_ids).values_list("pk", flat=True).count()
+    )
+    return {"total": total, "available": available}
 
 
 def _application_stats(profile: CandidateProfile) -> dict[str, Any]:

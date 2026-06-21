@@ -13,6 +13,8 @@ permission-checked download view (ADR-0001 §5, spec §22.2).
 
 from __future__ import annotations
 
+import uuid
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -105,3 +107,46 @@ class CandidateProfile(models.Model):
             self.has_resume,
         ]
         return round(100 * sum(checks) / len(checks))
+
+
+class SavedJob(models.Model):
+    """A job a candidate has bookmarked for later (spec §20.9, §15.5).
+
+    A candidate may save a public job once; the ``UniqueConstraint`` on
+    ``(candidate, job)`` makes a repeat save a no-op rather than a duplicate row.
+    Saving is independent of the job's lifecycle — an unpublished job stays in the
+    list but is flagged unavailable in the API (spec §15.5: label, do not hide).
+
+    The constraint is declared in ``Meta.constraints`` (not added later via an
+    ``AddField``/``AlterField`` step) so the portable Postgres migration carries
+    no ``_like`` index pitfall (ADR-0001 §6.1).
+    """
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    candidate = models.ForeignKey(
+        CandidateProfile,
+        on_delete=models.CASCADE,
+        related_name="saved_jobs",
+    )
+    job = models.ForeignKey(
+        "jobs.Job",
+        on_delete=models.CASCADE,
+        related_name="saved_by",
+    )
+    created_at = models.DateTimeField(_("created at"), auto_now_add=True)
+
+    class Meta:
+        verbose_name = _("saved job")
+        verbose_name_plural = _("saved jobs")
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["candidate", "job"], name="uniq_saved_job_candidate_job"
+            )
+        ]
+        indexes = [
+            models.Index(fields=["candidate", "-created_at"]),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.candidate_id} saved {self.job_id}"
