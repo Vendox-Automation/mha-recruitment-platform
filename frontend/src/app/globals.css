@@ -38,7 +38,10 @@
 
   /* Status */
   --status-info: #2f6fb0;
-  --status-success: #2e7d5b;
+  /* Darkened so the success badge/text meets WCAG AA (4.5:1) on the tinted
+     surface-subtle it composes on: #2e7d5b was 4.45:1 (fail); #2a7050 is
+     5.29:1 on subtle / 5.95:1 on canvas (a11y review A-B1). */
+  --status-success: #2a7050;
   /* Darkened so warning badge/alert text meets AA (4.5:1) on light
      surfaces (a11y review B4). */
   --status-warning: #8a5a12;

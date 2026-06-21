@@ -276,7 +276,8 @@
     "kanban": {
       "moveLabel": "Move to stage",
       "emptyColumn": "No candidates in this stage.",
-      "moveError": "We couldn't move the candidate. The change was undone — please try again."
+      "moveError": "We couldn't move the candidate. The change was undone — please try again.",
+      "moveAnnouncement": "Moved {name} to {stage}"
     },
     "rejectConfirm": {
       "title": "Reject this candidate?",

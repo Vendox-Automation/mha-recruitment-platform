@@ -38,12 +38,25 @@ export function KanbanBoard({
   const t = useTranslations("employer.applicants");
   const grouped = groupByStatus(items);
   const [dragOver, setDragOver] = useState<ApplicationStatus | null>(null);
+  // Politely announce a drag move so the visual DnD path is also conveyed to
+  // screen-reader users (the keyboard <select> already reflects the new column).
+  const [announcement, setAnnouncement] = useState("");
 
   function handleDrop(event: DragEvent<HTMLElement>, target: ApplicationStatus) {
     event.preventDefault();
     setDragOver(null);
     const id = event.dataTransfer.getData("text/plain");
-    if (id) onMove(id, target);
+    if (!id) return;
+    onMove(id, target);
+    const moved = items.find((item) => item.id === id);
+    if (moved) {
+      setAnnouncement(
+        t("kanban.moveAnnouncement", {
+          name: moved.candidate_name,
+          stage: t(statusLabelKey(target)),
+        }),
+      );
+    }
   }
 
   return (
@@ -52,6 +65,9 @@ export function KanbanBoard({
       aria-label={t("views.kanban")}
       className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7"
     >
+      <p aria-live="polite" className="sr-only">
+        {announcement}
+      </p>
       {KANBAN_COLUMNS.map((status) => {
         const columnItems = grouped[status];
         return (

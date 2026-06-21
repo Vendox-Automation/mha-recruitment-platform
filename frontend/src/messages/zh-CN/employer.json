@@ -276,7 +276,8 @@
     "kanban": {
       "moveLabel": "移动到阶段",
       "emptyColumn": "该阶段暂无候选人。",
-      "moveError": "无法移动候选人，操作已撤销，请重试。"
+      "moveError": "无法移动候选人，操作已撤销，请重试。",
+      "moveAnnouncement": "已将 {name} 移动到{stage}"
     },
     "rejectConfirm": {
       "title": "拒绝该候选人？",
