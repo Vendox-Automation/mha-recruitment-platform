@@ -240,6 +240,32 @@ git config core.hooksPath .githooks
 This enforces `docs/development/COMMIT_CONVENTION.md` locally; CI enforces it on
 pull requests.
 
+### 5. Seed demo data (optional)
+
+From `backend/` (with the venv active and `DATABASE_URL` set):
+
+```bash
+python manage.py seed_demo_data
+```
+
+Idempotent and DEBUG-guarded. It creates synthetic demo content (employers,
+~20 jobs across Malaysian locations, applications across every status, saved
+jobs, Job Fit examples, support requests, market insights) and prints local-only
+demo accounts — all sharing the password `DemoPass123!`:
+
+| Role | Email |
+|---|---|
+| Administrator (Django admin) | `admin@demo.mha-jobs.local` |
+| Approved employer | `talent@demo.aurorabank.example.com` |
+| Pending employer | `pending@demo.summitventures.example.com` |
+| Candidate (complete profile + resume) | `candidate.complete@demo.mha-jobs.local` |
+| Candidate (incomplete profile) | `candidate.incomplete@demo.mha-jobs.local` |
+
+The demo data is synthetic and must never be used in production. See
+[`docs/development/API.md`](docs/development/API.md) for the API reference and
+[`docs/development/DEFINITION_OF_DONE.md`](docs/development/DEFINITION_OF_DONE.md)
+for the MVP definition-of-done and known limitations.
+
 ## Security
 
 This platform processes resumes, contact details, applications, employer records, and recruitment data.
