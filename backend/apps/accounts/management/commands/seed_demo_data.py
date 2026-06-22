@@ -588,58 +588,53 @@ DEMO_INSIGHTS = [
 # is either a DEMO_EMPLOYERS index (int) or a PARTNER_COMPANIES slug (str). A few
 # carry an employer ``reply`` so the reply UI has data. Ratings span 3-5 only —
 # clearly positive synthetic content, no fabricated complaints.
-DEMO_REVIEWS = [
-    {
-        "company": 0,  # Aurora Bank
-        "reviewer_name": "Demo Reviewer A",
-        "reviewer_email": "reviewer.a@example.com",
-        "rating": 5,
-        "title": "DEMO review — great place to grow",
-        "body": "DEMO REVIEW — synthetic. Supportive managers and clear progression.",
-        "reply": "DEMO REPLY — synthetic. Thank you for the kind words!",
-    },
-    {
-        "company": 0,
-        "reviewer_name": "Demo Reviewer B",
-        "reviewer_email": "reviewer.b@example.com",
-        "rating": 4,
-        "title": "DEMO review — solid experience",
-        "body": "DEMO REVIEW — synthetic. Good benefits, fast-paced environment.",
-    },
-    {
-        "company": 1,  # Nimbus Technologies
-        "reviewer_name": "Demo Reviewer C",
-        "reviewer_email": "reviewer.c@example.com",
-        "rating": 5,
-        "title": "DEMO review — strong engineering culture",
-        "body": "DEMO REVIEW — synthetic. Modern stack and thoughtful code review.",
-        "reply": "DEMO REPLY — synthetic. We appreciate the feedback.",
-    },
-    {
-        "company": 1,
-        "reviewer_name": "Demo Reviewer D",
-        "reviewer_email": "reviewer.d@example.com",
-        "rating": 3,
-        "title": "DEMO review — room to improve",
-        "body": "DEMO REVIEW — synthetic. Interesting work; onboarding could be smoother.",
-    },
-    {
-        "company": "vendox",  # partner company
-        "reviewer_name": "Demo Reviewer E",
-        "reviewer_email": "reviewer.e@example.com",
-        "rating": 5,
-        "title": "DEMO review — recommended",
-        "body": "DEMO REVIEW — synthetic. Friendly team and interesting products.",
-    },
-    {
-        "company": "woodee",  # partner company
-        "reviewer_name": "Demo Reviewer F",
-        "reviewer_email": "reviewer.f@example.com",
-        "rating": 4,
-        "title": "DEMO review — good vibes",
-        "body": "DEMO REVIEW — synthetic. Creative environment with real ownership.",
-    },
+# Synthetic public reviews, generated across demo + partner companies so the
+# ratings/aggregates render richly on first run. These are NOT real opinions —
+# seed data only; idempotent by (employer, reviewer_email).
+_REVIEW_BLURBS = [
+    (5, "Great place to build a career", "Supportive leadership and clear growth paths."),
+    (4, "Solid experience overall", "Good benefits and a collaborative, fast-paced team."),
+    (5, "Highly recommended", "Interesting work and colleagues who genuinely care."),
+    (3, "Decent, with room to improve", "Engaging projects; onboarding could be smoother."),
+    (4, "Strong culture", "Real ownership and a friendly, professional environment."),
+    (5, "Learned a lot here", "Good mentorship and modern ways of working."),
 ]
+# (company ref [demo-employer index or partner slug], review count, replies).
+_REVIEW_TARGETS = [
+    (0, 4, 1),
+    (1, 4, 2),
+    (2, 3, 1),
+    (3, 3, 1),
+    (4, 3, 1),
+    ("vendox", 4, 2),
+    ("mha", 3, 1),
+    ("woodee", 3, 1),
+    ("wewe", 3, 1),
+]
+_REVIEW_REPLY = "Thank you for the feedback — we're glad to hear it and always working to improve."
+
+
+def _build_demo_reviews() -> list[dict]:
+    reviews: list[dict] = []
+    for ref, count, replies in _REVIEW_TARGETS:
+        tag = ref if isinstance(ref, str) else f"c{ref}"
+        for i in range(count):
+            rating, title, body = _REVIEW_BLURBS[i % len(_REVIEW_BLURBS)]
+            entry: dict = {
+                "company": ref,
+                "reviewer_name": f"Demo Reviewer {tag.upper()}-{i + 1}",
+                "reviewer_email": f"reviewer.{tag}.{i + 1}@example.com",
+                "rating": rating,
+                "title": title,
+                "body": f"Demo review (synthetic). {body}",
+            }
+            if i < replies:
+                entry["reply"] = _REVIEW_REPLY
+            reviews.append(entry)
+    return reviews
+
+
+DEMO_REVIEWS = _build_demo_reviews()
 
 
 class Command(BaseCommand):
@@ -1147,19 +1142,22 @@ class Command(BaseCommand):
             job = jobs.get(job_key)
             if job is None or job.status != Job.Status.PUBLISHED:
                 continue
-            # One signed-in candidate view.
-            JobViewEvent.objects.get_or_create(
-                job=job,
-                user=candidate.user,
-                anonymous_session_hash=None,
-            )
+            # One signed-in candidate view. Use exists()+create rather than
+            # get_or_create so a DB that already holds duplicate rows from an
+            # earlier (pre-idempotency) seed does not raise MultipleObjectsReturned.
+            if not JobViewEvent.objects.filter(
+                job=job, user=candidate.user, anonymous_session_hash=None
+            ).exists():
+                JobViewEvent.objects.create(
+                    job=job, user=candidate.user, anonymous_session_hash=None
+                )
             # Several deterministic anonymous views (stable synthetic hashes).
             for i in range(anon_count):
-                JobViewEvent.objects.get_or_create(
-                    job=job,
-                    user=None,
-                    anonymous_session_hash=f"demoseed-{job_key}-{i:03d}",
-                )
+                key = f"demoseed-{job_key}-{i:03d}"
+                if not JobViewEvent.objects.filter(
+                    job=job, user=None, anonymous_session_hash=key
+                ).exists():
+                    JobViewEvent.objects.create(job=job, user=None, anonymous_session_hash=key)
         return JobViewEvent.objects.count()
 
     def _ensure_insights(self) -> None:
