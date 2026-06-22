@@ -4,13 +4,7 @@ import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
-import {
-  ADMIN_URL,
-  destinationForUser,
-  isAdmin,
-  useAuth,
-  userDisplayName,
-} from "@/lib/auth";
+import { destinationForUser, useAuth, userDisplayName } from "@/lib/auth";
 import { cn } from "@/lib/cn";
 
 import { LinkButton } from "@/components/ui";
@@ -133,24 +127,14 @@ export function PublicHeader() {
           <div className="mt-4 flex flex-col gap-2 border-t border-border-default pt-4">
             {isLoading ? null : user ? (
               <>
-                {isAdmin(user) ? (
-                  // Django Admin is external — plain anchor, not a locale Link.
-                  <a
-                    href={ADMIN_URL}
-                    className="inline-flex h-11 w-full items-center justify-center rounded-md border border-border-strong bg-surface-canvas px-5 text-sm font-semibold text-text-primary no-underline hover:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-                  >
-                    {userDisplayName(user)}
-                  </a>
-                ) : (
-                  <LinkButton
-                    href={destinationForUser(user)}
-                    variant="secondary"
-                    size="md"
-                    fullWidth
-                  >
-                    {userDisplayName(user)}
-                  </LinkButton>
-                )}
+                <LinkButton
+                  href={destinationForUser(user)}
+                  variant="secondary"
+                  size="md"
+                  fullWidth
+                >
+                  {userDisplayName(user)}
+                </LinkButton>
                 <div className="flex items-center justify-between pt-2">
                   <LocaleSwitcher />
                   <SignOutButton label={t("nav.signOut")} />

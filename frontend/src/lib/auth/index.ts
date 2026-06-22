@@ -10,5 +10,4 @@ export {
   hasRole,
   userDisplayName,
   isAdmin,
-  ADMIN_URL,
 } from "./redirects";

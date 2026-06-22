@@ -61,8 +61,10 @@ describe("destinationForUser", () => {
     }
   });
 
-  it("leaves admins on the home page (admins use Django Admin)", () => {
-    expect(destinationForUser(makeUser({ role: "ADMIN" }))).toBe("/");
+  it("routes admins to the in-app admin workspace", () => {
+    expect(destinationForUser(makeUser({ role: "ADMIN" }))).toBe(
+      "/admin/dashboard",
+    );
   });
 });
 
