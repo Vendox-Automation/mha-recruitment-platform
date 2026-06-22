@@ -2,6 +2,10 @@
   "meta": {
     "title": "MHA 招聘 — MHA Consultancy 旗下专业招聘平台"
   },
+  "trustedBy": {
+    "title": "深受领先雇主信赖",
+    "marqueeLabel": "参与企业"
+  },
   "hero": {
     "eyebrow": "由 MHA Consultancy 运营",
     "headline": "专业招聘，建立在清晰与人性化判断之上。",
