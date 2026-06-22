@@ -18,6 +18,9 @@ from config.health import health
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/health/", health, name="health"),
+    # In-app administrator console (cross-domain employer approvals). Owned by
+    # apps.administration; kept separate from the employers self-service surface.
+    path("api/v1/admin/", include("apps.administration.api.urls")),
     path("api/v1/auth/", include("apps.accounts.api.urls")),
     path("api/v1/employer/", include("apps.employers.api.urls")),
     # Employer own-job analytics (views/applications/conversion/etc.). Mounted
