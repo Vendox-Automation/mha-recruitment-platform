@@ -35,3 +35,13 @@ export function isApprovedEmployer(user: User): boolean {
 export function hasRole(user: User | null, role: UserRole): boolean {
   return user?.role === role;
 }
+
+/**
+ * Best display name for the signed-in user: the candidate's full name or the
+ * employer's company name from the `/auth/me/` profile, falling back to email.
+ */
+export function userDisplayName(user: User): string {
+  const candidate = user.profile?.full_name?.trim();
+  const employer = user.profile?.company_name?.trim();
+  return candidate || employer || user.email;
+}
