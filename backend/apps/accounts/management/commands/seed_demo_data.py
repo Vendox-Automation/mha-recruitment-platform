@@ -169,6 +169,60 @@ PENDING_EMPLOYER = {
     "website": "https://summitventures.example.com",
 }
 
+# Real MHA partner / owned brands shown as approved employers in the company
+# directory and homepage "Featured organisations". These are NOT synthetic demo
+# companies, so they carry NEUTRAL summaries (no DEMO wording) and an EXPLICIT,
+# stable ``slug`` — the frontend maps each company's logo by these exact slugs,
+# so the slug must never change between runs. Keyed by user email for idempotency.
+PARTNER_COMPANIES = [
+    {
+        "slug": "vendox",
+        "email": "talent@vendox.co",
+        "company_name": "Vendox",
+        "contact_person": "Vendox Talent",
+        "industry": "Technology & Software",
+        "company_size": "50-200",
+        "company_location": "Kuala Lumpur",
+        "company_summary": "Vendox builds modern software products.",
+        "website": "https://vendox.co",
+    },
+    {
+        "slug": "mha",
+        "email": "careers@mha.example.com",
+        "company_name": "MHA Consultancy",
+        "contact_person": "MHA Talent",
+        "industry": "Recruitment & Consultancy",
+        "company_size": "50-200",
+        "company_location": "Kuala Lumpur",
+        "company_summary": (
+            "MHA Consultancy delivers professional recruitment and talent solutions."
+        ),
+        "website": "https://mha.example.com",
+    },
+    {
+        "slug": "woodee",
+        "email": "careers@woodee.example.com",
+        "company_name": "Woodee",
+        "contact_person": "Woodee Talent",
+        "industry": "Consumer & Lifestyle",
+        "company_size": "10-50",
+        "company_location": "Petaling Jaya",
+        "company_summary": "Woodee creates consumer lifestyle brands and products.",
+        "website": "https://woodee.example.com",
+    },
+    {
+        "slug": "wewe",
+        "email": "careers@wewe.example.com",
+        "company_name": "WEWE",
+        "contact_person": "WEWE Talent",
+        "industry": "Digital & Media",
+        "company_size": "10-50",
+        "company_location": "Cyberjaya",
+        "company_summary": "WEWE produces digital media and content experiences.",
+        "website": "https://wewe.example.com",
+    },
+]
+
 ET = Job.EmploymentType
 SP = Job.SalaryPeriod
 
@@ -407,6 +461,64 @@ DEMO_JOBS = [
     },
 ]
 
+# Published jobs for the real partner companies so each shows an active-role
+# count and qualifies for "Featured organisations". ``partner`` is the partner
+# company slug; ``key`` is the stable idempotency identifier woven into the slug.
+PARTNER_JOBS = [
+    # Vendox
+    {
+        "key": "vendox-software-engineer",
+        "partner": "vendox",
+        "title": "Software Engineer",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "software engineering python javascript api backend frontend",
+    },
+    {
+        "key": "vendox-product-designer",
+        "partner": "vendox",
+        "title": "Product Designer",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "product design ui ux figma research prototyping",
+    },
+    # MHA Consultancy
+    {
+        "key": "mha-recruitment-consultant",
+        "partner": "mha",
+        "title": "Recruitment Consultant",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "recruitment talent sourcing interviewing client communication",
+    },
+    {
+        "key": "mha-talent-coordinator",
+        "partner": "mha",
+        "title": "Talent Coordinator",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "coordination scheduling candidate care administration communication",
+    },
+    # Woodee
+    {
+        "key": "woodee-marketing-executive",
+        "partner": "woodee",
+        "title": "Marketing Executive",
+        "location": "Petaling Jaya",
+        "type": ET.FULL_TIME,
+        "requirements": "marketing brand campaigns social media content lifestyle",
+    },
+    # WEWE
+    {
+        "key": "wewe-content-producer",
+        "partner": "wewe",
+        "title": "Content Producer",
+        "location": "Cyberjaya",
+        "type": ET.FULL_TIME,
+        "requirements": "content production media video editing storytelling digital",
+    },
+]
+
 # Screening questions attached to a few jobs (keyed by job key for idempotency).
 DEMO_SCREENING = {
     "nimbus-backend-engineer": [
@@ -514,10 +626,12 @@ class Command(BaseCommand):
     def _seed(self) -> dict[str, int]:
         admin = self._ensure_admin()
         approved_employers = self._ensure_approved_employers(admin)
+        partner_companies = self._ensure_partner_companies(admin)
         self._ensure_pending_employer()
         complete_candidate = self._ensure_complete_candidate()
         self._ensure_incomplete_candidate()
         jobs = self._ensure_jobs(admin, approved_employers)
+        self._ensure_partner_jobs(partner_companies)
         self._ensure_screening(jobs)
         self._ensure_applications(complete_candidate, jobs)
         self._ensure_saved_jobs(complete_candidate, jobs)
@@ -590,6 +704,51 @@ class Command(BaseCommand):
             if not profile.is_approved:
                 approval_service.approve_employer(profile, actor=admin)
             profiles.append(profile)
+        return profiles
+
+    @transaction.atomic
+    def _ensure_partner_companies(self, admin: User) -> dict[str, EmployerProfile]:
+        """Ensure the real MHA partner/owned brands exist as approved employers.
+
+        Modeled on :meth:`_ensure_approved_employers` (same get_or_create-by-email
+        account pattern, shared local password, verified + active employer), with
+        one critical difference: the EmployerProfile is created with an EXPLICIT,
+        stable ``slug`` from the spec so the frontend logo mapping stays valid
+        across runs (the model only auto-generates a random slug when ``slug`` is
+        blank). Returns a ``{slug: profile}`` map so partner jobs can be attached.
+        """
+        profiles: dict[str, EmployerProfile] = {}
+        for spec in PARTNER_COMPANIES:
+            user, created = User.objects.get_or_create(
+                email=spec["email"],
+                defaults={
+                    "role": User.Role.EMPLOYER,
+                    "status": User.Status.ACTIVE,
+                    "email_verified_at": timezone.now(),
+                },
+            )
+            if created:
+                user.set_password(DEMO_PASSWORD)
+                user.save()
+
+            profile, _ = EmployerProfile.objects.get_or_create(
+                user=user,
+                defaults={
+                    "slug": spec["slug"],
+                    "company_name": spec["company_name"],
+                    "contact_person": spec["contact_person"],
+                    "phone": "+60 3-0000 0000",
+                    "company_summary": spec["company_summary"],
+                    "website": spec["website"],
+                    "industry": spec["industry"],
+                    "company_size": spec["company_size"],
+                    "company_location": spec["company_location"],
+                },
+            )
+            # Approve through the real workflow (idempotent: skip if already done).
+            if not profile.is_approved:
+                approval_service.approve_employer(profile, actor=admin)
+            profiles[spec["slug"]] = profile
         return profiles
 
     def _ensure_pending_employer(self) -> EmployerProfile:
@@ -725,6 +884,41 @@ class Command(BaseCommand):
         lifecycle.publish_job(job)
         if state == "closed":
             lifecycle.close_job(job)
+
+    def _ensure_partner_jobs(self, partners: dict[str, EmployerProfile]) -> dict[str, Job]:
+        """Give each real partner company 1-2 PUBLISHED jobs.
+
+        Mirrors :meth:`_ensure_jobs`: a DRAFT job is created via get_or_create on a
+        stable slug (so re-runs match the same row) and then moved to PUBLISHED
+        through the real lifecycle service. Summaries/descriptions stay NEUTRAL —
+        these are real brands, not synthetic demo companies.
+        """
+        jobs: dict[str, Job] = {}
+        for spec in PARTNER_JOBS:
+            employer = partners.get(spec["partner"])
+            if employer is None:
+                continue
+            slug = f"partner-{spec['key']}"
+            job, created = Job.objects.get_or_create(
+                slug=slug,
+                defaults={
+                    "employer": employer,
+                    "created_by": employer.user,
+                    "source_type": Job.SourceType.EMPLOYER_PARTNER,
+                    "title": spec["title"],
+                    "location": spec["location"],
+                    "employment_type": spec["type"],
+                    "salary_disclosed": False,
+                    "description": (f"{spec['title']} role at {employer.company_name}."),
+                    "requirements": spec["requirements"],
+                    "listing_language": Job.ListingLanguage.EN,
+                    "status": Job.Status.DRAFT,
+                },
+            )
+            if created:
+                self._apply_job_state(job, "published")
+            jobs[spec["key"]] = job
+        return jobs
 
     def _ensure_screening(self, jobs: dict[str, Job]) -> None:
         for job_key, questions in DEMO_SCREENING.items():
