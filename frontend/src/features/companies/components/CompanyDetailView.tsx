@@ -14,6 +14,7 @@ import {
 } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { JobCard } from "@/features/jobs/components/JobCard";
+import { ReviewsSection } from "@/features/reviews";
 
 import { getCompany } from "../service";
 
@@ -230,6 +231,16 @@ export function CompanyDetailView({ slug }: { slug: string }) {
             </ul>
           )}
         </Card>
+      </div>
+
+      <div className="mt-10">
+        <ReviewsSection
+          companySlug={company.slug}
+          companyName={company.company_name}
+          averageRating={company.average_rating}
+          reviewCount={company.review_count}
+          distribution={company.rating_distribution}
+        />
       </div>
     </>
   );

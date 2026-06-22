@@ -1,0 +1,49 @@
+{
+  "outOfFive": "{rating} out of 5",
+  "section": {
+    "title": "Reviews",
+    "lead": "What people say about working with this organisation. Anyone can leave a review."
+  },
+  "summary": {
+    "empty": "No reviews yet. Be the first to share your experience.",
+    "count": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+    "breakdown": "Rating breakdown",
+    "starsLabel": "{stars, plural, one {# star} other {# stars}}",
+    "barLabel": "{stars, plural, one {# star} other {# stars}}: {count, plural, =0 {no reviews} one {# review} other {# reviews}}"
+  },
+  "list": {
+    "emptyTitle": "No reviews yet",
+    "emptyBody": "Be the first to share your experience of this organisation.",
+    "loadMore": "Load more reviews",
+    "loadingMore": "Loading…"
+  },
+  "reply": {
+    "responseFrom": "Response from {company}",
+    "label": "Your reply",
+    "placeholder": "Respond to this review on behalf of your organisation.",
+    "add": "Reply",
+    "edit": "Edit reply",
+    "delete": "Delete reply",
+    "deleting": "Deleting…",
+    "save": "Post reply",
+    "saving": "Posting…",
+    "required": "Enter a reply before posting."
+  },
+  "form": {
+    "title": "Write a review",
+    "name": "Your name",
+    "email": "Email",
+    "emailHint": "Used to verify your review. Never shown publicly.",
+    "rating": "Rating",
+    "ratingLegend": "Select a rating from 1 to 5 stars",
+    "reviewTitle": "Title",
+    "body": "Review",
+    "bodyHint": "Optional. Share what stood out about working with this organisation.",
+    "submit": "Post review",
+    "submitting": "Posting…",
+    "successTitle": "Thank you for your review",
+    "successBody": "Your review has been published and is now visible to others.",
+    "again": "Write another review",
+    "throttled": "You have posted a review recently. Please try again later."
+  }
+}

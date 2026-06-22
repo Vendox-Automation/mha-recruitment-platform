@@ -1,0 +1,49 @@
+{
+  "outOfFive": "5 分中的 {rating} 分",
+  "section": {
+    "title": "评价",
+    "lead": "了解他人与该机构合作的感受。任何人都可以发表评价。"
+  },
+  "summary": {
+    "empty": "暂无评价。欢迎成为第一位分享体验的人。",
+    "count": "{count, plural, =0 {暂无评价} other {# 条评价}}",
+    "breakdown": "评分分布",
+    "starsLabel": "{stars, plural, other {# 星}}",
+    "barLabel": "{stars, plural, other {# 星}}：{count, plural, =0 {暂无评价} other {# 条评价}}"
+  },
+  "list": {
+    "emptyTitle": "暂无评价",
+    "emptyBody": "欢迎成为第一位分享对该机构看法的人。",
+    "loadMore": "加载更多评价",
+    "loadingMore": "加载中…"
+  },
+  "reply": {
+    "responseFrom": "来自 {company} 的回复",
+    "label": "你的回复",
+    "placeholder": "代表你的机构回复这条评价。",
+    "add": "回复",
+    "edit": "编辑回复",
+    "delete": "删除回复",
+    "deleting": "删除中…",
+    "save": "发布回复",
+    "saving": "发布中…",
+    "required": "请先填写回复内容再发布。"
+  },
+  "form": {
+    "title": "撰写评价",
+    "name": "你的姓名",
+    "email": "电子邮箱",
+    "emailHint": "用于核实你的评价，不会公开显示。",
+    "rating": "评分",
+    "ratingLegend": "请选择 1 至 5 星的评分",
+    "reviewTitle": "标题",
+    "body": "评价内容",
+    "bodyHint": "选填。分享与该机构合作时令你印象深刻的地方。",
+    "submit": "发布评价",
+    "submitting": "发布中…",
+    "successTitle": "感谢你的评价",
+    "successBody": "你的评价已发布，其他人现在即可看到。",
+    "again": "再写一条评价",
+    "throttled": "你刚刚已发表过评价，请稍后再试。"
+  }
+}

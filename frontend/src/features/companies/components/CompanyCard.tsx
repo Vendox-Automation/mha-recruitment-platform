@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { BRAND_LOGOS, BrandLogo } from "@/components/brand/BrandLogos";
 import { Badge, Card } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
+import { StarRating } from "@/features/reviews";
 
 import type { PublicCompanyListItem } from "../types";
 
@@ -16,6 +17,10 @@ import type { PublicCompanyListItem } from "../types";
 export function CompanyCard({ company }: { company: PublicCompanyListItem }) {
   const t = useTranslations("companies.directory");
   const tBadge = useTranslations("common.badge");
+  const tReviews = useTranslations("reviews");
+
+  const averageLabel =
+    company.average_rating !== null ? company.average_rating.toFixed(1) : null;
 
   return (
     <Card as="article" interactive className="flex flex-col gap-3">
@@ -55,6 +60,21 @@ export function CompanyCard({ company }: { company: PublicCompanyListItem }) {
           </Badge>
         </div>
       </div>
+
+      {/* Compact rating line — only when the company has reviews. */}
+      {company.review_count > 0 && averageLabel !== null ? (
+        <div className="flex items-center gap-2 type-body-sm text-text-secondary">
+          <StarRating
+            value={company.average_rating ?? 0}
+            label={tReviews("outOfFive", { rating: averageLabel })}
+            size="sm"
+          />
+          <span>
+            {averageLabel} ·{" "}
+            {tReviews("summary.count", { count: company.review_count })}
+          </span>
+        </div>
+      ) : null}
 
       {company.company_summary ? (
         <p className="type-body-sm line-clamp-3 text-text-secondary">
