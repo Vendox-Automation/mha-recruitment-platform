@@ -24,20 +24,26 @@ export interface TrustedCompany {
   /** Prominent placement tier — larger mark. MHA-curated, never paid (MVP). */
   featured?: boolean;
   /**
-   * Renders a real brand SVG instead of a monogram + coloured wordmark.
-   * "vendox" is the operator's own logo (not invented) — see {@link VendoxMark}.
+   * Renders a real brand SVG (from the shared brand registry) instead of a
+   * monogram + coloured wordmark. The four real operator brands — "vendox",
+   * "mha", "woodee", "wewe" — are the product owner's own logos (not invented);
+   * see {@link BRAND_LOGOS}. Any other slug falls back to the wordmark path.
    */
-  brandMark?: "vendox";
+  brandMark?: "vendox" | "mha" | "woodee" | "wewe" | string;
 }
 
 /**
- * The trusted-by entries. The first is Vendox — the operator's own, real brand
- * (honest). The remainder are ~30 FICTIONAL companies (Malaysian/SEA mix) used
- * only to demonstrate the band; the section's "Illustrative preview" label keeps
- * the whole strip from being read as real adoption.
+ * The trusted-by entries. The first four — Vendox, MHA, Woodee, WEWE — are the
+ * product owner's own, REAL brands (honest) and lead the band with their real
+ * brand marks. The remainder are ~30 FICTIONAL companies (Malaysian/SEA mix)
+ * used only to demonstrate the band; the section's "Illustrative preview" label
+ * keeps the whole strip from being read as real adoption.
  */
 export const TRUSTED_COMPANIES: TrustedCompany[] = [
   { name: "Vendox", monogram: "V", featured: true, brandMark: "vendox" },
+  { name: "MHA", monogram: "MHA", featured: true, brandMark: "mha" },
+  { name: "Woodee", monogram: "W", featured: true, brandMark: "woodee" },
+  { name: "WEWE", monogram: "WE", featured: true, brandMark: "wewe" },
   { name: "Aurora Bank", monogram: "AB", featured: true },
   { name: "Summit Ventures", monogram: "SV" },
   { name: "Meridian Logistics", monogram: "ML", featured: true },

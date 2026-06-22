@@ -3,18 +3,19 @@
 import { useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { BRAND_LOGOS, BrandLogo } from "@/components/brand/BrandLogos";
 import { SourceLabel } from "@/components/intelligence/SourceLabel";
 import { cn } from "@/lib/cn";
 
 import { TRUSTED_COMPANIES, type TrustedCompany } from "../trustedCompanies";
-import { VendoxMark } from "./VendoxMark";
 
 /**
  * Homepage "trusted by" social-proof band (spec §14.1 — credible trust signals,
  * AGENTS §13 honest sourcing). Two logo rows scroll in opposite directions;
- * companies render as coloured wordmarks (Vendox uses its real brand mark).
+ * companies render as coloured wordmarks (the operator's real brands — Vendox,
+ * MHA, Woodee, WEWE — lead with their real brand marks).
  *
- * INTEGRITY: apart from Vendox (the operator's own brand) the companies are
+ * INTEGRITY: apart from the operator's own brands the companies are
  * synthetic POC data (see {@link TRUSTED_COMPANIES}); the band always shows an
  * "Illustrative preview" {@link SourceLabel}, so it never implies real adoption
  * (CLAUDE.md "no invented proof"; AGENTS §8).
@@ -55,11 +56,12 @@ const ROW_B = COMPANIES.filter((_, i) => i % 2 === 1);
 function CompanyLogo({ company }: { company: ColouredCompany }) {
   const { name, monogram, featured, brandMark, colour } = company;
 
-  if (brandMark === "vendox") {
+  if (brandMark && BRAND_LOGOS[brandMark]) {
     return (
       <div className="flex shrink-0 items-center gap-2.5">
-        <VendoxMark
-          aria-hidden="true"
+        <BrandLogo
+          slug={brandMark}
+          aria-hidden
           className={featured ? "h-11 w-11" : "h-9 w-9"}
         />
         <span

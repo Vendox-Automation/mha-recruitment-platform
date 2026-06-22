@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
+import { BRAND_LOGOS, BrandLogo } from "@/components/brand/BrandLogos";
 import { Badge, Card } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 
@@ -19,7 +20,13 @@ export function CompanyCard({ company }: { company: PublicCompanyListItem }) {
   return (
     <Card as="article" interactive className="flex flex-col gap-3">
       <div className="flex items-start gap-3">
-        {company.logo ? (
+        {BRAND_LOGOS[company.slug] ? (
+          <BrandLogo
+            slug={company.slug}
+            aria-hidden
+            className="h-12 w-12 rounded-md border border-border-default object-contain"
+          />
+        ) : company.logo ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={company.logo}
