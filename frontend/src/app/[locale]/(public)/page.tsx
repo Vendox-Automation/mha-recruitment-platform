@@ -15,6 +15,7 @@ import { JourneySteps } from "@/features/home/components/JourneySteps";
 import { LazyConsole } from "@/features/home/components/LazyConsole";
 import { LazyOpportunities } from "@/features/home/components/LazyOpportunities";
 import { Reveal } from "@/features/home/components/Reveal";
+import { TestimonialsCarousel } from "@/features/home/components/TestimonialsCarousel";
 import { TrustedBy } from "@/features/home/components/TrustedBy";
 import { ValuePanel } from "@/features/home/components/ValuePanel";
 import { WorkspacePreview } from "@/features/home/components/WorkspacePreview";
@@ -71,6 +72,15 @@ export default async function HomePage({
         <PageContainer width="wide">
           <Reveal>
             <TrustedBy />
+          </Reveal>
+        </PageContainer>
+      </Section>
+
+      {/* B3. Illustrative testimonials carousel (synthetic, clearly labelled). */}
+      <Section tone="raised">
+        <PageContainer>
+          <Reveal>
+            <TestimonialsCarousel />
           </Reveal>
         </PageContainer>
       </Section>

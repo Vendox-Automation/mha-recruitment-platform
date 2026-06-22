@@ -6,6 +6,31 @@
     "title": "Trusted by leading employers",
     "marqueeLabel": "Participating companies"
   },
+  "testimonials": {
+    "title": "What employers say",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "ratingLabel": "{rating} out of 5",
+    "goTo": "Show testimonial {number}",
+    "items": {
+      "talent": {
+        "quote": "MHA Jobs gives us a clear, transparent view of every applicant. The workspace keeps our hiring organised from first review to final offer.",
+        "role": "Head of Talent"
+      },
+      "speed": {
+        "quote": "Publishing a vacancy and reviewing candidates is genuinely fast. We shortlisted strong people without the usual admin overhead.",
+        "role": "Recruitment Lead"
+      },
+      "support": {
+        "quote": "What stands out is the human support — MHA's consultants step in at exactly the right moments. It feels like a partner, not just a job board.",
+        "role": "People Partner"
+      },
+      "honest": {
+        "quote": "The applicant table and Kanban make it easy to collaborate across our team. Honest analytics, no inflated numbers — just what we need.",
+        "role": "Hiring Manager"
+      }
+    }
+  },
   "hero": {
     "eyebrow": "Operated by MHA Consultancy",
     "headline": "Professional recruitment, built on clarity and human judgement.",
