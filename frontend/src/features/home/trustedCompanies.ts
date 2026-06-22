@@ -17,16 +17,27 @@
  * kept distinct from organic "Trusted by".
  */
 export interface TrustedCompany {
-  /** Fictional company name, rendered as a wordmark. */
+  /** Company name, rendered as a coloured wordmark. */
   name: string;
   /** Short monogram shown in the logo tile. */
   monogram: string;
   /** Prominent placement tier — larger mark. MHA-curated, never paid (MVP). */
   featured?: boolean;
+  /**
+   * Renders a real brand SVG instead of a monogram + coloured wordmark.
+   * "vendox" is the operator's own logo (not invented) — see {@link VendoxMark}.
+   */
+  brandMark?: "vendox";
 }
 
-/** ~30 fictional companies; a Malaysian/SEA mix to suit the platform's market. */
+/**
+ * The trusted-by entries. The first is Vendox — the operator's own, real brand
+ * (honest). The remainder are ~30 FICTIONAL companies (Malaysian/SEA mix) used
+ * only to demonstrate the band; the section's "Illustrative preview" label keeps
+ * the whole strip from being read as real adoption.
+ */
 export const TRUSTED_COMPANIES: TrustedCompany[] = [
+  { name: "Vendox", monogram: "V", featured: true, brandMark: "vendox" },
   { name: "Aurora Bank", monogram: "AB", featured: true },
   { name: "Summit Ventures", monogram: "SV" },
   { name: "Meridian Logistics", monogram: "ML", featured: true },
