@@ -23,7 +23,10 @@ export function CompanyCard({ company }: { company: PublicCompanyListItem }) {
     company.average_rating !== null ? company.average_rating.toFixed(1) : null;
 
   return (
-    <Card as="article" interactive className="flex flex-col gap-3">
+    <Card
+      as="article"
+      className="flex h-full flex-col gap-3 transition duration-200 hover:-translate-y-1 hover:border-border-strong hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    >
       <div className="flex items-start gap-3">
         {BRAND_LOGOS[company.slug] ? (
           <BrandLogo
@@ -82,17 +85,22 @@ export function CompanyCard({ company }: { company: PublicCompanyListItem }) {
         </p>
       ) : null}
 
-      <div className="mt-auto flex flex-wrap items-center justify-between gap-2 type-body-sm text-text-secondary">
-        {company.company_location ? <span>{company.company_location}</span> : null}
-        <span>{t("activeJobCount", { count: company.active_job_count })}</span>
+      {/* Pinned to the bottom so cards stay equal height regardless of summary
+          length (the grid stretches each card via h-full). */}
+      <div className="mt-auto flex flex-col gap-3 pt-1">
+        <div className="flex flex-wrap items-center justify-between gap-2 type-body-sm text-text-secondary">
+          {company.company_location ? (
+            <span>{company.company_location}</span>
+          ) : null}
+          <span>{t("activeJobCount", { count: company.active_job_count })}</span>
+        </div>
+        <Link
+          href={`/companies/${company.slug}`}
+          className="type-body-sm font-semibold text-brand-primary no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+        >
+          {t("learnMore")} <span aria-hidden="true">→</span>
+        </Link>
       </div>
-
-      <Link
-        href={`/companies/${company.slug}`}
-        className="type-body-sm font-semibold text-brand-primary no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-      >
-        {t("learnMore")} <span aria-hidden="true">→</span>
-      </Link>
     </Card>
   );
 }

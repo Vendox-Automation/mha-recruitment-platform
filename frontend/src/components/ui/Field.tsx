@@ -13,8 +13,13 @@ export interface FieldProps {
   required?: boolean;
   /** Accessible text for the required marker (localised). */
   requiredLabel?: string;
-  /** Optional helper text shown below the label. */
+  /** Optional helper text. Shown below the label by default. */
   hint?: ReactNode;
+  /**
+   * Where the hint renders relative to the control. "bottom" keeps the control
+   * aligned with sibling fields in a row that have no hint (spec §11.6).
+   */
+  hintPosition?: "top" | "bottom";
   /** Error message; when present the control is marked invalid. */
   error?: ReactNode;
   className?: string;
@@ -42,6 +47,7 @@ export function Field({
   required,
   requiredLabel,
   hint,
+  hintPosition = "top",
   error,
   className,
   children,
@@ -69,12 +75,17 @@ export function Field({
       <Label htmlFor={controlId} required={required} requiredLabel={requiredLabel}>
         {label}
       </Label>
-      {hint ? (
+      {hint && hintPosition === "top" ? (
         <p id={hintId} className="type-caption">
           {hint}
         </p>
       ) : null}
       {control}
+      {hint && hintPosition === "bottom" ? (
+        <p id={hintId} className="type-caption">
+          {hint}
+        </p>
+      ) : null}
       {error ? (
         <p id={errorId} role="alert" className="type-body-sm text-status-danger">
           {error}

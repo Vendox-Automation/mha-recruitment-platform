@@ -152,7 +152,7 @@ export function ReviewForm({ companySlug, onSubmitted }: ReviewFormProps) {
     <Card className="flex flex-col gap-5">
       <h3 className="type-heading-3 text-text-primary">{t("form.title")}</h3>
       <form className="flex flex-col gap-4" onSubmit={onSubmit} noValidate>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 sm:items-start">
           <Field
             label={t("form.name")}
             required
@@ -164,6 +164,7 @@ export function ReviewForm({ companySlug, onSubmitted }: ReviewFormProps) {
             label={t("form.email")}
             required
             hint={t("form.emailHint")}
+            hintPosition="bottom"
             error={errors.reviewer_email?.message}
           >
             <Input type="email" autoComplete="email" {...register("reviewer_email")} />
