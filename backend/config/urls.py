@@ -12,6 +12,7 @@ from django.urls import include, path
 from apps.analytics.api import urls as analytics_urls
 from apps.jobs.api import urls as jobs_urls
 from apps.matching.api import urls as matching_urls
+from apps.reviews.api import urls as reviews_urls
 from apps.support.api import urls as support_urls
 from config.health import health
 
@@ -47,7 +48,14 @@ urlpatterns = [
     # the Job Fit API, ADR §3.1).
     path("api/v1/jobs/", include((matching_urls.job_fit_patterns, "matching"))),
     path("api/v1/jobs/", include((jobs_urls.public_job_patterns, "jobs-public"))),
+    # Public company reviews: companies/{slug}/reviews/ (AllowAny list + create).
+    # Mounted BEFORE the company directory patterns so the more specific
+    # ``{slug}/reviews/`` route resolves ahead of the ``{slug}/`` detail route
+    # (apps.reviews owns the review API, ADR §3.1).
+    path("api/v1/companies/", include((reviews_urls.company_review_patterns, "reviews"))),
     path("api/v1/companies/", include((jobs_urls.company_patterns, "companies"))),
+    # Employer reply to a review of their OWN company.
+    path("api/v1/employer/", include((reviews_urls.employer_patterns, "reviews-employer"))),
     # Public career-support intake + permission-checked attachment download, and
     # the public insights aggregate (apps.support / apps.analytics own these).
     path("api/v1/", include((support_urls.public_patterns, "support"))),

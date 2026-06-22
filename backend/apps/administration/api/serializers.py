@@ -12,6 +12,7 @@ from __future__ import annotations
 from rest_framework import serializers
 
 from apps.employers.models import EmployerProfile
+from apps.reviews.models import CompanyReview
 
 
 class EmployerListItemSerializer(serializers.ModelSerializer):
@@ -63,6 +64,35 @@ class SummarySerializer(serializers.Serializer):
     suspended_employers = serializers.IntegerField()
     rejected_employers = serializers.IntegerField()
     total_employers = serializers.IntegerField()
+
+
+class AdminReviewSerializer(serializers.ModelSerializer):
+    """Admin row for the review-moderation queue.
+
+    Unlike the public review serializer, this DOES expose ``reviewer_email`` —
+    administrators may see it for moderation/contact. ``has_reply`` is annotated
+    on the queryset so the list never N+1s.
+    """
+
+    company_name = serializers.CharField(source="employer.company_name", read_only=True)
+    company_slug = serializers.CharField(source="employer.slug", read_only=True)
+    has_reply = serializers.BooleanField(read_only=True)
+
+    class Meta:
+        model = CompanyReview
+        fields = [
+            "id",
+            "company_name",
+            "company_slug",
+            "reviewer_name",
+            "reviewer_email",
+            "rating",
+            "title",
+            "body",
+            "created_at",
+            "has_reply",
+        ]
+        read_only_fields = fields
 
 
 class RejectSerializer(serializers.Serializer):

@@ -19,10 +19,10 @@ from __future__ import annotations
 
 from collections.abc import Callable
 
-from django.db.models import Case, IntegerField, Q, QuerySet, Value, When
+from django.db.models import Case, Exists, IntegerField, OuterRef, Q, QuerySet, Value, When
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -32,8 +32,11 @@ from apps.accounts.permissions import IsAdministrator
 from apps.employers.models import EmployerProfile
 from apps.employers.services import approval_service
 from apps.employers.services.approval_service import IllegalTransition
+from apps.reviews.models import CompanyReview, EmployerReply
+from apps.reviews.services import delete_reply, delete_review
 
 from .serializers import (
+    AdminReviewSerializer,
     EmployerDetailSerializer,
     EmployerListItemSerializer,
     RejectSerializer,
@@ -186,3 +189,68 @@ class AdminEmployerSuspendView(_EmployerActionView):
 
 class AdminEmployerRestoreView(_EmployerActionView):
     action = staticmethod(approval_service.restore_employer)
+
+
+# --- Review moderation (reactive: read + delete, audited) ------------------
+
+
+class AdminReviewListView(ListAPIView):
+    """GET the admin review-moderation queue: optional company + search.
+
+    ``has_reply`` is annotated with an ``Exists`` subquery so the row carries the
+    flag without a per-row query. ``reviewer_email`` is exposed here (admins may
+    see it); it is never on the public surface.
+    """
+
+    permission_classes = [IsAdministrator]
+    serializer_class = AdminReviewSerializer
+
+    def get_queryset(self) -> QuerySet[CompanyReview]:
+        qs = CompanyReview.objects.select_related("employer").annotate(
+            has_reply=Exists(EmployerReply.objects.filter(review=OuterRef("pk")))
+        )
+
+        company = self.request.query_params.get("company")
+        if company:
+            slug = company.strip()
+            if slug:
+                qs = qs.filter(employer__slug=slug)
+
+        search = self.request.query_params.get("search")
+        if search:
+            term = search.strip()
+            if term:
+                qs = qs.filter(
+                    Q(reviewer_name__icontains=term)
+                    | Q(reviewer_email__icontains=term)
+                    | Q(title__icontains=term)
+                    | Q(body__icontains=term)
+                )
+
+        return qs.order_by("-created_at")
+
+
+class AdminReviewDeleteView(APIView):
+    """DELETE a review (cascades its reply) via the audited service. 204."""
+
+    permission_classes = [IsAdministrator]
+
+    def delete(self, request: Request, id: int) -> Response:  # noqa: A002 (URL kwarg)
+        review = CompanyReview.objects.filter(pk=id).first()
+        if review is None:
+            raise NotFound("The requested resource was not found.")
+        delete_review(review, actor=request.user)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AdminReviewReplyDeleteView(APIView):
+    """DELETE just the employer reply on a review via the audited service. 204."""
+
+    permission_classes = [IsAdministrator]
+
+    def delete(self, request: Request, id: int) -> Response:  # noqa: A002 (URL kwarg)
+        reply = EmployerReply.objects.filter(review_id=id).first()
+        if reply is None:
+            raise NotFound("The requested resource was not found.")
+        delete_reply(reply, actor=request.user)
+        return Response(status=status.HTTP_204_NO_CONTENT)

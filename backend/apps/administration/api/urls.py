@@ -41,4 +41,12 @@ urlpatterns = [
         views.AdminEmployerRestoreView.as_view(),
         name="employer-restore",
     ),
+    # Reactive review moderation (read queue + audited deletion).
+    path("reviews/", views.AdminReviewListView.as_view(), name="review-list"),
+    path("reviews/<int:id>/", views.AdminReviewDeleteView.as_view(), name="review-delete"),
+    path(
+        "reviews/<int:id>/reply/",
+        views.AdminReviewReplyDeleteView.as_view(),
+        name="review-reply-delete",
+    ),
 ]

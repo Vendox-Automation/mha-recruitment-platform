@@ -221,9 +221,17 @@ class PublicJobDetailSerializer(PublicJobListSerializer):
 
 
 class PublicCompanyListSerializer(serializers.ModelSerializer):
-    """Approved-company directory row."""
+    """Approved-company directory row.
+
+    ``average_rating`` / ``review_count`` are read from queryset annotations
+    (``review_avg`` / ``review_count_anno``) added by the company-list selector
+    so the directory never N+1s across companies. ``average_rating`` is rounded
+    to 1 dp and is ``None`` when the company has no reviews.
+    """
 
     active_job_count = serializers.IntegerField(read_only=True)
+    average_rating = serializers.SerializerMethodField()
+    review_count = serializers.SerializerMethodField()
 
     class Meta:
         model = EmployerProfile
@@ -235,14 +243,32 @@ class PublicCompanyListSerializer(serializers.ModelSerializer):
             "industry",
             "company_location",
             "active_job_count",
+            "average_rating",
+            "review_count",
         ]
+
+    def get_average_rating(self, obj: EmployerProfile) -> float | None:
+        avg = getattr(obj, "review_avg", None)
+        return round(avg, 1) if avg is not None else None
+
+    def get_review_count(self, obj: EmployerProfile) -> int:
+        return getattr(obj, "review_count_anno", 0) or 0
 
 
 class PublicCompanyDetailSerializer(serializers.ModelSerializer):
-    """Approved-company detail with culture/benefits and active public jobs."""
+    """Approved-company detail with culture/benefits and active public jobs.
+
+    The review aggregate (``average_rating``, ``review_count``,
+    ``rating_distribution``) is computed once per company via
+    ``apps.reviews.services.aggregate_for`` — a single annotated query — since
+    the detail view serialises exactly one company.
+    """
 
     active_jobs = serializers.SerializerMethodField()
     is_approved = serializers.SerializerMethodField()
+    average_rating = serializers.SerializerMethodField()
+    review_count = serializers.SerializerMethodField()
+    rating_distribution = serializers.SerializerMethodField()
 
     class Meta:
         model = EmployerProfile
@@ -259,7 +285,20 @@ class PublicCompanyDetailSerializer(serializers.ModelSerializer):
             "benefits_text",
             "is_approved",
             "active_jobs",
+            "average_rating",
+            "review_count",
+            "rating_distribution",
         ]
+
+    def _aggregate(self, obj: EmployerProfile) -> dict:
+        # Compute once and cache on the serializer instance per object so the
+        # three methods share a single query.
+        from apps.reviews.services import aggregate_for
+
+        cache = self.__dict__.setdefault("_review_aggregates", {})
+        if obj.pk not in cache:
+            cache[obj.pk] = aggregate_for(obj)
+        return cache[obj.pk]
 
     def get_is_approved(self, obj: EmployerProfile) -> bool:
         return obj.is_approved
@@ -267,3 +306,12 @@ class PublicCompanyDetailSerializer(serializers.ModelSerializer):
     def get_active_jobs(self, obj: EmployerProfile):
         jobs = Job.objects.public().filter(employer=obj)
         return PublicJobListSerializer(jobs, many=True, context=self.context).data
+
+    def get_average_rating(self, obj: EmployerProfile) -> float | None:
+        return self._aggregate(obj)["average_rating"]
+
+    def get_review_count(self, obj: EmployerProfile) -> int:
+        return self._aggregate(obj)["review_count"]
+
+    def get_rating_distribution(self, obj: EmployerProfile) -> dict:
+        return self._aggregate(obj)["rating_distribution"]
