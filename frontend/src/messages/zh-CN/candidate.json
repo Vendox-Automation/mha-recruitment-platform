@@ -5,6 +5,7 @@
   },
   "nav": {
     "dashboard": "控制台",
+    "browseJobs": "浏览职位",
     "profile": "个人资料",
     "resume": "简历",
     "applications": "申请",
