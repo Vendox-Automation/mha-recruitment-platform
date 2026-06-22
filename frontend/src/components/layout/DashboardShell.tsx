@@ -27,7 +27,7 @@ export interface DashboardShellProps {
   /** Eyebrow that distinguishes candidate vs employer (already localised). */
   eyebrow: string;
   /** Accent treatment — same palette, different emphasis (spec §9.1). */
-  accent: "candidate" | "employer";
+  accent: "candidate" | "employer" | "admin";
   /** Brand name (from common.brand). */
   brand: string;
   /** Home link aria-label (from common.nav.home). */
@@ -69,7 +69,11 @@ export function DashboardShell({
   }
 
   const accentRail =
-    accent === "candidate" ? "bg-brand-primary" : "bg-data-series-2";
+    accent === "candidate"
+      ? "bg-brand-primary"
+      : accent === "admin"
+        ? "bg-data-series-5"
+        : "bg-data-series-2";
 
   const navList = (
     <ul className="flex flex-col gap-1">

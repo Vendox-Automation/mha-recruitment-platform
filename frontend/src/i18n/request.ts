@@ -17,6 +17,7 @@ const NAMESPACES = [
   "auth",
   "candidate",
   "employer",
+  "admin",
   "validation",
   "legal",
 ] as const;
