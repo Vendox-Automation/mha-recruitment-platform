@@ -5,7 +5,8 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "employers": "Employer approvals"
+    "employers": "Employer approvals",
+    "reviews": "Reviews"
   },
   "status": {
     "PENDING": "Pending",
@@ -67,6 +68,42 @@
       "previous": "Previous",
       "next": "Next",
       "pageStatus": "Page {page}"
+    }
+  },
+  "reviews": {
+    "title": "Review moderation",
+    "description": "Review published company reviews and remove a review or its reply when needed. Every deletion is recorded by the platform.",
+    "filters": {
+      "companyLabel": "Company",
+      "companyPlaceholder": "Filter by company name",
+      "searchLabel": "Search",
+      "searchPlaceholder": "Search by reviewer, title, or text"
+    },
+    "ratingValue": "{rating} out of 5",
+    "hasReply": "Has reply",
+    "emptyTitle": "No reviews match",
+    "emptyBody": "No reviews match the current company or search. Adjust the filters to see more.",
+    "actions": {
+      "deleteReview": "Delete review",
+      "deleteReply": "Delete reply"
+    },
+    "feedback": {
+      "reviewDeleted": "The review by {reviewer} has been deleted.",
+      "replyDeleted": "The reply to {reviewer}'s review has been deleted."
+    },
+    "pagination": {
+      "label": "Review pages",
+      "previous": "Previous",
+      "next": "Next",
+      "pageStatus": "Page {page}"
+    },
+    "delete": {
+      "reviewTitle": "Delete this review",
+      "reviewDescription": "Permanently delete the review by {reviewer} for {company}? This cannot be undone.",
+      "replyTitle": "Delete this reply",
+      "replyDescription": "Permanently delete the employer reply to {reviewer}'s review for {company}? This cannot be undone.",
+      "confirm": "Delete",
+      "confirmPending": "Deleting…"
     }
   },
   "reject": {

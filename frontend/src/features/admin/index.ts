@@ -40,3 +40,9 @@ export { AdminDashboardView } from "./components/AdminDashboardView";
 export { EmployerApprovalQueue } from "./components/EmployerApprovalQueue";
 export { RejectEmployerDialog } from "./components/RejectEmployerDialog";
 export type { RejectEmployerDialogProps } from "./components/RejectEmployerDialog";
+export { ReviewModerationTable } from "./components/ReviewModerationTable";
+export { DeleteReviewDialog } from "./components/DeleteReviewDialog";
+export type {
+  DeleteReviewDialogProps,
+  DeleteReviewTargetKind,
+} from "./components/DeleteReviewDialog";

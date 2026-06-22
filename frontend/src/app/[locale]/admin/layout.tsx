@@ -16,6 +16,7 @@ import { RouteGuard } from "@/lib/auth";
 const NAV: Omit<DashboardNavItem, "label">[] = [
   { key: "dashboard", href: "/admin/dashboard" },
   { key: "employers", href: "/admin/employers" },
+  { key: "reviews", href: "/admin/reviews" },
 ];
 
 export default async function AdminLayout({

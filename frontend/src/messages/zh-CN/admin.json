@@ -5,7 +5,8 @@
   },
   "nav": {
     "dashboard": "概览",
-    "employers": "雇主审批"
+    "employers": "雇主审批",
+    "reviews": "评价"
   },
   "status": {
     "PENDING": "待审核",
@@ -67,6 +68,42 @@
       "previous": "上一页",
       "next": "下一页",
       "pageStatus": "第 {page} 页"
+    }
+  },
+  "reviews": {
+    "title": "评价审核",
+    "description": "查看已发布的公司评价，并在需要时删除评价或其回复。每一次删除都会被平台记录。",
+    "filters": {
+      "companyLabel": "公司",
+      "companyPlaceholder": "按公司名称筛选",
+      "searchLabel": "搜索",
+      "searchPlaceholder": "按评价者、标题或内容搜索"
+    },
+    "ratingValue": "5 分中的 {rating} 分",
+    "hasReply": "已回复",
+    "emptyTitle": "没有匹配的评价",
+    "emptyBody": "没有评价符合当前公司或搜索条件。请调整筛选以查看更多。",
+    "actions": {
+      "deleteReview": "删除评价",
+      "deleteReply": "删除回复"
+    },
+    "feedback": {
+      "reviewDeleted": "{reviewer} 的评价已被删除。",
+      "replyDeleted": "对 {reviewer} 评价的回复已被删除。"
+    },
+    "pagination": {
+      "label": "评价分页",
+      "previous": "上一页",
+      "next": "下一页",
+      "pageStatus": "第 {page} 页"
+    },
+    "delete": {
+      "reviewTitle": "删除该评价",
+      "reviewDescription": "确定要永久删除 {reviewer} 对 {company} 的评价吗？此操作无法撤销。",
+      "replyTitle": "删除该回复",
+      "replyDescription": "确定要永久删除雇主对 {reviewer} 评价（{company}）的回复吗？此操作无法撤销。",
+      "confirm": "删除",
+      "confirmPending": "正在删除…"
     }
   },
   "reject": {
