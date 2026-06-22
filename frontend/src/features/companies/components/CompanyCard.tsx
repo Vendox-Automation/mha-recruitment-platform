@@ -86,6 +86,13 @@ export function CompanyCard({ company }: { company: PublicCompanyListItem }) {
         {company.company_location ? <span>{company.company_location}</span> : null}
         <span>{t("activeJobCount", { count: company.active_job_count })}</span>
       </div>
+
+      <Link
+        href={`/companies/${company.slug}`}
+        className="type-body-sm font-semibold text-brand-primary no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+      >
+        {t("learnMore")} <span aria-hidden="true">→</span>
+      </Link>
     </Card>
   );
 }

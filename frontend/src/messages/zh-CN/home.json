@@ -143,14 +143,11 @@
     "previewNote": "示例预览。当积累足够的真实平台数据后，将显示实时汇总。"
   },
   "opportunities": {
-    "eyebrow": "机会与机构",
-    "title": "发现职位以及背后的企业",
-    "jobsTitle": "最新机会",
-    "jobsEmpty": "雇主发布职位后，已发布的职位将显示在这里。",
-    "jobsCta": "浏览所有职位",
+    "eyebrow": "精选机构",
+    "title": "发现通过 MHA 招聘的企业",
     "companiesTitle": "精选机构",
     "companiesEmpty": "已认证雇主的资料将显示在这里。",
-    "companiesCta": "探索企业"
+    "companiesCta": "探索所有企业"
   },
   "journey": {
     "eyebrow": "流程如何运作",

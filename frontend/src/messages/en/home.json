@@ -143,14 +143,11 @@
     "previewNote": "Illustrative preview. Live aggregates appear once enough real platform data exists."
   },
   "opportunities": {
-    "eyebrow": "Opportunities and organisations",
-    "title": "Discover roles and the companies behind them",
-    "jobsTitle": "Latest opportunities",
-    "jobsEmpty": "Published roles will appear here once employers post them.",
-    "jobsCta": "Browse all jobs",
+    "eyebrow": "Featured organisations",
+    "title": "Discover the companies hiring through MHA",
     "companiesTitle": "Featured organisations",
     "companiesEmpty": "Approved employer profiles will appear here.",
-    "companiesCta": "Explore companies"
+    "companiesCta": "Explore all companies"
   },
   "journey": {
     "eyebrow": "How the journey works",
