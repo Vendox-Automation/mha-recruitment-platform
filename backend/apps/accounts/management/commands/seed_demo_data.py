@@ -47,6 +47,8 @@ from apps.employers.services import approval_service
 from apps.jobs.models import Job, ScreeningQuestion
 from apps.jobs.services import lifecycle
 from apps.matching.services import compute_job_fit
+from apps.reviews.models import CompanyReview, EmployerReply
+from apps.reviews.services import create_review, set_reply
 from apps.support.models import SupportCategory, SupportRequest, SupportStatus
 from apps.support.services import support_service
 
@@ -581,6 +583,65 @@ DEMO_INSIGHTS = [
 ]
 
 
+# A handful of SYNTHETIC company reviews so star ratings + aggregates render on
+# first run. Keyed by (company key, reviewer_email) for idempotency. ``company``
+# is either a DEMO_EMPLOYERS index (int) or a PARTNER_COMPANIES slug (str). A few
+# carry an employer ``reply`` so the reply UI has data. Ratings span 3-5 only —
+# clearly positive synthetic content, no fabricated complaints.
+DEMO_REVIEWS = [
+    {
+        "company": 0,  # Aurora Bank
+        "reviewer_name": "Demo Reviewer A",
+        "reviewer_email": "reviewer.a@example.com",
+        "rating": 5,
+        "title": "DEMO review — great place to grow",
+        "body": "DEMO REVIEW — synthetic. Supportive managers and clear progression.",
+        "reply": "DEMO REPLY — synthetic. Thank you for the kind words!",
+    },
+    {
+        "company": 0,
+        "reviewer_name": "Demo Reviewer B",
+        "reviewer_email": "reviewer.b@example.com",
+        "rating": 4,
+        "title": "DEMO review — solid experience",
+        "body": "DEMO REVIEW — synthetic. Good benefits, fast-paced environment.",
+    },
+    {
+        "company": 1,  # Nimbus Technologies
+        "reviewer_name": "Demo Reviewer C",
+        "reviewer_email": "reviewer.c@example.com",
+        "rating": 5,
+        "title": "DEMO review — strong engineering culture",
+        "body": "DEMO REVIEW — synthetic. Modern stack and thoughtful code review.",
+        "reply": "DEMO REPLY — synthetic. We appreciate the feedback.",
+    },
+    {
+        "company": 1,
+        "reviewer_name": "Demo Reviewer D",
+        "reviewer_email": "reviewer.d@example.com",
+        "rating": 3,
+        "title": "DEMO review — room to improve",
+        "body": "DEMO REVIEW — synthetic. Interesting work; onboarding could be smoother.",
+    },
+    {
+        "company": "vendox",  # partner company
+        "reviewer_name": "Demo Reviewer E",
+        "reviewer_email": "reviewer.e@example.com",
+        "rating": 5,
+        "title": "DEMO review — recommended",
+        "body": "DEMO REVIEW — synthetic. Friendly team and interesting products.",
+    },
+    {
+        "company": "woodee",  # partner company
+        "reviewer_name": "Demo Reviewer F",
+        "reviewer_email": "reviewer.f@example.com",
+        "rating": 4,
+        "title": "DEMO review — good vibes",
+        "body": "DEMO REVIEW — synthetic. Creative environment with real ownership.",
+    },
+]
+
+
 class Command(BaseCommand):
     help = "Seed an idempotent, synthetic demo dataset (spec §27). Local/demo use only."
 
@@ -639,6 +700,7 @@ class Command(BaseCommand):
         self._ensure_support_requests(complete_candidate, jobs)
         views = self._ensure_job_views(complete_candidate, jobs)
         self._ensure_insights()
+        self._ensure_reviews(approved_employers, partner_companies)
 
         return {
             "users": User.objects.count(),
@@ -652,6 +714,7 @@ class Command(BaseCommand):
             "support requests": SupportRequest.objects.count(),
             "job view events": views,
             "market insights": MarketInsight.objects.count(),
+            "company reviews": CompanyReview.objects.count(),
         }
 
     def _ensure_admin(self) -> User:
@@ -1110,3 +1173,42 @@ class Command(BaseCommand):
                     "is_published": True,
                 },
             )
+
+    def _ensure_reviews(
+        self,
+        approved_employers: list[EmployerProfile],
+        partner_companies: dict[str, EmployerProfile],
+    ) -> None:
+        """Seed synthetic public reviews (+ a couple of employer replies).
+
+        Idempotent by (employer, reviewer_email): a review is created via the
+        review service only when one with that email does not already exist for
+        the company, so re-running never duplicates. Replies are upserted, so
+        re-running leaves exactly one reply per replied-to review.
+        """
+        for spec in DEMO_REVIEWS:
+            ref = spec["company"]
+            if isinstance(ref, int):
+                if ref >= len(approved_employers):
+                    continue
+                employer = approved_employers[ref]
+            else:
+                employer = partner_companies.get(ref)
+            if employer is None:
+                continue
+
+            review = CompanyReview.objects.filter(
+                employer=employer, reviewer_email=spec["reviewer_email"]
+            ).first()
+            if review is None:
+                review = create_review(
+                    employer,
+                    reviewer_name=spec["reviewer_name"],
+                    reviewer_email=spec["reviewer_email"],
+                    rating=spec["rating"],
+                    title=spec["title"],
+                    body=spec["body"],
+                )
+            reply_body = spec.get("reply")
+            if reply_body and not EmployerReply.objects.filter(review=review).exists():
+                set_reply(review, author=employer.user, body=reply_body)
