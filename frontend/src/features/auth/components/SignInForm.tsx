@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Link, useRouter } from "@/i18n/navigation";
 import { Alert, Button, Card, Field, Input } from "@/components/ui";
 import { ensureCsrf, login } from "@/lib/api/auth";
-import { destinationForUser, useAuth } from "@/lib/auth";
+import { ADMIN_URL, destinationForUser, isAdmin, useAuth } from "@/lib/auth";
 
 import { signInSchema, type SignInValues } from "../schemas";
 import { applyApiError, useApiErrorLocalizer, useFormError } from "../useAuthForm";
@@ -47,6 +47,11 @@ export function SignInForm() {
       await ensureCsrf(locale);
       const user = await login(values, locale);
       setUser(user);
+      if (isAdmin(user)) {
+        // Django Admin is a separate (Django-rendered) app — full-page load.
+        window.location.assign(ADMIN_URL);
+        return;
+      }
       router.replace(destinationForUser(user));
     } catch (error) {
       const message = applyApiError(

@@ -4,7 +4,12 @@ import { useTranslations } from "next-intl";
 
 import type { User } from "@/features/auth/types";
 import { Link } from "@/i18n/navigation";
-import { destinationForUser, userDisplayName } from "@/lib/auth";
+import {
+  ADMIN_URL,
+  destinationForUser,
+  isAdmin,
+  userDisplayName,
+} from "@/lib/auth";
 import { cn } from "@/lib/cn";
 
 import { SignOutButton } from "./SignOutButton";
@@ -17,16 +22,25 @@ import { SignOutButton } from "./SignOutButton";
  */
 export function UserMenu({ user, className }: { user: User; className?: string }) {
   const t = useTranslations("common");
+  const nameClass =
+    "type-body-sm max-w-[12rem] truncate font-medium text-text-primary no-underline hover:text-brand-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring";
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <Link
-        href={destinationForUser(user)}
-        title={t("nav.workspace")}
-        className="type-body-sm max-w-[12rem] truncate font-medium text-text-primary no-underline hover:text-brand-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-      >
-        {userDisplayName(user)}
-      </Link>
+      {isAdmin(user) ? (
+        // Django Admin is external to this app — a plain anchor, not a locale Link.
+        <a href={ADMIN_URL} title={t("nav.admin")} className={nameClass}>
+          {userDisplayName(user)}
+        </a>
+      ) : (
+        <Link
+          href={destinationForUser(user)}
+          title={t("nav.workspace")}
+          className={nameClass}
+        >
+          {userDisplayName(user)}
+        </Link>
+      )}
       <SignOutButton label={t("nav.signOut")} />
     </div>
   );

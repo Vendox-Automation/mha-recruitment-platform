@@ -45,3 +45,18 @@ export function userDisplayName(user: User): string {
   const employer = user.profile?.company_name?.trim();
   return candidate || employer || user.email;
 }
+
+/**
+ * Administration lives in Django Admin, not this Next app (CLAUDE.md: "Django
+ * Admin for internal administration"). Admins are sent here on sign-in and via
+ * the header — it is an EXTERNAL URL, so callers navigate with a full-page load
+ * / plain anchor, not the locale-aware router/Link. Override per environment
+ * with `NEXT_PUBLIC_ADMIN_URL` (e.g. a backend tunnel when using ngrok).
+ */
+export const ADMIN_URL =
+  process.env.NEXT_PUBLIC_ADMIN_URL ?? "http://localhost:8000/admin/";
+
+/** True when the user administers via Django Admin rather than an in-app area. */
+export function isAdmin(user: User | null): boolean {
+  return user?.role === "ADMIN";
+}

@@ -2,7 +2,12 @@ import { describe, expect, it } from "vitest";
 
 import type { User } from "@/features/auth/types";
 
-import { destinationForUser, hasRole, isApprovedEmployer } from "./redirects";
+import {
+  destinationForUser,
+  hasRole,
+  isAdmin,
+  isApprovedEmployer,
+} from "./redirects";
 
 function makeUser(overrides: Partial<User>): User {
   return {
@@ -82,5 +87,13 @@ describe("hasRole", () => {
     expect(hasRole(makeUser({ role: "EMPLOYER" }), "EMPLOYER")).toBe(true);
     expect(hasRole(makeUser({ role: "CANDIDATE" }), "EMPLOYER")).toBe(false);
     expect(hasRole(null, "CANDIDATE")).toBe(false);
+  });
+});
+
+describe("isAdmin", () => {
+  it("is true only for the admin role", () => {
+    expect(isAdmin(makeUser({ role: "ADMIN" }))).toBe(true);
+    expect(isAdmin(makeUser({ role: "CANDIDATE" }))).toBe(false);
+    expect(isAdmin(null)).toBe(false);
   });
 });

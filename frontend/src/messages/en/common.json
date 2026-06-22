@@ -13,6 +13,7 @@
     "signOut": "Sign Out",
     "createAccount": "Create Account",
     "workspace": "Go to your workspace",
+    "admin": "Open Django Admin",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },

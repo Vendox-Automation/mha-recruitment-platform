@@ -9,4 +9,6 @@ export {
   isApprovedEmployer,
   hasRole,
   userDisplayName,
+  isAdmin,
+  ADMIN_URL,
 } from "./redirects";

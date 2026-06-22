@@ -73,4 +73,17 @@ describe("PublicHeader auth awareness", () => {
     expect(screen.getAllByText("Sign Out").length).toBeGreaterThan(0);
     expect(screen.queryByText("Create Account")).not.toBeInTheDocument();
   });
+
+  it("links an admin's name to Django Admin, not an in-app route", () => {
+    authState.value = {
+      user: { ...CANDIDATE, role: "ADMIN", profile: null },
+      isLoading: false,
+      logout: async () => {},
+    };
+    renderHeader(<PublicHeader />);
+    const link = screen
+      .getAllByText("alex@example.com")[0]
+      .closest("a") as HTMLAnchorElement;
+    expect(link).toHaveAttribute("href", expect.stringContaining("/admin/"));
+  });
 });
