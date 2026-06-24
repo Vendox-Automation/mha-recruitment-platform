@@ -76,6 +76,9 @@
     "filters": {
       "companyLabel": "公司",
       "companyPlaceholder": "按公司名称筛选",
+      "ratingLabel": "评分",
+      "ratingAll": "全部评分",
+      "ratingStars": "{rating} 星",
       "searchLabel": "搜索",
       "searchPlaceholder": "按评价者、标题或内容搜索"
     },

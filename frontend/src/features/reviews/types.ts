@@ -22,6 +22,9 @@ export interface Paginated<T> {
 /** A 1–5 star rating. */
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
+/** Admin reviews star filter: a specific rating or all ratings. */
+export type RatingFilter = Rating | "ALL";
+
 /** The employer's public reply attached to a review. */
 export interface ReviewReply {
   body: string;
@@ -71,6 +74,8 @@ export interface AdminReviewListParams {
   company?: string;
   /** Free-text search across reviewer / title / body. */
   search?: string;
+  /** Star filter; "ALL" (or omitted) means every rating. */
+  rating?: RatingFilter;
   /** 1-based page index. */
   page?: number;
 }

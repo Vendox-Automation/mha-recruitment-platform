@@ -216,6 +216,18 @@ class AdminReviewListView(ListAPIView):
             if slug:
                 qs = qs.filter(employer__slug=slug)
 
+        # Optional star filter. Only a valid 1–5 integer narrows the queryset;
+        # anything else (blank, "ALL", out of range, non-numeric) is ignored so
+        # the list falls back to "all ratings".
+        rating = self.request.query_params.get("rating")
+        if rating:
+            try:
+                value = int(rating)
+            except (TypeError, ValueError):
+                value = None
+            if value is not None and 1 <= value <= 5:
+                qs = qs.filter(rating=value)
+
         search = self.request.query_params.get("search")
         if search:
             term = search.strip()

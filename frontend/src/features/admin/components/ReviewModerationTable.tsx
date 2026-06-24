@@ -13,6 +13,7 @@ import {
   ErrorState,
   Field,
   Input,
+  Select,
   Skeleton,
 } from "@/components/ui";
 import { ApiRequestError } from "@/lib/api/client";
@@ -23,13 +24,19 @@ import {
   deleteAdminReviewReply,
   getAdminReviews,
 } from "@/features/reviews/service";
-import type { AdminReviewListItem } from "@/features/reviews/types";
+import type {
+  AdminReviewListItem,
+  RatingFilter,
+} from "@/features/reviews/types";
 
 import { useDebouncedValue } from "../useDebouncedValue";
 import {
   DeleteReviewDialog,
   type DeleteReviewTargetKind,
 } from "./DeleteReviewDialog";
+
+/** Dropdown options: all ratings first, then 5→1 stars. */
+const RATING_FILTERS: readonly RatingFilter[] = ["ALL", 5, 4, 3, 2, 1];
 
 interface Feedback {
   tone: "success" | "danger";
@@ -60,6 +67,7 @@ export function ReviewModerationTable() {
 
   const [companyInput, setCompanyInput] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [rating, setRating] = useState<RatingFilter>("ALL");
   const [page, setPage] = useState(1);
   const company = useDebouncedValue(companyInput.trim(), 300);
   const search = useDebouncedValue(searchInput.trim(), 300);
@@ -68,7 +76,7 @@ export function ReviewModerationTable() {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [dialogError, setDialogError] = useState<string | null>(null);
 
-  const params = { company, search, page };
+  const params = { company, search, rating, page };
   const query = useQuery({
     queryKey: adminReviewsListKey(params),
     queryFn: () => getAdminReviews(params, locale),
@@ -113,6 +121,12 @@ export function ReviewModerationTable() {
     setFeedback(null);
   }
 
+  function changeRating(next: RatingFilter) {
+    setRating(next);
+    setPage(1);
+    setFeedback(null);
+  }
+
   function openDelete(review: AdminReviewListItem, kind: DeleteReviewTargetKind) {
     setDialogError(null);
     setFeedback(null);
@@ -121,6 +135,7 @@ export function ReviewModerationTable() {
 
   const companyId = useId();
   const searchId = useId();
+  const ratingId = useId();
   const data = query.data;
   const results = data?.results ?? [];
 
@@ -135,6 +150,27 @@ export function ReviewModerationTable() {
             onChange={(event) => changeCompany(event.target.value)}
             placeholder={t("filters.companyPlaceholder")}
           />
+        </Field>
+        <Field label={t("filters.ratingLabel")} className="sm:w-44">
+          <Select
+            id={ratingId}
+            value={String(rating)}
+            onChange={(event) =>
+              changeRating(
+                event.target.value === "ALL"
+                  ? "ALL"
+                  : (Number(event.target.value) as RatingFilter),
+              )
+            }
+          >
+            {RATING_FILTERS.map((value) => (
+              <option key={value} value={value}>
+                {value === "ALL"
+                  ? t("filters.ratingAll")
+                  : t("filters.ratingStars", { rating: value })}
+              </option>
+            ))}
+          </Select>
         </Field>
         <Field label={t("filters.searchLabel")} className="flex-1">
           <Input

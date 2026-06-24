@@ -24,6 +24,7 @@ export function adminReviewsListKey(params: AdminReviewListParams = {}) {
     {
       company: params.company ?? "",
       search: params.search ?? "",
+      rating: params.rating ?? "ALL",
       page: params.page ?? 1,
     },
   ] as const;

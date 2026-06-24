@@ -93,4 +93,29 @@ describe("ReviewModerationTable", () => {
     renderTable(<ReviewModerationTable />);
     expect(await screen.findByText("No reviews match")).toBeInTheDocument();
   });
+
+  it("requests reviews filtered by the selected star rating", async () => {
+    getAdminReviews.mockResolvedValue(page([review]));
+    renderTable(<ReviewModerationTable />);
+
+    // Initial load uses the "ALL" rating filter.
+    await waitFor(() => {
+      expect(getAdminReviews).toHaveBeenCalledWith(
+        expect.objectContaining({ rating: "ALL" }),
+        expect.anything(),
+      );
+    });
+
+    // Choosing "5 stars" re-queries with the numeric rating and resets the page.
+    await userEvent.selectOptions(
+      screen.getByLabelText("Rating"),
+      "5 stars",
+    );
+    await waitFor(() => {
+      expect(getAdminReviews).toHaveBeenCalledWith(
+        expect.objectContaining({ rating: 5, page: 1 }),
+        expect.anything(),
+      );
+    });
+  });
 });
