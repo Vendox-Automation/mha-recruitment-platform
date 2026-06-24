@@ -21,13 +21,12 @@ const nextConfig: NextConfig = {
    * API base URL for plain localhost development.
    */
   async rewrites() {
-    if (process.env.NODE_ENV === "production") return [];
+    const proxyTarget = process.env.API_PROXY_TARGET;
+    if (!proxyTarget) return [];
     return [
       {
-        // Re-append the trailing slash: `:path*` consumes it as a separator,
-        // but DRF (APPEND_SLASH) needs it — every API path here ends in `/`.
         source: "/api/v1/:path*",
-        destination: `${API_PROXY_TARGET}/api/v1/:path*/`,
+        destination: `${proxyTarget}/api/v1/:path*/`,
       },
     ];
   },
