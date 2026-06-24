@@ -3646,32 +3646,6 @@
   }
 },
 {
-  "model": "reviews.companyreview",
-  "pk": 31,
-  "fields": {
-    "employer": 7,
-    "reviewer_name": "Demo User",
-    "reviewer_email": "demouser@demouser.com",
-    "rating": 5,
-    "title": "Very good",
-    "body": "Very very good",
-    "created_at": "2026-06-23T03:51:20.796Z"
-  }
-},
-{
-  "model": "reviews.companyreview",
-  "pk": 32,
-  "fields": {
-    "employer": 7,
-    "reviewer_name": "Demo User 2",
-    "reviewer_email": "demouser@demouser.com",
-    "rating": 5,
-    "title": "very very good",
-    "body": "very very very good",
-    "created_at": "2026-06-23T03:52:03.958Z"
-  }
-},
-{
   "model": "reviews.employerreply",
   "pk": 1,
   "fields": {

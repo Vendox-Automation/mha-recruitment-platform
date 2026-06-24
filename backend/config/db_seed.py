@@ -116,6 +116,48 @@ def _restore_extra_files(source: Path) -> int:
     return restored
 
 
+def _prune_orphans(fixture_path: Path) -> int:
+    """Drop rows whose FKs dangle so ``loaddata`` does not fail integrity checks.
+
+    Direct DB edits (e.g. deleting an employer) can leave orphaned reviews behind.
+    ``dumpdata`` copies them verbatim, but ``loaddata`` enforces foreign keys and
+    aborts. We remove reviews pointing at a missing employer, then employer
+    replies pointing at a removed review. Returns the number of rows removed.
+    """
+    records = json.loads(fixture_path.read_text(encoding="utf-8"))
+
+    employer_pks = {
+        r.get("pk") for r in records if r.get("model") == "employers.employerprofile"
+    }
+
+    kept: list[dict] = []
+    removed = 0
+    dropped_review_pks: set = set()
+    for record in records:
+        if record.get("model") == "reviews.companyreview":
+            if record["fields"].get("employer") not in employer_pks:
+                dropped_review_pks.add(record.get("pk"))
+                removed += 1
+                continue
+        kept.append(record)
+
+    if dropped_review_pks:
+        survivors: list[dict] = []
+        for record in kept:
+            if (
+                record.get("model") == "reviews.employerreply"
+                and record["fields"].get("review") in dropped_review_pks
+            ):
+                removed += 1
+                continue
+            survivors.append(record)
+        kept = survivors
+
+    if removed:
+        fixture_path.write_text(json.dumps(kept, indent=2) + "\n", encoding="utf-8")
+    return removed
+
+
 def export_seed_bundle(output_dir: Path | None = None) -> Path:
     """Write a seed bundle to ``output_dir`` and return that path."""
     target = (output_dir or DEFAULT_SEED_DIR).resolve()
@@ -131,6 +173,7 @@ def export_seed_bundle(output_dir: Path | None = None) -> Path:
             natural_foreign=True,
             natural_primary=True,
         )
+    orphans_removed = _prune_orphans(fixture_path)
 
     private_dest = target / "private_media"
     private_files = _copy_private_media(Path(settings.PRIVATE_MEDIA_ROOT), private_dest)
@@ -143,6 +186,7 @@ def export_seed_bundle(output_dir: Path | None = None) -> Path:
         "record_counts": _model_counts(),
         "private_media_files": private_files,
         "extra_files": extra_files,
+        "orphans_removed": orphans_removed,
         "fixture": fixture_path.name,
     }
     manifest_path = target / "manifest.json"
