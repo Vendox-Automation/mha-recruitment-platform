@@ -8,20 +8,14 @@ const API_PROXY_TARGET = process.env.API_PROXY_TARGET ?? "http://localhost:8000"
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // Allow loading dev assets when the app is reached through an ngrok tunnel.
-  allowedDevOrigins: ["earthliest-pamela-nubilous.ngrok-free.dev"],
   // Don't 308-strip the trailing slash before the API rewrite runs.
   skipTrailingSlashRedirect: true,
   /**
-   * Dev-only same-origin API proxy. When the app is reached through a tunnel
-   * (e.g. ngrok over HTTPS), calling the Django API on a DIFFERENT origin breaks
-   * the session + double-submit-CSRF cookie flow (cross-site cookies, the
-   * csrftoken cookie being unreadable by JS on the page origin, mixed content).
-   *
-   * Set `NEXT_PUBLIC_API_BASE_URL=/api/v1` (see .env.local) to route API calls
-   * through THIS origin; Next forwards them to the backend below, so every
-   * cookie is first-party. No-op in production, and unused when the app keeps
-   * the default absolute API base URL for plain localhost development.
+   * Dev-only same-origin API proxy. Set `NEXT_PUBLIC_API_BASE_URL=/api/v1`
+   * (see .env.local) to route API calls through this origin; Next forwards
+   * them to the backend below so session + CSRF cookies stay first-party.
+   * No-op in production, and unused when the app keeps the default absolute
+   * API base URL for plain localhost development.
    */
   async rewrites() {
     if (process.env.NODE_ENV === "production") return [];

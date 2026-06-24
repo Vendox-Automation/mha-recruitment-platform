@@ -6,18 +6,13 @@ import os
 import tempfile
 from pathlib import Path
 
-import dj_database_url
-
 from .base import *  # noqa: F401,F403
 
 DEBUG = False
 
-# In-memory SQLite keeps the local suite fast. CI sets
-# DJANGO_TEST_USE_DATABASE_URL=1 so the same tests run against PostgreSQL,
-# exercising the canonical backend (ADR-0001 §6.5).
-if os.environ.get("DJANGO_TEST_USE_DATABASE_URL") == "1":
-    DATABASES = {"default": dj_database_url.config(conn_max_age=0)}
-else:
+# In-memory SQLite keeps the local suite fast. CI sets DJANGO_TEST_USE_POSTGRES=1
+# and DB_* vars so tests inherit PostgreSQL from base.py (ADR-0001 section 6.5).
+if os.environ.get("DJANGO_TEST_USE_POSTGRES") != "1":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",

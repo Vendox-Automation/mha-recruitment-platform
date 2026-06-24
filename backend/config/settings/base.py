@@ -2,14 +2,13 @@
 
 Environment-specific modules (dev, prod, test) import from here. Configuration
 is driven by environment variables loaded from `.env` files; nothing
-environment-specific is hardcoded (ADR-0001 §4.3, spec §18.7.14).
+environment-specific is hardcoded (ADR-0001 ?4.3, spec ?18.7.14).
 """
 
 from __future__ import annotations
 
 from pathlib import Path
 
-import dj_database_url
 from dotenv import load_dotenv
 
 from config.env import env, env_bool, env_list
@@ -43,7 +42,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
 ]
 
-# Domain apps (per spec §18.5 / ADR-0001 §3.1). Apps without models yet are
+# Domain apps (per spec ?18.5 / ADR-0001 ?3.1). Apps without models yet are
 # still registered so their config and future migrations are wired in.
 LOCAL_APPS = [
     "apps.accounts",
@@ -95,15 +94,27 @@ WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"
 
 # Database ------------------------------------------------------------------
-# Canonical DB is PostgreSQL via DATABASE_URL. A SQLite fallback is used only
-# in environments without Postgres (ADR-0001 §6). Code never branches on the
-# backend; it depends solely on DATABASE_URL.
-DATABASES = {
-    "default": dj_database_url.config(
-        default=env("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
-        conn_max_age=600,
-    )
-}
+# Canonical DB is PostgreSQL via DB_* env vars. SQLite is the local fallback
+# when DB_ENGINE does not start with "postgres" (ADR-0001 section 6).
+if (env("DB_ENGINE", "sqlite") or "sqlite").lower().startswith("postgres"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": env("DB_NAME", "mha"),
+            "USER": env("DB_USER", "mha"),
+            "PASSWORD": env("DB_PASSWORD", "mha"),
+            "HOST": env("DB_HOST", "localhost"),
+            "PORT": env("DB_PORT", "5432"),
+            "CONN_MAX_AGE": 600,
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -114,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# Internationalisation (spec §17) -------------------------------------------
+# Internationalisation (spec ?17) -------------------------------------------
 LANGUAGE_CODE = "en"
 LANGUAGES = [
     ("en", "English"),
@@ -130,9 +141,9 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Private media (resumes etc.) is stored OUTSIDE any public/static route and
-# is only ever served through permission-checked views (ADR-0001 §5, spec §22.2).
+# is only ever served through permission-checked views (ADR-0001 ?5, spec ?22.2).
 PRIVATE_MEDIA_ROOT = Path(env("PRIVATE_MEDIA_ROOT", str(BASE_DIR / "private_media")))
-RESUME_MAX_BYTES = 5 * 1024 * 1024  # 5 MB initial limit (spec §22.2)
+RESUME_MAX_BYTES = 5 * 1024 * 1024  # 5 MB initial limit (spec ?22.2)
 RESUME_ALLOWED_EXTENSIONS = ["pdf", "docx"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -156,7 +167,7 @@ REST_FRAMEWORK = {
     # analytics, Job Fit GET/regenerate, candidate resume download, public
     # job/company detail) are no longer effectively un-throttled. The default
     # rates are tuned so normal interactive use never trips them; they exist to
-    # bound abuse/scraping (recurring security-review recommendation, spec §22).
+    # bound abuse/scraping (recurring security-review recommendation, spec ?22).
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.ScopedRateThrottle",
         "rest_framework.throttling.AnonRateThrottle",
@@ -175,7 +186,7 @@ REST_FRAMEWORK = {
     },
 }
 
-# Authentication transport (ADR-0001 §4) ------------------------------------
+# Authentication transport (ADR-0001 ?4) ------------------------------------
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_SAMESITE = "Lax"
@@ -195,7 +206,7 @@ CSRF_TRUSTED_ORIGINS = env_list(
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", "no-reply@mha-jobs.local")
 
-# Smart Job Fit AI provider (spec §16.7) — disabled by default --------------
+# Smart Job Fit AI provider (spec ?16.7) ? disabled by default --------------
 AI_JOB_FIT_ENABLED = env_bool("AI_JOB_FIT_ENABLED", False)
 AI_PROVIDER = env("AI_PROVIDER", "")
 AI_MODEL = env("AI_MODEL", "")

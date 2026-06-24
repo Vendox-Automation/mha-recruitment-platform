@@ -28,9 +28,14 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     env:
-      DATABASE_URL: postgresql://mha:mha@localhost:5432/mha
+      DB_ENGINE: postgres
+      DB_NAME: mha
+      DB_USER: mha
+      DB_PASSWORD: mha
+      DB_HOST: localhost
+      DB_PORT: "5432"
       DJANGO_SECRET_KEY: ci-secret-key
-      DJANGO_TEST_USE_DATABASE_URL: "1"
+      DJANGO_TEST_USE_POSTGRES: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
