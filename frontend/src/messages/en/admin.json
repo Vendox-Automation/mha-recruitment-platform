@@ -1,0 +1,120 @@
+{
+  "area": {
+    "eyebrow": "Administration",
+    "label": "Platform operations"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "employers": "Employer approvals",
+    "reviews": "Reviews"
+  },
+  "status": {
+    "PENDING": "Pending",
+    "APPROVED": "Approved",
+    "REJECTED": "Rejected",
+    "SUSPENDED": "Suspended"
+  },
+  "dashboard": {
+    "title": "Administration overview",
+    "description": "Review where employer registrations stand and act on anything waiting on you.",
+    "pending": {
+      "eyebrow": "Awaiting review",
+      "body": "{count, plural, one {# employer registration is waiting for a decision.} other {# employer registrations are waiting for a decision.}}",
+      "zero": "No employer registrations are waiting for review right now.",
+      "cta": "Review employers"
+    },
+    "metrics": {
+      "approved": "Approved employers",
+      "suspended": "Suspended employers",
+      "rejected": "Rejected employers",
+      "total": "Total employers"
+    }
+  },
+  "employers": {
+    "title": "Employer approvals",
+    "description": "Approve, reject, suspend, or restore employer accounts. Every decision is recorded by the platform."
+  },
+  "queue": {
+    "filters": {
+      "statusLabel": "Status",
+      "statusAll": "All statuses",
+      "searchLabel": "Search",
+      "searchPlaceholder": "Search by company, contact, or email"
+    },
+    "columns": {
+      "created": "Registered"
+    },
+    "emptyTitle": "No employers match",
+    "emptyBody": "No employer accounts match the current filter. Adjust the status or search to see more.",
+    "noActions": "No actions available",
+    "actions": {
+      "approve": "Approve",
+      "approvePending": "Approving…",
+      "reject": "Reject",
+      "rejectPending": "Rejecting…",
+      "suspend": "Suspend",
+      "suspendPending": "Suspending…",
+      "restore": "Restore",
+      "restorePending": "Restoring…"
+    },
+    "feedback": {
+      "approve": "{company} has been approved.",
+      "reject": "{company} has been rejected.",
+      "suspend": "{company} has been suspended.",
+      "restore": "{company} has been restored."
+    },
+    "pagination": {
+      "label": "Employer queue pages",
+      "previous": "Previous",
+      "next": "Next",
+      "pageStatus": "Page {page}"
+    }
+  },
+  "reviews": {
+    "title": "Review moderation",
+    "description": "Review published company reviews and remove a review or its reply when needed. Every deletion is recorded by the platform.",
+    "filters": {
+      "companyLabel": "Company",
+      "companyPlaceholder": "Filter by company name",
+      "searchLabel": "Search",
+      "searchPlaceholder": "Search by reviewer, title, or text"
+    },
+    "ratingValue": "{rating} out of 5",
+    "hasReply": "Has reply",
+    "emptyTitle": "No reviews match",
+    "emptyBody": "No reviews match the current company or search. Adjust the filters to see more.",
+    "actions": {
+      "deleteReview": "Delete review",
+      "deleteReply": "Delete reply"
+    },
+    "feedback": {
+      "reviewDeleted": "The review by {reviewer} has been deleted.",
+      "replyDeleted": "The reply to {reviewer}'s review has been deleted."
+    },
+    "pagination": {
+      "label": "Review pages",
+      "previous": "Previous",
+      "next": "Next",
+      "pageStatus": "Page {page}"
+    },
+    "delete": {
+      "reviewTitle": "Delete this review",
+      "reviewDescription": "Permanently delete the review by {reviewer} for {company}? This cannot be undone.",
+      "replyTitle": "Delete this reply",
+      "replyDescription": "Permanently delete the employer reply to {reviewer}'s review for {company}? This cannot be undone.",
+      "confirm": "Delete",
+      "confirmPending": "Deleting…"
+    }
+  },
+  "reject": {
+    "title": "Reject this employer",
+    "description": "Provide a reason for rejecting {company}. The employer can see this reason and resubmit.",
+    "reasonLabel": "Reason for rejection",
+    "reasonRequiredLabel": "required",
+    "reasonHint": "Be specific and constructive so the employer can correct the issue.",
+    "reasonPlaceholder": "e.g. Company registration number could not be verified.",
+    "reasonRequired": "A reason is required to reject an employer.",
+    "confirm": "Reject employer",
+    "confirmPending": "Rejecting…"
+  }
+}

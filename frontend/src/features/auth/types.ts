@@ -25,6 +25,10 @@ export type EmployerApprovalStatus =
  */
 export interface UserProfile {
   approval_status?: EmployerApprovalStatus;
+  /** Candidate display name (present on the candidate `/auth/me/` payload). */
+  full_name?: string;
+  /** Employer display name (present on the employer `/auth/me/` payload). */
+  company_name?: string;
   [key: string]: unknown;
 }
 

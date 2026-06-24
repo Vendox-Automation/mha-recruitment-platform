@@ -4,10 +4,13 @@ import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
+import { destinationForUser, useAuth, userDisplayName } from "@/lib/auth";
 import { cn } from "@/lib/cn";
 
 import { LinkButton } from "@/components/ui";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { SignOutButton } from "./SignOutButton";
+import { UserMenu } from "./UserMenu";
 import { Wordmark } from "./Wordmark";
 
 const NAV: { key: string; href: string }[] = [
@@ -19,13 +22,17 @@ const NAV: { key: string; href: string }[] = [
 
 /**
  * Public site header (spec §14.1 A, §9.1). Strong hierarchy without an oversized
- * bar. Desktop shows inline nav + sign-in/create-account + locale switcher.
- * Mobile uses an accessible disclosure menu (keyboard + screen-reader friendly,
- * no hover-only — spec §24). Locale switching preserves the current route.
+ * bar. Desktop shows inline nav + locale switcher, and is AUTH-AWARE: a signed-in
+ * user sees their name (linking to their workspace) + sign-out instead of the
+ * Sign In / Create Account actions, so an authenticated user is never shown as a
+ * guest on public routes (spec §14.6). Mobile uses an accessible disclosure menu
+ * (keyboard + screen-reader friendly, no hover-only — spec §24). Locale switching
+ * preserves the current route.
  */
 export function PublicHeader() {
   const t = useTranslations("common");
   const pathname = usePathname();
+  const { user, isLoading } = useAuth();
   const [open, setOpen] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
   const menuId = useId();
@@ -69,12 +76,19 @@ export function PublicHeader() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <LocaleSwitcher />
-          <LinkButton href="/sign-in" variant="ghost" size="sm">
-            {t("nav.signIn")}
-          </LinkButton>
-          <LinkButton href="/register" variant="primary" size="sm">
-            {t("nav.createAccount")}
-          </LinkButton>
+          {/* Avoid flashing guest actions before the session resolves. */}
+          {isLoading ? null : user ? (
+            <UserMenu user={user} className="ml-1" />
+          ) : (
+            <>
+              <LinkButton href="/sign-in" variant="ghost" size="sm">
+                {t("nav.signIn")}
+              </LinkButton>
+              <LinkButton href="/register" variant="primary" size="sm">
+                {t("nav.createAccount")}
+              </LinkButton>
+            </>
+          )}
         </div>
 
         <button
@@ -111,15 +125,39 @@ export function PublicHeader() {
             ))}
           </ul>
           <div className="mt-4 flex flex-col gap-2 border-t border-border-default pt-4">
-            <LinkButton href="/sign-in" variant="secondary" size="md" fullWidth>
-              {t("nav.signIn")}
-            </LinkButton>
-            <LinkButton href="/register" variant="primary" size="md" fullWidth>
-              {t("nav.createAccount")}
-            </LinkButton>
-            <div className="pt-2">
-              <LocaleSwitcher />
-            </div>
+            {isLoading ? null : user ? (
+              <>
+                <LinkButton
+                  href={destinationForUser(user)}
+                  variant="secondary"
+                  size="md"
+                  fullWidth
+                >
+                  {userDisplayName(user)}
+                </LinkButton>
+                <div className="flex items-center justify-between pt-2">
+                  <LocaleSwitcher />
+                  <SignOutButton label={t("nav.signOut")} />
+                </div>
+              </>
+            ) : (
+              <>
+                <LinkButton
+                  href="/sign-in"
+                  variant="secondary"
+                  size="md"
+                  fullWidth
+                >
+                  {t("nav.signIn")}
+                </LinkButton>
+                <LinkButton href="/register" variant="primary" size="md" fullWidth>
+                  {t("nav.createAccount")}
+                </LinkButton>
+                <div className="pt-2">
+                  <LocaleSwitcher />
+                </div>
+              </>
+            )}
           </div>
         </nav>
       </div>

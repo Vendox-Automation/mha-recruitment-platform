@@ -13,10 +13,12 @@ const NAMESPACES = [
   "home",
   "jobs",
   "companies",
+  "reviews",
   "support",
   "auth",
   "candidate",
   "employer",
+  "admin",
   "validation",
   "legal",
 ] as const;

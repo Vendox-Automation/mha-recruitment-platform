@@ -1,0 +1,120 @@
+{
+  "area": {
+    "eyebrow": "管理",
+    "label": "平台运营"
+  },
+  "nav": {
+    "dashboard": "概览",
+    "employers": "雇主审批",
+    "reviews": "评价"
+  },
+  "status": {
+    "PENDING": "待审核",
+    "APPROVED": "已通过",
+    "REJECTED": "已拒绝",
+    "SUSPENDED": "已暂停"
+  },
+  "dashboard": {
+    "title": "管理概览",
+    "description": "查看雇主注册的当前状态，并处理需要您审核的事项。",
+    "pending": {
+      "eyebrow": "待审核",
+      "body": "{count, plural, other {有 # 个雇主注册正在等待审核。}}",
+      "zero": "目前没有等待审核的雇主注册。",
+      "cta": "审核雇主"
+    },
+    "metrics": {
+      "approved": "已通过雇主",
+      "suspended": "已暂停雇主",
+      "rejected": "已拒绝雇主",
+      "total": "雇主总数"
+    }
+  },
+  "employers": {
+    "title": "雇主审批",
+    "description": "通过、拒绝、暂停或恢复雇主账户。每一项操作都会被平台记录。"
+  },
+  "queue": {
+    "filters": {
+      "statusLabel": "状态",
+      "statusAll": "全部状态",
+      "searchLabel": "搜索",
+      "searchPlaceholder": "按公司、联系人或邮箱搜索"
+    },
+    "columns": {
+      "created": "注册时间"
+    },
+    "emptyTitle": "没有匹配的雇主",
+    "emptyBody": "没有雇主账户符合当前筛选条件。请调整状态或搜索以查看更多。",
+    "noActions": "暂无可用操作",
+    "actions": {
+      "approve": "通过",
+      "approvePending": "正在通过…",
+      "reject": "拒绝",
+      "rejectPending": "正在拒绝…",
+      "suspend": "暂停",
+      "suspendPending": "正在暂停…",
+      "restore": "恢复",
+      "restorePending": "正在恢复…"
+    },
+    "feedback": {
+      "approve": "{company} 已通过审核。",
+      "reject": "{company} 已被拒绝。",
+      "suspend": "{company} 已被暂停。",
+      "restore": "{company} 已被恢复。"
+    },
+    "pagination": {
+      "label": "雇主队列分页",
+      "previous": "上一页",
+      "next": "下一页",
+      "pageStatus": "第 {page} 页"
+    }
+  },
+  "reviews": {
+    "title": "评价审核",
+    "description": "查看已发布的公司评价，并在需要时删除评价或其回复。每一次删除都会被平台记录。",
+    "filters": {
+      "companyLabel": "公司",
+      "companyPlaceholder": "按公司名称筛选",
+      "searchLabel": "搜索",
+      "searchPlaceholder": "按评价者、标题或内容搜索"
+    },
+    "ratingValue": "5 分中的 {rating} 分",
+    "hasReply": "已回复",
+    "emptyTitle": "没有匹配的评价",
+    "emptyBody": "没有评价符合当前公司或搜索条件。请调整筛选以查看更多。",
+    "actions": {
+      "deleteReview": "删除评价",
+      "deleteReply": "删除回复"
+    },
+    "feedback": {
+      "reviewDeleted": "{reviewer} 的评价已被删除。",
+      "replyDeleted": "对 {reviewer} 评价的回复已被删除。"
+    },
+    "pagination": {
+      "label": "评价分页",
+      "previous": "上一页",
+      "next": "下一页",
+      "pageStatus": "第 {page} 页"
+    },
+    "delete": {
+      "reviewTitle": "删除该评价",
+      "reviewDescription": "确定要永久删除 {reviewer} 对 {company} 的评价吗？此操作无法撤销。",
+      "replyTitle": "删除该回复",
+      "replyDescription": "确定要永久删除雇主对 {reviewer} 评价（{company}）的回复吗？此操作无法撤销。",
+      "confirm": "删除",
+      "confirmPending": "正在删除…"
+    }
+  },
+  "reject": {
+    "title": "拒绝该雇主",
+    "description": "请填写拒绝 {company} 的原因。雇主可以看到该原因并重新提交。",
+    "reasonLabel": "拒绝原因",
+    "reasonRequiredLabel": "必填",
+    "reasonHint": "请具体且有建设性，以便雇主能够纠正问题。",
+    "reasonPlaceholder": "例如：无法核实公司注册号。",
+    "reasonRequired": "拒绝雇主时必须填写原因。",
+    "confirm": "拒绝雇主",
+    "confirmPending": "正在拒绝…"
+  }
+}

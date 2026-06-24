@@ -15,6 +15,8 @@ import { JourneySteps } from "@/features/home/components/JourneySteps";
 import { LazyConsole } from "@/features/home/components/LazyConsole";
 import { LazyOpportunities } from "@/features/home/components/LazyOpportunities";
 import { Reveal } from "@/features/home/components/Reveal";
+import { TestimonialsCarousel } from "@/features/home/components/TestimonialsCarousel";
+import { TrustedBy } from "@/features/home/components/TrustedBy";
 import { ValuePanel } from "@/features/home/components/ValuePanel";
 import { WorkspacePreview } from "@/features/home/components/WorkspacePreview";
 
@@ -63,6 +65,24 @@ export default async function HomePage({
       {/* B. Integrated executive hero (first viewport: immediate perspective + CTA). */}
       <Section spacing="sm" className="border-b border-border-default">
         <HeroPerspective />
+      </Section>
+
+      {/* B2. Trusted-by social proof — synthetic POC data, clearly labelled. */}
+      <Section className="border-b border-border-default">
+        <PageContainer width="wide">
+          <Reveal>
+            <TrustedBy />
+          </Reveal>
+        </PageContainer>
+      </Section>
+
+      {/* B3. Illustrative testimonials carousel (synthetic, clearly labelled). */}
+      <Section tone="raised">
+        <PageContainer>
+          <Reveal>
+            <TestimonialsCarousel />
+          </Reveal>
+        </PageContainer>
       </Section>
 
       {/* C. Perspective value panel */}

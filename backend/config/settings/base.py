@@ -55,6 +55,8 @@ LOCAL_APPS = [
     "apps.support",
     "apps.analytics",
     "apps.audit",
+    "apps.administration",
+    "apps.reviews",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -165,6 +167,7 @@ REST_FRAMEWORK = {
         "register": "10/hour",
         "password_reset": "5/hour",
         "support": "10/hour",
+        "review": "10/hour",
         "public": "120/min",
         # Generous global ceilings for otherwise-unscoped endpoints.
         "anon": "120/min",

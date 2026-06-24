@@ -5,6 +5,7 @@ import { useId, useState } from "react";
 import type { ReactNode } from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
+import { useAuth, userDisplayName } from "@/lib/auth";
 import { cn } from "@/lib/cn";
 
 import { LocaleSwitcher } from "./LocaleSwitcher";
@@ -26,7 +27,7 @@ export interface DashboardShellProps {
   /** Eyebrow that distinguishes candidate vs employer (already localised). */
   eyebrow: string;
   /** Accent treatment — same palette, different emphasis (spec §9.1). */
-  accent: "candidate" | "employer";
+  accent: "candidate" | "employer" | "admin";
   /** Brand name (from common.brand). */
   brand: string;
   /** Home link aria-label (from common.nav.home). */
@@ -55,6 +56,7 @@ export function DashboardShell({
 }: DashboardShellProps) {
   const t = useTranslations("common");
   const pathname = usePathname();
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
   const navId = useId();
@@ -67,7 +69,11 @@ export function DashboardShell({
   }
 
   const accentRail =
-    accent === "candidate" ? "bg-brand-primary" : "bg-data-series-2";
+    accent === "candidate"
+      ? "bg-brand-primary"
+      : accent === "admin"
+        ? "bg-data-series-5"
+        : "bg-data-series-2";
 
   const navList = (
     <ul className="flex flex-col gap-1">
@@ -142,15 +148,27 @@ export function DashboardShell({
       >
         <p className="type-eyebrow mb-2 text-brand-primary">{eyebrow}</p>
         <nav aria-label={areaLabel}>{navList}</nav>
-        <div className="mt-4 flex items-center justify-between border-t border-border-default pt-4">
-          <LocaleSwitcher />
-          <SignOutButton label={signOutLabel} />
+        <div className="mt-4 border-t border-border-default pt-4">
+          {user ? (
+            <p className="mb-3 type-body-sm truncate font-medium text-text-primary">
+              {userDisplayName(user)}
+            </p>
+          ) : null}
+          <div className="flex items-center justify-between">
+            <LocaleSwitcher />
+            <SignOutButton label={signOutLabel} />
+          </div>
         </div>
       </div>
 
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="hidden h-16 items-center justify-end gap-4 border-b border-border-default bg-surface-canvas px-6 lg:flex">
+          {user ? (
+            <span className="type-body-sm max-w-[16rem] truncate font-medium text-text-primary">
+              {userDisplayName(user)}
+            </span>
+          ) : null}
           <LocaleSwitcher />
           <SignOutButton label={signOutLabel} />
         </div>

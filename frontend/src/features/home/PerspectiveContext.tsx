@@ -5,7 +5,7 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
+  useSyncExternalStore,
 } from "react";
 import type { ReactNode } from "react";
 
@@ -31,6 +31,26 @@ import { type Perspective, parsePerspective } from "./perspective";
 
 const STORAGE_KEY = "mha:home:perspective";
 const QUERY_KEY = "view";
+// Same-tab writes don't fire the native `storage` event, so the provider
+// broadcasts this custom event when it changes the URL/storage; the external
+// store subscribers re-read the snapshot in response.
+const CHANGE_EVENT = "mha:home:perspective-change";
+
+/** Client snapshot: URL (`?view=`) first, then sessionStorage, then fallback. */
+function readClientPerspective(fallback: Perspective): Perspective {
+  const fromUrl = parsePerspective(
+    new URLSearchParams(window.location.search).get(QUERY_KEY),
+  );
+  if (fromUrl) return fromUrl;
+  return (
+    parsePerspective(window.sessionStorage.getItem(STORAGE_KEY)) ?? fallback
+  );
+}
+
+function subscribePerspective(onStoreChange: () => void): () => void {
+  window.addEventListener(CHANGE_EVENT, onStoreChange);
+  return () => window.removeEventListener(CHANGE_EVENT, onStoreChange);
+}
 
 interface PerspectiveContextValue {
   perspective: Perspective;
@@ -38,27 +58,6 @@ interface PerspectiveContextValue {
 }
 
 const PerspectiveContext = createContext<PerspectiveContextValue | null>(null);
-
-/**
- * Resolve the initial perspective from (in priority order) an explicit prop,
- * the `?view=` query parameter, then `sessionStorage`. Falls back to
- * `candidate`. Read once during render initialisation — no effect — so there is
- * no post-hydration flash beyond what the URL/storage already imply.
- */
-function resolveInitial(initial: Perspective | undefined): Perspective {
-  if (initial) return initial;
-  if (typeof window !== "undefined") {
-    const fromUrl = parsePerspective(
-      new URLSearchParams(window.location.search).get(QUERY_KEY),
-    );
-    if (fromUrl) return fromUrl;
-    const fromStorage = parsePerspective(
-      window.sessionStorage.getItem(STORAGE_KEY),
-    );
-    if (fromStorage) return fromStorage;
-  }
-  return "candidate";
-}
 
 export function PerspectiveProvider({
   children,
@@ -68,15 +67,24 @@ export function PerspectiveProvider({
   /** Optional server-resolved default (from the page's `?view=` searchParam). */
   initialPerspective?: Perspective;
 }) {
-  const [perspective, setPerspectiveState] = useState<Perspective>(() =>
-    resolveInitial(initialPerspective),
+  const fallback: Perspective = initialPerspective ?? "candidate";
+
+  // useSyncExternalStore keeps the SSR and first client render identical (server
+  // snapshot = the page's explicit `?view=` choice, or the candidate default),
+  // then reflects any perspective the reader persisted earlier this session —
+  // WITHOUT a hydration mismatch (React re-renders instead of erroring). This is
+  // why storage/URL are never read during render initialisation (spec §13.4: the
+  // SSR default stays meaningful before JS).
+  const perspective = useSyncExternalStore(
+    subscribePerspective,
+    () => readClientPerspective(fallback),
+    () => fallback,
   );
 
   const setPerspective = useCallback((value: Perspective) => {
-    setPerspectiveState(value);
     if (typeof window === "undefined") return;
-    // Persist without a navigation (no scroll jump, no history spam): update the
-    // URL query in place and mirror to sessionStorage for refresh continuity.
+    // Persist without a navigation (no scroll jump, no history spam): mirror to
+    // sessionStorage and update the URL query in place, then notify subscribers.
     try {
       window.sessionStorage.setItem(STORAGE_KEY, value);
     } catch {
@@ -85,6 +93,7 @@ export function PerspectiveProvider({
     const url = new URL(window.location.href);
     url.searchParams.set(QUERY_KEY, value);
     window.history.replaceState(window.history.state, "", url);
+    window.dispatchEvent(new Event(CHANGE_EVENT));
   }, []);
 
   const value = useMemo(

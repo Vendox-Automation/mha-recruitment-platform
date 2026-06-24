@@ -2,6 +2,35 @@
   "meta": {
     "title": "MHA 招聘 — MHA Consultancy 旗下专业招聘平台"
   },
+  "trustedBy": {
+    "title": "深受领先雇主信赖",
+    "marqueeLabel": "参与企业"
+  },
+  "testimonials": {
+    "title": "雇主怎么说",
+    "previous": "上一条评价",
+    "next": "下一条评价",
+    "ratingLabel": "5 分中的 {rating} 分",
+    "goTo": "显示第 {number} 条评价",
+    "items": {
+      "talent": {
+        "quote": "MHA 招聘让我们能够清晰、透明地了解每一位申请者。工作台帮助我们从初次筛选到最终录用都井然有序。",
+        "role": "人才主管"
+      },
+      "speed": {
+        "quote": "发布职位和审阅候选人都非常快捷。我们筛选出优秀人选，却没有以往那些繁琐的事务。",
+        "role": "招聘负责人"
+      },
+      "support": {
+        "quote": "最难得的是人性化的支持——MHA 顾问总在恰到好处的时刻介入。它更像是伙伴，而不仅仅是招聘网站。",
+        "role": "人力伙伴"
+      },
+      "honest": {
+        "quote": "申请人列表和看板让团队协作变得轻松。数据真实，没有虚高的数字——正是我们所需要的。",
+        "role": "招聘经理"
+      }
+    }
+  },
   "hero": {
     "eyebrow": "由 MHA Consultancy 运营",
     "headline": "专业招聘，建立在清晰与人性化判断之上。",
@@ -114,14 +143,11 @@
     "previewNote": "示例预览。当积累足够的真实平台数据后，将显示实时汇总。"
   },
   "opportunities": {
-    "eyebrow": "机会与机构",
-    "title": "发现职位以及背后的企业",
-    "jobsTitle": "最新机会",
-    "jobsEmpty": "雇主发布职位后，已发布的职位将显示在这里。",
-    "jobsCta": "浏览所有职位",
+    "eyebrow": "精选机构",
+    "title": "发现通过 MHA 招聘的企业",
     "companiesTitle": "精选机构",
     "companiesEmpty": "已认证雇主的资料将显示在这里。",
-    "companiesCta": "探索企业"
+    "companiesCta": "探索所有企业"
   },
   "journey": {
     "eyebrow": "流程如何运作",

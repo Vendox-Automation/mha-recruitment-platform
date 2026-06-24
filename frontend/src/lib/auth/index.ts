@@ -8,4 +8,6 @@ export {
   destinationForUser,
   isApprovedEmployer,
   hasRole,
+  userDisplayName,
+  isAdmin,
 } from "./redirects";

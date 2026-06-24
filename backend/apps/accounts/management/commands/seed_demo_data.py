@@ -47,6 +47,8 @@ from apps.employers.services import approval_service
 from apps.jobs.models import Job, ScreeningQuestion
 from apps.jobs.services import lifecycle
 from apps.matching.services import compute_job_fit
+from apps.reviews.models import CompanyReview, EmployerReply
+from apps.reviews.services import create_review, set_reply
 from apps.support.models import SupportCategory, SupportRequest, SupportStatus
 from apps.support.services import support_service
 
@@ -168,6 +170,60 @@ PENDING_EMPLOYER = {
     ),
     "website": "https://summitventures.example.com",
 }
+
+# Real MHA partner / owned brands shown as approved employers in the company
+# directory and homepage "Featured organisations". These are NOT synthetic demo
+# companies, so they carry NEUTRAL summaries (no DEMO wording) and an EXPLICIT,
+# stable ``slug`` — the frontend maps each company's logo by these exact slugs,
+# so the slug must never change between runs. Keyed by user email for idempotency.
+PARTNER_COMPANIES = [
+    {
+        "slug": "vendox",
+        "email": "talent@vendox.co",
+        "company_name": "Vendox",
+        "contact_person": "Vendox Talent",
+        "industry": "Technology & Software",
+        "company_size": "50-200",
+        "company_location": "Kuala Lumpur",
+        "company_summary": "Vendox builds modern software products.",
+        "website": "https://vendox.co",
+    },
+    {
+        "slug": "mha",
+        "email": "careers@mha.example.com",
+        "company_name": "MHA Consultancy",
+        "contact_person": "MHA Talent",
+        "industry": "Recruitment & Consultancy",
+        "company_size": "50-200",
+        "company_location": "Kuala Lumpur",
+        "company_summary": (
+            "MHA Consultancy delivers professional recruitment and talent solutions."
+        ),
+        "website": "https://mha.example.com",
+    },
+    {
+        "slug": "woodee",
+        "email": "careers@woodee.example.com",
+        "company_name": "Woodee",
+        "contact_person": "Woodee Talent",
+        "industry": "Consumer & Lifestyle",
+        "company_size": "10-50",
+        "company_location": "Petaling Jaya",
+        "company_summary": "Woodee creates consumer lifestyle brands and products.",
+        "website": "https://woodee.example.com",
+    },
+    {
+        "slug": "wewe",
+        "email": "careers@wewe.example.com",
+        "company_name": "WEWE",
+        "contact_person": "WEWE Talent",
+        "industry": "Digital & Media",
+        "company_size": "10-50",
+        "company_location": "Cyberjaya",
+        "company_summary": "WEWE produces digital media and content experiences.",
+        "website": "https://wewe.example.com",
+    },
+]
 
 ET = Job.EmploymentType
 SP = Job.SalaryPeriod
@@ -407,6 +463,64 @@ DEMO_JOBS = [
     },
 ]
 
+# Published jobs for the real partner companies so each shows an active-role
+# count and qualifies for "Featured organisations". ``partner`` is the partner
+# company slug; ``key`` is the stable idempotency identifier woven into the slug.
+PARTNER_JOBS = [
+    # Vendox
+    {
+        "key": "vendox-software-engineer",
+        "partner": "vendox",
+        "title": "Software Engineer",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "software engineering python javascript api backend frontend",
+    },
+    {
+        "key": "vendox-product-designer",
+        "partner": "vendox",
+        "title": "Product Designer",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "product design ui ux figma research prototyping",
+    },
+    # MHA Consultancy
+    {
+        "key": "mha-recruitment-consultant",
+        "partner": "mha",
+        "title": "Recruitment Consultant",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "recruitment talent sourcing interviewing client communication",
+    },
+    {
+        "key": "mha-talent-coordinator",
+        "partner": "mha",
+        "title": "Talent Coordinator",
+        "location": "Kuala Lumpur",
+        "type": ET.FULL_TIME,
+        "requirements": "coordination scheduling candidate care administration communication",
+    },
+    # Woodee
+    {
+        "key": "woodee-marketing-executive",
+        "partner": "woodee",
+        "title": "Marketing Executive",
+        "location": "Petaling Jaya",
+        "type": ET.FULL_TIME,
+        "requirements": "marketing brand campaigns social media content lifestyle",
+    },
+    # WEWE
+    {
+        "key": "wewe-content-producer",
+        "partner": "wewe",
+        "title": "Content Producer",
+        "location": "Cyberjaya",
+        "type": ET.FULL_TIME,
+        "requirements": "content production media video editing storytelling digital",
+    },
+]
+
 # Screening questions attached to a few jobs (keyed by job key for idempotency).
 DEMO_SCREENING = {
     "nimbus-backend-engineer": [
@@ -469,6 +583,60 @@ DEMO_INSIGHTS = [
 ]
 
 
+# A handful of SYNTHETIC company reviews so star ratings + aggregates render on
+# first run. Keyed by (company key, reviewer_email) for idempotency. ``company``
+# is either a DEMO_EMPLOYERS index (int) or a PARTNER_COMPANIES slug (str). A few
+# carry an employer ``reply`` so the reply UI has data. Ratings span 3-5 only —
+# clearly positive synthetic content, no fabricated complaints.
+# Synthetic public reviews, generated across demo + partner companies so the
+# ratings/aggregates render richly on first run. These are NOT real opinions —
+# seed data only; idempotent by (employer, reviewer_email).
+_REVIEW_BLURBS = [
+    (5, "Great place to build a career", "Supportive leadership and clear growth paths."),
+    (4, "Solid experience overall", "Good benefits and a collaborative, fast-paced team."),
+    (5, "Highly recommended", "Interesting work and colleagues who genuinely care."),
+    (3, "Decent, with room to improve", "Engaging projects; onboarding could be smoother."),
+    (4, "Strong culture", "Real ownership and a friendly, professional environment."),
+    (5, "Learned a lot here", "Good mentorship and modern ways of working."),
+]
+# (company ref [demo-employer index or partner slug], review count, replies).
+_REVIEW_TARGETS = [
+    (0, 4, 1),
+    (1, 4, 2),
+    (2, 3, 1),
+    (3, 3, 1),
+    (4, 3, 1),
+    ("vendox", 4, 2),
+    ("mha", 3, 1),
+    ("woodee", 3, 1),
+    ("wewe", 3, 1),
+]
+_REVIEW_REPLY = "Thank you for the feedback — we're glad to hear it and always working to improve."
+
+
+def _build_demo_reviews() -> list[dict]:
+    reviews: list[dict] = []
+    for ref, count, replies in _REVIEW_TARGETS:
+        tag = ref if isinstance(ref, str) else f"c{ref}"
+        for i in range(count):
+            rating, title, body = _REVIEW_BLURBS[i % len(_REVIEW_BLURBS)]
+            entry: dict = {
+                "company": ref,
+                "reviewer_name": f"Demo Reviewer {tag.upper()}-{i + 1}",
+                "reviewer_email": f"reviewer.{tag}.{i + 1}@example.com",
+                "rating": rating,
+                "title": title,
+                "body": f"Demo review (synthetic). {body}",
+            }
+            if i < replies:
+                entry["reply"] = _REVIEW_REPLY
+            reviews.append(entry)
+    return reviews
+
+
+DEMO_REVIEWS = _build_demo_reviews()
+
+
 class Command(BaseCommand):
     help = "Seed an idempotent, synthetic demo dataset (spec §27). Local/demo use only."
 
@@ -514,10 +682,12 @@ class Command(BaseCommand):
     def _seed(self) -> dict[str, int]:
         admin = self._ensure_admin()
         approved_employers = self._ensure_approved_employers(admin)
+        partner_companies = self._ensure_partner_companies(admin)
         self._ensure_pending_employer()
         complete_candidate = self._ensure_complete_candidate()
         self._ensure_incomplete_candidate()
         jobs = self._ensure_jobs(admin, approved_employers)
+        self._ensure_partner_jobs(partner_companies)
         self._ensure_screening(jobs)
         self._ensure_applications(complete_candidate, jobs)
         self._ensure_saved_jobs(complete_candidate, jobs)
@@ -525,6 +695,7 @@ class Command(BaseCommand):
         self._ensure_support_requests(complete_candidate, jobs)
         views = self._ensure_job_views(complete_candidate, jobs)
         self._ensure_insights()
+        self._ensure_reviews(approved_employers, partner_companies)
 
         return {
             "users": User.objects.count(),
@@ -538,6 +709,7 @@ class Command(BaseCommand):
             "support requests": SupportRequest.objects.count(),
             "job view events": views,
             "market insights": MarketInsight.objects.count(),
+            "company reviews": CompanyReview.objects.count(),
         }
 
     def _ensure_admin(self) -> User:
@@ -590,6 +762,51 @@ class Command(BaseCommand):
             if not profile.is_approved:
                 approval_service.approve_employer(profile, actor=admin)
             profiles.append(profile)
+        return profiles
+
+    @transaction.atomic
+    def _ensure_partner_companies(self, admin: User) -> dict[str, EmployerProfile]:
+        """Ensure the real MHA partner/owned brands exist as approved employers.
+
+        Modeled on :meth:`_ensure_approved_employers` (same get_or_create-by-email
+        account pattern, shared local password, verified + active employer), with
+        one critical difference: the EmployerProfile is created with an EXPLICIT,
+        stable ``slug`` from the spec so the frontend logo mapping stays valid
+        across runs (the model only auto-generates a random slug when ``slug`` is
+        blank). Returns a ``{slug: profile}`` map so partner jobs can be attached.
+        """
+        profiles: dict[str, EmployerProfile] = {}
+        for spec in PARTNER_COMPANIES:
+            user, created = User.objects.get_or_create(
+                email=spec["email"],
+                defaults={
+                    "role": User.Role.EMPLOYER,
+                    "status": User.Status.ACTIVE,
+                    "email_verified_at": timezone.now(),
+                },
+            )
+            if created:
+                user.set_password(DEMO_PASSWORD)
+                user.save()
+
+            profile, _ = EmployerProfile.objects.get_or_create(
+                user=user,
+                defaults={
+                    "slug": spec["slug"],
+                    "company_name": spec["company_name"],
+                    "contact_person": spec["contact_person"],
+                    "phone": "+60 3-0000 0000",
+                    "company_summary": spec["company_summary"],
+                    "website": spec["website"],
+                    "industry": spec["industry"],
+                    "company_size": spec["company_size"],
+                    "company_location": spec["company_location"],
+                },
+            )
+            # Approve through the real workflow (idempotent: skip if already done).
+            if not profile.is_approved:
+                approval_service.approve_employer(profile, actor=admin)
+            profiles[spec["slug"]] = profile
         return profiles
 
     def _ensure_pending_employer(self) -> EmployerProfile:
@@ -725,6 +942,41 @@ class Command(BaseCommand):
         lifecycle.publish_job(job)
         if state == "closed":
             lifecycle.close_job(job)
+
+    def _ensure_partner_jobs(self, partners: dict[str, EmployerProfile]) -> dict[str, Job]:
+        """Give each real partner company 1-2 PUBLISHED jobs.
+
+        Mirrors :meth:`_ensure_jobs`: a DRAFT job is created via get_or_create on a
+        stable slug (so re-runs match the same row) and then moved to PUBLISHED
+        through the real lifecycle service. Summaries/descriptions stay NEUTRAL —
+        these are real brands, not synthetic demo companies.
+        """
+        jobs: dict[str, Job] = {}
+        for spec in PARTNER_JOBS:
+            employer = partners.get(spec["partner"])
+            if employer is None:
+                continue
+            slug = f"partner-{spec['key']}"
+            job, created = Job.objects.get_or_create(
+                slug=slug,
+                defaults={
+                    "employer": employer,
+                    "created_by": employer.user,
+                    "source_type": Job.SourceType.EMPLOYER_PARTNER,
+                    "title": spec["title"],
+                    "location": spec["location"],
+                    "employment_type": spec["type"],
+                    "salary_disclosed": False,
+                    "description": (f"{spec['title']} role at {employer.company_name}."),
+                    "requirements": spec["requirements"],
+                    "listing_language": Job.ListingLanguage.EN,
+                    "status": Job.Status.DRAFT,
+                },
+            )
+            if created:
+                self._apply_job_state(job, "published")
+            jobs[spec["key"]] = job
+        return jobs
 
     def _ensure_screening(self, jobs: dict[str, Job]) -> None:
         for job_key, questions in DEMO_SCREENING.items():
@@ -890,19 +1142,22 @@ class Command(BaseCommand):
             job = jobs.get(job_key)
             if job is None or job.status != Job.Status.PUBLISHED:
                 continue
-            # One signed-in candidate view.
-            JobViewEvent.objects.get_or_create(
-                job=job,
-                user=candidate.user,
-                anonymous_session_hash=None,
-            )
+            # One signed-in candidate view. Use exists()+create rather than
+            # get_or_create so a DB that already holds duplicate rows from an
+            # earlier (pre-idempotency) seed does not raise MultipleObjectsReturned.
+            if not JobViewEvent.objects.filter(
+                job=job, user=candidate.user, anonymous_session_hash=None
+            ).exists():
+                JobViewEvent.objects.create(
+                    job=job, user=candidate.user, anonymous_session_hash=None
+                )
             # Several deterministic anonymous views (stable synthetic hashes).
             for i in range(anon_count):
-                JobViewEvent.objects.get_or_create(
-                    job=job,
-                    user=None,
-                    anonymous_session_hash=f"demoseed-{job_key}-{i:03d}",
-                )
+                key = f"demoseed-{job_key}-{i:03d}"
+                if not JobViewEvent.objects.filter(
+                    job=job, user=None, anonymous_session_hash=key
+                ).exists():
+                    JobViewEvent.objects.create(job=job, user=None, anonymous_session_hash=key)
         return JobViewEvent.objects.count()
 
     def _ensure_insights(self) -> None:
@@ -916,3 +1171,42 @@ class Command(BaseCommand):
                     "is_published": True,
                 },
             )
+
+    def _ensure_reviews(
+        self,
+        approved_employers: list[EmployerProfile],
+        partner_companies: dict[str, EmployerProfile],
+    ) -> None:
+        """Seed synthetic public reviews (+ a couple of employer replies).
+
+        Idempotent by (employer, reviewer_email): a review is created via the
+        review service only when one with that email does not already exist for
+        the company, so re-running never duplicates. Replies are upserted, so
+        re-running leaves exactly one reply per replied-to review.
+        """
+        for spec in DEMO_REVIEWS:
+            ref = spec["company"]
+            if isinstance(ref, int):
+                if ref >= len(approved_employers):
+                    continue
+                employer = approved_employers[ref]
+            else:
+                employer = partner_companies.get(ref)
+            if employer is None:
+                continue
+
+            review = CompanyReview.objects.filter(
+                employer=employer, reviewer_email=spec["reviewer_email"]
+            ).first()
+            if review is None:
+                review = create_review(
+                    employer,
+                    reviewer_name=spec["reviewer_name"],
+                    reviewer_email=spec["reviewer_email"],
+                    rating=spec["rating"],
+                    title=spec["title"],
+                    body=spec["body"],
+                )
+            reply_body = spec.get("reply")
+            if reply_body and not EmployerReply.objects.filter(review=review).exists():
+                set_reply(review, author=employer.user, body=reply_body)

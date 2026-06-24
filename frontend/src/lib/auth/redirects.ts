@@ -10,7 +10,7 @@ import type { User, UserRole } from "@/features/auth/types";
  *   CANDIDATE              -> /candidate/dashboard
  *   EMPLOYER (approved)    -> /employer/dashboard
  *   EMPLOYER (pending/…)   -> /employer/pending
- *   ADMIN                  -> /  (admins use Django Admin, not this app)
+ *   ADMIN                  -> /admin/dashboard (in-app admin workspace)
  */
 export function destinationForUser(user: User): string {
   switch (user.role) {
@@ -21,6 +21,7 @@ export function destinationForUser(user: User): string {
         ? "/employer/dashboard"
         : "/employer/pending";
     case "ADMIN":
+      return "/admin/dashboard";
     default:
       return "/";
   }
@@ -34,4 +35,19 @@ export function isApprovedEmployer(user: User): boolean {
 /** Convenience guard: does the user hold the required role? */
 export function hasRole(user: User | null, role: UserRole): boolean {
   return user?.role === role;
+}
+
+/**
+ * Best display name for the signed-in user: the candidate's full name or the
+ * employer's company name from the `/auth/me/` profile, falling back to email.
+ */
+export function userDisplayName(user: User): string {
+  const candidate = user.profile?.full_name?.trim();
+  const employer = user.profile?.company_name?.trim();
+  return candidate || employer || user.email;
+}
+
+/** True for administrator accounts (in-app admin workspace at /admin). */
+export function isAdmin(user: User | null): boolean {
+  return user?.role === "ADMIN";
 }

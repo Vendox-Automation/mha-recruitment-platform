@@ -15,6 +15,7 @@ import { RouteGuard } from "@/lib/auth";
  */
 const NAV: Omit<DashboardNavItem, "label">[] = [
   { key: "dashboard", href: "/candidate/dashboard" },
+  { key: "browseJobs", href: "/jobs" },
   { key: "profile", href: "/candidate/profile" },
   { key: "resume", href: "/candidate/resume" },
   { key: "applications", href: "/candidate/applications" },

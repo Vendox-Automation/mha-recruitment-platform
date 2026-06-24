@@ -226,6 +226,21 @@ body {
   animation: mha-pulse 1.4s ease-in-out infinite;
 }
 
+/*
+ * Trusted-by logo marquee (spec §14.1). Translates the duplicated track by half
+ * its width for a seamless loop. The TrustedBy component renders a static grid
+ * instead under reduced motion; the media query below is a second line of
+ * defence (spec §13.7).
+ */
+@keyframes mha-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Respect reduced-motion preferences (spec §13.7). */
 @media (prefers-reduced-motion: reduce) {
   *,

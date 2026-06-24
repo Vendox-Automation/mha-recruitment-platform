@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NextIntlClientProvider } from "next-intl";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import enHome from "@/messages/en/home.json";
 
@@ -10,6 +10,13 @@ import { PerspectiveProvider } from "./PerspectiveContext";
 import { PerspectiveControl } from "./components/PerspectiveControl";
 
 const messages = { home: enHome };
+
+// Isolate each test: selection persists to sessionStorage and the URL, so reset
+// both so cases never leak the perspective into one another.
+beforeEach(() => {
+  window.sessionStorage.clear();
+  window.history.replaceState(null, "", "/");
+});
 
 function Readout() {
   const { perspective } = usePerspective();
@@ -70,5 +77,20 @@ describe("PerspectiveControl (keyboard-accessible switching)", () => {
     candidateBtn.focus();
     await user.keyboard("{ArrowRight}");
     expect(screen.getByTestId("current")).toHaveTextContent("employer");
+  });
+});
+
+describe("PerspectiveProvider hydration-safe restore", () => {
+  it("restores the persisted perspective after mount when the server made no choice", () => {
+    window.sessionStorage.setItem("mha:home:perspective", "employer");
+    renderControl(); // no ?view, no prop — the SSR default is candidate
+    expect(screen.getByTestId("current")).toHaveTextContent("employer");
+  });
+
+  it("lets an explicit ?view choice override a stored perspective", () => {
+    window.sessionStorage.setItem("mha:home:perspective", "employer");
+    window.history.replaceState(null, "", "/?view=candidate");
+    renderControl("candidate");
+    expect(screen.getByTestId("current")).toHaveTextContent("candidate");
   });
 });
