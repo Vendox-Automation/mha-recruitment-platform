@@ -1,0 +1,3791 @@
+[
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$uJsHQozSRxE65lmWhDVmQS$FQNxslTu3VejuDyNguiidKfEhVyTnzigbTQNAOR4i8U=",
+    "last_login": "2026-06-23T08:06:43.699Z",
+    "is_superuser": false,
+    "email": "alex@mha.com",
+    "role": "CANDIDATE",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:40.791Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:40.792Z",
+    "updated_at": "2026-06-22T01:53:41.126Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$MPxREe4blXFkRDNJoqqRh4$/X2i/85hxL76YHGY60rxqKEnz6sDR/xprfK2aTzKp00=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "careers@woodee.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T13:28:25.674Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T13:28:25.675Z",
+    "updated_at": "2026-06-22T13:28:26.005Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$shsEkJOTc0Pw8EIGNkhk7W$Ls8emjE/cTZ7DCIDj8io42kzCmnIxfmlD9r1xhd2jIk=",
+    "last_login": "2026-06-23T08:06:56.139Z",
+    "is_superuser": false,
+    "email": "webyte@mha.com",
+    "role": "EMPLOYER",
+    "status": "PENDING",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:40.420Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:40.421Z",
+    "updated_at": "2026-06-22T01:53:40.783Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$HBN6Q2ap9ZLpH5ScQhW4te$wYPh65Bf42FZ6LGKFZkulYT7ENmJIM3lmPNF83gezsI=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "careers@mha.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T13:28:25.332Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T13:28:25.334Z",
+    "updated_at": "2026-06-22T13:28:25.665Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LIjys2BT24g2nPMlXOd1Lu$kTGhOKiIbfxUXvvdlFiVyCyPj19l1bsDIKkExW9FzxE=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "jobs@demo.meridianhealth.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:40.059Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:40.061Z",
+    "updated_at": "2026-06-22T01:53:40.409Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$bPtOtP9hHJAnZ4X6bRzbId$41jbrFx5B6Xd6jSAQxFly4xSzjyJtt1B+HPttK91bio=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "hr@demo.nimbustech.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:38.982Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:38.984Z",
+    "updated_at": "2026-06-22T01:53:39.340Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$sCFwInOMms0sFzN42jUBnY$VsnbRBqQmPiecRs1toL3DKCjSBv7R01ixXc7KBMR2qU=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "careers@demo.greenfieldlogistics.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:39.351Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:39.353Z",
+    "updated_at": "2026-06-22T01:53:39.701Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$9l3xmPDhE1coYo4JfMyJ1h$n4GRuaUpRSUU7WMIu8l93uVkw9aibk//OtsyTwBAcY8=",
+    "last_login": "2026-06-23T08:06:32.172Z",
+    "is_superuser": false,
+    "email": "sam@mha.com",
+    "role": "CANDIDATE",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:41.138Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:41.139Z",
+    "updated_at": "2026-06-22T01:53:41.481Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$VhrWNxrjKZG8ERKmdCiLAj$3C5jY1WdveAVWHGi9T8a99ruG4jZs3yc7pcpmRWUdVI=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "people@demo.coastalretail.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:39.708Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:39.710Z",
+    "updated_at": "2026-06-22T01:53:40.051Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$TWgeOlMv6v4yx33Lx5pers$IKoFW3hehfMFh1QDzekNZALL7/enA10uXuS9DhqDtv0=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "careers@wewe.example.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T13:28:26.014Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T13:28:26.016Z",
+    "updated_at": "2026-06-22T13:28:26.350Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$kNSZdKahAtknihku4T8VUF$C2bJsxF0idcGIJ2ag96VYe5VlkpUDuSeB1/BpV4Mf8o=",
+    "last_login": "2026-06-22T05:48:11.891Z",
+    "is_superuser": false,
+    "email": "elwin@4896.co",
+    "role": "CANDIDATE",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": null,
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T05:48:11.292Z",
+    "updated_at": "2026-06-22T05:48:11.870Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$C7dV0XlilGLelAgLbGZz6c$eFVJX/vTDVLm4O/abizQgwoqH7fQ8HpjULa1BXNEKts=",
+    "last_login": "2026-06-23T08:06:00.800Z",
+    "is_superuser": true,
+    "email": "admin@mha.com",
+    "role": "ADMIN",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:38.254Z",
+    "is_staff": true,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:38.273Z",
+    "updated_at": "2026-06-22T01:53:38.616Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$4AX9ymQOtFBen4aUeRCpND$DjRIcLevkxnHabvzjlbqbXAkFQdPHHkpmcAezrtlNzk=",
+    "last_login": "2026-06-23T08:07:09.293Z",
+    "is_superuser": false,
+    "email": "vendox@mha.com",
+    "role": "EMPLOYER",
+    "status": "ACTIVE",
+    "preferred_locale": "en",
+    "email_verified_at": "2026-06-22T01:53:38.632Z",
+    "is_staff": false,
+    "is_active": true,
+    "created_at": "2026-06-22T01:53:38.634Z",
+    "updated_at": "2026-06-22T01:53:38.963Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "vendox@mha.com"
+    ],
+    "slug": "vendox-berhad-demo-3f78cd48",
+    "company_name": "Vendox",
+    "contact_person": "Mei Ling Tan",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T01:53:38.969Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "DEMO COMPANY — synthetic data. Vendox is a fictional retail and corporate bank used to demonstrate the MHA platform.",
+    "website": "https://vendox.example.com",
+    "industry": "Banking & Financial Services",
+    "company_size": "1000-5000",
+    "company_location": "Kuala Lumpur",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T01:53:38.967Z",
+    "updated_at": "2026-06-22T06:04:18.399Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "slug": "nimbus-technologies-demo-a20cffaf",
+    "company_name": "Nimbus Technologies (DEMO)",
+    "contact_person": "Arjun Pillai",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T01:53:39.347Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "DEMO COMPANY — synthetic data. Nimbus Technologies is a fictional cloud-software firm used for platform demonstrations.",
+    "website": "https://nimbustech.example.com",
+    "industry": "Software & Cloud",
+    "company_size": "200-1000",
+    "company_location": "Cyberjaya",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T01:53:39.344Z",
+    "updated_at": "2026-06-22T01:53:39.347Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "slug": "greenfield-logistics-demo-ca935f99",
+    "company_name": "Greenfield Logistics (DEMO)",
+    "contact_person": "Siti Nuraini",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T01:53:39.705Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "DEMO COMPANY — synthetic data. Greenfield Logistics is a fictional supply-chain operator used for platform demonstrations.",
+    "website": "https://greenfieldlogistics.example.com",
+    "industry": "Logistics & Supply Chain",
+    "company_size": "500-1000",
+    "company_location": "Port Klang",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T01:53:39.704Z",
+    "updated_at": "2026-06-22T01:53:39.705Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "slug": "coastal-retail-group-demo-72d8c9b9",
+    "company_name": "Coastal Retail Group (DEMO)",
+    "contact_person": "Daniel Wong",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T01:53:40.057Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "DEMO COMPANY — synthetic data. Coastal Retail Group is a fictional retail chain used for platform demonstrations.",
+    "website": "https://coastalretail.example.com",
+    "industry": "Retail & Consumer",
+    "company_size": "1000-5000",
+    "company_location": "Penang",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T01:53:40.054Z",
+    "updated_at": "2026-06-22T01:53:40.057Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "slug": "meridian-health-services-demo-6ad356a1",
+    "company_name": "Meridian Health Services (DEMO)",
+    "contact_person": "Priya Subramaniam",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T01:53:40.414Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "DEMO COMPANY — synthetic data. Meridian Health Services is a fictional healthcare provider used for platform demonstrations.",
+    "website": "https://meridianhealth.example.com",
+    "industry": "Healthcare",
+    "company_size": "200-1000",
+    "company_location": "Johor Bahru",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T01:53:40.412Z",
+    "updated_at": "2026-06-22T01:53:40.414Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "webyte@mha.com"
+    ],
+    "slug": "webyte-pending-5263596a",
+    "company_name": "WeByte (Pending)",
+    "contact_person": "Faizal Rahman",
+    "phone": "+60 3-0000 0001",
+    "approval_status": "PENDING",
+    "approval_reason": "",
+    "approved_by": null,
+    "approved_at": null,
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "DEMO COMPANY — synthetic data, pending approval. WeByte is a fictional consulting firm used to demonstrate the approval queue.",
+    "website": "https://webyte.example.com",
+    "industry": "Consulting",
+    "company_size": "50-200",
+    "company_location": "Petaling Jaya",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T01:53:40.788Z",
+    "updated_at": "2026-06-22T01:53:40.788Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "careers@mha.example.com"
+    ],
+    "slug": "mha",
+    "company_name": "MHA Consultancy",
+    "contact_person": "MHA Talent",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T13:28:25.671Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "MHA Consultancy delivers professional recruitment and talent solutions.",
+    "website": "https://mha.example.com",
+    "industry": "Recruitment & Consultancy",
+    "company_size": "50-200",
+    "company_location": "Kuala Lumpur",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T13:28:25.669Z",
+    "updated_at": "2026-06-22T13:28:25.671Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "careers@woodee.example.com"
+    ],
+    "slug": "woodee",
+    "company_name": "Woodee",
+    "contact_person": "Woodee Talent",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T13:28:26.011Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "Woodee creates consumer lifestyle brands and products.",
+    "website": "https://woodee.example.com",
+    "industry": "Consumer & Lifestyle",
+    "company_size": "10-50",
+    "company_location": "Petaling Jaya",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T13:28:26.009Z",
+    "updated_at": "2026-06-22T13:28:26.011Z"
+  }
+},
+{
+  "model": "employers.employerprofile",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "careers@wewe.example.com"
+    ],
+    "slug": "wewe",
+    "company_name": "WEWE",
+    "contact_person": "WEWE Talent",
+    "phone": "+60 3-0000 0000",
+    "approval_status": "APPROVED",
+    "approval_reason": "",
+    "approved_by": [
+      "admin@mha.com"
+    ],
+    "approved_at": "2026-06-22T13:28:26.357Z",
+    "suspended_at": null,
+    "logo": "",
+    "company_summary": "WEWE produces digital media and content experiences.",
+    "website": "https://wewe.example.com",
+    "industry": "Digital & Media",
+    "company_size": "10-50",
+    "company_location": "Cyberjaya",
+    "culture_text": "",
+    "benefits_text": "",
+    "created_at": "2026-06-22T13:28:26.354Z",
+    "updated_at": "2026-06-22T13:28:26.357Z"
+  }
+},
+{
+  "model": "candidates.candidateprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "alex@mha.com"
+    ],
+    "full_name": "Alex",
+    "phone": "+60 12-000 0000",
+    "preferred_job_title": "Backend Software Engineer",
+    "preferred_location": "Cyberjaya",
+    "preferred_employment_type": "FULL_TIME",
+    "resume_file": "resumes/0480a3bf-d6a8-421b-b762-f8a3dc3272d2/274dee6a0e194d0bba312cc569e4b766.pdf",
+    "resume_original_name": "alex_demo_resume.pdf",
+    "resume_uploaded_at": "2026-06-22T01:53:41.133Z",
+    "resume_parsing_status": "PENDING",
+    "resume_extracted_keywords_json": [],
+    "created_at": "2026-06-22T01:53:41.130Z",
+    "updated_at": "2026-06-22T01:53:41.135Z"
+  }
+},
+{
+  "model": "candidates.candidateprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "sam@mha.com"
+    ],
+    "full_name": "Sam Demo Newcomer",
+    "phone": "",
+    "preferred_job_title": "",
+    "preferred_location": "",
+    "preferred_employment_type": "",
+    "resume_file": "",
+    "resume_original_name": "",
+    "resume_uploaded_at": null,
+    "resume_parsing_status": "NONE",
+    "resume_extracted_keywords_json": [],
+    "created_at": "2026-06-22T01:53:41.485Z",
+    "updated_at": "2026-06-22T01:53:41.485Z"
+  }
+},
+{
+  "model": "candidates.candidateprofile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "elwin@4896.co"
+    ],
+    "full_name": "Elwin",
+    "phone": "010-3000000",
+    "preferred_job_title": "Software Engineer",
+    "preferred_location": "",
+    "preferred_employment_type": "",
+    "resume_file": "",
+    "resume_original_name": "",
+    "resume_uploaded_at": null,
+    "resume_parsing_status": "NONE",
+    "resume_extracted_keywords_json": [],
+    "created_at": "2026-06-22T05:48:11.875Z",
+    "updated_at": "2026-06-22T05:48:11.875Z"
+  }
+},
+{
+  "model": "candidates.savedjob",
+  "pk": "1a8cd58c-fd39-4cf5-9a3b-1965f7ef613e",
+  "fields": {
+    "candidate": 1,
+    "job": "20982936-9609-405c-8f2c-aeb7eedb26fa",
+    "created_at": "2026-06-22T01:53:41.778Z"
+  }
+},
+{
+  "model": "candidates.savedjob",
+  "pk": "33fef085-c5a9-4fe8-a714-d69c83d20ace",
+  "fields": {
+    "candidate": 1,
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "created_at": "2026-06-22T01:53:41.771Z"
+  }
+},
+{
+  "model": "candidates.savedjob",
+  "pk": "78cdb29b-d999-4740-9a2a-84cd967fca60",
+  "fields": {
+    "candidate": 1,
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "created_at": "2026-06-22T01:53:41.784Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "08a8ad9a-b328-4516-b082-f3b17fd19096",
+  "fields": {
+    "slug": "demo-vendox-teller",
+    "employer": 1,
+    "created_by": [
+      "vendox@mha.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Branch Teller",
+    "location": "Petaling Jaya",
+    "employment_type": "PART_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "DEMO LISTING — synthetic. Branch Teller role used to demonstrate the MHA platform.",
+    "requirements": "customer service cash handling banking attention detail",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.505Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.503Z",
+    "updated_at": "2026-06-22T01:53:41.505Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "0af627c7-ae1b-4982-8d0e-6921b694ce97",
+  "fields": {
+    "slug": "demo-meridian-admin",
+    "employer": 5,
+    "created_by": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Clinic Administrator",
+    "location": "Johor Bahru",
+    "employment_type": "FULL_TIME",
+    "salary_min": "3000.00",
+    "salary_max": "4200.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Clinic Administrator role used to demonstrate the MHA platform.",
+    "requirements": "administration scheduling healthcare records customer service",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.603Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.601Z",
+    "updated_at": "2026-06-22T01:53:41.603Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "0be9686f-aac1-442e-8634-288b0cff8206",
+  "fields": {
+    "slug": "demo-nimbus-pm-draft",
+    "employer": 2,
+    "created_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Product Manager",
+    "location": "Cyberjaya",
+    "employment_type": "FULL_TIME",
+    "salary_min": "9000.00",
+    "salary_max": "14000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Product Manager role used to demonstrate the MHA platform.",
+    "requirements": "product management roadmap stakeholder agile delivery",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "DRAFT",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": null,
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.540Z",
+    "updated_at": "2026-06-22T01:53:41.540Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "0d021eba-8ece-43a0-a3df-a1e70baa30a9",
+  "fields": {
+    "slug": "demo-vendox-intern-finance",
+    "employer": 1,
+    "created_by": [
+      "vendox@mha.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Finance Intern",
+    "location": "Kuala Lumpur",
+    "employment_type": "INTERNSHIP",
+    "salary_min": "1500.00",
+    "salary_max": "2000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Finance Intern role used to demonstrate the MHA platform.",
+    "requirements": "finance accounting excel reporting university student",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.511Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.509Z",
+    "updated_at": "2026-06-22T01:53:41.511Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "108d877d-4f6f-4397-9ec8-7cf262ad676e",
+  "fields": {
+    "slug": "demo-meridian-physio",
+    "employer": 5,
+    "created_by": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Physiotherapist",
+    "location": "Johor Bahru",
+    "employment_type": "CONTRACT",
+    "salary_min": "4500.00",
+    "salary_max": "6500.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Physiotherapist role used to demonstrate the MHA platform.",
+    "requirements": "physiotherapy rehabilitation patient care healthcare clinical",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.609Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.607Z",
+    "updated_at": "2026-06-22T01:53:41.610Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "10e151ec-d198-4a33-b863-4b3439006559",
+  "fields": {
+    "slug": "demo-coastal-merchandiser",
+    "employer": 4,
+    "created_by": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Visual Merchandiser",
+    "location": "Penang",
+    "employment_type": "PART_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "DEMO LISTING — synthetic. Visual Merchandiser role used to demonstrate the MHA platform.",
+    "requirements": "retail merchandising design creative visual display",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.579Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.577Z",
+    "updated_at": "2026-06-22T01:53:41.579Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+  "fields": {
+    "slug": "demo-nimbus-frontend-engineer",
+    "employer": 2,
+    "created_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Frontend Engineer",
+    "location": "Remote",
+    "employment_type": "FULL_TIME",
+    "salary_min": "6500.00",
+    "salary_max": "10000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Frontend Engineer role used to demonstrate the MHA platform.",
+    "requirements": "javascript typescript react frontend css accessibility software",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.523Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.520Z",
+    "updated_at": "2026-06-22T01:53:41.523Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+  "fields": {
+    "slug": "demo-coastal-store-manager",
+    "employer": 4,
+    "created_by": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Store Manager",
+    "location": "Penang",
+    "employment_type": "FULL_TIME",
+    "salary_min": "4500.00",
+    "salary_max": "6500.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Store Manager role used to demonstrate the MHA platform.",
+    "requirements": "retail management sales team leadership customer service",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.573Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.571Z",
+    "updated_at": "2026-06-22T01:53:41.573Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "20982936-9609-405c-8f2c-aeb7eedb26fa",
+  "fields": {
+    "slug": "demo-nimbus-qa",
+    "employer": 2,
+    "created_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "QA Automation Engineer",
+    "location": "Remote",
+    "employment_type": "FULL_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "DEMO LISTING — synthetic. QA Automation Engineer role used to demonstrate the MHA platform.",
+    "requirements": "testing automation selenium python quality assurance software",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.535Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.532Z",
+    "updated_at": "2026-06-22T01:53:41.535Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "2330916f-bdcf-4c0a-9911-303a14e27f97",
+  "fields": {
+    "slug": "partner-mha-recruitment-consultant",
+    "employer": 8,
+    "created_by": [
+      "careers@mha.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Recruitment Consultant",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "Recruitment Consultant role at MHA Consultancy.",
+    "requirements": "recruitment talent sourcing interviewing client communication",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T13:28:26.420Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T13:28:26.416Z",
+    "updated_at": "2026-06-22T13:28:26.420Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "25118b80-1104-4547-a3ef-e9bbe189dc34",
+  "fields": {
+    "slug": "demo-greenfield-closed-analyst",
+    "employer": 3,
+    "created_by": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Supply Chain Analyst",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": "5000.00",
+    "salary_max": "7000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Supply Chain Analyst role used to demonstrate the MHA platform.",
+    "requirements": "supply chain analysis data excel forecasting logistics",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "CLOSED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.565Z",
+    "closed_at": "2026-06-22T01:53:41.567Z",
+    "created_at": "2026-06-22T01:53:41.562Z",
+    "updated_at": "2026-06-22T01:53:41.567Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+  "fields": {
+    "slug": "demo-vendox-relationship-manager",
+    "employer": 1,
+    "created_by": [
+      "vendox@mha.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Relationship Manager",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": "6000.00",
+    "salary_max": "9000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Relationship Manager role used to demonstrate the MHA platform.",
+    "requirements": "banking relationship sales finance client portfolio communication",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.493Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.490Z",
+    "updated_at": "2026-06-22T01:53:41.493Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "37b643ca-09f9-4b34-aa0a-d5afa9d2ea61",
+  "fields": {
+    "slug": "demo-greenfield-warehouse-supervisor",
+    "employer": 3,
+    "created_by": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Warehouse Supervisor",
+    "location": "Port Klang",
+    "employment_type": "FULL_TIME",
+    "salary_min": "3500.00",
+    "salary_max": "5000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Warehouse Supervisor role used to demonstrate the MHA platform.",
+    "requirements": "warehouse logistics supervision inventory safety operations",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.547Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.544Z",
+    "updated_at": "2026-06-22T01:53:41.547Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "5681ea33-466c-4ea5-aa98-59e23f4f6fae",
+  "fields": {
+    "slug": "demo-vendox-credit-analyst",
+    "employer": 1,
+    "created_by": [
+      "vendox@mha.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Credit Risk Analyst",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": "5500.00",
+    "salary_max": "8000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Credit Risk Analyst role used to demonstrate the MHA platform.",
+    "requirements": "credit risk analysis finance modelling excel reporting",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.500Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.497Z",
+    "updated_at": "2026-06-22T01:53:41.500Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "7dedbbfa-3c81-4a1e-b978-5a3347c5bd1f",
+  "fields": {
+    "slug": "partner-mha-talent-coordinator",
+    "employer": 8,
+    "created_by": [
+      "careers@mha.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Talent Coordinator",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "Talent Coordinator role at MHA Consultancy.",
+    "requirements": "coordination scheduling candidate care administration communication",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T13:28:26.427Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T13:28:26.425Z",
+    "updated_at": "2026-06-22T13:28:26.428Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+  "fields": {
+    "slug": "partner-wewe-content-producer",
+    "employer": 10,
+    "created_by": [
+      "careers@wewe.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Content Producer",
+    "location": "Cyberjaya",
+    "employment_type": "FULL_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "Content Producer role at WEWE.",
+    "requirements": "content production media video editing storytelling digital",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T13:28:26.442Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T13:28:26.439Z",
+    "updated_at": "2026-06-22T13:28:26.442Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "a7698f7b-f2aa-47ec-b1ab-ef8a923a9c60",
+  "fields": {
+    "slug": "demo-meridian-staff-nurse",
+    "employer": 5,
+    "created_by": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Staff Nurse",
+    "location": "Johor Bahru",
+    "employment_type": "FULL_TIME",
+    "salary_min": "3800.00",
+    "salary_max": "5500.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Staff Nurse role used to demonstrate the MHA platform.",
+    "requirements": "nursing patient care clinical healthcare registered communication",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.598Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.595Z",
+    "updated_at": "2026-06-22T01:53:41.598Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "b3a648ce-18f6-48ee-92dc-4ae886d951a8",
+  "fields": {
+    "slug": "demo-coastal-cashier",
+    "employer": 4,
+    "created_by": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Retail Cashier",
+    "location": "George Town",
+    "employment_type": "PART_TIME",
+    "salary_min": "1800.00",
+    "salary_max": "2400.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Retail Cashier role used to demonstrate the MHA platform.",
+    "requirements": "cashier customer service retail cash handling",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.585Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.583Z",
+    "updated_at": "2026-06-22T01:53:41.585Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+  "fields": {
+    "slug": "demo-nimbus-backend-engineer",
+    "employer": 2,
+    "created_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Backend Software Engineer",
+    "location": "Cyberjaya",
+    "employment_type": "FULL_TIME",
+    "salary_min": "7000.00",
+    "salary_max": "11000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Backend Software Engineer role used to demonstrate the MHA platform.",
+    "requirements": "python django backend api postgresql docker testing software",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.517Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.515Z",
+    "updated_at": "2026-06-22T01:53:41.517Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "c2d549c9-0359-490f-be2b-bfb1f10795d3",
+  "fields": {
+    "slug": "demo-coastal-buyer",
+    "employer": 4,
+    "created_by": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Category Buyer",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": "5500.00",
+    "salary_max": "8000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Category Buyer role used to demonstrate the MHA platform.",
+    "requirements": "retail buying procurement negotiation category analysis",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.591Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.589Z",
+    "updated_at": "2026-06-22T01:53:41.591Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473",
+  "fields": {
+    "slug": "demo-greenfield-coordinator",
+    "employer": 3,
+    "created_by": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Logistics Coordinator",
+    "location": "Petaling Jaya",
+    "employment_type": "FULL_TIME",
+    "salary_min": "4000.00",
+    "salary_max": "6000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Logistics Coordinator role used to demonstrate the MHA platform.",
+    "requirements": "logistics coordination planning supply chain excel communication",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.559Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.556Z",
+    "updated_at": "2026-06-22T01:53:41.559Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "e1846088-4119-4964-b767-286f662c5bf9",
+  "fields": {
+    "slug": "demo-mha-customer-success",
+    "employer": null,
+    "created_by": [
+      "admin@mha.com"
+    ],
+    "source_type": "MHA_DIRECT",
+    "title": "Customer Success Specialist",
+    "location": "Remote",
+    "employment_type": "FULL_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "DEMO LISTING — synthetic. Customer Success Specialist role used to demonstrate the MHA platform.",
+    "requirements": "customer success communication onboarding retention support",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": true,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.621Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.619Z",
+    "updated_at": "2026-06-22T01:53:41.621Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+  "fields": {
+    "slug": "demo-mha-data-analyst",
+    "employer": null,
+    "created_by": [
+      "admin@mha.com"
+    ],
+    "source_type": "MHA_DIRECT",
+    "title": "Data Analyst",
+    "location": "Kuala Lumpur",
+    "employment_type": "FULL_TIME",
+    "salary_min": "5000.00",
+    "salary_max": "7500.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Data Analyst role used to demonstrate the MHA platform.",
+    "requirements": "data analysis sql python reporting dashboards statistics",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": true,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.615Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.613Z",
+    "updated_at": "2026-06-22T01:53:41.615Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "f2ed3a13-d2e3-41f9-9c6f-42bba0ec8e18",
+  "fields": {
+    "slug": "partner-woodee-marketing-executive",
+    "employer": 9,
+    "created_by": [
+      "careers@woodee.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Marketing Executive",
+    "location": "Petaling Jaya",
+    "employment_type": "FULL_TIME",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": false,
+    "description": "Marketing Executive role at Woodee.",
+    "requirements": "marketing brand campaigns social media content lifestyle",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T13:28:26.435Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T13:28:26.432Z",
+    "updated_at": "2026-06-22T13:28:26.435Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "f7543cbf-0fb9-492d-931e-27369a268b8b",
+  "fields": {
+    "slug": "demo-greenfield-driver",
+    "employer": 3,
+    "created_by": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "Delivery Driver",
+    "location": "Shah Alam",
+    "employment_type": "TEMPORARY",
+    "salary_min": "2500.00",
+    "salary_max": "3200.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. Delivery Driver role used to demonstrate the MHA platform.",
+    "requirements": "driving licence logistics delivery punctual safety",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.553Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.551Z",
+    "updated_at": "2026-06-22T01:53:41.553Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": "ff55c5b4-a476-452a-be67-0379722f3f65",
+  "fields": {
+    "slug": "demo-nimbus-devops",
+    "employer": 2,
+    "created_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "source_type": "EMPLOYER_PARTNER",
+    "title": "DevOps Engineer",
+    "location": "Cyberjaya",
+    "employment_type": "CONTRACT",
+    "salary_min": "8000.00",
+    "salary_max": "12000.00",
+    "salary_currency": "MYR",
+    "salary_period": "MONTHLY",
+    "salary_disclosed": true,
+    "description": "DEMO LISTING — synthetic. DevOps Engineer role used to demonstrate the MHA platform.",
+    "requirements": "devops kubernetes aws ci cd terraform linux automation",
+    "application_deadline": null,
+    "listing_language": "en",
+    "status": "PUBLISHED",
+    "is_mha_supported": false,
+    "moderation_reason": "",
+    "published_at": "2026-06-22T01:53:41.529Z",
+    "closed_at": null,
+    "created_at": "2026-06-22T01:53:41.526Z",
+    "updated_at": "2026-06-22T01:53:41.529Z"
+  }
+},
+{
+  "model": "jobs.screeningquestion",
+  "pk": "033f1f77-8841-4f9c-affe-ea5681ecf4ba",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "question": "Briefly describe a client you grew.",
+    "question_type": "LONG_TEXT",
+    "is_required": false,
+    "options_json": [],
+    "display_order": 1,
+    "created_at": "2026-06-22T01:53:41.636Z",
+    "updated_at": "2026-06-22T01:53:41.636Z"
+  }
+},
+{
+  "model": "jobs.screeningquestion",
+  "pk": "1e49d418-0f24-481e-8703-3c6cde54c6ec",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "question": "How many years of Python experience do you have?",
+    "question_type": "NUMBER",
+    "is_required": true,
+    "options_json": [],
+    "display_order": 0,
+    "created_at": "2026-06-22T01:53:41.625Z",
+    "updated_at": "2026-06-22T01:53:41.625Z"
+  }
+},
+{
+  "model": "jobs.screeningquestion",
+  "pk": "370013aa-ff5d-4c08-a58c-bc4b381adefa",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "question": "Which segment have you served?",
+    "question_type": "SINGLE_CHOICE",
+    "is_required": true,
+    "options_json": [
+      "Retail",
+      "SME",
+      "Corporate"
+    ],
+    "display_order": 0,
+    "created_at": "2026-06-22T01:53:41.632Z",
+    "updated_at": "2026-06-22T01:53:41.632Z"
+  }
+},
+{
+  "model": "jobs.screeningquestion",
+  "pk": "70b8b606-95c5-46d9-b8ff-505263830b89",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "question": "Are you authorised to work in Malaysia?",
+    "question_type": "YES_NO",
+    "is_required": true,
+    "options_json": [],
+    "display_order": 1,
+    "created_at": "2026-06-22T01:53:41.629Z",
+    "updated_at": "2026-06-22T01:53:41.629Z"
+  }
+},
+{
+  "model": "jobs.screeningquestion",
+  "pk": "a891bd1b-68a4-49f9-a751-2aa2d47cc796",
+  "fields": {
+    "job": "a7698f7b-f2aa-47ec-b1ab-ef8a923a9c60",
+    "question": "Do you hold a valid nursing registration?",
+    "question_type": "YES_NO",
+    "is_required": true,
+    "options_json": [],
+    "display_order": 0,
+    "created_at": "2026-06-22T01:53:41.639Z",
+    "updated_at": "2026-06-22T01:53:41.639Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "163b79e3-a1f2-401f-a950-483acd9dca4f",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/db7c4a0df2d342ada8d9256be7989c55.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "SHORTLISTED",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.693Z",
+    "updated_at": "2026-06-22T01:53:41.699Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "33304e67-6ce9-4081-a12d-1f79b3603b90",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/3d76da0924f848e0a8edc876fd282553.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "APPLIED",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.662Z",
+    "updated_at": "2026-06-22T01:53:41.662Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "470bc647-5e34-4169-a52f-def87f0bac0b",
+  "fields": {
+    "job": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/84f454a7a2ae4c39b14e13fbdb9d023b.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "HIRED",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.734Z",
+    "updated_at": "2026-06-22T01:53:41.738Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "66cec87e-f94f-4787-93e6-e172ec1a7933",
+  "fields": {
+    "job": "5681ea33-466c-4ea5-aa98-59e23f4f6fae",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/ad1c972afc3642f6ad085e62d9809b9b.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "UNDER_REVIEW",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.675Z",
+    "updated_at": "2026-06-22T01:53:41.683Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "91a8abe9-902e-4e43-acc5-b335a2c1433b",
+  "fields": {
+    "job": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/22fdfa75b33b4208873397b8b4fd18a0.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "OFFERED",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.721Z",
+    "updated_at": "2026-06-22T01:53:41.726Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "b77361af-88db-42aa-9346-0f537a04fe5c",
+  "fields": {
+    "job": "0af627c7-ae1b-4982-8d0e-6921b694ce97",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/863b51c6fca64babb11dc6c39e296872.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "REJECTED",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.745Z",
+    "updated_at": "2026-06-22T01:53:41.750Z"
+  }
+},
+{
+  "model": "applications.application",
+  "pk": "e46fb167-d6f8-43a8-a2e2-ec30b64b2f0a",
+  "fields": {
+    "job": "ff55c5b4-a476-452a-be67-0379722f3f65",
+    "candidate": 1,
+    "resume_file_snapshot": "resume_snapshots/4e41aa9f887d498cb996ca7fe0468cb7.pdf",
+    "resume_snapshot_name": "alex_demo_resume.pdf",
+    "cover_letter": "DEMO application — synthetic candidate.",
+    "status": "INTERVIEW",
+    "employer_private_notes": "",
+    "submitted_at": "2026-06-22T01:53:41.708Z",
+    "updated_at": "2026-06-22T01:53:41.713Z"
+  }
+},
+{
+  "model": "applications.applicationanswer",
+  "pk": "1dc381b0-c820-408f-b054-84131cbe44d9",
+  "fields": {
+    "application": "33304e67-6ce9-4081-a12d-1f79b3603b90",
+    "question": "370013aa-ff5d-4c08-a58c-bc4b381adefa",
+    "answer_text": "Retail",
+    "answer_json": {
+      "value": "Retail"
+    },
+    "created_at": "2026-06-22T01:53:41.664Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "263d91ad-8478-4957-b0d7-20781bafbd81",
+  "fields": {
+    "application": "163b79e3-a1f2-401f-a950-483acd9dca4f",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.694Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "2a690067-da52-4928-a92c-f6a70130dab9",
+  "fields": {
+    "application": "b77361af-88db-42aa-9346-0f537a04fe5c",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.746Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "357af5dd-78ec-4da4-8468-467f651ed442",
+  "fields": {
+    "application": "e46fb167-d6f8-43a8-a2e2-ec30b64b2f0a",
+    "from_status": "APPLIED",
+    "to_status": "INTERVIEW",
+    "changed_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "change_note": "DEMO status progression.",
+    "created_at": "2026-06-22T01:53:41.712Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "41571e6a-105c-434d-a212-f6ff264b54a7",
+  "fields": {
+    "application": "66cec87e-f94f-4787-93e6-e172ec1a7933",
+    "from_status": "APPLIED",
+    "to_status": "UNDER_REVIEW",
+    "changed_by": [
+      "vendox@mha.com"
+    ],
+    "change_note": "DEMO status progression.",
+    "created_at": "2026-06-22T01:53:41.681Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "47e5908f-251b-4739-93db-ee62ab9b94ae",
+  "fields": {
+    "application": "470bc647-5e34-4169-a52f-def87f0bac0b",
+    "from_status": "APPLIED",
+    "to_status": "HIRED",
+    "changed_by": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "change_note": "DEMO status progression.",
+    "created_at": "2026-06-22T01:53:41.737Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "509d077c-d927-4d87-9c17-78354792eab2",
+  "fields": {
+    "application": "66cec87e-f94f-4787-93e6-e172ec1a7933",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.676Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "51e00966-82dc-440e-86a4-75ef2948c811",
+  "fields": {
+    "application": "91a8abe9-902e-4e43-acc5-b335a2c1433b",
+    "from_status": "APPLIED",
+    "to_status": "OFFERED",
+    "changed_by": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "change_note": "DEMO status progression.",
+    "created_at": "2026-06-22T01:53:41.725Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "75702157-ed4c-481b-a076-7d23432796ec",
+  "fields": {
+    "application": "33304e67-6ce9-4081-a12d-1f79b3603b90",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.665Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "9e826f86-d887-447b-a027-ac6245fc16ad",
+  "fields": {
+    "application": "b77361af-88db-42aa-9346-0f537a04fe5c",
+    "from_status": "APPLIED",
+    "to_status": "REJECTED",
+    "changed_by": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "change_note": "DEMO status progression.",
+    "created_at": "2026-06-22T01:53:41.749Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "bc7c96e8-5e59-453f-b134-2ed31980c9ec",
+  "fields": {
+    "application": "e46fb167-d6f8-43a8-a2e2-ec30b64b2f0a",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.709Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "c0672036-9c03-4b5d-af7c-f26d9c58adda",
+  "fields": {
+    "application": "163b79e3-a1f2-401f-a950-483acd9dca4f",
+    "from_status": "APPLIED",
+    "to_status": "SHORTLISTED",
+    "changed_by": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "change_note": "DEMO status progression.",
+    "created_at": "2026-06-22T01:53:41.698Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "da079749-8a82-4a8c-9610-92747c14d17b",
+  "fields": {
+    "application": "470bc647-5e34-4169-a52f-def87f0bac0b",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.734Z"
+  }
+},
+{
+  "model": "applications.applicationstatushistory",
+  "pk": "f7b51f75-421a-4c11-be99-890f64bd0b28",
+  "fields": {
+    "application": "91a8abe9-902e-4e43-acc5-b335a2c1433b",
+    "from_status": null,
+    "to_status": "APPLIED",
+    "changed_by": [
+      "alex@mha.com"
+    ],
+    "change_note": "",
+    "created_at": "2026-06-22T01:53:41.722Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "00bdc868-7879-49fa-aea0-dc0a27d721c6",
+  "fields": {
+    "candidate": 1,
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "score": 100,
+    "band": "strong",
+    "matched_json": [
+      "title_strong",
+      "location_match",
+      "employment_type_match"
+    ],
+    "gaps_json": [],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T14:16:23.611Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "021b8ebc-e341-470d-af58-4a215258a583",
+  "fields": {
+    "candidate": 1,
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "score": 36,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_related",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T14:16:23.618Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "10a47484-ed8e-4e89-ac41-1382d3071ec3",
+  "fields": {
+    "candidate": 1,
+    "job": "108d877d-4f6f-4397-9ec8-7cf262ad676e",
+    "score": 0,
+    "band": "limited",
+    "matched_json": [],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch",
+      "employment_type_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T02:53:53.618Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "55a1d962-6d18-4555-a9d8-575ad9937e01",
+  "fields": {
+    "candidate": 1,
+    "job": "f2ed3a13-d2e3-41f9-9c6f-42bba0ec8e18",
+    "score": 25,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T14:49:22.320Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "5d87ec7f-d5ce-4b84-a4e3-6e72561113f6",
+  "fields": {
+    "candidate": 1,
+    "job": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473",
+    "score": 25,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T07:02:36.050Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "84b5c96e-0130-4de7-9862-a74c48960cae",
+  "fields": {
+    "candidate": 1,
+    "job": "f7543cbf-0fb9-492d-931e-27369a268b8b",
+    "score": 0,
+    "band": "limited",
+    "matched_json": [],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch",
+      "employment_type_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T07:02:12.955Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "8b9e94ba-d851-4886-b0bd-168ed2ab115a",
+  "fields": {
+    "candidate": 1,
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "score": 56,
+    "band": "partial",
+    "matched_json": [
+      "location_match",
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T14:48:27.882Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "8ee28f5d-c1e5-4139-a0a3-f6e778e6362c",
+  "fields": {
+    "candidate": 1,
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "score": 25,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T14:16:23.622Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "a32c70d1-1021-4a83-8f13-9cfe94edc6c3",
+  "fields": {
+    "candidate": 1,
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "score": 25,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T04:36:18.113Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "d494941f-b812-46d0-a881-9acb8e1cc797",
+  "fields": {
+    "candidate": 1,
+    "job": "a7698f7b-f2aa-47ec-b1ab-ef8a923a9c60",
+    "score": 25,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T04:21:52.522Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "d4e10615-3409-454a-b69c-0637ac206059",
+  "fields": {
+    "candidate": 3,
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "score": 67,
+    "band": "good",
+    "matched_json": [
+      "title_strong"
+    ],
+    "gaps_json": [],
+    "unknown_json": [
+      "location_unknown",
+      "employment_type_unknown",
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T05:49:20.511Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "e152248b-1894-4da0-9d9d-3a61e72d8caa",
+  "fields": {
+    "candidate": 1,
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "score": 25,
+    "band": "limited",
+    "matched_json": [
+      "employment_type_match"
+    ],
+    "gaps_json": [
+      "title_mismatch",
+      "location_mismatch"
+    ],
+    "unknown_json": [
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T14:16:23.627Z"
+  }
+},
+{
+  "model": "matching.jobfitresult",
+  "pk": "e4419266-7350-41ed-932a-3506cf3768a9",
+  "fields": {
+    "candidate": 3,
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "score": 0,
+    "band": "limited",
+    "matched_json": [],
+    "gaps_json": [
+      "title_mismatch"
+    ],
+    "unknown_json": [
+      "location_unknown",
+      "employment_type_unknown",
+      "resume_unknown"
+    ],
+    "rule_version": "1.0",
+    "ai_enabled": false,
+    "ai_provider": "",
+    "ai_model": "",
+    "ai_explanation": "",
+    "generated_at": "2026-06-22T05:49:12.081Z"
+  }
+},
+{
+  "model": "support.supportrequest",
+  "pk": "49c0be2f-a912-4a53-8e0f-16cfb53e376e",
+  "fields": {
+    "user": [
+      "alex@mha.com"
+    ],
+    "job": null,
+    "name": "Alex Demo Candidate",
+    "email": "alex@mha.com",
+    "phone": "+60 12-000 0000",
+    "category": "RESUME",
+    "message": "DEMO support request — could you review my resume?",
+    "resume_file": "",
+    "resume_original_name": "",
+    "status": "NEW",
+    "assigned_to": null,
+    "created_at": "2026-06-22T01:53:41.924Z",
+    "updated_at": "2026-06-22T01:53:41.924Z"
+  }
+},
+{
+  "model": "support.supportrequest",
+  "pk": "9857e957-9f28-4fce-a169-f224f51d93f2",
+  "fields": {
+    "user": null,
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "name": "Jordan Demo Guest",
+    "email": "guest.seeker@example.com",
+    "phone": "",
+    "category": "JOB_APPLICATION",
+    "message": "DEMO support request — help applying to this role.",
+    "resume_file": "",
+    "resume_original_name": "",
+    "status": "IN_PROGRESS",
+    "assigned_to": null,
+    "created_at": "2026-06-22T01:53:41.929Z",
+    "updated_at": "2026-06-22T01:53:41.932Z"
+  }
+},
+{
+  "model": "analytics.marketinsight",
+  "pk": "51713c9b-6270-4d51-9a01-30e64b85241f",
+  "fields": {
+    "title": "Roles in focus this quarter (DEMO)",
+    "body": "DEMO INSIGHT — synthetic. Banking relationship and cloud-engineering roles are seeing steady demand across Klang Valley.",
+    "category": "roles_in_focus",
+    "display_order": 1,
+    "is_published": true,
+    "created_at": "2026-06-22T01:53:42.034Z",
+    "updated_at": "2026-06-22T01:53:42.034Z"
+  }
+},
+{
+  "model": "analytics.marketinsight",
+  "pk": "cdbf0630-cafe-4257-afa7-6c4b2d669d06",
+  "fields": {
+    "title": "Hiring outlook: cautious optimism (DEMO)",
+    "body": "DEMO INSIGHT — synthetic. Employers report measured hiring plans with a focus on retention and upskilling.",
+    "category": "hiring_outlook",
+    "display_order": 2,
+    "is_published": true,
+    "created_at": "2026-06-22T01:53:42.037Z",
+    "updated_at": "2026-06-22T01:53:42.037Z"
+  }
+},
+{
+  "model": "analytics.marketinsight",
+  "pk": "dac7c9f0-422e-4ddb-a49f-fe7852e67c4c",
+  "fields": {
+    "title": "Skills employers ask about (DEMO)",
+    "body": "DEMO INSIGHT — synthetic. Data literacy and clear written communication recur across job requirements.",
+    "category": "skills",
+    "display_order": 3,
+    "is_published": true,
+    "created_at": "2026-06-22T01:53:42.040Z",
+    "updated_at": "2026-06-22T01:53:42.040Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "0019092d-7978-4550-8f11-f16fb788e25e",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "vendox@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T10:22:09.944Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "0031ea8e-83cd-4aac-af79-20ce421ca31f",
+  "fields": {
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "user": null,
+    "anonymous_session_hash": "29db6b29b19902d1fd85019b7a655a578dbc68307e5e4fa8d6d4ca218fc4ee80",
+    "viewed_at": "2026-06-23T08:15:44.344Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "04fe9c1e-4c01-418b-9191-7006ea2cf0e0",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T02:53:28.528Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "0ba8964e-2d02-439f-ac6c-8390d0ca7368",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "vendox@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T08:07:29.594Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "125e617a-3af0-4451-901e-58f7c058b088",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": null,
+    "anonymous_session_hash": "ec80e677a064f2e50dc44d7e89c62bcf195e7925296cc813984ba63a5163ff0f",
+    "viewed_at": "2026-06-22T06:58:55.440Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "17713cb6-c42b-464c-b501-c123ce72a31e",
+  "fields": {
+    "job": "a7698f7b-f2aa-47ec-b1ab-ef8a923a9c60",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T04:21:48.326Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "1927857b-b7d4-4244-b603-4c184b745c17",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-000",
+    "viewed_at": "2026-06-22T01:53:41.957Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "1dc77fe4-bd26-4af9-af0c-542876223d2a",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-009",
+    "viewed_at": "2026-06-22T01:53:41.985Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "26d753c0-5116-470f-9c26-2c21de4df973",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-frontend-engineer-005",
+    "viewed_at": "2026-06-22T01:53:42.015Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "27c99d7e-d90a-480c-bd38-a1e7dabfd7bb",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:01:51.682Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "287dcb52-336c-4e39-91a8-4b316e923cf6",
+  "fields": {
+    "job": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T01:53:42.019Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "2bd6076c-e03e-4467-bdf3-0aca62287f8a",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "user": null,
+    "anonymous_session_hash": "demoseed-vendox-relationship-manager-002",
+    "viewed_at": "2026-06-22T01:53:41.947Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "2d7551f7-60bf-45c0-8a99-2f34f2fbd185",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-004",
+    "viewed_at": "2026-06-22T01:53:41.969Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "33768288-c160-4562-8ccc-24234b9b1eeb",
+  "fields": {
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "user": [
+      "elwin@4896.co"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T05:49:10.359Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "34249f1b-76cf-4e84-859f-f8e1473d2853",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-frontend-engineer-001",
+    "viewed_at": "2026-06-22T01:53:42.001Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "34b0cea8-4819-4a82-87a0-31ac53f14f8c",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T01:53:41.937Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "3a7c1f64-51f3-4538-a883-5ff19d71ee32",
+  "fields": {
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-23T07:50:37.131Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "3d69687f-a6c1-4aac-a1ff-10da77afa2e1",
+  "fields": {
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T04:35:31.364Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "3e037258-e7f4-4ed4-91b6-d1aed891fdf7",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "user": null,
+    "anonymous_session_hash": "demoseed-vendox-relationship-manager-000",
+    "viewed_at": "2026-06-22T01:53:41.940Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "3e8ea917-999a-4564-af24-83e61f53bdea",
+  "fields": {
+    "job": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:09.237Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "3e992f3c-94da-418f-bbe2-266730bb88a7",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-007",
+    "viewed_at": "2026-06-22T01:53:41.979Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "4151f624-ad39-4808-b246-fc5436e2f57b",
+  "fields": {
+    "job": "108d877d-4f6f-4397-9ec8-7cf262ad676e",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T02:53:44.523Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "47041e10-70c0-45b5-a400-173d6e44359c",
+  "fields": {
+    "job": "f7543cbf-0fb9-492d-931e-27369a268b8b",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:10.937Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "482edc4f-9cae-47d2-b579-2aaecd3684d8",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-002",
+    "viewed_at": "2026-06-22T01:53:41.963Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "57200768-127b-4ea6-936b-9d5175ac4713",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-frontend-engineer-002",
+    "viewed_at": "2026-06-22T01:53:42.004Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "59be9b34-a974-46c3-81e1-5bedeaad7640",
+  "fields": {
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T14:47:21.827Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "5aa79048-8261-41bd-a186-861f39afcc7e",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "user": null,
+    "anonymous_session_hash": "demoseed-vendox-relationship-manager-003",
+    "viewed_at": "2026-06-22T01:53:41.950Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "5c7b5f4c-0b34-4303-9923-a17d99ba4719",
+  "fields": {
+    "job": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+    "user": null,
+    "anonymous_session_hash": "demoseed-coastal-store-manager-002",
+    "viewed_at": "2026-06-22T01:53:42.029Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "5ee7f7d1-1905-47ec-a16b-829b012413cf",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T01:53:41.995Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "6242d432-cf7b-4920-a93a-f24a3bd50b31",
+  "fields": {
+    "job": "f2ed3a13-d2e3-41f9-9c6f-42bba0ec8e18",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T14:49:22.196Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "63de4b5b-9811-45eb-b700-4e3958b265ba",
+  "fields": {
+    "job": "2820d6b0-d47a-4f15-8317-047f0b7f7363",
+    "user": null,
+    "anonymous_session_hash": "demoseed-vendox-relationship-manager-001",
+    "viewed_at": "2026-06-22T01:53:41.944Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "688dafcb-ba6e-489c-aaba-d0a5325d0bd2",
+  "fields": {
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "user": null,
+    "anonymous_session_hash": "3c67cf1e5c690432fecefa0d9fb917b45ff31255c7e81300b1c4cd1a639236d5",
+    "viewed_at": "2026-06-22T14:29:45.063Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "68c99301-4ee0-42f3-b0d8-c54510e3efde",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-frontend-engineer-004",
+    "viewed_at": "2026-06-22T01:53:42.012Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "72bf5413-a5a6-4d6e-a273-d7e4a009f7e0",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "elwin@4896.co"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T05:48:17.034Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "7342db05-1712-4562-94f9-21be33bf7820",
+  "fields": {
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "user": null,
+    "anonymous_session_hash": "541ba80173b2c55008235299d5061c1705b55a3962805c95d21675a482765d7c",
+    "viewed_at": "2026-06-22T14:36:14.986Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "7709664f-d636-4665-9329-b4ac1cf672c0",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-frontend-engineer-003",
+    "viewed_at": "2026-06-22T01:53:42.008Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "77eb0685-e38b-4010-ade3-d83ed06e19d5",
+  "fields": {
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "user": null,
+    "anonymous_session_hash": "3143f3130b6c2096c13e273ad48ab10cb654ba301d51e144fd2340b4819baf7e",
+    "viewed_at": "2026-06-23T07:58:54.195Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "782a6162-49cb-4e25-8539-f7f8e3d1f085",
+  "fields": {
+    "job": "10e151ec-d198-4a33-b863-4b3439006559",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:05.944Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "7b697ec0-c65a-4a79-a492-d0845754d8ac",
+  "fields": {
+    "job": "b3a648ce-18f6-48ee-92dc-4ae886d951a8",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:04.722Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "7dc28638-88be-4d86-82df-8dcc2bae7014",
+  "fields": {
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T14:50:23.153Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "84f7279c-1ede-4715-b612-65e24995b98e",
+  "fields": {
+    "job": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473",
+    "user": null,
+    "anonymous_session_hash": "3c67cf1e5c690432fecefa0d9fb917b45ff31255c7e81300b1c4cd1a639236d5",
+    "viewed_at": "2026-06-22T12:47:21.246Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "87d4040e-269c-40c6-b342-123249acec25",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-005",
+    "viewed_at": "2026-06-22T01:53:41.972Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "93b70175-8026-4b73-828b-93c4f774da8c",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": null,
+    "anonymous_session_hash": "ab18d8d6146ae8e41ce8caa495b39ac0a4be39ce27ba6f820585cf421bd358bc",
+    "viewed_at": "2026-06-22T05:05:43.963Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "94711d55-9be9-4e5c-9a20-6f1d44842203",
+  "fields": {
+    "job": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+    "user": null,
+    "anonymous_session_hash": "demoseed-coastal-store-manager-001",
+    "viewed_at": "2026-06-22T01:53:42.026Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "95f5a5da-3e03-4430-bd95-4940301eceb7",
+  "fields": {
+    "job": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:07.627Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "9813d210-f928-4261-aefb-74b15e7b71aa",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-001",
+    "viewed_at": "2026-06-22T01:53:41.960Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "9a138954-8c83-44ac-b77e-fb863fb613b8",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T04:35:28.587Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "9bc52b62-21c6-4808-9447-50f82ef6c256",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": null,
+    "anonymous_session_hash": "f2ee3f97f3bdaf4851987036cafe6ea7b9383131ad0237e0fd712e42717e4f27",
+    "viewed_at": "2026-06-22T06:14:07.248Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "9c2c2fb6-ac1f-4cb5-a30b-46e70dd845de",
+  "fields": {
+    "job": "0af627c7-ae1b-4982-8d0e-6921b694ce97",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T04:21:46.282Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "a049c3ca-5615-47ce-b2e2-374f7c978873",
+  "fields": {
+    "job": "8feff62e-d151-4480-93cd-a9e796f00d4b",
+    "user": null,
+    "anonymous_session_hash": "541ba80173b2c55008235299d5061c1705b55a3962805c95d21675a482765d7c",
+    "viewed_at": "2026-06-22T14:35:34.238Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "a5f1fe0e-ce21-4930-aa9c-68870e0d73b5",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T01:53:41.953Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "bdcb85a8-2bfc-4d31-a6af-13fe5cc3a554",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-006",
+    "viewed_at": "2026-06-22T01:53:41.976Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "c01d13d4-3fce-4624-b3e0-2035bda7586f",
+  "fields": {
+    "job": "108d877d-4f6f-4397-9ec8-7cf262ad676e",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T04:21:42.369Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "c159b07e-1091-4c69-b3f0-73d88f98e129",
+  "fields": {
+    "job": "0af627c7-ae1b-4982-8d0e-6921b694ce97",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:01:59.885Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "c1e88150-7e89-4176-8ab1-ec18d0f0bb06",
+  "fields": {
+    "job": "c2d549c9-0359-490f-be2b-bfb1f10795d3",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:03.617Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "c38011cb-0936-4cd1-8e62-6fd6041a11e9",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-010",
+    "viewed_at": "2026-06-22T01:53:41.988Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "d5759bd9-1c27-4f8b-bdc0-8f101a254b0b",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": [
+      "elwin@4896.co"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T05:49:19.584Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "d5a75754-7b48-4c29-bcfc-b4fa1a2235f2",
+  "fields": {
+    "job": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-frontend-engineer-000",
+    "viewed_at": "2026-06-22T01:53:41.998Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "dc1179f3-e7a0-4fb6-8874-123c843f89ea",
+  "fields": {
+    "job": "a7698f7b-f2aa-47ec-b1ab-ef8a923a9c60",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:02:01.861Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "e4dd399c-60c5-4356-9c44-3b637fe03415",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-008",
+    "viewed_at": "2026-06-22T01:53:41.982Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "e7bf5568-0a94-4fa6-830d-4eea76195660",
+  "fields": {
+    "job": "108d877d-4f6f-4397-9ec8-7cf262ad676e",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T07:01:56.208Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "ec0e18a3-f2ad-4c94-b707-a18f52434e24",
+  "fields": {
+    "job": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+    "user": null,
+    "anonymous_session_hash": "demoseed-coastal-store-manager-000",
+    "viewed_at": "2026-06-22T01:53:42.023Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "f3598938-06a4-4753-82f4-079f9795de43",
+  "fields": {
+    "job": "e29257b6-0d58-41dd-87e4-6cc4648f599a",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T02:53:40.850Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "f7586a1e-8bfa-42ab-8ea3-75b13de63a99",
+  "fields": {
+    "job": "e1846088-4119-4964-b767-286f662c5bf9",
+    "user": [
+      "alex@mha.com"
+    ],
+    "anonymous_session_hash": null,
+    "viewed_at": "2026-06-22T04:01:23.486Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "f9291b0f-7c00-446d-8308-86dac8d0373b",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-003",
+    "viewed_at": "2026-06-22T01:53:41.966Z"
+  }
+},
+{
+  "model": "analytics.jobviewevent",
+  "pk": "faffd511-7122-480a-9fda-a6a6b031fa69",
+  "fields": {
+    "job": "c0acd759-eb4d-4c5f-82a4-d272e0d39593",
+    "user": null,
+    "anonymous_session_hash": "demoseed-nimbus-backend-engineer-011",
+    "viewed_at": "2026-06-22T01:53:41.992Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 1,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "1",
+    "metadata_json": {
+      "user_id": "f2556808-99f9-4fe6-957f-1dd74199366f",
+      "company_name": "Vendox"
+    },
+    "created_at": "2026-06-22T01:53:38.971Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 2,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "2",
+    "metadata_json": {
+      "user_id": "2ac96d80-809c-427c-8f27-4506fbda0180",
+      "company_name": "Nimbus Technologies (DEMO)"
+    },
+    "created_at": "2026-06-22T01:53:39.349Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 3,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "3",
+    "metadata_json": {
+      "user_id": "420435ca-33de-4744-a994-1cdc6b1c6001",
+      "company_name": "Greenfield Logistics (DEMO)"
+    },
+    "created_at": "2026-06-22T01:53:39.706Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 4,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "4",
+    "metadata_json": {
+      "user_id": "77f5278e-007f-433b-b15c-49a99656fcfb",
+      "company_name": "Coastal Retail Group (DEMO)"
+    },
+    "created_at": "2026-06-22T01:53:40.058Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 5,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "5",
+    "metadata_json": {
+      "user_id": "22d3f3fb-955d-4387-bd65-134b27c53066",
+      "company_name": "Meridian Health Services (DEMO)"
+    },
+    "created_at": "2026-06-22T01:53:40.415Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 6,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "resume.uploaded",
+    "target_type": "candidates.CandidateProfile",
+    "target_id": "1",
+    "metadata_json": {
+      "replaced": false
+    },
+    "created_at": "2026-06-22T01:53:41.137Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 7,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "33304e67-6ce9-4081-a12d-1f79b3603b90",
+    "metadata_json": {
+      "job_id": "2820d6b0-d47a-4f15-8317-047f0b7f7363"
+    },
+    "created_at": "2026-06-22T01:53:41.666Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 8,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "66cec87e-f94f-4787-93e6-e172ec1a7933",
+    "metadata_json": {
+      "job_id": "5681ea33-466c-4ea5-aa98-59e23f4f6fae"
+    },
+    "created_at": "2026-06-22T01:53:41.677Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 9,
+  "fields": {
+    "actor": [
+      "vendox@mha.com"
+    ],
+    "action": "application.status_changed",
+    "target_type": "applications.Application",
+    "target_id": "66cec87e-f94f-4787-93e6-e172ec1a7933",
+    "metadata_json": {
+      "job_id": "5681ea33-466c-4ea5-aa98-59e23f4f6fae",
+      "to_status": "UNDER_REVIEW",
+      "from_status": "APPLIED"
+    },
+    "created_at": "2026-06-22T01:53:41.684Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 10,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "163b79e3-a1f2-401f-a950-483acd9dca4f",
+    "metadata_json": {
+      "job_id": "1a6b4586-75dc-403d-a4b3-75172afa2bb6"
+    },
+    "created_at": "2026-06-22T01:53:41.695Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 11,
+  "fields": {
+    "actor": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "action": "application.status_changed",
+    "target_type": "applications.Application",
+    "target_id": "163b79e3-a1f2-401f-a950-483acd9dca4f",
+    "metadata_json": {
+      "job_id": "1a6b4586-75dc-403d-a4b3-75172afa2bb6",
+      "to_status": "SHORTLISTED",
+      "from_status": "APPLIED"
+    },
+    "created_at": "2026-06-22T01:53:41.700Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 12,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "e46fb167-d6f8-43a8-a2e2-ec30b64b2f0a",
+    "metadata_json": {
+      "job_id": "ff55c5b4-a476-452a-be67-0379722f3f65"
+    },
+    "created_at": "2026-06-22T01:53:41.710Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 13,
+  "fields": {
+    "actor": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "action": "application.status_changed",
+    "target_type": "applications.Application",
+    "target_id": "e46fb167-d6f8-43a8-a2e2-ec30b64b2f0a",
+    "metadata_json": {
+      "job_id": "ff55c5b4-a476-452a-be67-0379722f3f65",
+      "to_status": "INTERVIEW",
+      "from_status": "APPLIED"
+    },
+    "created_at": "2026-06-22T01:53:41.714Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 14,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "91a8abe9-902e-4e43-acc5-b335a2c1433b",
+    "metadata_json": {
+      "job_id": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473"
+    },
+    "created_at": "2026-06-22T01:53:41.723Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 15,
+  "fields": {
+    "actor": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "action": "application.status_changed",
+    "target_type": "applications.Application",
+    "target_id": "91a8abe9-902e-4e43-acc5-b335a2c1433b",
+    "metadata_json": {
+      "job_id": "dc0069e7-aacd-4fcc-9dde-81a3b54ca473",
+      "to_status": "OFFERED",
+      "from_status": "APPLIED"
+    },
+    "created_at": "2026-06-22T01:53:41.727Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 16,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "470bc647-5e34-4169-a52f-def87f0bac0b",
+    "metadata_json": {
+      "job_id": "1b64b172-fa4d-4a27-9789-144bdc8adcb4"
+    },
+    "created_at": "2026-06-22T01:53:41.735Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 17,
+  "fields": {
+    "actor": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "action": "application.status_changed",
+    "target_type": "applications.Application",
+    "target_id": "470bc647-5e34-4169-a52f-def87f0bac0b",
+    "metadata_json": {
+      "job_id": "1b64b172-fa4d-4a27-9789-144bdc8adcb4",
+      "to_status": "HIRED",
+      "from_status": "APPLIED"
+    },
+    "created_at": "2026-06-22T01:53:41.739Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 18,
+  "fields": {
+    "actor": [
+      "alex@mha.com"
+    ],
+    "action": "application.submitted",
+    "target_type": "applications.Application",
+    "target_id": "b77361af-88db-42aa-9346-0f537a04fe5c",
+    "metadata_json": {
+      "job_id": "0af627c7-ae1b-4982-8d0e-6921b694ce97"
+    },
+    "created_at": "2026-06-22T01:53:41.747Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 19,
+  "fields": {
+    "actor": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "action": "application.status_changed",
+    "target_type": "applications.Application",
+    "target_id": "b77361af-88db-42aa-9346-0f537a04fe5c",
+    "metadata_json": {
+      "job_id": "0af627c7-ae1b-4982-8d0e-6921b694ce97",
+      "to_status": "REJECTED",
+      "from_status": "APPLIED"
+    },
+    "created_at": "2026-06-22T01:53:41.751Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 20,
+  "fields": {
+    "actor": null,
+    "action": "support.status_changed",
+    "target_type": "support.SupportRequest",
+    "target_id": "9857e957-9f28-4fce-a169-f224f51d93f2",
+    "metadata_json": {
+      "to": "IN_PROGRESS",
+      "from": "NEW"
+    },
+    "created_at": "2026-06-22T01:53:41.934Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 22,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "8",
+    "metadata_json": {
+      "user_id": "18be3a95-062a-40e0-bb49-1c92bab49e4b",
+      "company_name": "MHA Consultancy"
+    },
+    "created_at": "2026-06-22T13:28:25.672Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 23,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "9",
+    "metadata_json": {
+      "user_id": "12f03cb4-83aa-4817-907e-f88fe75f9873",
+      "company_name": "Woodee"
+    },
+    "created_at": "2026-06-22T13:28:26.013Z"
+  }
+},
+{
+  "model": "audit.auditlog",
+  "pk": 24,
+  "fields": {
+    "actor": [
+      "admin@mha.com"
+    ],
+    "action": "employer.approved",
+    "target_type": "employers.EmployerProfile",
+    "target_id": "10",
+    "metadata_json": {
+      "user_id": "84437736-4ba9-4214-a790-2d1d874f918b",
+      "company_name": "WEWE"
+    },
+    "created_at": "2026-06-22T13:28:26.358Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 1,
+  "fields": {
+    "employer": 1,
+    "reviewer_name": "Demo Reviewer C0-1",
+    "reviewer_email": "reviewer.c0.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.666Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 2,
+  "fields": {
+    "employer": 1,
+    "reviewer_name": "Demo Reviewer C0-2",
+    "reviewer_email": "reviewer.c0.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.681Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 3,
+  "fields": {
+    "employer": 1,
+    "reviewer_name": "Demo Reviewer C0-3",
+    "reviewer_email": "reviewer.c0.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.685Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 4,
+  "fields": {
+    "employer": 1,
+    "reviewer_name": "Demo Reviewer C0-4",
+    "reviewer_email": "reviewer.c0.4@example.com",
+    "rating": 3,
+    "title": "Decent, with room to improve",
+    "body": "Demo review (synthetic). Engaging projects; onboarding could be smoother.",
+    "created_at": "2026-06-22T14:16:23.688Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 5,
+  "fields": {
+    "employer": 2,
+    "reviewer_name": "Demo Reviewer C1-1",
+    "reviewer_email": "reviewer.c1.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.691Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 6,
+  "fields": {
+    "employer": 2,
+    "reviewer_name": "Demo Reviewer C1-2",
+    "reviewer_email": "reviewer.c1.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.699Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 7,
+  "fields": {
+    "employer": 2,
+    "reviewer_name": "Demo Reviewer C1-3",
+    "reviewer_email": "reviewer.c1.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.707Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 8,
+  "fields": {
+    "employer": 2,
+    "reviewer_name": "Demo Reviewer C1-4",
+    "reviewer_email": "reviewer.c1.4@example.com",
+    "rating": 3,
+    "title": "Decent, with room to improve",
+    "body": "Demo review (synthetic). Engaging projects; onboarding could be smoother.",
+    "created_at": "2026-06-22T14:16:23.710Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 9,
+  "fields": {
+    "employer": 3,
+    "reviewer_name": "Demo Reviewer C2-1",
+    "reviewer_email": "reviewer.c2.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.712Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 10,
+  "fields": {
+    "employer": 3,
+    "reviewer_name": "Demo Reviewer C2-2",
+    "reviewer_email": "reviewer.c2.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.720Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 11,
+  "fields": {
+    "employer": 3,
+    "reviewer_name": "Demo Reviewer C2-3",
+    "reviewer_email": "reviewer.c2.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.722Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 12,
+  "fields": {
+    "employer": 4,
+    "reviewer_name": "Demo Reviewer C3-1",
+    "reviewer_email": "reviewer.c3.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.725Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 13,
+  "fields": {
+    "employer": 4,
+    "reviewer_name": "Demo Reviewer C3-2",
+    "reviewer_email": "reviewer.c3.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.733Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 14,
+  "fields": {
+    "employer": 4,
+    "reviewer_name": "Demo Reviewer C3-3",
+    "reviewer_email": "reviewer.c3.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.736Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 15,
+  "fields": {
+    "employer": 5,
+    "reviewer_name": "Demo Reviewer C4-1",
+    "reviewer_email": "reviewer.c4.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.738Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 16,
+  "fields": {
+    "employer": 5,
+    "reviewer_name": "Demo Reviewer C4-2",
+    "reviewer_email": "reviewer.c4.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.746Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 17,
+  "fields": {
+    "employer": 5,
+    "reviewer_name": "Demo Reviewer C4-3",
+    "reviewer_email": "reviewer.c4.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.749Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 22,
+  "fields": {
+    "employer": 8,
+    "reviewer_name": "Demo Reviewer MHA-1",
+    "reviewer_email": "reviewer.mha.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.775Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 23,
+  "fields": {
+    "employer": 8,
+    "reviewer_name": "Demo Reviewer MHA-2",
+    "reviewer_email": "reviewer.mha.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.784Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 24,
+  "fields": {
+    "employer": 8,
+    "reviewer_name": "Demo Reviewer MHA-3",
+    "reviewer_email": "reviewer.mha.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.787Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 25,
+  "fields": {
+    "employer": 9,
+    "reviewer_name": "Demo Reviewer WOODEE-1",
+    "reviewer_email": "reviewer.woodee.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.790Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 26,
+  "fields": {
+    "employer": 9,
+    "reviewer_name": "Demo Reviewer WOODEE-2",
+    "reviewer_email": "reviewer.woodee.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.799Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 27,
+  "fields": {
+    "employer": 9,
+    "reviewer_name": "Demo Reviewer WOODEE-3",
+    "reviewer_email": "reviewer.woodee.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.802Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 28,
+  "fields": {
+    "employer": 10,
+    "reviewer_name": "Demo Reviewer WEWE-1",
+    "reviewer_email": "reviewer.wewe.1@example.com",
+    "rating": 5,
+    "title": "Great place to build a career",
+    "body": "Demo review (synthetic). Supportive leadership and clear growth paths.",
+    "created_at": "2026-06-22T14:16:23.804Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 29,
+  "fields": {
+    "employer": 10,
+    "reviewer_name": "Demo Reviewer WEWE-2",
+    "reviewer_email": "reviewer.wewe.2@example.com",
+    "rating": 4,
+    "title": "Solid experience overall",
+    "body": "Demo review (synthetic). Good benefits and a collaborative, fast-paced team.",
+    "created_at": "2026-06-22T14:16:23.814Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 30,
+  "fields": {
+    "employer": 10,
+    "reviewer_name": "Demo Reviewer WEWE-3",
+    "reviewer_email": "reviewer.wewe.3@example.com",
+    "rating": 5,
+    "title": "Highly recommended",
+    "body": "Demo review (synthetic). Interesting work and colleagues who genuinely care.",
+    "created_at": "2026-06-22T14:16:23.817Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 31,
+  "fields": {
+    "employer": 7,
+    "reviewer_name": "Demo User",
+    "reviewer_email": "demouser@demouser.com",
+    "rating": 5,
+    "title": "Very good",
+    "body": "Very very good",
+    "created_at": "2026-06-23T03:51:20.796Z"
+  }
+},
+{
+  "model": "reviews.companyreview",
+  "pk": 32,
+  "fields": {
+    "employer": 7,
+    "reviewer_name": "Demo User 2",
+    "reviewer_email": "demouser@demouser.com",
+    "rating": 5,
+    "title": "very very good",
+    "body": "very very very good",
+    "created_at": "2026-06-23T03:52:03.958Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 1,
+  "fields": {
+    "review": 1,
+    "author": [
+      "vendox@mha.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.675Z",
+    "updated_at": "2026-06-22T14:16:23.675Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 2,
+  "fields": {
+    "review": 5,
+    "author": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.695Z",
+    "updated_at": "2026-06-22T14:16:23.695Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 3,
+  "fields": {
+    "review": 6,
+    "author": [
+      "hr@demo.nimbustech.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.704Z",
+    "updated_at": "2026-06-22T14:16:23.704Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 4,
+  "fields": {
+    "review": 9,
+    "author": [
+      "careers@demo.greenfieldlogistics.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.716Z",
+    "updated_at": "2026-06-22T14:16:23.716Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 5,
+  "fields": {
+    "review": 12,
+    "author": [
+      "people@demo.coastalretail.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.729Z",
+    "updated_at": "2026-06-22T14:16:23.729Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 6,
+  "fields": {
+    "review": 15,
+    "author": [
+      "jobs@demo.meridianhealth.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.742Z",
+    "updated_at": "2026-06-22T14:16:23.742Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 9,
+  "fields": {
+    "review": 22,
+    "author": [
+      "careers@mha.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.780Z",
+    "updated_at": "2026-06-22T14:16:23.780Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 10,
+  "fields": {
+    "review": 25,
+    "author": [
+      "careers@woodee.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.794Z",
+    "updated_at": "2026-06-22T14:16:23.794Z"
+  }
+},
+{
+  "model": "reviews.employerreply",
+  "pk": 11,
+  "fields": {
+    "review": 28,
+    "author": [
+      "careers@wewe.example.com"
+    ],
+    "body": "Thank you for the feedback — we're glad to hear it and always working to improve.",
+    "created_at": "2026-06-22T14:16:23.809Z",
+    "updated_at": "2026-06-22T14:16:23.809Z"
+  }
+}
+]

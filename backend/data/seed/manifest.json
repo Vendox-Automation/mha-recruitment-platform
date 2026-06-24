@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "exported_at": "2026-06-24T03:27:14.295355+00:00",
+  "models": [
+    "accounts.user",
+    "employers.employerprofile",
+    "candidates.candidateprofile",
+    "jobs.job",
+    "jobs.screeningquestion",
+    "applications.application",
+    "applications.applicationanswer",
+    "applications.applicationstatushistory",
+    "candidates.savedjob",
+    "matching.jobfitresult",
+    "support.supportrequest",
+    "analytics.marketinsight",
+    "analytics.jobviewevent",
+    "audit.auditlog",
+    "reviews.companyreview",
+    "reviews.employerreply"
+  ],
+  "record_counts": {
+    "accounts.user": 14,
+    "employers.employerprofile": 10,
+    "candidates.candidateprofile": 3,
+    "jobs.job": 28,
+    "jobs.screeningquestion": 5,
+    "applications.application": 7,
+    "applications.applicationanswer": 1,
+    "applications.applicationstatushistory": 13,
+    "candidates.savedjob": 3,
+    "matching.jobfitresult": 13,
+    "support.supportrequest": 2,
+    "analytics.marketinsight": 3,
+    "analytics.jobviewevent": 66,
+    "audit.auditlog": 25,
+    "reviews.companyreview": 31,
+    "reviews.employerreply": 11
+  },
+  "private_media_files": 32,
+  "extra_files": 0,
+  "fixture": "database.json"
+}
