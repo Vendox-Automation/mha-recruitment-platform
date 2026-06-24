@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Don't 308-strip the trailing slash before the API rewrite runs.
   skipTrailingSlashRedirect: true,
+  allowedDevOrigins: [
+    "https://mha-jobs.up.railway.app",
+  ],
   /**
    * Dev-only same-origin API proxy. Set `NEXT_PUBLIC_API_BASE_URL=/api/v1`
    * (see .env.local) to route API calls through this origin; Next forwards
