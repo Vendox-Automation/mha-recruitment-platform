@@ -88,6 +88,9 @@ export function buildAdminReviewsQuery(
   if (company) search.set("company", company);
   const term = params.search?.trim();
   if (term) search.set("search", term);
+  if (params.rating && params.rating !== "ALL") {
+    search.set("rating", String(params.rating));
+  }
   if (params.page && params.page > 1) search.set("page", String(params.page));
   const qs = search.toString();
   return qs ? `?${qs}` : "";

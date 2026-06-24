@@ -100,6 +100,30 @@ def test_admin_list_filter_by_company(api, make_admin, make_employer):
     assert resp.data["results"][0]["company_name"] == "A Co"
 
 
+def test_admin_list_filter_by_rating(api, make_admin, make_employer):
+    _make_review(make_employer, rating=5)
+    _make_review(make_employer, rating=3)
+    _make_review(make_employer, rating=3)
+
+    api.force_authenticate(user=make_admin())
+    resp = api.get(LIST, {"rating": 3})
+    assert resp.status_code == status.HTTP_200_OK
+    assert resp.data["count"] == 2
+    assert all(r["rating"] == 3 for r in resp.data["results"])
+
+
+@pytest.mark.parametrize("value", ["", "0", "6", "abc"])
+def test_admin_list_invalid_rating_returns_all(api, make_admin, make_employer, value):
+    _make_review(make_employer, rating=5)
+    _make_review(make_employer, rating=2)
+
+    api.force_authenticate(user=make_admin())
+    resp = api.get(LIST, {"rating": value})
+    assert resp.status_code == status.HTTP_200_OK
+    # An out-of-range / non-numeric rating is ignored — every review is listed.
+    assert resp.data["count"] == 2
+
+
 def test_admin_list_search(api, make_admin, make_employer):
     _make_review(make_employer, reviewer_name="Alice Distinctive")
     _make_review(make_employer, reviewer_name="Bob Ordinary")

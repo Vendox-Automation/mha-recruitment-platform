@@ -76,6 +76,9 @@
     "filters": {
       "companyLabel": "Company",
       "companyPlaceholder": "Filter by company name",
+      "ratingLabel": "Rating",
+      "ratingAll": "All ratings",
+      "ratingStars": "{rating} stars",
       "searchLabel": "Search",
       "searchPlaceholder": "Search by reviewer, title, or text"
     },
